@@ -585,7 +585,7 @@ local function register_autocmds()
         if st and st.layout and not seen[b] then
           seen[b] = true
           local w = vim.api.nvim_win_get_width(win)
-          local h = vim.api.nvim_win_get_height(win)
+          local h = vim.fn.winheight(win)
           local lay = st.layout
           if math.abs((lay.width or 0) - w) > 2 or (lay.view == "circular" and lay.height ~= h) then
             vim.api.nvim_win_call(win, function() buffer.render(b) end)

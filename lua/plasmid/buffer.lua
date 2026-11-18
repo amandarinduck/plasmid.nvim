@@ -97,7 +97,7 @@ function M.render(buf, opts)
   if not st then return end
   local win = win_for(buf)
   local width = win and text_width(win) or vim.o.columns
-  local height = win and vim.api.nvim_win_get_height(win) or (vim.o.lines - 2)
+  local height = win and vim.fn.winheight(win) or (vim.o.lines - 2)  -- text rows (winbar excluded)
   local keep = opts.keep_bp
   if not keep and win and st.layout then keep = (M.cursor_info(win)) end
   local rec = M.record(st)
@@ -176,7 +176,7 @@ function M.set_view(buf, view, force)
   -- in the window show all of it, otherwise centre the cursor.
   if win and vim.api.nvim_win_is_valid(win) then
     vim.api.nvim_win_call(win, function()
-      if vim.api.nvim_buf_line_count(buf) <= vim.api.nvim_win_get_height(win) then
+      if vim.api.nvim_buf_line_count(buf) <= vim.fn.winheight(win) then
         vim.fn.winrestview({ topline = 1 })
       else
         vim.cmd("normal! zz")
