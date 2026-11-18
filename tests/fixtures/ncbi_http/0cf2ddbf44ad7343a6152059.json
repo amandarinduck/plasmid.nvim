@@ -1,0 +1,1 @@
+{"key":"0cf2ddbf44ad7343a6152059","method":"GET","url":"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=protein&id=4504349&retmode=json&tool=plasmid.nvim","recorded":"2026-11-17T13:22:38Z","bytes":631,"ms":234,"headers":{"x-ratelimit-limit":"3","content-type":"application/json; charset=UTF-8"},"status":200}

@@ -1,0 +1,5333 @@
+{
+ "conditions": {
+  "mv_conc": 50.0,
+  "dv_conc": 1.5,
+  "dntp_conc": 0.6,
+  "dna_conc": 50.0,
+  "temp_c": 37.0
+ },
+ "thresholds": {
+  "hairpin_dg": -2.0,
+  "dimer_dg": -9.0,
+  "end_dimer_dg": -5.0,
+  "struct_tm": 47.0,
+  "end_stab": 9.0
+ },
+ "singles": [
+  {
+   "seq": "GAGGTCAGGACTTGG",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -2.91610614461411,
+    "dh": -59.0,
+    "ds": -180.82828907104914,
+    "tm": -1.2486140915961528
+   },
+   "p3_end_stability": 3.61
+  },
+  {
+   "seq": "ATAGAGGAGTGCCAAGGCTATGTACTGAC",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.39996422892468764,
+    "dh": -22.9,
+    "ds": -72.54565781420382,
+    "tm": 42.51327592823037
+   },
+   "p3_homodimer": {
+    "dg": -5.82099614461411,
+    "dh": -64.2,
+    "ds": -188.22828907104915,
+    "tm": 12.958452018678372
+   },
+   "p3_end_stability": 3.51
+  },
+  {
+   "seq": "GGCCCACCGTTGTATTAAGTTCATGT",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -3.91093368677095,
+    "dh": -30.8,
+    "ds": -86.69697344262148,
+    "tm": -22.456358677389233
+   },
+   "p3_end_stability": 3.21
+  },
+  {
+   "seq": "TGTCAGGTGGTGTACCGACA",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -1.4038514578462673,
+    "dh": -26.3,
+    "ds": -80.27131562841765,
+    "tm": 54.48883080906268
+   },
+   "p3_homodimer": {
+    "dg": -2.965190475980562,
+    "dh": -107.4,
+    "ds": -336.7235515847798,
+    "tm": 14.873919184325757
+   },
+   "p3_end_stability": 4.35
+  },
+  {
+   "seq": "CTGAGATCATTACCCTACAGATGGCATGCAGGC",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.5005890000031031,
+    "dh": -21.2,
+    "ds": -66.73999999999,
+    "tm": 44.500584357254695
+   },
+   "p3_homodimer": {
+    "dg": -7.860466144614118,
+    "dh": -63.2,
+    "ds": -178.42828907104914,
+    "tm": 21.36452487066265
+   },
+   "p3_end_stability": 4.85
+  },
+  {
+   "seq": "GACGATCCTTAGTTCAAAG",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -3.7633112289277815,
+    "dh": -27.2,
+    "ds": -75.56565781419384,
+    "tm": -29.701197700646873
+   },
+   "p3_end_stability": 2.77
+  },
+  {
+   "seq": "CATCGCTTCTGTCTGATACC",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -1.7719612289277828,
+    "dh": -28.0,
+    "ds": -84.56565781419384,
+    "tm": -41.22330924241851
+   },
+   "p3_end_stability": 2.73
+  },
+  {
+   "seq": "TTGATGATGTACGCCCGCGCGGGCAAACTGT",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -3.5547366867678467,
+    "dh": -35.4,
+    "ds": -102.67697344263149,
+    "tm": 71.62058305364809
+   },
+   "p3_homodimer": {
+    "dg": -20.677813518143637,
+    "dh": -122.6,
+    "ds": -328.622235956332,
+    "tm": 62.93895033557021
+   },
+   "p3_end_stability": 3.55
+  },
+  {
+   "seq": "ATTTTTGACTTGGTGTATCGA",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -3.1718336867647414,
+    "dh": -28.2,
+    "ds": -80.6969734426415,
+    "tm": -31.833788168106906
+   },
+   "p3_end_stability": 3.59
+  },
+  {
+   "seq": "CCGGGCCAGAGGTCTGCG",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.4540404578462621,
+    "dh": -26.2,
+    "ds": -83.01131562841766,
+    "tm": 42.46962127282353
+   },
+   "p3_homodimer": {
+    "dg": -5.90493368677095,
+    "dh": -45.2,
+    "ds": -126.69697344262148,
+    "tm": 4.390491314780888
+   },
+   "p3_end_stability": 5.18
+  },
+  {
+   "seq": "AATACATTAGAGTAGAATGAATTCGA",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.39257545784626563,
+    "dh": -27.1,
+    "ds": -86.11131562841766,
+    "tm": 41.55892997315573
+   },
+   "p3_homodimer": {
+    "dg": -3.7202361446141077,
+    "dh": -55.4,
+    "ds": -166.62828907104915,
+    "tm": 0.03842728155706254
+   },
+   "p3_end_stability": 3.71
+  },
+  {
+   "seq": "ACCCAGCTGGTTAATAACG",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.5521464578431623,
+    "dh": -14.5,
+    "ds": -44.97131562842766,
+    "tm": 49.277747495875644
+   },
+   "p3_homodimer": {
+    "dg": -9.626518602457276,
+    "dh": -75.8,
+    "ds": -213.3596046994768,
+    "tm": 30.63113256696971
+   },
+   "p3_end_stability": 3.18
+  },
+  {
+   "seq": "TATTTCCTTAGGAAATTCAATT",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -1.7797991446110064,
+    "dh": -34.1,
+    "ds": -104.20828907105916,
+    "tm": 54.07924734660378
+   },
+   "p3_homodimer": {
+    "dg": -10.606615975980574,
+    "dh": -97.0,
+    "ds": -278.5535515847797,
+    "tm": 35.06468637373035
+   },
+   "p3_end_stability": 2.32
+  },
+  {
+   "seq": "AATTTCTTGAGTATATTGGAGGTTATGCTTA",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -2.3933912289277868,
+    "dh": -29.8,
+    "ds": -88.36565781419382,
+    "tm": -33.84601238458808
+   },
+   "p3_end_stability": 3.09
+  },
+  {
+   "seq": "TCAACCGCCCGTCATATTGTT",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -1.6113674578462596,
+    "dh": -24.2,
+    "ds": -72.83131562841767,
+    "tm": -51.11833260823312
+   },
+   "p3_end_stability": 2.83
+  },
+  {
+   "seq": "ATATGTCTATTATTATGTCTACGGTTCATGAAAA",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -5.988528602451072,
+    "dh": -55.6,
+    "ds": -159.9596046994968,
+    "tm": 10.347367464001707
+   },
+   "p3_end_stability": 2.29
+  },
+  {
+   "seq": "AAAAGGATTTCCATGTGCAAGAGATCTCTAGTTC",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.011355457843163094,
+    "dh": -12.7,
+    "ds": -40.91131562842766,
+    "tm": 37.27756276396235
+   },
+   "p3_homodimer": {
+    "dg": -8.425261060294243,
+    "dh": -71.6,
+    "ds": -203.69092032792443,
+    "tm": 25.36609205283787
+   },
+   "p3_end_stability": 3.01
+  },
+  {
+   "seq": "TCGGTAAAAAGATACTTGACGCATTTCTGGTTA",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -2.3487724578462656,
+    "dh": -24.1,
+    "ds": -70.13131562841765,
+    "tm": -46.41921476286166
+   },
+   "p3_end_stability": 2.85
+  },
+  {
+   "seq": "CTAGTATATTTAACATCTATGATT",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -2.933016144614121,
+    "dh": -53.0,
+    "ds": -161.4282890710491,
+    "tm": -4.918392506980467
+   },
+   "p3_end_stability": 2.57
+  },
+  {
+   "seq": "GAATGCCAACGGGCGGCTATGGGTGGGG",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -2.0801654578462623,
+    "dh": -25.5,
+    "ds": -75.51131562841766,
+    "tm": 64.54773162849546
+   },
+   "p3_homodimer": {
+    "dg": -6.0465440603004685,
+    "dh": -104.8,
+    "ds": -318.40546812735624,
+    "tm": 22.42127005173097
+   },
+   "p3_end_stability": 4.96
+  },
+  {
+   "seq": "TGGAAACACGTGAGGTGAAT",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.9433214578462649,
+    "dh": -22.8,
+    "ds": -70.47131562841766,
+    "tm": 50.38589253562719
+   },
+   "p3_homodimer": {
+    "dg": -8.761966144614126,
+    "dh": -61.0,
+    "ds": -168.4282890710491,
+    "tm": 25.00665627714079
+   },
+   "p3_end_stability": 2.57
+  },
+  {
+   "seq": "CCCTTGCTTCGTCGCA",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.0850177289215826,
+    "dh": -20.2,
+    "ds": -64.85565781421383,
+    "tm": 38.310876055950644
+   },
+   "p3_homodimer": {
+    "dg": -1.6938086024510777,
+    "dh": -65.2,
+    "ds": -204.75960469949678,
+    "tm": -2.522711947895175
+   },
+   "p3_end_stability": 5.1
+  },
+  {
+   "seq": "CCAAATGGATAGTCTGCGCTACTTGTGACTCCGAA",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": 0.25570385538899426,
+    "dh": -51.3,
+    "ds": -166.22828907105915,
+    "tm": 35.4617308111757
+   },
+   "p3_homodimer": {
+    "dg": -6.020578060294239,
+    "dh": -83.2,
+    "ds": -248.8454681273763,
+    "tm": 18.772025596549497
+   },
+   "p3_end_stability": 4.3
+  },
+  {
+   "seq": "ATCTACTCACATATATT",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -1.3420161446079073,
+    "dh": -32.8,
+    "ds": -101.42828907106914,
+    "tm": -34.76133581196177
+   },
+   "p3_end_stability": 1.28
+  },
+  {
+   "seq": "CTTATTCAAAATCATGTCGTA",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -3.1177136867709487,
+    "dh": -40.8,
+    "ds": -121.4969734426215,
+    "tm": -14.363827860152242
+   },
+   "p3_end_stability": 3.43
+  },
+  {
+   "seq": "GTTTACTTTATTATCTTATCTTATGCAGATTCCGG",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.1485176867647424,
+    "dh": -18.8,
+    "ds": -60.13697344264149,
+    "tm": 39.46965682279301
+   },
+   "p3_homodimer": {
+    "dg": -4.471463686770945,
+    "dh": -34.4,
+    "ds": -96.4969734426215,
+    "tm": -13.83876555130746
+   },
+   "p3_end_stability": 5.14
+  },
+  {
+   "seq": "CGCATCACTACTGTGCGCGCTCAACCGG",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -1.4928936867678422,
+    "dh": -32.6,
+    "ds": -100.2969734426315,
+    "tm": 51.88473316317726
+   },
+   "p3_homodimer": {
+    "dg": -9.840691060294251,
+    "dh": -86.6,
+    "ds": -247.4909203279244,
+    "tm": 32.152534355832074
+   },
+   "p3_end_stability": 5.28
+  },
+  {
+   "seq": "TCACAATCTCCTTTA",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": 0.36339877107841856,
+    "dh": -8.0,
+    "ds": -26.96565781421383,
+    "tm": -146.42295536766
+   },
+   "p3_end_stability": 1.85
+  },
+  {
+   "seq": "TCAAATTAAACCGTTTTAAAA",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.3071179156863254,
+    "dh": -32.7,
+    "ds": -104.44263125685532,
+    "tm": 39.94054173080946
+   },
+   "p3_homodimer": {
+    "dg": -4.009958602451079,
+    "dh": -54.8,
+    "ds": -163.75960469949678,
+    "tm": 0.9572436248128042
+   },
+   "p3_end_stability": 1.52
+  },
+  {
+   "seq": "AACACCGCCCCGCGTTCTCGA",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -1.065690457849367,
+    "dh": -23.4,
+    "ds": -72.01131562840766,
+    "tm": 51.7989305368136
+   },
+   "p3_homodimer": {
+    "dg": -5.6312536867709495,
+    "dh": -48.4,
+    "ds": -137.8969734426215,
+    "tm": 4.916441909127002
+   },
+   "p3_end_stability": 4.04
+  },
+  {
+   "seq": "TTATTTCTAAAAAGTTATC",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -1.1485774578431647,
+    "dh": -17.1,
+    "ds": -51.431315628427654,
+    "tm": -77.92994932701376
+   },
+   "p3_end_stability": 1.75
+  },
+  {
+   "seq": "CTTAATTCATTTGTCACAGAATCACCTTT",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": 0.5662258132352581,
+    "dh": -28.1,
+    "ds": -92.4269734426415,
+    "tm": 30.873803369893437
+   },
+   "p3_homodimer": {
+    "dg": -2.465073686767846,
+    "dh": -33.2,
+    "ds": -99.0969734426315,
+    "tm": -27.695200655649046
+   },
+   "p3_end_stability": 3.11
+  },
+  {
+   "seq": "CCTCAGGGCGCTCACTCGGCACCACG",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -1.587973957846265,
+    "dh": -31.4,
+    "ds": -96.12131562841766,
+    "tm": 53.52051834147795
+   },
+   "p3_homodimer": {
+    "dg": -6.879246144614117,
+    "dh": -48.2,
+    "ds": -133.22828907104912,
+    "tm": 11.39971501559171
+   },
+   "p3_end_stability": 4.94
+  },
+  {
+   "seq": "GCGATTGGGTGAACTCGTT",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": 0.2812020421537382,
+    "dh": -27.0,
+    "ds": -87.96131562841767,
+    "tm": 33.80311691401204
+   },
+   "p3_homodimer": {
+    "dg": -3.2862412289277816,
+    "dh": -24.8,
+    "ds": -69.36565781419384,
+    "tm": -38.14084482983742
+   },
+   "p3_end_stability": 3.85
+  },
+  {
+   "seq": "GCCCTCCCCGTGTCCCGACGCCAGCGCCGTGTGGG",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -1.2527174156894252,
+    "dh": -47.8,
+    "ds": -150.07990515657127,
+    "tm": 45.34700298072897
+   },
+   "p3_homodimer": {
+    "dg": -6.698248433842353,
+    "dh": -117.8,
+    "ds": -358.21941501259926,
+    "tm": 25.5455062621578
+   },
+   "p3_end_stability": 4.61
+  },
+  {
+   "seq": "CCATTGTCATCTGATGATCAATAGCGTGGAT",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.3679464578431616,
+    "dh": -23.0,
+    "ds": -72.97131562842766,
+    "tm": 42.0423437576041
+   },
+   "p3_homodimer": {
+    "dg": -7.069763891666924,
+    "dh": -138.2,
+    "ds": -422.796182841635,
+    "tm": 27.96666210773691
+   },
+   "p3_end_stability": 3.41
+  },
+  {
+   "seq": "AATACCTCACTACGCGATTTGT",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -7.746663686770939,
+    "dh": -47.6,
+    "ds": -128.4969734426215,
+    "tm": 15.932075668652544
+   },
+   "p3_end_stability": 2.83
+  },
+  {
+   "seq": "CACACCGTTTGCCCTAAGCTGG",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.4234552289246858,
+    "dh": -18.6,
+    "ds": -58.60565781420382,
+    "tm": 44.22550082565675
+   },
+   "p3_homodimer": {
+    "dg": -3.301153686764741,
+    "dh": -25.6,
+    "ds": -71.8969734426415,
+    "tm": -36.242646381434355
+   },
+   "p3_end_stability": 4.85
+  },
+  {
+   "seq": "CGAGGCCGTCGAAGCGCCAGCACTCGGCGCCCGG",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -5.938916602457277,
+    "dh": -65.5,
+    "ds": -192.0396046994768,
+    "tm": 67.92547816764721
+   },
+   "p3_homodimer": {
+    "dg": -10.943971475986778,
+    "dh": -133.8,
+    "ds": -396.11809938421163,
+    "tm": 36.37143073107484
+   },
+   "p3_end_stability": 5.73
+  },
+  {
+   "seq": "CGTATCTGGGGAAAAG",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -0.8492062289246823,
+    "dh": -18.3,
+    "ds": -56.265657814203834,
+    "tm": -75.15762905973784
+   },
+   "p3_end_stability": 2.27
+  },
+  {
+   "seq": "TCTACTGTATTTTAGTGACGGACATGGTACG",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.7111804578493648,
+    "dh": -24.1,
+    "ds": -75.41131562840766,
+    "tm": 46.43068625607509
+   },
+   "p3_homodimer": {
+    "dg": -3.279321602457283,
+    "dh": -55.8,
+    "ds": -169.33960469947678,
+    "tm": -1.6194663927543047
+   },
+   "p3_end_stability": 3.67
+  },
+  {
+   "seq": "TCAATGCATCTCGTCAAGAAATAGTCAAATAGATA",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.03843145784316221,
+    "dh": -19.6,
+    "ds": -63.07131562842766,
+    "tm": 37.609333378576935
+   },
+   "p3_homodimer": {
+    "dg": -4.8352561446079125,
+    "dh": -42.0,
+    "ds": -119.82828907106914,
+    "tm": -3.9027220799810607
+   },
+   "p3_end_stability": 1.98
+  },
+  {
+   "seq": "CTTCCAACTAGGTACTGAAAAGCACGGTGC",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.4844346867709464,
+    "dh": -31.3,
+    "ds": -99.3569734426215,
+    "tm": 41.875698906536286
+   },
+   "p3_homodimer": {
+    "dg": -8.382528602457278,
+    "dh": -70.4,
+    "ds": -199.95960469947678,
+    "tm": 25.001270768233326
+   },
+   "p3_end_stability": 5.01
+  },
+  {
+   "seq": "AGCCAAGAGCTTATACT",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.9109814578431633,
+    "dh": -15.2,
+    "ds": -46.071315628427655,
+    "tm": 56.77328941917722
+   },
+   "p3_homodimer": {
+    "dg": -3.2199536867647405,
+    "dh": -28.0,
+    "ds": -79.8969734426415,
+    "tm": -31.893645855923978
+   },
+   "p3_end_stability": 2.12
+  },
+  {
+   "seq": "GAGTACCTTTGAGCGA",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -3.2862412289277816,
+    "dh": -24.8,
+    "ds": -69.36565781419384,
+    "tm": -38.14084482983742
+   },
+   "p3_end_stability": 4.93
+  },
+  {
+   "seq": "GAAATACAGTGAGTCGCG",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -5.2116936867709445,
+    "dh": -38.8,
+    "ds": -108.29697344262149,
+    "tm": -4.5619027300581365
+   },
+   "p3_end_stability": 5.87
+  },
+  {
+   "seq": "CGTCGGTCCACACGTCG",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": 0.030728542153734453,
+    "dh": -30.2,
+    "ds": -97.47131562841766,
+    "tm": 36.68474271681242
+   },
+   "p3_homodimer": {
+    "dg": -2.065308060300449,
+    "dh": -73.6,
+    "ds": -230.6454681273563,
+    "tm": 2.704196536958193
+   },
+   "p3_end_stability": 5.12
+  },
+  {
+   "seq": "GTGGGTACACAACTCGTTCAGACGCACTCTCCT",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -1.6198621446141188,
+    "dh": -54.9,
+    "ds": -171.78828907104912,
+    "tm": 46.42940961443634
+   },
+   "p3_homodimer": {
+    "dg": -4.914263602451065,
+    "dh": -40.6,
+    "ds": -115.05960469949682,
+    "tm": -4.670103182417108
+   },
+   "p3_end_stability": 3.69
+  },
+  {
+   "seq": "TTAATGAAAAATTTCTAATGGAAAAAGCAGTTT",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.8457126867647421,
+    "dh": -31.5,
+    "ds": -98.8369734426415,
+    "tm": 45.556642896957385
+   },
+   "p3_homodimer": {
+    "dg": -3.374268602457276,
+    "dh": -74.2,
+    "ds": -228.3596046994768,
+    "tm": 7.3562337190019775
+   },
+   "p3_end_stability": 2.66
+  },
+  {
+   "seq": "CGAGACCGGAGCGGC",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -1.0784704578493656,
+    "dh": -21.8,
+    "ds": -66.81131562840766,
+    "tm": 53.142032943156266
+   },
+   "p3_homodimer": {
+    "dg": -7.00643368677095,
+    "dh": -43.2,
+    "ds": -116.69697344262148,
+    "tm": 9.463168145811721
+   },
+   "p3_end_stability": 6.53
+  },
+  {
+   "seq": "CACTGTGATAGATTAGTGTCGTCCTGTTAGCT",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": 0.039340813232156505,
+    "dh": -33.0,
+    "ds": -106.52697344263149,
+    "tm": 36.63069622687311
+   },
+   "p3_homodimer": {
+    "dg": -4.804436144614119,
+    "dh": -47.8,
+    "ds": -138.62828907104912,
+    "tm": 0.3203418147474508
+   },
+   "p3_end_stability": 3.32
+  },
+  {
+   "seq": "TGAAGTAGTTATATAAAATAGATCACT",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -3.094353602451076,
+    "dh": -51.0,
+    "ds": -154.4596046994968,
+    "tm": -5.60445581554535
+   },
+   "p3_end_stability": 3.41
+  },
+  {
+   "seq": "TGCTCGCGAAGAGTACATTCGAGAGCGGCA",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -5.55714760245417,
+    "dh": -63.4,
+    "ds": -186.4996046994868,
+    "tm": 66.79710124001923
+   },
+   "p3_homodimer": {
+    "dg": -14.151055349516275,
+    "dh": -167.8,
+    "ds": -495.4020462694945,
+    "tm": 42.52212853868798
+   },
+   "p3_end_stability": 5.69
+  },
+  {
+   "seq": "TGATTCTTGAAATCAGATATATAGA",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": 0.3815423132352589,
+    "dh": -30.8,
+    "ds": -100.5369734426415,
+    "tm": 33.20495525009079
+   },
+   "p3_homodimer": {
+    "dg": -1.5385125602942498,
+    "dh": -64.4,
+    "ds": -202.6809203279244,
+    "tm": -3.516884772528556
+   },
+   "p3_end_stability": 1.98
+  },
+  {
+   "seq": "CTGCTGACATCTAGAGT",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -3.8365811446079094,
+    "dh": -48.6,
+    "ds": -144.32828907106915,
+    "tm": -3.8836535295623094
+   },
+   "p3_end_stability": 3.24
+  },
+  {
+   "seq": "GTTAGGTTTACACTAAAAAATTTTAGGAATTGAA",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -1.4629529156894276,
+    "dh": -40.4,
+    "ds": -125.54263125684533,
+    "tm": 48.65303690900345
+   },
+   "p3_homodimer": {
+    "dg": -6.219913518143614,
+    "dh": -103.8,
+    "ds": -314.6222359563321,
+    "tm": 22.75827119488764
+   },
+   "p3_end_stability": 2.69
+  },
+  {
+   "seq": "GCCTTGCGCGGCCTCTTGCATGCGGGCGC",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -3.817059186767845,
+    "dh": -44.3,
+    "ds": -130.5269734426315,
+    "tm": 66.24345126599832
+   },
+   "p3_homodimer": {
+    "dg": -14.418178433829933,
+    "dh": -129.2,
+    "ds": -370.0848672131874,
+    "tm": 44.88310751006901
+   },
+   "p3_end_stability": 6.53
+  },
+  {
+   "seq": "TTACGCTAATGTATATCATCACTTATTCCTTA",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": 0.10216854215683634,
+    "dh": -20.7,
+    "ds": -67.07131562842766,
+    "tm": 35.476717786142046
+   },
+   "p3_homodimer": {
+    "dg": -2.3204512289277845,
+    "dh": -23.4,
+    "ds": -67.96565781419383,
+    "tm": -48.42615907315562
+   },
+   "p3_end_stability": 2.69
+  },
+  {
+   "seq": "ACTGCACTCTAAAGTCTGAGTCAG",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.3581146867647476,
+    "dh": -27.7,
+    "ds": -88.15697344264147,
+    "tm": 41.062238899316924
+   },
+   "p3_homodimer": {
+    "dg": -6.2550786024572735,
+    "dh": -63.0,
+    "ds": -182.9596046994768,
+    "tm": 14.361394122196714
+   },
+   "p3_end_stability": 3.51
+  },
+  {
+   "seq": "TCTCATTTATCAAAA",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -0.700457457843162,
+    "dh": -16.9,
+    "ds": -52.23131562842766,
+    "tm": -81.95938809253519
+   },
+   "p3_end_stability": 2.44
+  },
+  {
+   "seq": "GTTCATTTTTTGTTCCTTGCACATTTTAATA",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -3.189873686764746,
+    "dh": -24.0,
+    "ds": -67.09697344264148,
+    "tm": -40.72500789619562
+   },
+   "p3_end_stability": 0.98
+  },
+  {
+   "seq": "CGATAGTTTCTCAGCTGGGC",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -6.816476144614112,
+    "dh": -58.0,
+    "ds": -165.02828907104913,
+    "tm": 15.134082718399725
+   },
+   "p3_end_stability": 5.36
+  },
+  {
+   "seq": "CCGGATGTCTTGGGCTCGGGTCCGGGGCT",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -2.303986686767843,
+    "dh": -35.7,
+    "ds": -107.67697344263149,
+    "tm": 58.39720882845364
+   },
+   "p3_homodimer": {
+    "dg": -9.118891060300433,
+    "dh": -89.6,
+    "ds": -259.49092032790446,
+    "tm": 29.907908853684717
+   },
+   "p3_end_stability": 5.19
+  },
+  {
+   "seq": "GGGTTCTCCATGGGGGGAGGGGGGCCAGGG",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -1.5035151867678433,
+    "dh": -33.6,
+    "ds": -103.4869734426315,
+    "tm": 51.52854534973261
+   },
+   "p3_homodimer": {
+    "dg": -6.615218602457287,
+    "dh": -54.8,
+    "ds": -155.35960469947676,
+    "tm": 12.979381262633012
+   },
+   "p3_end_stability": 4.45
+  },
+  {
+   "seq": "CTCCCCCCTGGAACA",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.44801645784316496,
+    "dh": -18.8,
+    "ds": -59.17131562842766,
+    "tm": 44.571514222474434
+   },
+   "p3_homodimer": {
+    "dg": -4.033123686770945,
+    "dh": -38.8,
+    "ds": -112.09697344262149,
+    "tm": -11.446030830156474
+   },
+   "p3_end_stability": 3.18
+  },
+  {
+   "seq": "GATATAAGGAAAGCACCCGGGATGCGGAAGTCAC",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.8937014578462659,
+    "dh": -26.1,
+    "ds": -81.27131562841765,
+    "tm": 47.9965176635306
+   },
+   "p3_homodimer": {
+    "dg": -10.249556144614115,
+    "dh": -59.2,
+    "ds": -157.82828907104914,
+    "tm": 32.019685330228526
+   },
+   "p3_end_stability": 3.67
+  },
+  {
+   "seq": "AGTCAACCCTTCTTTAGGGCTCATCTAAGG",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -2.4611226867678413,
+    "dh": -30.2,
+    "ds": -89.4369734426315,
+    "tm": 64.51795585241382
+   },
+   "p3_homodimer": {
+    "dg": -4.785630102457268,
+    "dh": -66.8,
+    "ds": -199.94960469947682,
+    "tm": 9.766880789677202
+   },
+   "p3_end_stability": 2.69
+  },
+  {
+   "seq": "AAGCGCTATGAATTTGAACGAAA",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -7.174356144607904,
+    "dh": -46.2,
+    "ds": -125.82828907106916,
+    "tm": 12.052024462890472
+   },
+   "p3_end_stability": 3.46
+  },
+  {
+   "seq": "AGCGTCGGTTTGTGTGGCGCACTG",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.9643814578462625,
+    "dh": -28.9,
+    "ds": -90.07131562841766,
+    "tm": 47.706865455643424
+   },
+   "p3_homodimer": {
+    "dg": -9.058858602457272,
+    "dh": -82.8,
+    "ds": -237.7596046994768,
+    "tm": 29.126105552072374
+   },
+   "p3_end_stability": 3.66
+  },
+  {
+   "seq": "CGAGATGGGGGCGAC",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -3.2862412289277816,
+    "dh": -24.8,
+    "ds": -69.36565781419384,
+    "tm": -38.14084482983742
+   },
+   "p3_end_stability": 5.19
+  },
+  {
+   "seq": "CTTCATCGCCTATTTTCCCGAGCAATGCATTAG",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": 0.3112820421568358,
+    "dh": -23.0,
+    "ds": -75.16131562842766,
+    "tm": 32.858480661837916
+   },
+   "p3_homodimer": {
+    "dg": -6.334018602451077,
+    "dh": -57.0,
+    "ds": -163.35960469949677,
+    "tm": 12.533138936494822
+   },
+   "p3_end_stability": 1.73
+  },
+  {
+   "seq": "AATTAAGTTTATAATAATT",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -1.73788614460791,
+    "dh": -37.6,
+    "ds": -115.62828907106915,
+    "tm": -25.44005697964485
+   },
+   "p3_end_stability": 1.4
+  },
+  {
+   "seq": "CGCTCTAACCCTCAATCTCGGT",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -2.080981228927787,
+    "dh": -26.2,
+    "ds": -77.76565781419383,
+    "tm": -43.17979831324794
+   },
+   "p3_end_stability": 4.69
+  },
+  {
+   "seq": "CGCAGTACGCGTAAGATTGCGGACCGTTAACA",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -2.5817409156894353,
+    "dh": -34.1,
+    "ds": -101.6226312568453,
+    "tm": 62.405176817004815
+   },
+   "p3_homodimer": {
+    "dg": -10.43116143382994,
+    "dh": -137.8,
+    "ds": -410.668510611543,
+    "tm": 35.244238374286056
+   },
+   "p3_end_stability": 2.41
+  },
+  {
+   "seq": "TCAATGTGCCAATATATACATGAATGATTTCATT",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.9871879156863215,
+    "dh": -29.1,
+    "ds": -90.64263125685532,
+    "tm": 47.89098917361429
+   },
+   "p3_homodimer": {
+    "dg": -3.7557110602942414,
+    "dh": -66.0,
+    "ds": -200.69092032792443,
+    "tm": 5.503770662700447
+   },
+   "p3_end_stability": 2.57
+  },
+  {
+   "seq": "TCTTTATTTAGGCACGCGCAATAAAGCGTTATGCT",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -2.389129686764747,
+    "dh": -29.7,
+    "ds": -88.05697344264148,
+    "tm": 64.13163527384893
+   },
+   "p3_homodimer": {
+    "dg": -6.658284891679301,
+    "dh": -127.2,
+    "ds": -388.65618284159507,
+    "tm": 26.272109149660366
+   },
+   "p3_end_stability": 3.79
+  },
+  {
+   "seq": "GTCAATAGAGCTAACTCTCATGCAGGATT",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.929721686764744,
+    "dh": -20.4,
+    "ds": -62.77697344264149,
+    "tm": 51.80991573469561
+   },
+   "p3_homodimer": {
+    "dg": -4.886638602451065,
+    "dh": -46.0,
+    "ds": -132.55960469949682,
+    "tm": -0.5117667310639717
+   },
+   "p3_end_stability": 3.01
+  },
+  {
+   "seq": "TTGTCGATCCTTAGACAT",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.8255996867647409,
+    "dh": -31.3,
+    "ds": -98.2569734426415,
+    "tm": 45.40245387007258
+   },
+   "p3_homodimer": {
+    "dg": -1.9700705181498197,
+    "dh": -74.0,
+    "ds": -232.24223595631207,
+    "tm": 2.553397558821814
+   },
+   "p3_end_stability": 3.06
+  },
+  {
+   "seq": "AGCCAGTGGGTCCCTGCCGCTCGCCCCCGG",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.6028726867709411,
+    "dh": -45.4,
+    "ds": -144.4369734426215,
+    "tm": 41.17394987170951
+   },
+   "p3_homodimer": {
+    "dg": -5.855818602451072,
+    "dh": -52.8,
+    "ds": -151.3596046994968,
+    "tm": 8.417337274784927
+   },
+   "p3_end_stability": 5.73
+  },
+  {
+   "seq": "CTGGACTGTCGTGGGGGGGGAGCGGGTT",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -3.7213661446141124,
+    "dh": -57.2,
+    "ds": -172.42828907104914,
+    "tm": 1.071586456796183
+   },
+   "p3_end_stability": 4.11
+  },
+  {
+   "seq": "CTCGCTCTTAGCGAGAGATGTAGTATTCTTTAAAT",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -4.5843191446110065,
+    "dh": -44.1,
+    "ds": -127.40828907105916,
+    "tm": 72.98132568952559
+   },
+   "p3_homodimer": {
+    "dg": -10.805426518143621,
+    "dh": -97.4,
+    "ds": -279.20223595633206,
+    "tm": 35.69908252424983
+   },
+   "p3_end_stability": 1.4
+  },
+  {
+   "seq": "TTTAAGAAACCAATTTGTAACATTCTTCAAGATTG",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.024043915686328545,
+    "dh": -39.6,
+    "ds": -127.60263125685532,
+    "tm": 37.188428055514976
+   },
+   "p3_homodimer": {
+    "dg": -3.2800335181436093,
+    "dh": -75.8,
+    "ds": -233.8222359563321,
+    "tm": 7.606981112151345
+   },
+   "p3_end_stability": 2.67
+  },
+  {
+   "seq": "GTAATTCGAAAAAAACAATTAATCCTG",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -5.105936144607906,
+    "dh": -45.0,
+    "ds": -128.62828907106916,
+    "tm": -0.07589830602057646
+   },
+   "p3_end_stability": 3.86
+  },
+  {
+   "seq": "AATATCAATATTATTTAATTTTTAATAAT",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.3212309156863339,
+    "dh": -45.3,
+    "ds": -145.0226312568553,
+    "tm": 39.21503990723619
+   },
+   "p3_homodimer": {
+    "dg": -1.4862084338237183,
+    "dh": -103.8,
+    "ds": -329.88486721320743,
+    "tm": 10.420132466252142
+   },
+   "p3_end_stability": 1.28
+  },
+  {
+   "seq": "CTAAGGGTCCTCGGTGCCCCTCGGAGTGCC",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.7582041867647422,
+    "dh": -24.4,
+    "ds": -76.2269734426415,
+    "tm": 46.94666523570254
+   },
+   "p3_homodimer": {
+    "dg": -3.60479806030044,
+    "dh": -88.6,
+    "ds": -274.04546812735634,
+    "tm": 12.465168651392105
+   },
+   "p3_end_stability": 5.01
+  },
+  {
+   "seq": "ACAGCCGCACGGGCTGC",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -4.532498915689422,
+    "dh": -41.1,
+    "ds": -117.90263125684532,
+    "tm": 75.44272911785652
+   },
+   "p3_homodimer": {
+    "dg": -8.928382560300422,
+    "dh": -88.6,
+    "ds": -256.8809203279045,
+    "tm": 29.194638751184584
+   },
+   "p3_end_stability": 5.25
+  },
+  {
+   "seq": "ACGGTAGGCAAAGTTCCTTATAGCGCAGTCGGGGC",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -1.1473679156894285,
+    "dh": -53.7,
+    "ds": -169.44263125684532,
+    "tm": 43.771424093091525
+   },
+   "p3_homodimer": {
+    "dg": -6.8034336867709575,
+    "dh": -49.2,
+    "ds": -136.69697344262147,
+    "tm": 11.474844697142487
+   },
+   "p3_end_stability": 5.8
+  },
+  {
+   "seq": "GTAGCTACATAATACGGGAGACGCATACAA",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.7196952289246874,
+    "dh": -18.4,
+    "ds": -57.00565781420382,
+    "tm": 49.624978932272995
+   },
+   "p3_homodimer": {
+    "dg": -7.050948602457276,
+    "dh": -68.2,
+    "ds": -197.1596046994768,
+    "tm": 19.15022414147228
+   },
+   "p3_end_stability": 2.41
+  },
+  {
+   "seq": "GCCTGACCTTCGCCACCCTCTCTTCCC",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -1.415561228927785,
+    "dh": -20.2,
+    "ds": -60.565657814193834,
+    "tm": -64.31655995041078
+   },
+   "p3_end_stability": 3.97
+  },
+  {
+   "seq": "CTCGTTTGTGTACGTCACGGGACGGGACCCACCT",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -3.6042929156925236,
+    "dh": -31.5,
+    "ds": -89.94263125683533,
+    "tm": 77.07324296973593
+   },
+   "p3_homodimer": {
+    "dg": -12.004221060300434,
+    "dh": -85.6,
+    "ds": -237.29092032790444,
+    "tm": 39.88360820893138
+   },
+   "p3_end_stability": 4.0
+  },
+  {
+   "seq": "ATATTGGAATTTATTATCCATGTAAATG",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.6891296867647471,
+    "dh": -28.0,
+    "ds": -88.05697344264148,
+    "tm": 44.82595244672626
+   },
+   "p3_homodimer": {
+    "dg": -2.2031011024510807,
+    "dh": -55.8,
+    "ds": -172.80960469949676,
+    "tm": -6.128262193516946
+   },
+   "p3_end_stability": 2.32
+  },
+  {
+   "seq": "AGCCCCTTCATTACGTC",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -4.1985236867647435,
+    "dh": -27.8,
+    "ds": -76.09697344264148,
+    "tm": -25.508648807257345
+   },
+   "p3_end_stability": 4.34
+  },
+  {
+   "seq": "TTACCTGCGAATTTAATCAATATACTTGACATAG",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -3.2862412289277816,
+    "dh": -24.8,
+    "ds": -69.36565781419384,
+    "tm": -38.14084482983742
+   },
+   "p3_end_stability": 2.23
+  },
+  {
+   "seq": "CCGGCAGGAGCCGCCAGGATCAGGCACTGGTAGG",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -3.700226686767841,
+    "dh": -36.6,
+    "ds": -106.0769734426315,
+    "tm": 71.88246851960758
+   },
+   "p3_homodimer": {
+    "dg": -7.522478102457273,
+    "dh": -74.4,
+    "ds": -215.6296046994768,
+    "tm": 22.33227779561355
+   },
+   "p3_end_stability": 3.18
+  },
+  {
+   "seq": "GTGTGCATGACACCTCAGCAG",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.9160664578462638,
+    "dh": -23.3,
+    "ds": -72.17131562841766,
+    "tm": 49.69294386377459
+   },
+   "p3_homodimer": {
+    "dg": -4.109314060300457,
+    "dh": -92.4,
+    "ds": -284.6709203279044,
+    "tm": 14.850239762415413
+   },
+   "p3_end_stability": 4.24
+  },
+  {
+   "seq": "CGGTTCCGCGCGCTGGATGTGGCCTGCGTGCCTC",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -5.851288873532583,
+    "dh": -63.1,
+    "ds": -184.583946885273,
+    "tm": 68.69987949802271
+   },
+   "p3_homodimer": {
+    "dg": -12.51756197598677,
+    "dh": -135.0,
+    "ds": -394.9135515847598,
+    "tm": 40.02005524740423
+   },
+   "p3_end_stability": 4.7
+  },
+  {
+   "seq": "CGATATAATGGATGATAAGATATTATGTGTGCAT",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -0.17120922892158705,
+    "dh": -26.3,
+    "ds": -84.24565781421381,
+    "tm": 39.032261761183634
+   },
+   "p3_homodimer": {
+    "dg": -3.071861060294221,
+    "dh": -52.6,
+    "ds": -159.6909203279245,
+    "tm": -4.581317310534416
+   },
+   "p3_end_stability": 3.96
+  },
+  {
+   "seq": "CACACAAATAGACTTCTGAGG",
+   "kind": "random",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -1.5916561446079067,
+    "dh": -46.2,
+    "ds": -143.82828907106915,
+    "tm": -16.46969359893029
+   },
+   "p3_end_stability": 3.86
+  },
+  {
+   "seq": "ATAATAGTTCCCTAAGTATAAAATTTCGTAAGG",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": 0.5035970843136747,
+    "dh": -31.3,
+    "ds": -102.54263125685532,
+    "tm": 32.08890031257113
+   },
+   "p3_homodimer": {
+    "dg": -2.8694661446079044,
+    "dh": -39.6,
+    "ds": -118.42828907106916,
+    "tm": -16.989261432626336
+   },
+   "p3_end_stability": 2.69
+  },
+  {
+   "seq": "CGACGGCGCCACTGAAAGCGACGATAGG",
+   "kind": "random",
+   "p3_hairpin": {
+    "dg": -3.947530915689429,
+    "dh": -35.9,
+    "ds": -103.02263125684532,
+    "tm": 75.31712379630312
+   },
+   "p3_homodimer": {
+    "dg": -10.712773560300455,
+    "dh": -84.2,
+    "ds": -236.94092032790442,
+    "tm": 35.15851209446123
+   },
+   "p3_end_stability": 2.57
+  },
+  {
+   "seq": "GGCGATTAATCGCC",
+   "kind": "palindrome",
+   "p3_hairpin": {
+    "dg": -4.203051686767846,
+    "dh": -41.6,
+    "ds": -120.5769734426315,
+    "tm": 71.85783036980592
+   },
+   "p3_homodimer": {
+    "dg": -14.795160975986786,
+    "dh": -110.4,
+    "ds": -308.2535515847597,
+    "tm": 49.97744910895949
+   },
+   "p3_end_stability": 5.54
+  },
+  {
+   "seq": "ATTTGGGGCATCTCCGGAGATGCCCCAAAT",
+   "kind": "palindrome",
+   "p3_hairpin": {
+    "dg": -9.858914060294236,
+    "dh": -78.3,
+    "ds": -220.67092032792445,
+    "tm": 81.67699706714211
+   },
+   "p3_homodimer": {
+    "dg": -34.39897563872582,
+    "dh": -232.4,
+    "ds": -638.4040766122012,
+    "tm": 72.7804314924025
+   },
+   "p3_end_stability": 2.32
+  },
+  {
+   "seq": "TATTGCAATA",
+   "kind": "palindrome",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -6.168491060294233,
+    "dh": -66.8,
+    "ds": -195.49092032792447,
+    "tm": 18.68276039540541
+   },
+   "p3_end_stability": 1.9
+  },
+  {
+   "seq": "GCACGCTAGCGTGC",
+   "kind": "palindrome",
+   "p3_hairpin": {
+    "dg": -4.204746686767845,
+    "dh": -44.3,
+    "ds": -129.2769734426315,
+    "tm": 69.52510153042658
+   },
+   "p3_homodimer": {
+    "dg": -17.597420975986783,
+    "dh": -116.8,
+    "ds": -319.8535515847597,
+    "tm": 57.48386134022712
+   },
+   "p3_end_stability": 5.34
+  },
+  {
+   "seq": "GCTCAGTGTACACTGAGC",
+   "kind": "palindrome",
+   "p3_hairpin": {
+    "dg": -5.508769144611004,
+    "dh": -56.5,
+    "ds": -164.40828907105916,
+    "tm": 70.50663872081321
+   },
+   "p3_homodimer": {
+    "dg": -19.00659589167309,
+    "dh": -141.8,
+    "ds": -395.91618284161507,
+    "tm": 57.13707976061727
+   },
+   "p3_end_stability": 4.26
+  },
+  {
+   "seq": "TGTGACTAGGCATGCCTAGTCACA",
+   "kind": "palindrome",
+   "p3_hairpin": {
+    "dg": -7.938677831372668,
+    "dh": -77.6,
+    "ds": -224.60526251371058,
+    "tm": 72.34502149471263
+   },
+   "p3_homodimer": {
+    "dg": -25.689908265196397,
+    "dh": -184.8,
+    "ds": -513.010129726918,
+    "tm": 65.05297331818446
+   },
+   "p3_end_stability": 3.58
+  },
+  {
+   "seq": "AATTGAGTGTACACTCAATT",
+   "kind": "palindrome",
+   "p3_hairpin": {
+    "dg": -3.9363303735294903,
+    "dh": -48.9,
+    "ds": -144.97394688528297,
+    "tm": 64.1519846020629
+   },
+   "p3_homodimer": {
+    "dg": -17.239938349510062,
+    "dh": -148.2,
+    "ds": -422.2474984700627,
+    "tm": 52.09621693191099
+   },
+   "p3_end_stability": 2.32
+  },
+  {
+   "seq": "GGGAGCCGGCTCCC",
+   "kind": "palindrome",
+   "p3_hairpin": {
+    "dg": -3.1538016867678453,
+    "dh": -39.0,
+    "ds": -115.5769734426315,
+    "tm": 64.2874569460264
+   },
+   "p3_homodimer": {
+    "dg": -18.147975975986775,
+    "dh": -110.0,
+    "ds": -296.1535515847597,
+    "tm": 60.627506901479364
+   },
+   "p3_end_stability": 4.3
+  },
+  {
+   "seq": "GTTTGGTGCACCAAAC",
+   "kind": "palindrome",
+   "p3_hairpin": {
+    "dg": -3.4518679156894287,
+    "dh": -46.7,
+    "ds": -139.44263125684532,
+    "tm": 61.75475315243648
+   },
+   "p3_homodimer": {
+    "dg": -16.531328433829927,
+    "dh": -124.8,
+    "ds": -349.0848672131874,
+    "tm": 53.131189852144075
+   },
+   "p3_end_stability": 2.93
+  },
+  {
+   "seq": "GCGTACGTACGC",
+   "kind": "palindrome",
+   "p3_hairpin": {
+    "dg": -2.5333704578462712,
+    "dh": -33.8,
+    "ds": -100.81131562841765,
+    "tm": 62.1298224019223
+   },
+   "p3_homodimer": {
+    "dg": -13.71576351814362,
+    "dh": -99.2,
+    "ds": -275.6222359563321,
+    "tm": 47.854913429117744
+   },
+   "p3_end_stability": 4.42
+  },
+  {
+   "seq": "TATTGTAGATTCGCGAATCTACAATA",
+   "kind": "palindrome",
+   "p3_hairpin": {
+    "dg": -5.9247040602942285,
+    "dh": -74.8,
+    "ds": -222.07092032792445,
+    "tm": 63.67933312270435
+   },
+   "p3_homodimer": {
+    "dg": -22.893560723039556,
+    "dh": -197.8,
+    "ds": -563.9414453553456,
+    "tm": 57.979848278613304
+   },
+   "p3_end_stability": 1.9
+  },
+  {
+   "seq": "GTTCCCCCGGGGGAAC",
+   "kind": "palindrome",
+   "p3_hairpin": {
+    "dg": -4.127807915689424,
+    "dh": -47.5,
+    "ds": -139.84263125684532,
+    "tm": 66.51752179282147
+   },
+   "p3_homodimer": {
+    "dg": -19.287338433829923,
+    "dh": -123.4,
+    "ds": -335.68486721318743,
+    "tm": 61.18383413427341
+   },
+   "p3_end_stability": 3.62
+  },
+  {
+   "seq": "GACTCGAGTC",
+   "kind": "palindrome",
+   "p3_hairpin": {
+    "dg": -0.06894922892468458,
+    "dh": -22.6,
+    "ds": -72.64565781420383,
+    "tm": 37.949117001611114
+   },
+   "p3_homodimer": {
+    "dg": -9.075641060300448,
+    "dh": -75.6,
+    "ds": -214.49092032790443,
+    "tm": 31.813865270402175
+   },
+   "p3_end_stability": 3.36
+  },
+  {
+   "seq": "GTAATAACAATATTGTTATTAC",
+   "kind": "palindrome",
+   "p3_hairpin": {
+    "dg": -4.324071602454169,
+    "dh": -67.7,
+    "ds": -204.3396046994868,
+    "tm": 58.16120175926437
+   },
+   "p3_homodimer": {
+    "dg": -14.975170807359449,
+    "dh": -162.6,
+    "ds": -475.9788140984703,
+    "tm": 46.057758004223786
+   },
+   "p3_end_stability": 1.89
+  },
+  {
+   "seq": "CCCTTGGTTAACCAAGGG",
+   "kind": "palindrome",
+   "p3_hairpin": {
+    "dg": -5.720984144611,
+    "dh": -54.2,
+    "ds": -156.30828907105916,
+    "tm": 73.6006446530177
+   },
+   "p3_homodimer": {
+    "dg": -18.541175891673106,
+    "dh": -136.0,
+    "ds": -378.716182841615,
+    "tm": 56.84818035893926
+   },
+   "p3_end_stability": 3.95
+  },
+  {
+   "seq": "CCTGCGACCGGTCGCAGG",
+   "kind": "palindrome",
+   "p3_hairpin": {
+    "dg": -6.761214144611011,
+    "dh": -58.9,
+    "ds": -168.10828907105915,
+    "tm": 77.21939775826911
+   },
+   "p3_homodimer": {
+    "dg": -23.818440891673106,
+    "dh": -149.0,
+    "ds": -403.61618284161506,
+    "tm": 67.79277596454966
+   },
+   "p3_end_stability": 4.85
+  },
+  {
+   "seq": "GGCAGCTGCC",
+   "kind": "palindrome",
+   "p3_hairpin": {
+    "dg": -1.361994228924683,
+    "dh": -23.8,
+    "ds": -72.34565781420383,
+    "tm": 55.82620560894645
+   },
+   "p3_homodimer": {
+    "dg": -12.020001060300434,
+    "dh": -77.8,
+    "ds": -212.09092032790446,
+    "tm": 43.756572031273606
+   },
+   "p3_end_stability": 4.85
+  },
+  {
+   "seq": "CCTTCGTGTGATGTTAACATCACACGAAGG",
+   "kind": "palindrome",
+   "p3_hairpin": {
+    "dg": -12.316901518140511,
+    "dh": -106.2,
+    "ds": -302.70223595634207,
+    "tm": 77.68982668471915
+   },
+   "p3_homodimer": {
+    "dg": -31.733010638732026,
+    "dh": -240.0,
+    "ds": -671.5040766121812,
+    "tm": 67.31833029705598
+   },
+   "p3_end_stability": 3.46
+  },
+  {
+   "seq": "TAATAATTTTGCAAAATTATTA",
+   "kind": "palindrome",
+   "p3_hairpin": {
+    "dg": -2.6595866024510615,
+    "dh": -56.7,
+    "ds": -174.23960469949682,
+    "tm": 52.263961411287255
+   },
+   "p3_homodimer": {
+    "dg": -14.741895807353227,
+    "dh": -158.8,
+    "ds": -464.4788140984903,
+    "tm": 45.79844010230454
+   },
+   "p3_end_stability": 0.98
+  },
+  {
+   "seq": "TTACTTATTCTAGAATAAGTAA",
+   "kind": "palindrome",
+   "p3_hairpin": {
+    "dg": -3.64530660245107,
+    "dh": -62.4,
+    "ds": -189.4396046994968,
+    "tm": 56.24257922852786
+   },
+   "p3_homodimer": {
+    "dg": -15.061630807353213,
+    "dh": -157.6,
+    "ds": -459.5788140984904,
+    "tm": 46.53445952523134
+   },
+   "p3_end_stability": 2.24
+  },
+  {
+   "seq": "GCTCGGACACGCGCGTGTCCGAGC",
+   "kind": "palindrome",
+   "p3_hairpin": {
+    "dg": -10.369322831375772,
+    "dh": -84.9,
+    "ds": -240.3052625137006,
+    "tm": 80.15062734335487
+   },
+   "p3_homodimer": {
+    "dg": -33.25082826520261,
+    "dh": -207.0,
+    "ds": -560.210129726898,
+    "tm": 75.55943645189183
+   },
+   "p3_end_stability": 5.03
+  },
+  {
+   "seq": "CCGCTAGCGG",
+   "kind": "palindrome",
+   "p3_hairpin": {
+    "dg": -1.3010942289246814,
+    "dh": -25.6,
+    "ds": -78.34565781420383,
+    "tm": 53.60710070250758
+   },
+   "p3_homodimer": {
+    "dg": -11.79011606030044,
+    "dh": -79.4,
+    "ds": -217.99092032790446,
+    "tm": 42.68357806675874
+   },
+   "p3_end_stability": 5.52
+  },
+  {
+   "seq": "GATGGGAAACGCGTTTCCCATC",
+   "kind": "palindrome",
+   "p3_hairpin": {
+    "dg": -5.556761602451072,
+    "dh": -55.1,
+    "ds": -159.7396046994968,
+    "tm": 71.78637381696598
+   },
+   "p3_homodimer": {
+    "dg": -24.456565807359468,
+    "dh": -175.4,
+    "ds": -486.67881409847024,
+    "tm": 64.10184090376146
+   },
+   "p3_end_stability": 3.51
+  },
+  {
+   "seq": "AAAAATCTAGTCAGATCTGACTAGATTTTT",
+   "kind": "palindrome",
+   "p3_hairpin": {
+    "dg": -8.128726518137395,
+    "dh": -87.9,
+    "ds": -257.2022359563521,
+    "tm": 68.60441622100387
+   },
+   "p3_homodimer": {
+    "dg": -25.282435638725786,
+    "dh": -224.4,
+    "ds": -642.0040766122013,
+    "tm": 59.09195977058158
+   },
+   "p3_end_stability": 1.94
+  },
+  {
+   "seq": "AGGGTAAACGTTTACCCT",
+   "kind": "palindrome",
+   "p3_hairpin": {
+    "dg": -4.226244144607903,
+    "dh": -50.1,
+    "ds": -147.90828907106916,
+    "tm": 65.57340971997326
+   },
+   "p3_homodimer": {
+    "dg": -17.509030891666903,
+    "dh": -133.2,
+    "ds": -373.01618284163504,
+    "tm": 54.58696660827911
+   },
+   "p3_end_stability": 4.34
+  },
+  {
+   "seq": "TAGTTTTGGAATATTCCAAAACTA",
+   "kind": "palindrome",
+   "p3_hairpin": {
+    "dg": -6.4405478313726485,
+    "dh": -68.1,
+    "ds": -198.80526251371063,
+    "tm": 69.39626431382055
+   },
+   "p3_homodimer": {
+    "dg": -19.4919732651964,
+    "dh": -176.4,
+    "ds": -505.910129726918,
+    "tm": 53.93010107398493
+   },
+   "p3_end_stability": 2.24
+  },
+  {
+   "seq": "TTATCTAACGCGCGTTAAGTT",
+   "kind": "palindrome_core",
+   "p3_hairpin": {
+    "dg": -0.2568016867647493,
+    "dh": -29.9,
+    "ds": -95.57697344264147,
+    "tm": 39.68685727864005
+   },
+   "p3_homodimer": {
+    "dg": -13.1736635181374,
+    "dh": -103.0,
+    "ds": -289.6222359563521,
+    "tm": 43.01003017143938
+   },
+   "p3_end_stability": 2.66
+  },
+  {
+   "seq": "GCTATAATTAATTCATATCAC",
+   "kind": "palindrome_core",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -4.70187360245108,
+    "dh": -53.6,
+    "ds": -157.65960469949678,
+    "tm": 3.3927503965184655
+   },
+   "p3_end_stability": 3.06
+  },
+  {
+   "seq": "GCGTGATAGTACTAGT",
+   "kind": "palindrome_core",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -4.887223602451071,
+    "dh": -63.4,
+    "ds": -188.6596046994968,
+    "tm": 8.851184620010315
+   },
+   "p3_end_stability": 2.57
+  },
+  {
+   "seq": "GTGAGCGCTATCACGCGTGAGCGATGC",
+   "kind": "palindrome_core",
+   "p3_hairpin": {
+    "dg": -3.6679504578462656,
+    "dh": -29.6,
+    "ds": -83.61131562841766,
+    "tm": 80.86906760500261
+   },
+   "p3_homodimer": {
+    "dg": -16.118743433836148,
+    "dh": -131.8,
+    "ds": -372.9848672131674,
+    "tm": 48.98359934898991
+   },
+   "p3_end_stability": 3.91
+  },
+  {
+   "seq": "TTTCTTTAACATGTTCGCAATAGCG",
+   "kind": "palindrome_core",
+   "p3_hairpin": {
+    "dg": -2.2920742289246845,
+    "dh": -28.7,
+    "ds": -85.14565781420383,
+    "tm": 63.91944942073519
+   },
+   "p3_homodimer": {
+    "dg": -7.030258602451082,
+    "dh": -57.2,
+    "ds": -161.75960469949678,
+    "tm": 15.853102610408882
+   },
+   "p3_end_stability": 4.26
+  },
+  {
+   "seq": "GCATCCGGCGCCAGTTCCTTT",
+   "kind": "palindrome_core",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -9.467986144614107,
+    "dh": -65.8,
+    "ds": -181.62828907104915,
+    "tm": 28.975297678771085
+   },
+   "p3_end_stability": 3.11
+  },
+  {
+   "seq": "ATGTAGGTCTAGACCTAGT",
+   "kind": "palindrome_core",
+   "p3_hairpin": {
+    "dg": -1.8481516867647405,
+    "dh": -28.7,
+    "ds": -86.5769734426415,
+    "tm": 58.346919547715174
+   },
+   "p3_homodimer": {
+    "dg": -12.245150975980549,
+    "dh": -99.6,
+    "ds": -281.6535515847798,
+    "tm": 40.23917739229472
+   },
+   "p3_end_stability": 2.57
+  },
+  {
+   "seq": "ACCCGACCAACATATGTTGGACAG",
+   "kind": "palindrome_core",
+   "p3_hairpin": {
+    "dg": -3.327612915689424,
+    "dh": -40.9,
+    "ds": -121.14263125684533,
+    "tm": 64.4685540603312
+   },
+   "p3_homodimer": {
+    "dg": -15.890660975986771,
+    "dh": -120.8,
+    "ds": -338.25355158475975,
+    "tm": 49.48604546640411
+   },
+   "p3_end_stability": 3.51
+  },
+  {
+   "seq": "TCTGTGCGACGTCGCAAAAGA",
+   "kind": "palindrome_core",
+   "p3_hairpin": {
+    "dg": -3.2199616867647456,
+    "dh": -34.6,
+    "ds": -101.17697344264148,
+    "tm": 68.82504454524116
+   },
+   "p3_homodimer": {
+    "dg": -16.12215351813739,
+    "dh": -100.8,
+    "ds": -273.0222359563521,
+    "tm": 52.86905501109413
+   },
+   "p3_end_stability": 2.52
+  },
+  {
+   "seq": "AGCATCCTTAGTCACGCGTGACATGTTTATT",
+   "kind": "palindrome_core",
+   "p3_hairpin": {
+    "dg": -2.097031686767841,
+    "dh": -35.4,
+    "ds": -107.3769734426315,
+    "tm": 56.529621850333
+   },
+   "p3_homodimer": {
+    "dg": -16.44247351814361,
+    "dh": -117.0,
+    "ds": -324.2222359563321,
+    "tm": 51.50335871200997
+   },
+   "p3_end_stability": 1.4
+  },
+  {
+   "seq": "GTAACCGCGCGCGTCGG",
+   "kind": "palindrome_core",
+   "p3_hairpin": {
+    "dg": -1.2954602289246868,
+    "dh": -29.8,
+    "ds": -91.90565781420382,
+    "tm": 51.095543840658706
+   },
+   "p3_homodimer": {
+    "dg": -13.163346518143603,
+    "dh": -120.6,
+    "ds": -346.4022359563321,
+    "tm": 42.09105671287108
+   },
+   "p3_end_stability": 4.79
+  },
+  {
+   "seq": "CGGCAAGATCTTAGCCGC",
+   "kind": "palindrome_core",
+   "p3_hairpin": {
+    "dg": -2.2581186867678444,
+    "dh": -32.9,
+    "ds": -98.7969734426315,
+    "tm": 59.85615245166457
+   },
+   "p3_homodimer": {
+    "dg": -10.750701433829935,
+    "dh": -129.0,
+    "ds": -381.2648672131874,
+    "tm": 35.88606126270179
+   },
+   "p3_end_stability": 6.53
+  },
+  {
+   "seq": "CTATGTGCTTAAGCAGAT",
+   "kind": "palindrome_core",
+   "p3_hairpin": {
+    "dg": -1.1758404578431618,
+    "dh": -23.2,
+    "ds": -71.01131562842767,
+    "tm": 53.558494198246365
+   },
+   "p3_homodimer": {
+    "dg": -10.289140975980569,
+    "dh": -101.8,
+    "ds": -295.05355158477977,
+    "tm": 34.20258253225484
+   },
+   "p3_end_stability": 2.9
+  },
+  {
+   "seq": "TACTCTCTAGAGACAACTC",
+   "kind": "palindrome_core",
+   "p3_hairpin": {
+    "dg": -0.5871204578462639,
+    "dh": -24.1,
+    "ds": -75.81131562841766,
+    "tm": 44.744496358881065
+   },
+   "p3_homodimer": {
+    "dg": -7.054016060294241,
+    "dh": -66.6,
+    "ds": -191.99092032792444,
+    "tm": 18.75929185574961
+   },
+   "p3_end_stability": 3.01
+  },
+  {
+   "seq": "TCGGCTCGTCTTAAGACGAACGTGAAGG",
+   "kind": "palindrome_core",
+   "p3_hairpin": {
+    "dg": -3.227612915686332,
+    "dh": -40.8,
+    "ds": -121.14263125685531,
+    "tm": 63.64308082299215
+   },
+   "p3_homodimer": {
+    "dg": -14.303802891673113,
+    "dh": -159.6,
+    "ds": -468.4707306410669,
+    "tm": 43.11952467116714
+   },
+   "p3_end_stability": 3.46
+  },
+  {
+   "seq": "TGCCTCAGCAATTGCTTAAAGGA",
+   "kind": "palindrome_core",
+   "p3_hairpin": {
+    "dg": -0.8799704578431629,
+    "dh": -18.5,
+    "ds": -56.811315628427664,
+    "tm": 52.48935186783166
+   },
+   "p3_homodimer": {
+    "dg": -10.639608433829956,
+    "dh": -127.8,
+    "ds": -377.7539628120911,
+    "tm": 35.60821768524215
+   },
+   "p3_end_stability": 3.36
+  },
+  {
+   "seq": "GTTTGCCAAATTTGTTCACCG",
+   "kind": "palindrome_core",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -6.0960686024572786,
+    "dh": -73.2,
+    "ds": -216.3596046994768,
+    "tm": 16.7260198816781
+   },
+   "p3_end_stability": 4.94
+  },
+  {
+   "seq": "GTGATAAGGTTCTAGAACCCAT",
+   "kind": "palindrome_core",
+   "p3_hairpin": {
+    "dg": -2.0231566867678485,
+    "dh": -33.0,
+    "ds": -99.87697344263148,
+    "tm": 57.25648772717301
+   },
+   "p3_homodimer": {
+    "dg": -11.955428518143599,
+    "dh": -100.2,
+    "ds": -284.5222359563321,
+    "tm": 39.30675083113999
+   },
+   "p3_end_stability": 4.0
+  },
+  {
+   "seq": "CACCGACGTCTGAGCGCTTG",
+   "kind": "palindrome_core",
+   "p3_hairpin": {
+    "dg": 0.1358472710753158,
+    "dh": -19.7,
+    "ds": -63.955657814203825,
+    "tm": 34.87591472407394
+   },
+   "p3_homodimer": {
+    "dg": -7.203306144607908,
+    "dh": -48.4,
+    "ds": -132.82828907106915,
+    "tm": 13.256742521539934
+   },
+   "p3_end_stability": 4.01
+  },
+  {
+   "seq": "TTAGCAATATTCCGGAGCCC",
+   "kind": "palindrome_core",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -5.493156144607907,
+    "dh": -47.0,
+    "ds": -133.82828907106915,
+    "tm": 3.3361446789779166
+   },
+   "p3_end_stability": 5.19
+  },
+  {
+   "seq": "TTGTTTACCACCGTGATCACGGATTATG",
+   "kind": "palindrome_core",
+   "p3_hairpin": {
+    "dg": -3.2237216867678473,
+    "dh": -35.1,
+    "ds": -102.77697344263149,
+    "tm": 68.36618620675068
+   },
+   "p3_homodimer": {
+    "dg": -16.845473518143613,
+    "dh": -111.2,
+    "ds": -304.2222359563321,
+    "tm": 53.539489660327035
+   },
+   "p3_end_stability": 1.9
+  },
+  {
+   "seq": "GCTCCCAATTGATCAACCTGTA",
+   "kind": "palindrome_core",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -6.160708602451072,
+    "dh": -55.4,
+    "ds": -158.7596046994968,
+    "tm": 11.066614241331536
+   },
+   "p3_end_stability": 2.74
+  },
+  {
+   "seq": "TACAGCCGGGTGTTCGTTTGTGTGGTTGCAA",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": 0.4127860421568366,
+    "dh": -22.7,
+    "ds": -74.52131562842766,
+    "tm": 31.460832599694868
+   },
+   "p3_homodimer": {
+    "dg": -12.250081060294237,
+    "dh": -82.0,
+    "ds": -224.89092032792445,
+    "tm": 40.96238022200805
+   },
+   "p3_end_stability": 4.08
+  },
+  {
+   "seq": "AGCTGATACCCTTCCAAGGATCCT",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": -0.9068554578462609,
+    "dh": -22.9,
+    "ds": -70.91131562841767,
+    "tm": 49.78858599378236
+   },
+   "p3_homodimer": {
+    "dg": -6.199048602451075,
+    "dh": -50.6,
+    "ds": -143.15960469949678,
+    "tm": 9.024358817256712
+   },
+   "p3_end_stability": 3.24
+  },
+  {
+   "seq": "AAGAGATGACTGAACTCGCAGCTG",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": -0.19097395784626497,
+    "dh": -23.8,
+    "ds": -76.12131562841766,
+    "tm": 39.508810525273816
+   },
+   "p3_homodimer": {
+    "dg": -6.240906144614113,
+    "dh": -52.4,
+    "ds": -148.82828907104914,
+    "tm": 10.107888471863987
+   },
+   "p3_end_stability": 4.24
+  },
+  {
+   "seq": "AGTGGCCTCCTTAACTTAAG",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": 0.11694977107531304,
+    "dh": -25.1,
+    "ds": -81.30565781420383,
+    "tm": 35.56160353142258
+   },
+   "p3_homodimer": {
+    "dg": -5.636513686770944,
+    "dh": -45.8,
+    "ds": -129.4969734426215,
+    "tm": 3.3213477845341117
+   },
+   "p3_end_stability": 1.85
+  },
+  {
+   "seq": "CGGCAGCGCTCTCGTGAACTAGT",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": -0.07853422892468007,
+    "dh": -21.4,
+    "ds": -68.74565781420384,
+    "tm": 38.14238820925874
+   },
+   "p3_homodimer": {
+    "dg": -6.675856144607904,
+    "dh": -42.6,
+    "ds": -115.82828907106916,
+    "tm": 7.130795337727818
+   },
+   "p3_end_stability": 2.57
+  },
+  {
+   "seq": "TAGGCTCTTTTGGACGATGAAAACTCGGATCC",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": -0.2765964578462663,
+    "dh": -25.7,
+    "ds": -81.97131562841766,
+    "tm": 40.37430789936445
+   },
+   "p3_homodimer": {
+    "dg": -4.776616144614112,
+    "dh": -47.4,
+    "ds": -137.42828907104914,
+    "tm": -0.09348046659238207
+   },
+   "p3_end_stability": 3.36
+  },
+  {
+   "seq": "TGGTGGACTACGCACTAAGTTGTGACGT",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": -1.4351529156863252,
+    "dh": -56.5,
+    "ds": -177.54263125685532,
+    "tm": 45.08342709312478
+   },
+   "p3_homodimer": {
+    "dg": -2.996024433823739,
+    "dh": -139.6,
+    "ds": -440.4448672132074,
+    "tm": 19.753788984203084
+   },
+   "p3_end_stability": 4.34
+  },
+  {
+   "seq": "TTGGACCAAAATAGTTGATC",
+   "kind": "self_3prime",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -5.110328602451075,
+    "dh": -51.0,
+    "ds": -147.9596046994968,
+    "tm": 3.8406316412578576
+   },
+   "p3_end_stability": 2.92
+  },
+  {
+   "seq": "ACGTGAGTTATATATCGAT",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": -0.3059642289215808,
+    "dh": -10.4,
+    "ds": -32.54565781421383,
+    "tm": 46.40107680932954
+   },
+   "p3_homodimer": {
+    "dg": -4.813086144607914,
+    "dh": -50.6,
+    "ds": -147.62828907106913,
+    "tm": 2.1635657219010227
+   },
+   "p3_end_stability": 3.59
+  },
+  {
+   "seq": "GTTATATCGCCCCGTAAATT",
+   "kind": "self_3prime",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -1.4690086867647443,
+    "dh": -22.0,
+    "ds": -66.1969734426415,
+    "tm": -58.22044473119584
+   },
+   "p3_end_stability": 1.82
+  },
+  {
+   "seq": "TGGAACAGCCTCATGCATATCGATA",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": -0.4260852289246832,
+    "dh": -17.3,
+    "ds": -54.40565781420383,
+    "tm": 44.831634540285734
+   },
+   "p3_homodimer": {
+    "dg": -5.279508602451068,
+    "dh": -57.0,
+    "ds": -166.7596046994968,
+    "tm": 7.746453086060342
+   },
+   "p3_end_stability": 2.92
+  },
+  {
+   "seq": "CTTGCTCCCTGAGGTGGTGTGGCCAC",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": -2.4532964578462635,
+    "dh": -34.7,
+    "ds": -103.97131562841767,
+    "tm": 60.595897031966786
+   },
+   "p3_homodimer": {
+    "dg": -9.53966860245727,
+    "dh": -69.2,
+    "ds": -192.35960469947682,
+    "tm": 29.665814318242553
+   },
+   "p3_end_stability": 5.01
+  },
+  {
+   "seq": "CTGGTGTGCGGACGTACG",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": 0.27810454215373104,
+    "dh": -23.7,
+    "ds": -77.31131562841765,
+    "tm": 33.402796409643486
+   },
+   "p3_homodimer": {
+    "dg": -7.518978602457282,
+    "dh": -56.2,
+    "ds": -156.95960469947678,
+    "tm": 17.858132552998484
+   },
+   "p3_end_stability": 3.67
+  },
+  {
+   "seq": "GGCATGGAGGGCATGTCCCGGG",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": -1.8487764578462667,
+    "dh": -26.9,
+    "ds": -80.77131562841765,
+    "tm": 59.8890224637596
+   },
+   "p3_homodimer": {
+    "dg": -7.714586144614106,
+    "dh": -50.4,
+    "ds": -137.62828907104915,
+    "tm": 16.85445280964268
+   },
+   "p3_end_stability": 5.73
+  },
+  {
+   "seq": "TAGACGAGGTGCGCCCATTATTATCGAT",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": -0.5127402289246856,
+    "dh": -18.1,
+    "ds": -56.705657814203825,
+    "tm": 46.04213527695384
+   },
+   "p3_homodimer": {
+    "dg": -6.576102518149797,
+    "dh": -92.6,
+    "ds": -277.36223595631213,
+    "tm": 22.201830211782806
+   },
+   "p3_end_stability": 3.59
+  },
+  {
+   "seq": "GGAGCACGATGGGTTGCCTAGGC",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": -0.3678830000031048,
+    "dh": -21.7,
+    "ds": -68.77999999999,
+    "tm": 42.34869148012734
+   },
+   "p3_homodimer": {
+    "dg": -9.115043602457277,
+    "dh": -68.0,
+    "ds": -189.8596046994768,
+    "tm": 27.706000879883334
+   },
+   "p3_end_stability": 3.93
+  },
+  {
+   "seq": "CTGCGCTCACGTCGCAACTCAGTACT",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": -2.049472686764748,
+    "dh": -33.2,
+    "ds": -100.43697344264147,
+    "tm": 57.40555998967034
+   },
+   "p3_homodimer": {
+    "dg": -6.559176518143606,
+    "dh": -85.4,
+    "ds": -254.2022359563321,
+    "tm": 20.963208553057655
+   },
+   "p3_end_stability": 2.73
+  },
+  {
+   "seq": "CTTTTATTCGTCAAGCGC",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": -0.27703022892468654,
+    "dh": -21.4,
+    "ds": -68.10565781420382,
+    "tm": 41.067653669544484
+   },
+   "p3_homodimer": {
+    "dg": -5.238383686770951,
+    "dh": -37.4,
+    "ds": -103.69697344262148,
+    "tm": -5.7380487927575246
+   },
+   "p3_end_stability": 5.92
+  },
+  {
+   "seq": "CCGGTGTACGGTTGGAAATGCCGCGCGCG",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": -1.6803564578462684,
+    "dh": -27.6,
+    "ds": -83.57131562841765,
+    "tm": 57.10685658363474
+   },
+   "p3_homodimer": {
+    "dg": -12.923888602457286,
+    "dh": -80.4,
+    "ds": -217.55960469947678,
+    "tm": 43.73256843221992
+   },
+   "p3_end_stability": 6.86
+  },
+  {
+   "seq": "GCAGGCCGGTCCCGGGTGGCC",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": -2.4830879578462666,
+    "dh": -33.3,
+    "ds": -99.36131562841766,
+    "tm": 61.990489932040475
+   },
+   "p3_homodimer": {
+    "dg": -13.069425975986785,
+    "dh": -123.8,
+    "ds": -357.0226471836635,
+    "tm": 41.71466967901591
+   },
+   "p3_end_stability": 5.36
+  },
+  {
+   "seq": "CGTGTGGAGTGCCAGTAGGGGACCGTACGTAC",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": -1.7391276867678425,
+    "dh": -27.4,
+    "ds": -82.7369734426315,
+    "tm": 58.019957757745715
+   },
+   "p3_homodimer": {
+    "dg": -6.36748860245727,
+    "dh": -66.4,
+    "ds": -193.5596046994768,
+    "tm": 15.895333426468198
+   },
+   "p3_end_stability": 3.67
+  },
+  {
+   "seq": "GGCCACATCTTCATGTGCGATTCGCGA",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": -1.8296779156894263,
+    "dh": -37.2,
+    "ds": -114.04263125684531,
+    "tm": 53.04380656185191
+   },
+   "p3_homodimer": {
+    "dg": -7.898328602457274,
+    "dh": -78.6,
+    "ds": -227.9596046994768,
+    "tm": 24.44003118395483
+   },
+   "p3_end_stability": 5.87
+  },
+  {
+   "seq": "CGCATGAAACGGGACTTACTGCCGCGCG",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": -1.6316076867678457,
+    "dh": -26.3,
+    "ds": -79.53697344263149,
+    "tm": 57.51382666634521
+   },
+   "p3_homodimer": {
+    "dg": -8.940536144614118,
+    "dh": -60.0,
+    "ds": -164.62828907104912,
+    "tm": 25.669014988930087
+   },
+   "p3_end_stability": 6.86
+  },
+  {
+   "seq": "GCCGCGGAAAACATATA",
+   "kind": "self_3prime",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -10.51271614461411,
+    "dh": -61.2,
+    "ds": -163.42828907104914,
+    "tm": 33.47792035125798
+   },
+   "p3_end_stability": 0.86
+  },
+  {
+   "seq": "GCATCTAAGTCTGTCGAC",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": -0.27327422892468894,
+    "dh": -24.2,
+    "ds": -77.14565781420382,
+    "tm": 40.5423151045369
+   },
+   "p3_homodimer": {
+    "dg": -5.938276144614108,
+    "dh": -53.4,
+    "ds": -153.02828907104916,
+    "tm": 9.105284235547117
+   },
+   "p3_end_stability": 4.2
+  },
+  {
+   "seq": "GATGAGATTAATTATCATGTTCCCGGG",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": 0.25542131323525247,
+    "dh": -25.3,
+    "ds": -82.39697344264148,
+    "tm": 33.90011292207163
+   },
+   "p3_homodimer": {
+    "dg": -7.714586144614106,
+    "dh": -50.4,
+    "ds": -137.62828907104915,
+    "tm": 16.85445280964268
+   },
+   "p3_end_stability": 5.73
+  },
+  {
+   "seq": "CACGCGGGTCGGTTTCTCCCCGATCGG",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": -2.072309186767845,
+    "dh": -31.7,
+    "ds": -95.52697344263149,
+    "tm": 58.69344544357796
+   },
+   "p3_homodimer": {
+    "dg": -9.057338602457275,
+    "dh": -69.4,
+    "ds": -194.5596046994768,
+    "tm": 27.645221156695243
+   },
+   "p3_end_stability": 4.18
+  },
+  {
+   "seq": "CACGCCGGTAGAGAGCGTGCTAATCCGGA",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": -2.993589915689423,
+    "dh": -40.2,
+    "ds": -119.96263125684533,
+    "tm": 61.95435357098842
+   },
+   "p3_homodimer": {
+    "dg": -7.680904975986778,
+    "dh": -129.0,
+    "ds": -391.16264718366347,
+    "tm": 28.728107905532568
+   },
+   "p3_end_stability": 5.14
+  },
+  {
+   "seq": "CGGAAACATTAGCATG",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": 0.048155771075318626,
+    "dh": -22.7,
+    "ds": -73.34565781420383,
+    "tm": 36.34344073650135
+   },
+   "p3_homodimer": {
+    "dg": -2.7207136867709485,
+    "dh": -34.2,
+    "ds": -101.49697344262148,
+    "tm": -24.710229638031223
+   },
+   "p3_end_stability": 4.06
+  },
+  {
+   "seq": "TCTTGGGTCCACAATGCTTAAG",
+   "kind": "self_3prime",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -3.712521144614111,
+    "dh": -48.6,
+    "ds": -144.72828907104915,
+    "tm": -4.4790777077093935
+   },
+   "p3_end_stability": 1.85
+  },
+  {
+   "seq": "TCTCTCCTGCCATGCA",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": 0.004925771075315424,
+    "dh": -20.2,
+    "ds": -65.14565781420383,
+    "tm": 36.924388343896
+   },
+   "p3_homodimer": {
+    "dg": -3.5301036867647415,
+    "dh": -28.0,
+    "ds": -78.8969734426415,
+    "tm": -29.79684244300796
+   },
+   "p3_end_stability": 3.96
+  },
+  {
+   "seq": "TTTGAAGGTGTGGGAGGAGGGCCC",
+   "kind": "self_3prime",
+   "p3_hairpin": {
+    "dg": -0.7274102289246839,
+    "dh": -25.2,
+    "ds": -78.90565781420383,
+    "tm": 46.2187334733016
+   },
+   "p3_homodimer": {
+    "dg": -7.741276144614115,
+    "dh": -49.0,
+    "ds": -133.02828907104913,
+    "tm": 16.464480899686123
+   },
+   "p3_end_stability": 5.8
+  },
+  {
+   "seq": "GCTGTACTAGCAAAGTCGCTAGTACAGCGGA",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -8.585458789218915,
+    "dh": -85.3,
+    "ds": -247.3465781421283,
+    "tm": 71.71023878197985
+   },
+   "p3_homodimer": {
+    "dg": -17.79416180735943,
+    "dh": -170.4,
+    "ds": -492.03881409847037,
+    "tm": 49.454487499458764
+   },
+   "p3_end_stability": 5.54
+  },
+  {
+   "seq": "TAAAGGCAATATAATTTTGCCTTTAGC",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -4.047606373529488,
+    "dh": -47.2,
+    "ds": -139.13394688528297,
+    "tm": 66.09143644769006
+   },
+   "p3_homodimer": {
+    "dg": -10.931538807353238,
+    "dh": -139.6,
+    "ds": -414.8588140984903,
+    "tm": 36.36998327886232
+   },
+   "p3_end_stability": 3.09
+  },
+  {
+   "seq": "TTTCTCTATAAAGTTTTAGAGAAAGG",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -2.4111483735294894,
+    "dh": -52.3,
+    "ds": -160.85394688528297,
+    "tm": 51.98967492074695
+   },
+   "p3_homodimer": {
+    "dg": -7.628558807353227,
+    "dh": -159.0,
+    "ds": -488.05881409849036,
+    "tm": 30.157216097700996
+   },
+   "p3_end_stability": 3.11
+  },
+  {
+   "seq": "GGACGGGGCTCATTAAAACCCC",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -1.7787629578462656,
+    "dh": -31.2,
+    "ds": -94.86131562841766,
+    "tm": 55.751194267786445
+   },
+   "p3_homodimer": {
+    "dg": -4.270305602457272,
+    "dh": -62.2,
+    "ds": -186.7796046994768,
+    "tm": 5.846642980412014
+   },
+   "p3_end_stability": 4.95
+  },
+  {
+   "seq": "ATTCCAGTATATGAAGGAAT",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -0.7328391867647479,
+    "dh": -33.4,
+    "ds": -105.32697344264147,
+    "tm": 43.957754151777976
+   },
+   "p3_homodimer": {
+    "dg": -2.082376975980558,
+    "dh": -96.0,
+    "ds": -302.81355158477976,
+    "tm": 10.056143418886222
+   },
+   "p3_end_stability": 3.01
+  },
+  {
+   "seq": "TAGCCGTTCTATTAGAAGAACGGC",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -7.201103873532586,
+    "dh": -66.9,
+    "ds": -192.48394688527299,
+    "tm": 74.41145165640586
+   },
+   "p3_homodimer": {
+    "dg": -14.612544433829957,
+    "dh": -133.6,
+    "ds": -383.64486721318735,
+    "tm": 45.091467683742394
+   },
+   "p3_end_stability": 5.68
+  },
+  {
+   "seq": "CAGCCGGCCCTATCATTTAGGCCGGCGGCCT",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -8.306172873532589,
+    "dh": -62.9,
+    "ds": -176.02394688527298,
+    "tm": 84.18774360255821
+   },
+   "p3_homodimer": {
+    "dg": -17.912763518137393,
+    "dh": -109.6,
+    "ds": -295.62223595635214,
+    "tm": 57.18501873638331
+   },
+   "p3_end_stability": 5.19
+  },
+  {
+   "seq": "AGATTTAGGTAACCACCTAAATAT",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -4.133831602451079,
+    "dh": -55.6,
+    "ds": -165.93960469949678,
+    "tm": 61.911663553357926
+   },
+   "p3_homodimer": {
+    "dg": -8.169387933823732,
+    "dh": -112.8,
+    "ds": -337.3548672132074,
+    "tm": 28.84427612961366
+   },
+   "p3_end_stability": 1.28
+  },
+  {
+   "seq": "GCGCGCGGGGCCTTGCTACTCGGCCCCGCGCGGC",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -14.551537289218919,
+    "dh": -97.1,
+    "ds": -266.1565781421283,
+    "tm": 91.67284479983192
+   },
+   "p3_homodimer": {
+    "dg": -32.49175080735941,
+    "dh": -212.0,
+    "ds": -578.7788140984704,
+    "tm": 71.59854301029486
+   },
+   "p3_end_stability": 6.53
+  },
+  {
+   "seq": "GTCCGCCCGCATTTTACGGGCGG",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -8.429825144611002,
+    "dh": -62.2,
+    "ds": -173.36828907105917,
+    "tm": 85.62380075260381
+   },
+   "p3_homodimer": {
+    "dg": -17.271584475986774,
+    "dh": -124.2,
+    "ds": -344.76355158475974,
+    "tm": 52.897837720283974
+   },
+   "p3_end_stability": 6.13
+  },
+  {
+   "seq": "GTTGAAATTATAGATAAATTTCAA",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -2.5521263735294926,
+    "dh": -52.9,
+    "ds": -162.33394688528296,
+    "tm": 52.72145828089191
+   },
+   "p3_homodimer": {
+    "dg": -5.91957693382373,
+    "dh": -111.4,
+    "ds": -340.0948672132074,
+    "tm": 22.9242155356323
+   },
+   "p3_end_stability": 2.69
+  },
+  {
+   "seq": "CCAACCTGCAATTGTTGGTTCT",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -1.686260915689425,
+    "dh": -40.4,
+    "ds": -124.82263125684533,
+    "tm": 50.50925628397977
+   },
+   "p3_homodimer": {
+    "dg": -6.568665975980577,
+    "dh": -109.4,
+    "ds": -331.5535515847797,
+    "tm": 24.362455262500646
+   },
+   "p3_end_stability": 3.01
+  },
+  {
+   "seq": "CTTTGGTACGTACAGGTACCATGAGAG",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -2.9342276446079048,
+    "dh": -44.5,
+    "ds": -134.01828907106915,
+    "tm": 58.89423298078299
+   },
+   "p3_homodimer": {
+    "dg": -7.528805975980547,
+    "dh": -101.8,
+    "ds": -303.9535515847798,
+    "tm": 26.159913509060402
+   },
+   "p3_end_stability": 3.2
+  },
+  {
+   "seq": "GCAATCTTGCTAACCTATTAAGCAAGATTGGCCAAG",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -6.025991331375757,
+    "dh": -76.9,
+    "ds": -228.5152625137006,
+    "tm": 63.370191929803696
+   },
+   "p3_homodimer": {
+    "dg": -15.654628349516308,
+    "dh": -170.0,
+    "ds": -497.6474984700426,
+    "tm": 45.31558373385428
+   },
+   "p3_end_stability": 3.61
+  },
+  {
+   "seq": "AGTATGTCGGGACTTATCCCGAC",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -4.184124144607908,
+    "dh": -37.9,
+    "ds": -108.70828907106915,
+    "tm": 75.48946736593831
+   },
+   "p3_homodimer": {
+    "dg": -12.836805475986766,
+    "dh": -116.0,
+    "ds": -332.62355158475975,
+    "tm": 41.39582102359492
+   },
+   "p3_end_stability": 4.79
+  },
+  {
+   "seq": "TTTACATGATGTCATGTAACC",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -3.4353953735294853,
+    "dh": -52.4,
+    "ds": -157.87394688528298,
+    "tm": 58.76036921421729
+   },
+   "p3_homodimer": {
+    "dg": -9.46816843382374,
+    "dh": -116.0,
+    "ds": -343.4848672132074,
+    "tm": 32.39698441047807
+   },
+   "p3_end_stability": 2.85
+  },
+  {
+   "seq": "CAGTCGCGGGCAGACT",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -0.998026457843167,
+    "dh": -27.6,
+    "ds": -85.77131562842764,
+    "tm": 48.635900073711696
+   },
+   "p3_homodimer": {
+    "dg": -6.064333686770944,
+    "dh": -46.6,
+    "ds": -130.6969734426215,
+    "tm": 6.127513755428765
+   },
+   "p3_end_stability": 3.24
+  },
+  {
+   "seq": "TGAAGTCCCCGTTCGATGAACGGGGACAACGT",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -7.2386578313757495,
+    "dh": -60.4,
+    "ds": -171.40526251370065,
+    "tm": 79.23124614273235
+   },
+   "p3_homodimer": {
+    "dg": -22.885456349516318,
+    "dh": -178.0,
+    "ds": -500.12749847004255,
+    "tm": 58.760194175075355
+   },
+   "p3_end_stability": 3.99
+  },
+  {
+   "seq": "TCACTTACAAACTGTAATCCGG",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -0.42252791568632164,
+    "dh": -29.9,
+    "ds": -95.04263125685533,
+    "tm": 41.445667276871006
+   },
+   "p3_homodimer": {
+    "dg": -4.471463686770945,
+    "dh": -34.4,
+    "ds": -96.4969734426215,
+    "tm": -13.83876555130746
+   },
+   "p3_end_stability": 5.14
+  },
+  {
+   "seq": "ACGACGAAATGTCTAATTTCGTCGTGC",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -7.246193831372657,
+    "dh": -74.6,
+    "ds": -217.16526251371062,
+    "tm": 70.36718657255403
+   },
+   "p3_homodimer": {
+    "dg": -16.790984849510075,
+    "dh": -158.2,
+    "ds": -455.9374984700627,
+    "tm": 48.32960643123613
+   },
+   "p3_end_stability": 5.34
+  },
+  {
+   "seq": "AAAAGTTGTACTTTTGC",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -1.6162691446079043,
+    "dh": -37.1,
+    "ds": -114.40828907106916,
+    "tm": 51.12720317497184
+   },
+   "p3_homodimer": {
+    "dg": -4.656546518137416,
+    "dh": -84.8,
+    "ds": -258.40223595635206,
+    "tm": 14.732735390262519
+   },
+   "p3_end_stability": 3.68
+  },
+  {
+   "seq": "GTACTAATGCTATTTCATCTAGCATTTCGGG",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -2.6336963735294994,
+    "dh": -45.6,
+    "ds": -138.53394688528294,
+    "tm": 56.01119857438556
+   },
+   "p3_homodimer": {
+    "dg": -7.486234475980571,
+    "dh": -104.8,
+    "ds": -313.76355158477975,
+    "tm": 26.342151478243068
+   },
+   "p3_end_stability": 5.14
+  },
+  {
+   "seq": "AGTCGTCAGGTAAAAGTAACCTGACGACCTTG",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -9.053280060297343,
+    "dh": -81.7,
+    "ds": -234.23092032791445,
+    "tm": 75.65108862494793
+   },
+   "p3_homodimer": {
+    "dg": -19.059981849516276,
+    "dh": -170.4,
+    "ds": -487.95749847004265,
+    "tm": 51.966606155480235
+   },
+   "p3_end_stability": 3.61
+  },
+  {
+   "seq": "CAAAGAGGAATATCTTTATATTCCTCTTGCT",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -5.840484060294227,
+    "dh": -66.9,
+    "ds": -196.87092032792447,
+    "tm": 66.66656553728626
+   },
+   "p3_homodimer": {
+    "dg": -13.873195307353221,
+    "dh": -160.0,
+    "ds": -471.14881409849033,
+    "tm": 42.23841581023845
+   },
+   "p3_end_stability": 3.91
+  },
+  {
+   "seq": "ATTCCTTTTGTAATAGGAATAAC",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -1.8177771446078987,
+    "dh": -40.8,
+    "ds": -125.68828907106916,
+    "tm": 51.46258166168576
+   },
+   "p3_homodimer": {
+    "dg": -5.442218433823728,
+    "dh": -103.6,
+    "ds": -316.4848672132074,
+    "tm": 20.628186529078278
+   },
+   "p3_end_stability": 1.89
+  },
+  {
+   "seq": "CTAGCGGGGGCGTTATTTGCCCCCGGCGTG",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -7.278816373532587,
+    "dh": -56.2,
+    "ds": -157.73394688527299,
+    "tm": 83.14616268257583
+   },
+   "p3_homodimer": {
+    "dg": -17.75091447598678,
+    "dh": -130.2,
+    "ds": -362.56355158475975,
+    "tm": 53.390277735595305
+   },
+   "p3_end_stability": 5.34
+  },
+  {
+   "seq": "ATTATTCCATAATATGGAATGTGATT",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -3.3630801446079057,
+    "dh": -44.2,
+    "ds": -131.66828907106915,
+    "tm": 62.54206611428401
+   },
+   "p3_homodimer": {
+    "dg": -11.744108433823728,
+    "dh": -118.4,
+    "ds": -343.88486721320743,
+    "tm": 38.390403981182885
+   },
+   "p3_end_stability": 2.57
+  },
+  {
+   "seq": "ATGATCGGGCAGGATGAATGCCCAGCG",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -3.762948915689427,
+    "dh": -39.4,
+    "ds": -114.90263125684532,
+    "tm": 69.74902301652247
+   },
+   "p3_homodimer": {
+    "dg": -8.99398956030044,
+    "dh": -93.2,
+    "ds": -271.50092032790445,
+    "tm": 29.778788755459686
+   },
+   "p3_end_stability": 5.18
+  },
+  {
+   "seq": "CGTGACGATACTTAACGTCAAAAAG",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -2.7633309156863177,
+    "dh": -43.4,
+    "ds": -131.02263125685533,
+    "tm": 58.09048558389213
+   },
+   "p3_homodimer": {
+    "dg": -5.791575975980566,
+    "dh": -90.2,
+    "ds": -272.15355158477973,
+    "tm": 19.40727403162208
+   },
+   "p3_end_stability": 2.27
+  },
+  {
+   "seq": "GCCTCCGTTTAGATACCGGACT",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -0.7109336867647434,
+    "dh": -27.6,
+    "ds": -86.6969734426415,
+    "tm": 45.20021343922804
+   },
+   "p3_homodimer": {
+    "dg": -7.00643368677095,
+    "dh": -43.2,
+    "ds": -116.69697344262148,
+    "tm": 9.463168145811721
+   },
+   "p3_end_stability": 3.85
+  },
+  {
+   "seq": "TCTGTGCCAGTTACGGCAC",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -3.745440186767846,
+    "dh": -42.2,
+    "ds": -123.9869734426315,
+    "tm": 67.2083362693005
+   },
+   "p3_homodimer": {
+    "dg": -8.440288975986768,
+    "dh": -116.6,
+    "ds": -348.73355158475977,
+    "tm": 29.78921381604073
+   },
+   "p3_end_stability": 5.01
+  },
+  {
+   "seq": "GATTCGAGCCGGCATTATGGTACGCCGGCTT",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -6.768942873529493,
+    "dh": -51.5,
+    "ds": -144.22394688528297,
+    "tm": 83.93355728860735
+   },
+   "p3_homodimer": {
+    "dg": -15.168621891679315,
+    "dh": -134.6,
+    "ds": -385.076182841595,
+    "tm": 46.384075636374746
+   },
+   "p3_end_stability": 4.35
+  },
+  {
+   "seq": "CGGGTTATGTATGTATTATTTTGCATACATCATAC",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -1.9411228735294934,
+    "dh": -46.3,
+    "ds": -143.02394688528295,
+    "tm": 50.57201304957999
+   },
+   "p3_homodimer": {
+    "dg": -6.40193297598057,
+    "dh": -106.2,
+    "ds": -321.77355158477974,
+    "tm": 23.551336981855798
+   },
+   "p3_end_stability": 2.39
+  },
+  {
+   "seq": "TCTTGGTGTCGGTAGACGACAGAGAC",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -3.7180239156863246,
+    "dh": -39.2,
+    "ds": -114.40263125685533,
+    "tm": 69.49946154943467
+   },
+   "p3_homodimer": {
+    "dg": -6.964462560294254,
+    "dh": -78.2,
+    "ds": -229.6809203279244,
+    "tm": 21.00850902894996
+   },
+   "p3_end_stability": 3.36
+  },
+  {
+   "seq": "GAGAGGATTCATGCAATAATGAATTCTAT",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -0.3841501867647421,
+    "dh": -29.1,
+    "ds": -92.5869734426415,
+    "tm": 41.14907381115256
+   },
+   "p3_homodimer": {
+    "dg": -5.064447891666888,
+    "dh": -92.6,
+    "ds": -282.23618284163507,
+    "tm": 17.68067226920573
+   },
+   "p3_end_stability": 1.98
+  },
+  {
+   "seq": "CTACCCAGTTGATACTGGGTAGTGTTA",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -5.402120373529477,
+    "dh": -50.8,
+    "ds": -146.373946885283,
+    "tm": 73.90629711422116
+   },
+   "p3_homodimer": {
+    "dg": -13.654630391673098,
+    "dh": -143.2,
+    "ds": -417.68618284161505,
+    "tm": 42.37391168685008
+   },
+   "p3_end_stability": 2.41
+  },
+  {
+   "seq": "GCAATTGTAAAATGATTTAGTAATTTTACCGCTG",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -1.547427373532584,
+    "dh": -52.1,
+    "ds": -162.993946885273,
+    "tm": 46.49377202714021
+   },
+   "p3_homodimer": {
+    "dg": -4.527130975986773,
+    "dh": -112.6,
+    "ds": -348.45355158475974,
+    "tm": 19.609761844523405
+   },
+   "p3_end_stability": 5.18
+  },
+  {
+   "seq": "TGGGCCATTTGATCGGATCAAATGGGGC",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -5.758842602454177,
+    "dh": -66.3,
+    "ds": -195.1996046994868,
+    "tm": 66.50232717591825
+   },
+   "p3_homodimer": {
+    "dg": -19.090903349516303,
+    "dh": -170.8,
+    "ds": -489.1474984700426,
+    "tm": 51.99156522260432
+   },
+   "p3_end_stability": 5.8
+  },
+  {
+   "seq": "AGGTCGGGCGTATAAAAGACGCCCGACCTG",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -12.252846289215814,
+    "dh": -89.2,
+    "ds": -248.0965781421383,
+    "tm": 86.38740542481793
+   },
+   "p3_homodimer": {
+    "dg": -24.934451265196433,
+    "dh": -179.2,
+    "ds": -497.3901297269179,
+    "tm": 62.71212295008684
+   },
+   "p3_end_stability": 4.0
+  },
+  {
+   "seq": "TCCAGAGGTAAGGGACCTCTTCTA",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -3.6446501446079056,
+    "dh": -37.1,
+    "ds": -107.86828907106914,
+    "tm": 70.7879665654716
+   },
+   "p3_homodimer": {
+    "dg": -6.822235018137391,
+    "dh": -81.2,
+    "ds": -239.81223595635214,
+    "tm": 21.08020880088617
+   },
+   "p3_end_stability": 2.1
+  },
+  {
+   "seq": "AATTTATTAATTAATATAATTAATTAATTCT",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -1.4114626024510726,
+    "dh": -52.4,
+    "ds": -164.3996046994968,
+    "tm": 45.58555958836433
+   },
+   "p3_homodimer": {
+    "dg": -8.459116349510063,
+    "dh": -143.6,
+    "ds": -435.7274984700627,
+    "tm": 31.158436750911108
+   },
+   "p3_end_stability": 2.4
+  },
+  {
+   "seq": "GGCCCGTGAAGTGAAGTTCACGGGCG",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -8.946661331375749,
+    "dh": -74.3,
+    "ds": -210.71526251370065,
+    "tm": 79.45853491886493
+   },
+   "p3_homodimer": {
+    "dg": -19.9036833495163,
+    "dh": -170.0,
+    "ds": -483.9474984700426,
+    "tm": 53.704158228297615
+   },
+   "p3_end_stability": 6.13
+  },
+  {
+   "seq": "TCCCATATGGAGCTCCATGCTCCATATCA",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -6.529263831372649,
+    "dh": -63.4,
+    "ds": -183.36526251371063,
+    "tm": 72.6079648994828
+   },
+   "p3_homodimer": {
+    "dg": -12.738082391666904,
+    "dh": -136.8,
+    "ds": -400.00618284163505,
+    "tm": 40.490379143954044
+   },
+   "p3_end_stability": 2.15
+  },
+  {
+   "seq": "CTAGGCGAGATCAATAATTCTCGTA",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -2.2462259156894286,
+    "dh": -43.1,
+    "ds": -131.72263125684532,
+    "tm": 54.05269545754459
+   },
+   "p3_homodimer": {
+    "dg": -5.6939935603004415,
+    "dh": -93.2,
+    "ds": -282.14092032790444,
+    "tm": 19.65270875735797
+   },
+   "p3_end_stability": 3.43
+  },
+  {
+   "seq": "ACACATAGGCAATGGTGTTAAACCATTGCCTG",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -9.301205060294233,
+    "dh": -75.9,
+    "ds": -214.73092032792448,
+    "tm": 80.3156298407792
+   },
+   "p3_homodimer": {
+    "dg": -19.840005807353243,
+    "dh": -155.4,
+    "ds": -437.07881409849034,
+    "tm": 55.22394294329729
+   },
+   "p3_end_stability": 4.85
+  },
+  {
+   "seq": "CATGTTAAAGGGTAATTTAACATATAA",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -3.013625102451064,
+    "dh": -54.7,
+    "ds": -166.64960469949682,
+    "tm": 55.08360186563448
+   },
+   "p3_homodimer": {
+    "dg": -6.743734433823746,
+    "dh": -115.0,
+    "ds": -349.04486721320734,
+    "tm": 25.39077439512579
+   },
+   "p3_end_stability": 0.98
+  },
+  {
+   "seq": "TATTTGGTTGGCCGACGCTCAACGGCCAACCACCCCAT",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -9.775832060294226,
+    "dh": -78.8,
+    "ds": -222.55092032792447,
+    "tm": 80.92627110186618
+   },
+   "p3_homodimer": {
+    "dg": -21.713735849510094,
+    "dh": -168.6,
+    "ds": -473.5974984700626,
+    "tm": 57.59411020766811
+   },
+   "p3_end_stability": 4.0
+  },
+  {
+   "seq": "CGAATGTATTTGCATTCGCATGC",
+   "kind": "hairpin_former",
+   "p3_hairpin": {
+    "dg": -2.8712626446110154,
+    "dh": -48.5,
+    "ds": -147.11828907105914,
+    "tm": 56.51669410201049
+   },
+   "p3_homodimer": {
+    "dg": -6.823915975986762,
+    "dh": -98.8,
+    "ds": -296.55355158475976,
+    "tm": 23.800221297540475
+   },
+   "p3_end_stability": 4.06
+  },
+  {
+   "seq": "AAAAAAAAAAAAAAAAAAAA",
+   "kind": "low_complexity",
+   "p3_hairpin": null,
+   "p3_homodimer": null,
+   "p3_end_stability": 1.94
+  },
+  {
+   "seq": "CACACACACACACACACACACACAC",
+   "kind": "low_complexity",
+   "p3_hairpin": null,
+   "p3_homodimer": null,
+   "p3_end_stability": 3.82
+  },
+  {
+   "seq": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+   "kind": "low_complexity",
+   "p3_hairpin": null,
+   "p3_homodimer": null,
+   "p3_end_stability": 1.94
+  },
+  {
+   "seq": "AAATCTGTGCCTTGTGGAAAAAAAAA",
+   "kind": "polyA_tail",
+   "p3_hairpin": {
+    "dg": 0.12805077107531723,
+    "dh": -16.2,
+    "ds": -52.64565781420383,
+    "tm": 34.56768598984496
+   },
+   "p3_homodimer": {
+    "dg": -2.4697012289277844,
+    "dh": -25.1,
+    "ds": -72.96565781419383,
+    "tm": -43.14445472559379
+   },
+   "p3_end_stability": 1.94
+  },
+  {
+   "seq": "GGCATGGGTAAAGACTGCTAAAAAA",
+   "kind": "polyA_tail",
+   "p3_hairpin": {
+    "dg": 0.3169160421537345,
+    "dh": -27.2,
+    "ds": -88.72131562841766,
+    "tm": 33.42796051987057
+   },
+   "p3_homodimer": {
+    "dg": -3.573353686770941,
+    "dh": -42.0,
+    "ds": -123.8969734426215,
+    "tm": -10.746956861431897
+   },
+   "p3_end_stability": 1.94
+  },
+  {
+   "seq": "GGGTTACCGTCTCTCGAGAAGCCAAAAAA",
+   "kind": "polyA_tail",
+   "p3_hairpin": {
+    "dg": -1.1993751446110037,
+    "dh": -55.9,
+    "ds": -176.36828907105917,
+    "tm": 43.800401313230225
+   },
+   "p3_homodimer": {
+    "dg": -6.917108602451081,
+    "dh": -63.6,
+    "ds": -182.75960469949678,
+    "tm": 17.364760745159117
+   },
+   "p3_end_stability": 1.94
+  },
+  {
+   "seq": "GCGGATCAGAGGGAAAAAAAAA",
+   "kind": "polyA_tail",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -3.584136144614109,
+    "dh": -47.2,
+    "ds": -140.62828907104915,
+    "tm": -6.167230229280676
+   },
+   "p3_end_stability": 1.94
+  },
+  {
+   "seq": "GAGACTTAGGCAGGAAGAAAAA",
+   "kind": "polyA_tail",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -2.569836144614106,
+    "dh": -34.4,
+    "ds": -102.62828907104915,
+    "tm": -25.294302992545937
+   },
+   "p3_end_stability": 1.94
+  },
+  {
+   "seq": "ACGTCCGAACAACTGGTTAAAAAAA",
+   "kind": "polyA_tail",
+   "p3_hairpin": {
+    "dg": -0.2207614578431603,
+    "dh": -19.1,
+    "ds": -60.871315628427666,
+    "tm": 40.62669108699305
+   },
+   "p3_homodimer": {
+    "dg": -3.0782436867709477,
+    "dh": -43.8,
+    "ds": -131.2969734426215,
+    "tm": -11.593626303945314
+   },
+   "p3_end_stability": 1.94
+  },
+  {
+   "seq": "ACCAACGGTTTGTTCAAAAAAAAAA",
+   "kind": "polyA_tail",
+   "p3_hairpin": {
+    "dg": -0.1265864578431647,
+    "dh": -17.3,
+    "ds": -55.37131562842765,
+    "tm": 39.28613780269609
+   },
+   "p3_homodimer": {
+    "dg": -2.567488602451085,
+    "dh": -62.6,
+    "ds": -193.55960469949676,
+    "tm": -0.646417582901563
+   },
+   "p3_end_stability": 1.94
+  },
+  {
+   "seq": "TATAACGCCGATCTAAGGCCAAAAAAA",
+   "kind": "polyA_tail",
+   "p3_hairpin": {
+    "dg": -1.1589264578462608,
+    "dh": -25.9,
+    "ds": -79.77131562841767,
+    "tm": 51.528110119740916
+   },
+   "p3_homodimer": {
+    "dg": -6.0632036867709465,
+    "dh": -44.8,
+    "ds": -124.8969734426215,
+    "tm": 5.008729417456038
+   },
+   "p3_end_stability": 1.94
+  },
+  {
+   "seq": "GGGATGACGAACTTGTCTAAAAAAAAAA",
+   "kind": "polyA_tail",
+   "p3_hairpin": {
+    "dg": -0.2236839578462641,
+    "dh": -26.5,
+    "ds": -84.72131562841766,
+    "tm": 39.64023234515537
+   },
+   "p3_homodimer": {
+    "dg": -3.7633112289277815,
+    "dh": -27.2,
+    "ds": -75.56565781419384,
+    "tm": -29.701197700646873
+   },
+   "p3_end_stability": 1.94
+  },
+  {
+   "seq": "AACGTCGCAAGTAGACCAAATGCAAAAAAAAAA",
+   "kind": "polyA_tail",
+   "p3_hairpin": {
+    "dg": 0.012221042153734743,
+    "dh": -24.0,
+    "ds": -77.42131562841766,
+    "tm": 36.842148870055496
+   },
+   "p3_homodimer": {
+    "dg": -3.8477736867647434,
+    "dh": -29.0,
+    "ds": -81.09697344264148,
+    "tm": -25.834480658757684
+   },
+   "p3_end_stability": 1.94
+  },
+  {
+   "seq": "AGCACGACCGCAATGAAAAAAAAAAA",
+   "kind": "polyA_tail",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -3.7633112289277815,
+    "dh": -27.2,
+    "ds": -75.56565781419384,
+    "tm": -29.701197700646873
+   },
+   "p3_end_stability": 1.94
+  },
+  {
+   "seq": "CCACAGTCTAAGTTGGTCAAAAA",
+   "kind": "polyA_tail",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -1.9902636867647452,
+    "dh": -34.4,
+    "ds": -104.49697344264149,
+    "tm": -28.587115215046566
+   },
+   "p3_end_stability": 1.94
+  },
+  {
+   "seq": "AAACCCGGAGCGTTCGTAAAAAA",
+   "kind": "polyA_tail",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -5.997783686770949,
+    "dh": -39.4,
+    "ds": -107.69697344262148,
+    "tm": 0.7290573549987016
+   },
+   "p3_end_stability": 1.94
+  },
+  {
+   "seq": "TGCAGTTGGAAACCCTAAAAA",
+   "kind": "polyA_tail",
+   "p3_hairpin": {
+    "dg": -0.8350454578462632,
+    "dh": -18.3,
+    "ds": -56.31131562841766,
+    "tm": 51.82908805321637
+   },
+   "p3_homodimer": {
+    "dg": -2.4443836867647444,
+    "dh": -22.2,
+    "ds": -63.696973442641486,
+    "tm": -50.83680372817375
+   },
+   "p3_end_stability": 1.94
+  },
+  {
+   "seq": "CAGGGTCATCGTACGTGTAGCCACGAAAAAAA",
+   "kind": "polyA_tail",
+   "p3_hairpin": {
+    "dg": -2.4295466867678406,
+    "dh": -32.6,
+    "ds": -97.2769734426315,
+    "tm": 61.97555794332612
+   },
+   "p3_homodimer": {
+    "dg": -6.4584645181436064,
+    "dh": -118.2,
+    "ds": -360.2822359563321,
+    "tm": 25.000271278376943
+   },
+   "p3_end_stability": 1.94
+  },
+  {
+   "seq": "TTCACATGCTATCATGCAGACGCAAAAAAAA",
+   "kind": "polyA_tail",
+   "p3_hairpin": {
+    "dg": -1.171515457843161,
+    "dh": -21.8,
+    "ds": -66.51131562842767,
+    "tm": 54.61377664498406
+   },
+   "p3_homodimer": {
+    "dg": -3.9867260603004397,
+    "dh": -66.2,
+    "ds": -200.59092032790446,
+    "tm": 6.466230751152352
+   },
+   "p3_end_stability": 1.94
+  },
+  {
+   "seq": "CACAGGTTGGACCTATAAAAAAAAA",
+   "kind": "polyA_tail",
+   "p3_hairpin": {
+    "dg": -0.7532166867647465,
+    "dh": -19.2,
+    "ds": -59.47697344264148,
+    "tm": 49.66400496136771
+   },
+   "p3_homodimer": {
+    "dg": -3.2654116024510733,
+    "dh": -55.6,
+    "ds": -168.7396046994968,
+    "tm": -1.8004393699539492
+   },
+   "p3_end_stability": 1.94
+  },
+  {
+   "seq": "TTGTCCATCCCAAAGCAAAAAAAA",
+   "kind": "polyA_tail",
+   "p3_hairpin": null,
+   "p3_homodimer": {
+    "dg": -2.8200812289277857,
+    "dh": -28.8,
+    "ds": -83.76565781419383,
+    "tm": -33.00552052280622
+   },
+   "p3_end_stability": 1.94
+  },
+  {
+   "seq": "GGCGTTTACGTTATGGTATTCTAAAAAAAAAA",
+   "kind": "polyA_tail",
+   "p3_hairpin": {
+    "dg": -0.3721442289246843,
+    "dh": -22.5,
+    "ds": -71.34565781420383,
+    "tm": 42.21607397459013
+   },
+   "p3_homodimer": {
+    "dg": -4.407173686764745,
+    "dh": -30.8,
+    "ds": -85.09697344264148,
+    "tm": -19.148485189150563
+   },
+   "p3_end_stability": 1.94
+  }
+ ],
+ "pairs": [
+  {
+   "a": "CACACCCTTGGAGAGGCCGCGATAGCATGTCA",
+   "b": "CGTTTATTTTTAATAATAGAAATAATAAATCAT",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -1.974961228927783,
+    "dh": -22.0,
+    "ds": -64.56565781419384,
+    "tm": -54.739599030558
+   }
+  },
+  {
+   "a": "GTTCACGAACCGCGTAGG",
+   "b": "GCATTATTTGAAAAAGTTATGTGACTTT",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -2.757105873532586,
+    "dh": -52.0,
+    "ds": -158.77122078499892,
+    "tm": -6.392179715840939
+   }
+  },
+  {
+   "a": "GTCCGTCGGTTAACGA",
+   "b": "CCGCATGCTGAGGGACTCGGGTCGGG",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -5.444427373535706,
+    "dh": -62.2,
+    "ds": -182.99394688526294,
+    "tm": 10.665974298883441
+   }
+  },
+  {
+   "a": "ACACATGGATTGAACATAATTCTTTTAC",
+   "b": "AGGGAACGTACCTAC",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -2.7082362289277806,
+    "dh": -26.3,
+    "ds": -76.06565781419384,
+    "tm": -38.805219763377494
+   }
+  },
+  {
+   "a": "CCATTCGCCAAATGG",
+   "b": "AGTTACACTGCAGAGGTCTCGTAGGGTTCC",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -2.2189512289277844,
+    "dh": -26.4,
+    "ds": -77.96565781419383,
+    "tm": -41.83038165369419
+   }
+  },
+  {
+   "a": "TGCGCCCCGGGGACAGCCATTGAGCAACACCCAG",
+   "b": "TTGTCCGATTGTACATTAATTCACTACCTTTTA",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -3.777049915689422,
+    "dh": -42.1,
+    "ds": -123.56263125684534,
+    "tm": -9.571607549145199
+   }
+  },
+  {
+   "a": "CTTGTTGGGGGCCCCGGTAACC",
+   "b": "GCCGCTGGGACACGCGGCATCGCCCCGCG",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -6.2061251024572845,
+    "dh": -74.3,
+    "ds": -219.5514263986546,
+    "tm": 17.40946983739633
+   }
+  },
+  {
+   "a": "CTTCGCCTCGACCTTG",
+   "b": "CTTGTCTTCACGGTCCCGATGAAGCG",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -2.9829062892282163,
+    "dh": -67.4,
+    "ds": -207.6965781420983,
+    "tm": 3.2395376809187724
+   }
+  },
+  {
+   "a": "TATATTGTTGGGTTATATTTTATCT",
+   "b": "AGTGGCGGCGCGTACTAGGTTACGGCACAGGCTT",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -1.408606228924684,
+    "dh": -20.1,
+    "ds": -60.265657814203834,
+    "tm": -64.70389603549202
+   }
+  },
+  {
+   "a": "TATGGAATATTTTTA",
+   "b": "TCAGTCAACTGGCGCGGC",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -0.9727012289246814,
+    "dh": -17.4,
+    "ds": -52.96565781420384,
+    "tm": -77.92472491079772
+   }
+  },
+  {
+   "a": "GGCGCTGTAAGGCAGAGGTCA",
+   "b": "ATTAAAAAAAACCGAC",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -2.299021228927784,
+    "dh": -22.2,
+    "ds": -64.16565781419384,
+    "tm": -51.87534655294954
+   }
+  },
+  {
+   "a": "CCCGCCGCGCTGGCTCC",
+   "b": "TGATACAGAGCTTACTACATACGGACCGAT",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -4.660704915692535,
+    "dh": -49.9,
+    "ds": -145.8626312568353,
+    "tm": 0.9885034328619895
+   }
+  },
+  {
+   "a": "TATCGCTGCTTTTACCTGAGTACCG",
+   "b": "AAATAATAGGCCAAAT",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -3.020017457846261,
+    "dh": -28.4,
+    "ds": -81.83131562841767,
+    "tm": -32.4586970251888
+   }
+  },
+  {
+   "a": "GCAACATATTCTACCTCT",
+   "b": "GCTTTGAGGGGCCGCGCC",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -4.432753686770942,
+    "dh": -44.1,
+    "ds": -127.8969734426215,
+    "tm": -4.344461031906405
+   }
+  },
+  {
+   "a": "GGGGTCGAACCACCAG",
+   "b": "CGTGATCTCACTGTGTAGCGTGC",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -2.528102457849367,
+    "dh": -29.8,
+    "ds": -87.93131562840766,
+    "tm": -33.00841936590422
+   }
+  },
+  {
+   "a": "TCACGAACAAGATTATTATGCAAATACA",
+   "b": "CATTGGCCCCATCCGCGGCACCGTTCTGCTCG",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -3.1434686867709387,
+    "dh": -43.4,
+    "ds": -129.79697344262152,
+    "tm": -11.639815024913844
+   }
+  },
+  {
+   "a": "TTATGTAATTATATATCCTAAATTATT",
+   "b": "CATAATTTTGGGGAAACG",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -4.340169831375752,
+    "dh": -64.3,
+    "ds": -193.32526251370064,
+    "tm": 7.0396646176972695
+   }
+  },
+  {
+   "a": "CAGCCCATCCCTCGTGCCCCTACGGCCCCGCGCT",
+   "b": "TCCGAGCAAGCAGCTAGAGGTA",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -3.5365690603004625,
+    "dh": -92.2,
+    "ds": -285.8727420270822,
+    "tm": 13.154383325820504
+   }
+  },
+  {
+   "a": "GTAATAAAATTAATAGAT",
+   "b": "ACCACCGTTTGCCCGGCAAGCCTCGGGGA",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -1.244447457843162,
+    "dh": -21.6,
+    "ds": -65.63131562842766,
+    "tm": -60.95562450945448
+   }
+  },
+  {
+   "a": "TTTGGTACGTTCCCATTT",
+   "b": "TTGGTTAAATTATAA",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -2.0600524578462682,
+    "dh": -25.3,
+    "ds": -74.93131562841765,
+    "tm": -45.41382498279884
+   }
+  },
+  {
+   "a": "GATCGCGACTGCAAGCTGGCTGCCTTGGAATGA",
+   "b": "ATCGAAGCTTAGGCGTCTGTAGGCGC",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -5.675839747065169,
+    "dh": -82.0,
+    "ds": -246.08789377054597,
+    "tm": 17.372545516868513
+   }
+  },
+  {
+   "a": "TGATACAAGTTGGTATGGACGAACGAAGT",
+   "b": "ATACGCGACGATATTGACACGGAAGGCA",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -3.8213921867709506,
+    "dh": -52.6,
+    "ds": -157.27424734234742,
+    "tm": -1.2259886191873193
+   }
+  },
+  {
+   "a": "CCGGGATCTGAACGCCGATGTCGAGG",
+   "b": "CTTACAAAACCCCCCTCAGAA",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -3.3907649156863227,
+    "dh": -36.1,
+    "ds": -105.46263125685533,
+    "tm": -18.251099381289805
+   }
+  },
+  {
+   "a": "ATCGGTTTTGTTGATGGGTCTGACGGCTAACAGA",
+   "b": "CTTTCGCGTCCAGTATTCCATGGTTAAATC",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -4.453053686770946,
+    "dh": -43.5,
+    "ds": -125.8969734426215,
+    "tm": -4.729437343719894
+   }
+  },
+  {
+   "a": "GGGGGAGCCGCGGCCCGGGCCAC",
+   "b": "AAGAGATCGTTGATACAATTGA",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -2.130231228927787,
+    "dh": -27.8,
+    "ds": -82.76565781419383,
+    "tm": -39.394737314281116
+   }
+  },
+  {
+   "a": "TGGCCCCACGTGTCCGTTGGGCCGACTGCCCTGGG",
+   "b": "CGGATCTGAAAGAGCAAGCC",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -4.149902457849366,
+    "dh": -27.7,
+    "ds": -75.93131562840766,
+    "tm": -26.034783643656368
+   }
+  },
+  {
+   "a": "GCATCTATAACACGACAGCACTTTTAACAGAG",
+   "b": "AGTGTTCTTGTAGAGGAT",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -3.17630756030044,
+    "dh": -77.7,
+    "ds": -240.28274202708226,
+    "tm": 7.918680922419924
+   }
+  },
+  {
+   "a": "GGACGGTCTGGCGAAACCT",
+   "b": "ATCGCTCGAACGTGTGGTCTTTTGCAACCCC",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -6.885659831372657,
+    "dh": -67.9,
+    "ds": -196.72526251371062,
+    "tm": 18.407196929660927
+   }
+  },
+  {
+   "a": "ATCCGCGTCCTTTGG",
+   "b": "TGTTATAAGTAATCATTAA",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -1.7124974578462606,
+    "dh": -26.1,
+    "ds": -78.63131562841767,
+    "tm": -45.78513400155924
+   }
+  },
+  {
+   "a": "ATATTGTCTTAAATCATGTAAATCAAACTCGAGTA",
+   "b": "AGACATTTATATTCCATAGTT",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -2.9841799156863273,
+    "dh": -30.7,
+    "ds": -89.36263125685531,
+    "tm": -28.576771565706593
+   }
+  },
+  {
+   "a": "ATCACGAGGGCGGCA",
+   "b": "TAAATCACATGAAGAACTAACTTATGCA",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -3.0959574578462634,
+    "dh": -28.6,
+    "ds": -82.23131562841766,
+    "tm": -31.582605749007058
+   }
+  },
+  {
+   "a": "TCCGTACTCATCCTCCGTCTTGTTATTTTACCC",
+   "b": "GTACGGGGCGCCTCTTGC",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -6.084331144614123,
+    "dh": -55.5,
+    "ds": -159.3282890710491,
+    "tm": 10.751358169284913
+   }
+  },
+  {
+   "a": "GTAAATGTACATTAATACACGCCATTAGCAAAG",
+   "b": "GACTACCCGCCACACAAAGTACTATGTCTGTCTG",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -3.460573686770942,
+    "dh": -43.5,
+    "ds": -129.0969734426215,
+    "tm": -9.927007098835418
+   }
+  },
+  {
+   "a": "CTGAAGCCGCCCACACAGGGTGAACAGCC",
+   "b": "ATATTTTTACTAAAATAATTTT",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -1.465941228924683,
+    "dh": -23.6,
+    "ds": -71.36565781420383,
+    "tm": -53.67188194316236
+   }
+  },
+  {
+   "a": "GTAAGTCAAGGTCTAACGGGATACATA",
+   "b": "CTGTCCTGATACCATCCATG",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -3.756988686767847,
+    "dh": -32.6,
+    "ds": -92.99697344263149,
+    "tm": -20.74815517792109
+   }
+  },
+  {
+   "a": "GCGGACGGAACTATCAGGTTTAGCGTATTCTTA",
+   "b": "TCCGAGGCGCGGAAGCGC",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -4.705108686767846,
+    "dh": -33.3,
+    "ds": -92.19697344263149,
+    "tm": -13.721607470115202
+   }
+  },
+  {
+   "a": "CCCTGGCTGCGGAGCGCATCGAACTAGTG",
+   "b": "ATGCTACTGGATGCTC",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -4.43664491569253,
+    "dh": -49.8,
+    "ds": -146.2626312568353,
+    "tm": -0.16076699317397924
+   }
+  },
+  {
+   "a": "GCAGCGTTTATAGTAAAATTAACCCG",
+   "b": "CACACCGTTTGCCCTAAGCTGG",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -4.124604915689423,
+    "dh": -41.3,
+    "ds": -119.86263125684533,
+    "tm": -8.448452270534233
+   }
+  },
+  {
+   "a": "TATAGGCCGGCGGACAGTTTAACCT",
+   "b": "CACGGCCTAACCTGTCTCCGGCGGTTCA",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -9.520488560303537,
+    "dh": -89.8,
+    "ds": -258.8409203278945,
+    "tm": 31.253615682504062
+   }
+  },
+  {
+   "a": "CACGATTATGTTACGGAACTT",
+   "b": "CGTAATCGACAGGGACGGTGGGGGGCCGC",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -5.374312373535693,
+    "dh": -60.3,
+    "ds": -177.09394688526297,
+    "tm": 9.608627009613258
+   }
+  },
+  {
+   "a": "ACGCAACTCCTAGTCAAATGATGATAGC",
+   "b": "CAGGCCCGTCTGGGGCGAT",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -5.204237457849369,
+    "dh": -38.4,
+    "ds": -107.03131562840765,
+    "tm": -4.981330930483978
+   }
+  },
+  {
+   "a": "CCTGCAAACAGCACAGATGTAGATGCTTAGTCT",
+   "b": "ATTGGTTTTATCGTTC",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -2.4645086867678474,
+    "dh": -32.3,
+    "ds": -96.19697344263149,
+    "tm": -29.11694690798811
+   }
+  },
+  {
+   "a": "CGTCAGTTTGGACTGCGCTCAG",
+   "b": "CTACCGATCGCTTCGGACGTATGGGCCC",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -3.828559915692531,
+    "dh": -47.3,
+    "ds": -140.1626312568353,
+    "tm": -4.895017573693735
+   }
+  },
+  {
+   "a": "TGTGCGCGCCCGGAATCGTAACCC",
+   "b": "TTATTTATTAATAAAA",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -0.8656824578431606,
+    "dh": -16.6,
+    "ds": -50.731315628427666,
+    "tm": -82.11146031874156
+   }
+  },
+  {
+   "a": "GTCTCGGGTTTCCGGACGGGCA",
+   "b": "TGGGTTTAAATGGGAGATCCCCTGG",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -2.961377457849365,
+    "dh": -33.8,
+    "ds": -99.43131562840766,
+    "tm": -23.8754434195358
+   }
+  },
+  {
+   "a": "ATGCTACTGGATGCTC",
+   "b": "CGACACGCATATGCGAGCTTAGTAATTCACC",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -3.723538686770946,
+    "dh": -39.7,
+    "ds": -115.9969734426215,
+    "tm": -12.238921064250349
+   }
+  },
+  {
+   "a": "TACTAAAATATAATTTAAGTTTGTTTATTAT",
+   "b": "TTATTGGAGCCGCTGTAAGTATCCCTGATA",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -1.3819199156863216,
+    "dh": -25.5,
+    "ds": -77.76263125685533,
+    "tm": -49.31809412030569
+   }
+  },
+  {
+   "a": "GGAGCCACCAGGCCGTGCACCTACAGCCTACT",
+   "b": "ATTAGACTGCTCTTTCTCTGACACGATAT",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -5.036883686770947,
+    "dh": -40.3,
+    "ds": -113.69697344262148,
+    "tm": -4.230763224121176
+   }
+  },
+  {
+   "a": "TCATAACGCTGGGCTATCTGTCTAAAGATTAAA",
+   "b": "ATATTGAATTGTAGT",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -1.327971228924682,
+    "dh": -23.4,
+    "ds": -71.16565781420384,
+    "tm": -55.12634547426117
+   }
+  },
+  {
+   "a": "CCCTCGAGCGGTGGCTGCGGGCAGCAGTGG",
+   "b": "GGATGCAGAGCCCCAGGAAGATGAAGCGGGTAGT",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -5.800192560297335,
+    "dh": -90.6,
+    "ds": -273.41546812736635,
+    "tm": 19.506819783149865
+   }
+  },
+  {
+   "a": "CGGGAAAGTAATTAAGGAAGC",
+   "b": "CTAAAAGTCAGTTATACTTTCTCGAA",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -6.998244831375741,
+    "dh": -60.6,
+    "ds": -172.82526251370066,
+    "tm": 16.819622846217612
+   }
+  },
+  {
+   "a": "CCTCACCGCATTGACACTGC",
+   "b": "CATGATACCAAATAAT",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -2.117757457846263,
+    "dh": -23.9,
+    "ds": -70.23131562841766,
+    "tm": -48.51213546781463
+   }
+  },
+  {
+   "a": "TTTATAATTAGACCGAGTGAC",
+   "b": "TATTAATTGAGAATCTCT",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -1.8449049156863258,
+    "dh": -38.4,
+    "ds": -117.86263125685532,
+    "tm": -23.83946239345613
+   }
+  },
+  {
+   "a": "GGCGGACACCGTGGGC",
+   "b": "CAATGCAAACCACCTC",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -4.189893686770942,
+    "dh": -41.5,
+    "ds": -120.2969734426215,
+    "tm": -7.9049943274427505
+   }
+  },
+  {
+   "a": "GGAGCTCCCGGCCGACCGCCGTTCGACGCACTCC",
+   "b": "TGATGGTGTGTGCTG",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -4.721974915689425,
+    "dh": -43.2,
+    "ds": -124.06263125684534,
+    "tm": -3.5287793368074745
+   }
+  },
+  {
+   "a": "CACGGATTTTCTAATGAGT",
+   "b": "TTCAACTTTTTAAAAATATTATCATGTTTCAC",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -2.074594915686328,
+    "dh": -31.0,
+    "ds": -93.26263125685531,
+    "tm": -33.62862952683565
+   }
+  },
+  {
+   "a": "TCAACTCGGAAAAATATTACAGAGACTATCCC",
+   "b": "GAAATATAATCCAAATTTTATTGCCACTA",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -1.5908901024541702,
+    "dh": -61.3,
+    "ds": -192.51687859921276,
+    "tm": -5.088685099026009
+   }
+  },
+  {
+   "a": "AAAGACCGCCTTGGCACGTGGTGACTTCTCGG",
+   "b": "CGACCGTTACCGTTCTGTGAGGTTTCT",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -3.5640074578493657,
+    "dh": -33.1,
+    "ds": -95.23131562840766,
+    "tm": -21.23487718756533
+   }
+  },
+  {
+   "a": "TACACACGCTAATATTGA",
+   "b": "ACAAACTCTTTAATTCTATGAATAACATTATAAT",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -2.62208245784626,
+    "dh": -25.8,
+    "ds": -74.73131562841768,
+    "tm": -40.49426320306014
+   }
+  },
+  {
+   "a": "ATGATTAAATTAAAATTGGAAG",
+   "b": "ACACGGGCGACTGAGGAGCGGTACGA",
+   "kind": "random_pair",
+   "p3_heterodimer": {
+    "dg": -1.733601228924681,
+    "dh": -16.3,
+    "ds": -46.96565781420384,
+    "tm": -77.06638814091724
+   }
+  },
+  {
+   "a": "CGTAATTCGTGAACTTCGGAAAAGCAAT",
+   "b": "GCAATCTCCAGGCCCGGCGTGATTG",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -4.039382457849366,
+    "dh": -32.8,
+    "ds": -92.73131562840766,
+    "tm": -18.676269457608157
+   }
+  },
+  {
+   "a": "ATTATGCCCCAACTCGAGAAC",
+   "b": "TTCAATGTAGCAACGTAATTAGTGTTCTCGAGT",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -9.33560606029733,
+    "dh": -78.0,
+    "ds": -221.39092032791447,
+    "tm": 29.700209238769673
+   }
+  },
+  {
+   "a": "TCGGGTGTATACGGGACTCAAGTCGCTG",
+   "b": "CGTTCGGGCGGTATAGTCGCAGCGAC",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -8.059837373535695,
+    "dh": -61.9,
+    "ds": -173.59394688526297,
+    "tm": 21.954657868755362
+   }
+  },
+  {
+   "a": "GCCGATTTAGAGCCTAG",
+   "b": "CTGACTGGTAACCTAGGCTCT",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -8.625889831375753,
+    "dh": -73.3,
+    "ds": -208.52526251370062,
+    "tm": 26.4158847851715
+   }
+  },
+  {
+   "a": "CCCAACTTTATGATATCCTAGTTTTCTG",
+   "b": "GTATGACAACCCAAGTTGAAGATCAGAAA",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -4.878681144611001,
+    "dh": -45.3,
+    "ds": -130.32828907105917,
+    "tm": -1.0622971516750113
+   }
+  },
+  {
+   "a": "GCCGTCCTCCAGATTGCA",
+   "b": "TGGGCAACGGATATGCAATCTGG",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -10.204591060297345,
+    "dh": -78.9,
+    "ds": -221.4909203279144,
+    "tm": 33.07573661664185
+   }
+  },
+  {
+   "a": "GGGTAAAAACTGCACGTCAACCCGATAT",
+   "b": "GATATGACAGTACCGCGGAAATAT",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -4.642012457849363,
+    "dh": -32.1,
+    "ds": -88.53131562840767,
+    "tm": -15.718699239166654
+   }
+  },
+  {
+   "a": "TTGTTATAAAGACGTTCCCATGGCTAA",
+   "b": "GGAAGACTTGGTAGAGTATTAGCC",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -5.058381144611012,
+    "dh": -46.1,
+    "ds": -132.32828907105915,
+    "tm": 0.45603588802140393
+   }
+  },
+  {
+   "a": "TATCGATTCGTCTCATTTTGT",
+   "b": "TACGATAAAACTATACAAAATG",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -6.132148602454174,
+    "dh": -64.8,
+    "ds": -189.1596046994868,
+    "tm": 14.438747313321926
+   }
+  },
+  {
+   "a": "GAATTGGGGGTGGACTTTCTATAC",
+   "b": "GTTGTGAGAATACGGTATAGA",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -3.367532373532595,
+    "dh": -47.5,
+    "ds": -142.29394688527296,
+    "tm": -6.978084790006449
+   }
+  },
+  {
+   "a": "TAGCCCAGTTTCTTTCAGGTCAG",
+   "b": "TGGGGTCGCATAAATTACTCCGCCTGACCTGA",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -8.215544831375752,
+    "dh": -67.4,
+    "ds": -190.82526251370064,
+    "tm": 23.782770272542223
+   }
+  },
+  {
+   "a": "CGAACCGGCCGTCGCGTGTGCGGT",
+   "b": "TGCCCCCCACTCATAGACCGC",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -6.04696991568942,
+    "dh": -40.4,
+    "ds": -110.76263125684534,
+    "tm": 1.8206399373300428
+   }
+  },
+  {
+   "a": "CTAGTCTCACCGTAGCTCCCCA",
+   "b": "ATGCTTCCGTGTCCGGTGGGG",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -6.023236144614108,
+    "dh": -51.5,
+    "ds": -146.62828907104915,
+    "tm": 8.593407446684523
+   }
+  },
+  {
+   "a": "TCTGAATCCATATACGACC",
+   "b": "CTACGAACTACCAGGTCGTAT",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -7.501133602454174,
+    "dh": -66.2,
+    "ds": -189.2596046994868,
+    "tm": 20.521750047379157
+   }
+  },
+  {
+   "a": "CGATCATTTCCCCAATTTT",
+   "b": "ATGTTATCGCAAATCCAAAA",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -2.7915686867678415,
+    "dh": -26.3,
+    "ds": -75.7969734426315,
+    "tm": -38.24282895170171
+   }
+  },
+  {
+   "a": "CTGTGATCTATAGGTT",
+   "b": "TAGGCGTATCTGGCTGGGAACGTAAACCTAT",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -4.4194123735295,
+    "dh": -48.8,
+    "ds": -143.09394688528295,
+    "tm": -0.9137862164812418
+   }
+  },
+  {
+   "a": "CATGGTGGGGCGCGTTGACACAGCCA",
+   "b": "GCGGCCTGTTGTGTGGCATTTCTGGCTGTGTC",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -10.74801606029735,
+    "dh": -82.7,
+    "ds": -231.99092032791444,
+    "tm": 35.255945755135485
+   }
+  },
+  {
+   "a": "AATAAGGCTGAATTTTCTGAGTG",
+   "b": "TATGCGGTGCAGATTGGGATCCACTCAG",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -6.165097373535697,
+    "dh": -57.4,
+    "ds": -165.19394688526296,
+    "tm": 11.917112712545759
+   }
+  },
+  {
+   "a": "TTTGTCATTTAGATCCTTATGAT",
+   "b": "ACTTGTTAACGGAGTCATGGATCATAAGGA",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -7.758906060294248,
+    "dh": -69.6,
+    "ds": -199.39092032792442,
+    "tm": 22.324820650106062
+   }
+  },
+  {
+   "a": "TCTTTAGACAGTAACGATTGAAT",
+   "b": "AGGGGTAGCTCCTAGCTCAGATTC",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -1.7787886867678462,
+    "dh": -26.9,
+    "ds": -80.99697344263149,
+    "tm": -43.547727903567875
+   }
+  },
+  {
+   "a": "GAAGACTATTAACACTATCGAGTGTGG",
+   "b": "CGCGTACCGCCCCGTGCTTCCCCACACT",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -6.7686623735325995,
+    "dh": -52.7,
+    "ds": -148.09394688527294,
+    "tm": 12.864965370945981
+   }
+  },
+  {
+   "a": "CCCAGCGTACCAGTCCTGCAGAGCC",
+   "b": "GTGAGCTTTGAATGCCACTAACGGCTC",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -4.775919915692532,
+    "dh": -41.3,
+    "ds": -117.76263125683532,
+    "tm": -4.837121720190908
+   }
+  },
+  {
+   "a": "TTGTCCAACAGTCCGT",
+   "b": "AGATCGAGCCCCCAGCATCCTACGG",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -4.113758686767848,
+    "dh": -35.5,
+    "ds": -101.19697344263149,
+    "tm": -14.703380892988832
+   }
+  },
+  {
+   "a": "ATATTGATAAAGAGGTCCAGA",
+   "b": "GCGATAAGCGGACAAGTTCTGGACC",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -7.609958602454172,
+    "dh": -58.4,
+    "ds": -163.7596046994868,
+    "tm": 18.96428882645739
+   }
+  },
+  {
+   "a": "CCGATAAAAGGTTATTCGTCTTAGA",
+   "b": "CGACAGCCCGCTTCCACGTATCTAA",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -2.705606228927787,
+    "dh": -27.6,
+    "ds": -80.26565781419383,
+    "tm": -36.093222174242214
+   }
+  },
+  {
+   "a": "TCGTACACGACTCAGATTAAGTGGAC",
+   "b": "ACACGATTAAAAGGGACTGCTTCGTCCACTT",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -7.342298602454182,
+    "dh": -65.7,
+    "ds": -188.15960469948678,
+    "tm": 19.732878373242784
+   }
+  },
+  {
+   "a": "TGCCGAAAGGTAGGTTA",
+   "b": "ACGATGGGTTATCATCACAATTTAACCTACC",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -6.969489831375759,
+    "dh": -64.2,
+    "ds": -184.52526251370062,
+    "tm": 17.759211625573357
+   }
+  },
+  {
+   "a": "ATTTAAATCAGTGAAAATCTTGAGG",
+   "b": "TCTCGGACCTAATGGTTTCCTCA",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -3.6548599156894235,
+    "dh": -34.1,
+    "ds": -98.16263125684533,
+    "tm": -19.287676760522942
+   }
+  },
+  {
+   "a": "TAGTCGTATTGCGAGGAC",
+   "b": "GCACTATTCTTCGGTCCT",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -4.151664915689428,
+    "dh": -35.0,
+    "ds": -99.46263125684531,
+    "tm": -15.08505986633395
+   }
+  },
+  {
+   "a": "CCTAGTAATACTTAAT",
+   "b": "GAAGTGTTCGGAAGGGGGACTGATTA",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -2.6078061446079044,
+    "dh": -34.5,
+    "ds": -102.82828907106915,
+    "tm": -24.931480467379316
+   }
+  },
+  {
+   "a": "GGGGCCCACTGGCGTCCG",
+   "b": "CGCCCATCGCCTACTCCGGAC",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -5.761138686770952,
+    "dh": -46.7,
+    "ds": -131.99697344262148,
+    "tm": 4.5631575141733265
+   }
+  },
+  {
+   "a": "CGGTAAACGTCGCGCCTGACTCG",
+   "b": "AGGATAATCAGGTCGCGAGTCA",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -9.12273256029423,
+    "dh": -79.8,
+    "ds": -227.88092032792446,
+    "tm": 29.073425660162002
+   }
+  },
+  {
+   "a": "TACACAAGCTTTGTTAATGTT",
+   "b": "GCCAAAACAACGGAACATT",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -3.995221144607909,
+    "dh": -43.3,
+    "ds": -126.72828907106914,
+    "tm": -7.327147938477083
+   }
+  },
+  {
+   "a": "CGAACTGCGTGCGTGATCAGA",
+   "b": "GTAGACCAAGTTTGAGTAGTCTGAT",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -3.7324311446079044,
+    "dh": -36.4,
+    "ds": -105.32828907106915,
+    "tm": -15.888793579415676
+   }
+  },
+  {
+   "a": "TATCATCGATCGGCTAT",
+   "b": "CTTTTCCTAGAGGGACATAGCCGA",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -7.302438602451068,
+    "dh": -57.1,
+    "ds": -160.55960469949682,
+    "tm": 17.107685402442883
+   }
+  },
+  {
+   "a": "GTCCAGCGTTTGGGGCCGGG",
+   "b": "CCTTCTAGTGGCCTCCCGG",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -6.231559915692523,
+    "dh": -43.5,
+    "ds": -120.16263125683533,
+    "tm": 5.116828768896596
+   }
+  },
+  {
+   "a": "TCCGCTAACACCGACCTACGG",
+   "b": "AGATCTTAGGAAAGCCGTAGGTC",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -9.368184831378866,
+    "dh": -75.5,
+    "ds": -213.2252625136906,
+    "tm": 29.59182837639554
+   }
+  },
+  {
+   "a": "CTTGGATCCGTGCGGGTGG",
+   "b": "CCAGGACTAAATAACACCCACC",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -6.289089915692537,
+    "dh": -52.8,
+    "ds": -149.9626312568353,
+    "tm": 10.530661994270702
+   }
+  },
+  {
+   "a": "CAGCGATGGTTGCAACCGCCCGGCGTTC",
+   "b": "CACAAGCACTCTTGGCTGGAGAAC",
+   "kind": "pair_3prime",
+   "p3_heterodimer": {
+    "dg": -4.285319560300435,
+    "dh": -69.2,
+    "ds": -209.30092032790446,
+    "tm": 8.766139404668934
+   }
+  },
+  {
+   "a": "TTGCATAACGCTTCATGACTCAG",
+   "b": "ACATGAATGAAGCGTTAGCGACC",
+   "kind": "pair_internal",
+   "p3_heterodimer": {
+    "dg": -10.434802289215833,
+    "dh": -88.3,
+    "ds": -251.05657814213825,
+    "tm": 34.28121045344449
+   }
+  },
+  {
+   "a": "ACCACGAAACGATATTTG",
+   "b": "CCACGACGTTTTGTGTCAAC",
+   "kind": "pair_internal",
+   "p3_heterodimer": {
+    "dg": -7.988548602457275,
+    "dh": -74.1,
+    "ds": -213.1596046994768,
+    "tm": 24.056320022598413
+   }
+  },
+  {
+   "a": "AGGAAAGATCAAGGTTACCAAT",
+   "b": "GGGGCTCACCTTATACTCT",
+   "kind": "pair_internal",
+   "p3_heterodimer": {
+    "dg": -3.4665099156863253,
+    "dh": -30.5,
+    "ds": -87.16263125685532,
+    "tm": -25.83554542831638
+   }
+  },
+  {
+   "a": "TGAGGGGCCGGAATTTGGT",
+   "b": "CTCACTCGAATTCCGCCCTTAGCTC",
+   "kind": "pair_internal",
+   "p3_heterodimer": {
+    "dg": -8.307278789222023,
+    "dh": -97.8,
+    "ds": -288.5465781421183,
+    "tm": 28.043016250897267
+   }
+  },
+  {
+   "a": "TACGCGTTCTCGCCTACAGCC",
+   "b": "GATTAGCCGAGAAAGCGCTCA",
+   "kind": "pair_internal",
+   "p3_heterodimer": {
+    "dg": -9.490744831378862,
+    "dh": -78.6,
+    "ds": -222.82526251369063,
+    "tm": 30.33965796689955
+   }
+  },
+  {
+   "a": "TCTCACAGAATTGCCCAAGAG",
+   "b": "GCTTGGCTTTGGCAAGATCCTGT",
+   "kind": "pair_internal",
+   "p3_heterodimer": {
+    "dg": -5.398276518140498,
+    "dh": -86.7,
+    "ds": -262.136783755794,
+    "tm": 17.498042543651707
+   }
+  },
+  {
+   "a": "GAAAGCGGTAGGTAGGCGCGAGCTGCAA",
+   "b": "TATCGCCGGCACCTCGCGCCAT",
+   "kind": "pair_internal",
+   "p3_heterodimer": {
+    "dg": -13.370187289222041,
+    "dh": -98.71,
+    "ds": -275.15657814211824,
+    "tm": 43.920553018600856
+   }
+  },
+  {
+   "a": "TCACGCCTGTTAGAAAAGAGGCC",
+   "b": "ATCGTGGGGTGGCGTGAGTTTTAT",
+   "kind": "pair_internal",
+   "p3_heterodimer": {
+    "dg": -8.35231737353259,
+    "dh": -61.2,
+    "ds": -170.39394688527298,
+    "tm": 23.137556430939924
+   }
+  },
+  {
+   "a": "GATCAAGGGGGGGATAGT",
+   "b": "ATCTTATCCCCCCCCGTT",
+   "kind": "pair_internal",
+   "p3_heterodimer": {
+    "dg": -10.848951060297331,
+    "dh": -78.8,
+    "ds": -219.09092032791446,
+    "tm": 35.56323569839657
+   }
+  },
+  {
+   "a": "AGTTCGAGGCGGATGCACCGCCCGGGCGCC",
+   "b": "CCGCGAGGTGCAGGACTATG",
+   "kind": "pair_internal",
+   "p3_heterodimer": {
+    "dg": -8.167556060297334,
+    "dh": -72.8,
+    "ds": -208.39092032791447,
+    "tm": 24.53590155157258
+   }
+  },
+  {
+   "a": "TAGTCCCTCACCTTTGGTCGTCTAA",
+   "b": "AACGCCGCAGACGACAAAAGCACGCCTCAG",
+   "kind": "pair_internal",
+   "p3_heterodimer": {
+    "dg": -8.622197289218922,
+    "dh": -77.4,
+    "ds": -221.7565781421283,
+    "tm": 26.944536698287607
+   }
+  },
+  {
+   "a": "GAGCTGGTTATAAAAACG",
+   "b": "TACAATTTAAACCAGGTTGGTGGAT",
+   "kind": "pair_internal",
+   "p3_heterodimer": {
+    "dg": -6.075052373529485,
+    "dh": -51.2,
+    "ds": -145.49394688528298,
+    "tm": 8.701267482243281
+   }
+  },
+  {
+   "a": "TCGACACGAGCGATTATTCGTACCGA",
+   "b": "CTAGTGGGTCCAATATTTG",
+   "kind": "pair_internal",
+   "p3_heterodimer": {
+    "dg": -2.4202799156925248,
+    "dh": -38.2,
+    "ds": -115.36263125683533,
+    "tm": -21.046015988598526
+   }
+  },
+  {
+   "a": "CGAAGGACACGCTGGCGTGTTT",
+   "b": "CTCTCATGTCTTTTTC",
+   "kind": "pair_internal",
+   "p3_heterodimer": {
+    "dg": -2.901416144607898,
+    "dh": -35.6,
+    "ds": -105.42828907106917,
+    "tm": -21.720586671633157
+   }
+  },
+  {
+   "a": "ATCTAGAAGGGCATAGCGG",
+   "b": "CCACTTCGCAATGCCCCAAAGAGTGA",
+   "kind": "pair_internal",
+   "p3_heterodimer": {
+    "dg": -6.610261144611017,
+    "dh": -47.9,
+    "ds": -133.12828907105913,
+    "tm": 9.795696285691577
+   }
+  },
+  {
+   "a": "CTTCCGACCCAACGGACTGAACTC",
+   "b": "GGCTAAGCCACGTTGGGTCGATCGCC",
+   "kind": "pair_internal",
+   "p3_heterodimer": {
+    "dg": -13.657426060300438,
+    "dh": -95.1,
+    "ds": -262.5909203279045,
+    "tm": 45.173092706003615
+   }
+  },
+  {
+   "a": "CTGATTCTGGACGGTGTTCAGGG",
+   "b": "TATAAAGCGTCCTGCAC",
+   "kind": "pair_internal",
+   "p3_heterodimer": {
+    "dg": -6.721171144611006,
+    "dh": -54.4,
+    "ds": -153.72828907105915,
+    "tm": 13.33099102860217
+   }
+  },
+  {
+   "a": "AATCATGAGCGCGCTCTTCGCGTT",
+   "b": "ATATCCCGGGCTCATGATTAAGGTGT",
+   "kind": "pair_internal",
+   "p3_heterodimer": {
+    "dg": -12.060688518140495,
+    "dh": -97.7,
+    "ds": -276.12223595634214,
+    "tm": 39.70586367256317
+   }
+  },
+  {
+   "a": "CGGTATATTGTTGACGACC",
+   "b": "GATTTTGGACAATATTCCTTGGAT",
+   "kind": "pair_internal",
+   "p3_heterodimer": {
+    "dg": -4.762164831375761,
+    "dh": -66.8,
+    "ds": -200.0252625137006,
+    "tm": 9.676254143021993
+   }
+  },
+  {
+   "a": "CTGTCCGATTGTTTCGCACCGCCC",
+   "b": "TGATGAATAATCGGGCAA",
+   "kind": "pair_internal",
+   "p3_heterodimer": {
+    "dg": -7.038908602451076,
+    "dh": -60.0,
+    "ds": -170.75960469949678,
+    "tm": 16.814683864776782
+   }
+  },
+  {
+   "a": "GAATCTTCCTGGGAAGGGCGTG",
+   "b": "TCCAGTCGCCCCTGGAAGATTCC",
+   "kind": "pair_internal",
+   "p3_heterodimer": {
+    "dg": -11.418140704914578,
+    "dh": -120.6,
+    "ds": -352.0292093989535,
+    "tm": 37.52152411022189
+   }
+  }
+ ],
+ "measured": {
+  "hairpin": {
+   "agree": 0.964,
+   "p95_abs_dg": 1.4527450951715486,
+   "median_abs_dg": 0.25613436445923987,
+   "max_abs_dg": 2.561043228918483,
+   "n": 250
+  },
+  "homodimer": {
+   "agree": 0.98,
+   "p95_abs_dg": 1.5130319469914866,
+   "median_abs_dg": 0.20630952107842315,
+   "max_abs_dg": 1.8880374156925548,
+   "n": 250
+  },
+  "heterodimer": {
+   "agree": 0.9916666666666667,
+   "p95_abs_dg": 1.0728159876168963,
+   "median_abs_dg": 0.35185811446233295,
+   "max_abs_dg": 2.6869849156832197,
+   "n": 120
+  }
+ }
+}

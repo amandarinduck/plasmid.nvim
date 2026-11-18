@@ -1,0 +1,46 @@
+LOCUS       pGRAMMAR                 240 bp    DNA     circular SYN 01-JAN-2026
+DEFINITION  Synthetic record exercising the full feature-location grammar.
+ACCESSION   pGRAMMAR
+VERSION     pGRAMMAR
+KEYWORDS    .
+SOURCE      synthetic construct
+  ORGANISM  synthetic construct
+            other sequences; artificial sequences.
+FEATURES             Location/Qualifiers
+     source          1..240
+                     /organism="synthetic construct"
+                     /mol_type="other DNA"
+     CDS             join(211..240,1..30)
+                     /label="wrapCDS"
+                     /note="crosses the origin of a circular record"
+     CDS             complement(join(40..60,70..90))
+                     /label="revExons"
+                     /codon_start=1
+     CDS             join(complement(160..180),complement(130..150))
+                     /label="revExonsAlt"
+                     /note="equivalent to complement(join(130..150,160..180))"
+     misc_feature    order(100..105,110..115)
+                     /label="orderSites"
+     misc_feature    <95..>125
+                     /label="fuzzyBoth"
+     protein_bind    120^121
+                     /label="betweenSite"
+     misc_feature    102.110
+                     /label="withinSite"
+     misc_feature    188
+                     /label="singleBase"
+     misc_feature    join(190..195,J00194.1:100..202)
+                     /label="remotePart"
+     primer_bind     complement(200..219)
+                     /label="revPrimer"
+                     /note="a quoted ""inner"" phrase and a /slash at line start
+                     /looks_like_a_qualifier but is not"
+     misc_feature    5..10
+                     /label="flagged"
+                     /pseudo
+ORIGIN      
+        1 atgaaagcaa ttttcgtact gaaaggttgg tggcgcactt cctgaaacgg gcagtgtatt
+       61 cacatgaccg agtacaagcc cacggtgcgc ctcgccaccc gcgacgacgt cccccgggcc
+      121 gtacgcaccc tcgccgccgc gttcgccgac taccccgcca cgcgccacac cgtcgacccg
+      181 gaccgccaca tcgagcgggt caccgagctg caagaactct tcctcacgcg cgtcgggctc
+//

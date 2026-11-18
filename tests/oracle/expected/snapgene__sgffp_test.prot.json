@@ -1,0 +1,12 @@
+{
+ "format": "snapgene_seq",
+ "records": [
+  {
+   "length": 51,
+   "sha256": "4756508d830ea66315851609af01a3424c7833020a2dbfd7ea35dc57953880d1",
+   "topology": "linear",
+   "alphabet": "protein",
+   "nfeatures": 0
+  }
+ ]
+}

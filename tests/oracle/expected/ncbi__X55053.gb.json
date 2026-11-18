@@ -1,0 +1,102 @@
+{
+ "format": "genbank",
+ "records": [
+  {
+   "name": "X55053",
+   "id": "X55053.1",
+   "length": 513,
+   "sha256": "fb1cf14123af1730030f2dbe4380ab86000f2d73824a12fd81e58474cf927dc7",
+   "topology": "linear",
+   "description": "A.thaliana cor6.6 mRNA",
+   "features": [
+    {
+     "type": "source",
+     "parts": [
+      [
+       1,
+       513,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "taxon:3702"
+      ],
+      [
+       "ecotype",
+       "Columbia"
+      ],
+      [
+       "mol_type",
+       "mRNA"
+      ],
+      [
+       "organism",
+       "Arabidopsis thaliana"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       1,
+       513,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "cor6.6"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       50,
+       250,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "db_xref",
+       "GOA:P31169"
+      ],
+      [
+       "db_xref",
+       "UniProtKB/Swiss-Prot:P31169"
+      ],
+      [
+       "gene",
+       "cor6.6"
+      ],
+      [
+       "note",
+       "cold regulated"
+      ],
+      [
+       "protein_id",
+       "CAA38894.1"
+      ],
+      [
+       "translation",
+       "MSETNKNAFQAGQAAGKAEEKSNVLLDKAKDAAAAAGASAQQAGKSISDAAVGGVNFVKDKTGLNK"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

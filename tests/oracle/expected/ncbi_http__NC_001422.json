@@ -1,0 +1,1016 @@
+{
+ "format": "genbank",
+ "key": "122f23fe41da846b3b029b2e",
+ "records": [
+  {
+   "name": "NC_001422",
+   "id": "NC_001422.1",
+   "length": 5386,
+   "sha256": "97038c7e1edea2297667d7f0426ba942b322c74cb30e072ec66ba47f9c0448d0",
+   "topology": "circular",
+   "description": "Escherichia phage phiX174, complete genome",
+   "features": [
+    {
+     "type": "source",
+     "parts": [
+      [
+       1,
+       5386,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "taxon:2886930"
+      ],
+      [
+       "mol_type",
+       "genomic DNA"
+      ],
+      [
+       "organism",
+       "Escherichia phage phiX174"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       3981,
+       5386,
+       1,
+       null
+      ],
+      [
+       1,
+       136,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "GeneID:2546398"
+      ],
+      [
+       "locus_tag",
+       "phiX174p01"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       3981,
+       5386,
+       1,
+       null
+      ],
+      [
+       1,
+       136,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "db_xref",
+       "GeneID:2546398"
+      ],
+      [
+       "function",
+       "viral strand synthesis"
+      ],
+      [
+       "locus_tag",
+       "phiX174p01"
+      ],
+      [
+       "note",
+       "rf replication"
+      ],
+      [
+       "product",
+       "DNA replication initiation"
+      ],
+      [
+       "protein_id",
+       "NP_040703.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MVRSYYPSECHADYFDFERIEALKPAIEACGISTLSQSPMLGFHKQMDNRIKLLEEILSFRMQGVEFDNGDMYVDGHKAASDVRDEFVSVTEKLMDELAQCYNVLPQLDINNTIDHRPEGDEKWFLENEKTVTQFCRKLAAERPLKDIRDEYNYPKKKGIKDECSRLLEASTMKSRRGFAIQRLMNAMRQAHADGWFIVFDTLTLADDRLEAFYDNPNALRDYFRDIGRMVLAAEGRKANDSHADCYQYFCVPEYGTANGRLHFHAVHFMRTLPTGSVDPNFGRRVRNRRQLNSLQNTWPYGYSMPIAVRYTQDAFSRSGWLWPVDAKGEPLKATSYMAVGFYVAKYVNKKSDMDLAAKGLGAKEWNNSLKTKLSLLPKKLFRIRMSRNFGMKMLTMTNLSTECLIQLTKLGYDATPFNQILKQNAKREMRLRLGKVTVADVLAAQPVTTNLLKFMRASIKMIGVSNLQSFIASMTQKLTLSDISDESKNYLDKAGITTACLRIKSKWTAGGK"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       4497,
+       5386,
+       1,
+       null
+      ],
+      [
+       1,
+       136,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "GeneID:2546406"
+      ],
+      [
+       "locus_tag",
+       "phiX174p02"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       4497,
+       5386,
+       1,
+       null
+      ],
+      [
+       1,
+       136,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "db_xref",
+       "GeneID:2546406"
+      ],
+      [
+       "function",
+       "shut off host DNA synthesis"
+      ],
+      [
+       "locus_tag",
+       "phiX174p02"
+      ],
+      [
+       "product",
+       "DNA replication initiation"
+      ],
+      [
+       "protein_id",
+       "NP_040704.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MKSRRGFAIQRLMNAMRQAHADGWFIVFDTLTLADDRLEAFYDNPNALRDYFRDIGRMVLAAEGRKANDSHADCYQYFCVPEYGTANGRLHFHAVHFMRTLPTGSVDPNFGRRVRNRRQLNSLQNTWPYGYSMPIAVRYTQDAFSRSGWLWPVDAKGEPLKATSYMAVGFYVAKYVNKKSDMDLAAKGLGAKEWNNSLKTKLSLLPKKLFRIRMSRNFGMKMLTMTNLSTECLIQLTKLGYDATPFNQILKQNAKREMRLRLGKVTVADVLAAQPVTTNLLKFMRASIKMIGVSNLQSFIASMTQKLTLSDISDESKNYLDKAGITTACLRIKSKWTAGGK"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       5075,
+       5386,
+       1,
+       null
+      ],
+      [
+       1,
+       51,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "GeneID:2546405"
+      ],
+      [
+       "locus_tag",
+       "phiX174p03"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       5075,
+       5386,
+       1,
+       null
+      ],
+      [
+       1,
+       51,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "db_xref",
+       "GeneID:2546405"
+      ],
+      [
+       "function",
+       "capsid morphogenesis"
+      ],
+      [
+       "locus_tag",
+       "phiX174p03"
+      ],
+      [
+       "product",
+       "head morphogenesis"
+      ],
+      [
+       "protein_id",
+       "NP_040705.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MEQLTKNQAVATSQEAVQNQNEPQLRDENAHNDKSVHGVLNPTYQAGLRRDAVQPDIEAERKKRDEIEAGKSYCSRRFGGATCDDKSAQIYARFDKNDWRIQPAEFYRFHDAEVNTFGYF"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       23,
+       23,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "locus_tag",
+       "phiX174p03"
+      ],
+      [
+       "note",
+       "in am18 and am35 [14]"
+      ],
+      [
+       "replace",
+       "t"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       25,
+       25,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "locus_tag",
+       "phiX174p03"
+      ],
+      [
+       "note",
+       "ts116 [14]"
+      ],
+      [
+       "replace",
+       "c"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       51,
+       221,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "GeneID:2546403"
+      ],
+      [
+       "locus_tag",
+       "phiX174p04"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       51,
+       221,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "db_xref",
+       "GeneID:2546403"
+      ],
+      [
+       "locus_tag",
+       "phiX174p04"
+      ],
+      [
+       "product",
+       "K"
+      ],
+      [
+       "protein_id",
+       "NP_040706.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MSRKIILIKQELLLLVYELNRSGLLAENEKIRPILAQLEKLLLCDLSPSTNDSVKN"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       57,
+       57,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "locus_tag",
+       "phiX174p04"
+      ],
+      [
+       "note",
+       "am6 [14]"
+      ],
+      [
+       "replace",
+       "c"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       117,
+       117,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "locus_tag",
+       "phiX174p04"
+      ],
+      [
+       "note",
+       "am6 [14]"
+      ],
+      [
+       "replace",
+       "a"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       133,
+       393,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "GeneID:2546402"
+      ],
+      [
+       "locus_tag",
+       "phiX174p05"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       133,
+       393,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "db_xref",
+       "GeneID:2546402"
+      ],
+      [
+       "locus_tag",
+       "phiX174p05"
+      ],
+      [
+       "note",
+       "DNA maturation"
+      ],
+      [
+       "product",
+       "terminase"
+      ],
+      [
+       "protein_id",
+       "NP_040707.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MRKFDLSLRSSRSSYFATFRHQLTILSKTDALDEEKWLNMLGTFVKDWFRYESHFVHGRDSLVDILKERGLLSESDAVQPLIGKKS"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       358,
+       3975,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "GeneID:2546408"
+      ],
+      [
+       "locus_tag",
+       "phiX174p06"
+      ]
+     ]
+    },
+    {
+     "type": "mRNA",
+     "parts": [
+      [
+       358,
+       3975,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "GeneID:2546408"
+      ],
+      [
+       "locus_tag",
+       "phiX174p06"
+      ],
+      [
+       "product",
+       "major transcript"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       358,
+       991,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "GeneID:2546399"
+      ],
+      [
+       "locus_tag",
+       "phiX174p07"
+      ]
+     ]
+    },
+    {
+     "type": "mRNA",
+     "parts": [
+      [
+       358,
+       991,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "GeneID:2546399"
+      ],
+      [
+       "locus_tag",
+       "phiX174p07"
+      ],
+      [
+       "product",
+       "minor transcript"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       390,
+       848,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "db_xref",
+       "GeneID:2546399"
+      ],
+      [
+       "function",
+       "capsid morphogenesis"
+      ],
+      [
+       "locus_tag",
+       "phiX174p07"
+      ],
+      [
+       "product",
+       "head morphogenesis"
+      ],
+      [
+       "protein_id",
+       "NP_040708.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MSQVTEQSVRFQTALASIKLIQASAVLDLTEDDFDFLTSNKVWIATDRSRARRCVEACVYGTLDFVGYPRFPAPVEFIAAVIAYYVHPVNIQTACLIMEGAEFTENIINGVERPVKAAELFAFTLRVRAGNTDVLTDAEENVRQKLRAEGVM"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       568,
+       843,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "GeneID:2546400"
+      ],
+      [
+       "locus_tag",
+       "phiX174p08"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       568,
+       843,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "db_xref",
+       "GeneID:2546400"
+      ],
+      [
+       "function",
+       "cell lysis"
+      ],
+      [
+       "locus_tag",
+       "phiX174p08"
+      ],
+      [
+       "product",
+       "endolysin"
+      ],
+      [
+       "protein_id",
+       "NP_040709.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MVRWTLWDTLAFLLLLSLLLPSLLIMFIPSTFKRPVSSWKALNLRKTLLMASSVRLKPLNCSRLPCVYAQETLTFLLTQKKTCVKNYVRKE"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       848,
+       964,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "GeneID:2546404"
+      ],
+      [
+       "locus_tag",
+       "phiX174p09"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       848,
+       964,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "db_xref",
+       "GeneID:2546404"
+      ],
+      [
+       "locus_tag",
+       "phiX174p09"
+      ],
+      [
+       "note",
+       "core protein"
+      ],
+      [
+       "product",
+       "DNA condensation"
+      ],
+      [
+       "protein_id",
+       "NP_040710.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MSKGKKRSGARPGRPQPLRGTKGKRKGARLWYVGGQQF"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       1001,
+       2284,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "db_xref",
+       "GeneID:2546408"
+      ],
+      [
+       "locus_tag",
+       "phiX174p06"
+      ],
+      [
+       "note",
+       "major coat protein"
+      ],
+      [
+       "product",
+       "major head protein"
+      ],
+      [
+       "protein_id",
+       "NP_040711.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MSNIQTGAERMPHDLSHLGFLAGQIGRLITISTTPVIAGDSFEMDAVGALRLSPLRRGLAIDSTVDIFTFYVPHRHVYGEQWIKFMKDGVNATPLPTVNTTGYIDHAAFLGTINPDTNKIPKHLFQGYLNIYNNYFKAPWMPDRTEANPNELNQDDARYGFRCCHLKNIWTAPLPPETELSRQMTTSTTSIDIMGLQAAYANLHTDQERDYFMQRYHDVISSFGGKTSYDADNRPLLVMRSNLWASGYDVDGTDQTSLGQFSGRVQQTYKHSVPRFFVPEHGTMFTLALVRFPPTATKEIQYLNAKGALTYTDIAGDPVLYGNLPPREISMKDVFRSGDSSKKFKIAEGQWYRYAPSYVSPAYHLLEGFPFIQEPPSGDLQERVLIRHHDYDQCFQSVQLLQWNSQVKFNVTVYRNLPTTRDSIMTS"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       2395,
+       2922,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "GeneID:2546401"
+      ],
+      [
+       "locus_tag",
+       "phiX174p10"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       2395,
+       2922,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "db_xref",
+       "GeneID:2546401"
+      ],
+      [
+       "locus_tag",
+       "phiX174p10"
+      ],
+      [
+       "product",
+       "major spike protein"
+      ],
+      [
+       "protein_id",
+       "NP_040712.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MFQTFISRHNSNFFSDKLVLTSVTPASSAPVLQTPKATSSTLYFDSLTVNAGNGGFLHCIQMDTSVNAANQVVSVGADIAFDADPKFFACLVRFESSSVPTTLPTAYDVYPLNGRHDGGYYTVKDCVTIDVLPRTPGNNVYVGFMVWSNFTATKCRGLVSLNQVIKEIICLQPLK"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       2931,
+       3917,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "GeneID:2546407"
+      ],
+      [
+       "locus_tag",
+       "phiX174p11"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       2931,
+       3917,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "db_xref",
+       "GeneID:2546407"
+      ],
+      [
+       "function",
+       "adsorption"
+      ],
+      [
+       "locus_tag",
+       "phiX174p11"
+      ],
+      [
+       "note",
+       "minor spike protein"
+      ],
+      [
+       "product",
+       "pilot protein for DNA ejection"
+      ],
+      [
+       "protein_id",
+       "NP_040713.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MFGAIAGGIASALAGGAMSKLFGGGQKAASGGIQGDVLATDNNTVGMGDAGIKSAIQGSNVPNPDEAAPSFVSGAMAKAGKGLLEGTLQAGTSAVSDKLLDLVGLGGKSAADKGKDTRDYLAAAFPELNAWERAGADASSAGMVDAGFENQKELTKMQLDNQKEIAEMQNETQKEIAGIQSATSRQNTKDQVYAQNEMLAYQQKESTARVASIMENTNLSKQQQVSEIMRQMLTQAQTAGQYFTNDQIKEMTRKVSAEVDLVHQQTQNQRYGSSHIGATAKDISNVVTDAASGVVDIFHGIDKAVADTWNNFWKDGKADGIGSNLSRK"
+      ]
+     ]
+    },
+    {
+     "type": "misc_feature",
+     "parts": [
+      [
+       3962,
+       3962,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "locus_tag",
+       "phiX174p06"
+      ],
+      [
+       "note",
+       "transcription start site"
+      ]
+     ]
+    },
+    {
+     "type": "rep_origin",
+     "parts": [
+      [
+       4306,
+       4306,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "locus_tag",
+       "phiX174p01"
+      ],
+      [
+       "note",
+       "origin of viral strand synthesis"
+      ]
+     ]
+    },
+    {
+     "type": "misc_feature",
+     "parts": [
+      [
+       4899,
+       4899,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "locus_tag",
+       "phiX174p02"
+      ],
+      [
+       "note",
+       "transcription start site"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

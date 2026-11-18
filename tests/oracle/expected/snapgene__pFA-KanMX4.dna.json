@@ -1,0 +1,264 @@
+{
+ "format": "snapgene",
+ "records": [
+  {
+   "name": "<unknown name>",
+   "id": "<unknown id>",
+   "length": 3941,
+   "sha256": "aa7679c00f5873b8af7ce0009160d53e5bfc7b37f75a28f0ab5bb0b37fd66811",
+   "topology": "circular",
+   "description": "<unknown description>",
+   "features": [
+    {
+     "type": "promoter",
+     "parts": [
+      [
+       3925,
+       3941,
+       1,
+       null
+      ],
+      [
+       1,
+       2,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "SP6 promoter"
+      ],
+      [
+       "note",
+       "promoter for bacteriophage SP6 RNA polymerase"
+      ]
+     ]
+    },
+    {
+     "type": "promoter",
+     "parts": [
+      [
+       1579,
+       1597,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "T7 promoter"
+      ],
+      [
+       "note",
+       "promoter for bacteriophage T7 RNA polymerase"
+      ]
+     ]
+    },
+    {
+     "type": "promoter",
+     "parts": [
+      [
+       3475,
+       3579,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "bla"
+      ],
+      [
+       "label",
+       "AmpR promoter"
+      ]
+     ]
+    },
+    {
+     "type": "terminator",
+     "parts": [
+      [
+       1274,
+       1471,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "TEF terminator"
+      ],
+      [
+       "note",
+       "Ashbya gossypii TEF terminator"
+      ]
+     ]
+    },
+    {
+     "type": "promoter",
+     "parts": [
+      [
+       115,
+       458,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "TEF promoter"
+      ],
+      [
+       "note",
+       "Ashbya gossypii TEF promoter"
+      ]
+     ]
+    },
+    {
+     "type": "rep_origin",
+     "parts": [
+      [
+       1855,
+       2443,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "direction",
+       "LEFT"
+      ],
+      [
+       "label",
+       "ori"
+      ],
+      [
+       "note",
+       "high-copy-number colE1/pMB1/pBR322/pUC origin of replication"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       459,
+       1268,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "gene",
+       "aph(3')-Ia"
+      ],
+      [
+       "label",
+       "KanR"
+      ],
+      [
+       "note",
+       "confers resistance to kanamycin in bacteria or G418 (Geneticin\u00ae) in eukaryotes"
+      ],
+      [
+       "product",
+       "aminoglycoside phosphotransferase"
+      ],
+      [
+       "transl_table",
+       "1"
+      ],
+      [
+       "translation",
+       "MGKEKTHVSRPRLNSNMDADLYGYKWARDNVGQSGATIYRLYGKPDAPELFLKHGKGSVANDVTDEMVRLNWLTEFMPLPTIKHFIRTPDDAWLLTTAIPGKTAFQVLEEYPDSGENIVDALAVFLRRLHSIPVCNCPFNSDRVFRLAQAQSRMNNGLVDASDFDDERNGWPVEQVWKEMHKLLPFSPDSVVTHGDFSLDNLIFDEGKLIGCIDVGRVGIADRYQDLAILWNCLGEFSPSLQKRLFQKYGIDNPDMNKLQFHLMLDEFF*"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       3406,
+       3474,
+       -1,
+       null
+      ],
+      [
+       2614,
+       3405,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "gene",
+       "bla"
+      ],
+      [
+       "label",
+       "AmpR"
+      ],
+      [
+       "note",
+       "confers resistance to ampicillin, carbenicillin, and related antibiotics"
+      ],
+      [
+       "parts",
+       "1:signal sequence"
+      ],
+      [
+       "product",
+       "\u03b2-lactamase"
+      ],
+      [
+       "transl_table",
+       "1"
+      ],
+      [
+       "translation",
+       "MSIQHFRVALIPFFAAFCLPVFA,HPETLVKVKDAEDQLGARVGYIELDLNSGKILESFRPEERFPMMSTFKVLLCGAVLSRIDAGQEQLGRRIHYSQNDLVEYSPVTEKHLTDGMTVRELCSAAITMSDNTAANLLLTTIGGPKELTAFLHNMGDHVTRLDRWEPELNEAIPNDERDTTMPVAMATTLRKLLTGELLTLASRQQLIDWMEADKVAGPLLRSALPAGWFIADKSGAGERGSRGIIAALGPDGKPSRIVVIYTTGSQATMDERNRQIAEIGASLIKHW*"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       115,
+       1471,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "kanMX"
+      ],
+      [
+       "note",
+       "yeast selectable marker conferring kanamycin resistance"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

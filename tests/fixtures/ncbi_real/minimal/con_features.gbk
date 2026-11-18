@@ -1,0 +1,12 @@
+LOCUS       NZ_JCEXQL010000002     39953 bp    DNA     circular CON 22-OCT-2026
+DEFINITION  Mycolicibacterium sp. MTOR22460 plasmid p22460-1, whole genome
+            shotgun sequence.
+ACCESSION   NZ_JCEXQL010000002 NZ_JCEXQL010000000
+VERSION     NZ_JCEXQL010000002.1
+FEATURES             Location/Qualifiers
+     source          1..39953
+                     /mol_type="genomic DNA"
+     gene            1000..2000
+                     /gene="repA"
+CONTIG      join(JCEXQL010000002.1:1..39953)
+//

@@ -1,0 +1,155 @@
+LOCUS       NR_003286               1869 bp    rRNA    linear   PRI 25-MAR-2023
+DEFINITION  Homo sapiens RNA, 18S ribosomal N5 (RNA18SN5), ribosomal RNA.
+ACCESSION   NR_003286
+VERSION     NR_003286.4
+KEYWORDS    RefSeq.
+SOURCE      Homo sapiens (human)
+  ORGANISM  Homo sapiens
+            Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+            Mammalia; Eutheria; Euarchontoglires; Primates; Haplorrhini;
+            Catarrhini; Hominidae; Homo.
+REFERENCE   1  (bases 1 to 1869)
+  AUTHORS   Yu S and Lemos B.
+  TITLE     A Portrait of Ribosomal DNA Contacts with Hi-C Reveals 5S and 45S
+            rDNA Anchoring Points in the Folded Human Genome
+  JOURNAL   Genome Biol Evol 8 (11), 3545-3558 (2016)
+   PUBMED   27797956
+REFERENCE   2  (bases 1 to 1869)
+  AUTHORS   McStay B.
+  TITLE     Nucleolar organizer regions: genomic 'dark matter' requiring
+            illumination
+  JOURNAL   Genes Dev 30 (14), 1598-1610 (2016)
+   PUBMED   27474438
+  REMARK    Review article
+REFERENCE   3  (bases 1 to 1869)
+  AUTHORS   Srivastava R, Srivastava R and Ahn SH.
+  TITLE     The Epigenetic Pathways to Ribosomal DNA Silencing
+  JOURNAL   Microbiol Mol Biol Rev 80 (3), 545-563 (2016)
+   PUBMED   27250769
+  REMARK    Review article
+REFERENCE   4  (bases 1 to 1869)
+  AUTHORS   Gibbons JG, Branco AT, Godinho SA, Yu S and Lemos B.
+  TITLE     Concerted copy number variation balances ribosomal DNA dosage in
+            human and mouse genomes
+  JOURNAL   Proc Natl Acad Sci U S A 112 (8), 2485-2490 (2015)
+   PUBMED   25583482
+REFERENCE   5  (bases 1 to 1869)
+  AUTHORS   O'Sullivan,J.M., Pai,D.A., Cridge,A.G., Engelke,D.R. and
+            Ganley,A.R.
+  TITLE     The nucleolus: a raft adrift in the nuclear sea or the keystone in
+            nuclear structure?
+  JOURNAL   Biomol Concepts 4 (3), 277-286 (2013)
+   PUBMED   25436580
+  REMARK    Review article
+REFERENCE   6  (bases 1 to 1869)
+  AUTHORS   Gonzalez IL and Sylvester JE.
+  TITLE     Complete sequence of the 43-kb human ribosomal DNA repeat: analysis
+            of the intergenic spacer
+  JOURNAL   Genomics 27 (2), 320-328 (1995)
+   PUBMED   7557999
+REFERENCE   7  (bases 1 to 1869)
+  AUTHORS   Gonzalez IL, Chambers C, Gorski JL, Stambolian D, Schmickel RD and
+            Sylvester JE.
+  TITLE     Sequence and structure correlation of human ribosomal transcribed
+            spacers
+  JOURNAL   J Mol Biol 212 (1), 27-35 (1990)
+   PUBMED   2319598
+REFERENCE   8  (bases 1 to 1869)
+  AUTHORS   Sylvester JE, Petersen R and Schmickel RD.
+  TITLE     Human ribosomal DNA: novel sequence organization in a 4.5-kb region
+            upstream from the promoter
+  JOURNAL   Gene 84 (1), 193-196 (1989)
+   PUBMED   2606358
+REFERENCE   9  (bases 1 to 1869)
+  AUTHORS   Gonzalez IL, Petersen R and Sylvester JE.
+  TITLE     Independent insertion of Alu elements in the human ribosomal spacer
+            and their concerted evolution
+  JOURNAL   Mol Biol Evol 6 (4), 413-423 (1989)
+   PUBMED   2559294
+REFERENCE   10 (bases 1 to 1869)
+  AUTHORS   Gonzalez,I.L. and Schmickel,R.D.
+  TITLE     The human 18S ribosomal RNA gene: evolution and stability
+  JOURNAL   Am J Hum Genet 38 (4), 419-427 (1986)
+   PUBMED   2422931
+COMMENT     VALIDATED REFSEQ: This record has undergone validation or
+            preliminary review. The reference sequence was derived from
+            AL592188.60.
+            
+            On Mar 10, 2017 this sequence version replaced NR_003286.3.
+            
+            Summary: 45S ribosomal DNA (rDNA) arrays, or clusters, are present
+            on human chromosomes 13, 14, 15, 21 and 22, designated RNR1 through
+            RNR5, respectively. Each cluster consists of multiple 45S rDNA
+            repeat units that vary in number among individuals and chromosomes,
+            with total diploid copy number estimates ranging from 60 to >800
+            repeat units in a human genome. The 45S rDNA repeat unit encodes a
+            45S rRNA precursor, transcribed by RNA polymerase I, which is
+            processed to form the 18S, 5.8S and 28S rRNAs. This gene is a
+            representative copy of the 18S ribosomal RNA whose chromosomal
+            location is unknown. [provided by RefSeq, Mar 2017].
+            
+            Sequence Note: The RefSeq transcript was derived from the reference
+            genome assembly. The genomic coordinates were determined from
+            alignments.
+            
+            Publication Note:  This RefSeq record includes a subset of the
+            publications that are available for this gene. Please see the Gene
+            record to access additional publications.
+PRIMARY     REFSEQ_SPAN         PRIMARY_IDENTIFIER PRIMARY_SPAN        COMP
+            1-1869              AL592188.60        109078-110946
+FEATURES             Location/Qualifiers
+     source          1..1869
+                     /organism="Homo sapiens"
+                     /mol_type="rRNA"
+                     /db_xref="taxon:9606"
+     gene            1..1869
+                     /gene="RNA18SN5"
+                     /gene_synonym="RN18S1; RNA18S5"
+                     /note="RNA, 18S ribosomal N5"
+                     /db_xref="GeneID:100008588"
+                     /db_xref="HGNC:HGNC:53531"
+     rRNA            1..1869
+                     /gene="RNA18SN5"
+                     /gene_synonym="RN18S1; RNA18S5"
+                     /product="RNA, 18S ribosomal RNA N5"
+                     /db_xref="GeneID:100008588"
+                     /db_xref="HGNC:HGNC:53531"
+     exon            1..1869
+                     /gene="RNA18SN5"
+                     /gene_synonym="RN18S1; RNA18S5"
+                     /inference="alignment:Splign:2.1.0"
+ORIGIN      
+        1 tacctggttg atcctgccag tagcatatgc ttgtctcaaa gattaagcca tgcatgtctg
+       61 agtacgcacg gccggtacag tgaaactgcg aatggctcat taaatcagtt atggttcctt
+      121 tggtcgctcg ctcctctcct acttggataa ctgtggtaat tctagagcta atacatgccg
+      181 acgggcgctg acccccttcg cgggggggat gcgtgcattt atcagatcaa aaccaacccg
+      241 gtcagcccct ctccggcccc ggccgggggg cgggcgccgg cggctttggt gactctagat
+      301 aacctcgggc cgatcgcacg ccccccgtgg cggcgacgac ccattcgaac gtctgcccta
+      361 tcaactttcg atggtagtcg ccgtgcctac catggtgacc acgggtgacg gggaatcagg
+      421 gttcgattcc ggagagggag cctgagaaac ggctaccaca tccaaggaag gcagcaggcg
+      481 cgcaaattac ccactcccga cccggggagg tagtgacgaa aaataacaat acaggactct
+      541 ttcgaggccc tgtaattgga atgagtccac tttaaatcct ttaacgagga tccattggag
+      601 ggcaagtctg gtgccagcag ccgcggtaat tccagctcca atagcgtata ttaaagttgc
+      661 tgcagttaaa aagctcgtag ttggatcttg ggagcgggcg ggcggtccgc cgcgaggcga
+      721 gccaccgccc gtccccgccc cttgcctctc ggcgccccct cgatgctctt agctgagtgt
+      781 cccgcggggc ccgaagcgtt tactttgaaa aaattagagt gttcaaagca ggcccgagcc
+      841 gcctggatac cgcagctagg aataatggaa taggaccgcg gttctatttt gttggttttc
+      901 ggaactgagg ccatgattaa gagggacggc cgggggcatt cgtattgcgc cgctagaggt
+      961 gaaattcttg gaccggcgca agacggacca gagcgaaagc atttgccaag aatgttttca
+     1021 ttaatcaaga acgaaagtcg gaggttcgaa gacgatcaga taccgtcgta gttccgacca
+     1081 taaacgatgc cgaccggcga tgcggcggcg ttattcccat gacccgccgg gcagcttccg
+     1141 ggaaaccaaa gtctttgggt tccgggggga gtatggttgc aaagctgaaa cttaaaggaa
+     1201 ttgacggaag ggcaccacca ggagtggagc ctgcggctta atttgactca acacgggaaa
+     1261 cctcacccgg cccggacacg gacaggattg acagattgat agctctttct cgattccgtg
+     1321 ggtggtggtg catggccgtt cttagttggt ggagcgattt gtctggttaa ttccgataac
+     1381 gaacgagact ctggcatgct aactagttac gcgacccccg agcggtcggc gtcccccaac
+     1441 ttcttagagg gacaagtggc gttcagccac ccgagattga gcaataacag gtctgtgatg
+     1501 cccttagatg tccggggctg cacgcgcgct acactgactg gctcagcgtg tgcctaccct
+     1561 acgccggcag gcgcgggtaa cccgttgaac cccattcgtg atggggatcg gggattgcaa
+     1621 ttattcccca tgaacgagga attcccagta agtgcgggtc ataagcttgc gttgattaag
+     1681 tccctgccct ttgtacacac cgcccgtcgc tactaccgat tggatggttt agtgaggccc
+     1741 tcggatcggc cccgccgggg tcggcccacg gccctggcgg agcgctgaga agacggtcga
+     1801 acttgactat ctagaggaag taaaagtcgt aacaaggttt ccgtaggtga acctgcggaa
+     1861 ggatcatta
+//
+

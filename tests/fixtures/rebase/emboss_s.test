@@ -1,0 +1,5 @@
+# plasmid.nvim test fixture, hand-written in the EMBOSS "s" layout:
+# one supplier per line, code then name.
+F Thermo Fisher Scientific
+N New England Biolabs
+R Promega Corporation

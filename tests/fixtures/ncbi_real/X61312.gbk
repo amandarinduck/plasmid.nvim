@@ -1,0 +1,67 @@
+LOCUS       X61312                   679 bp    DNA     linear   VRT 27-JUN-2018
+DEFINITION  C.auratus immunoglobulin VH gene 99A.
+ACCESSION   X61312
+VERSION     X61312.1
+KEYWORDS    immunoglobulin heavy chain variable region; VH gene.
+SOURCE      Carassius auratus (goldfish)
+  ORGANISM  Carassius auratus
+            Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+            Actinopterygii; Neopterygii; Teleostei; Ostariophysi;
+            Cypriniformes; Cyprinidae; Cyprininae; Carassius.
+REFERENCE   1  (bases 1 to 679)
+  AUTHORS   Wilson,M.R., Middleton,D. and Warr,G.W.
+  TITLE     Immunoglobulin VH genes of the goldfish, Carassius auratus: a
+            re-examination
+  JOURNAL   Mol. Immunol. 28 (4-5), 449-457 (1991)
+   PUBMED   1905783
+REFERENCE   2
+  AUTHORS   Wilson,M.R.R.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (27-MAR-1992) M.R. Wilson, Basel Inst of Immunology,
+            Grenzacherstrasse 487, Basel, SWITZERLAND
+  REMARK    revised by [3] MAT
+REFERENCE   3  (bases 1 to 679)
+  AUTHORS   Wilson,M.R.R.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (02-MAY-1994) M.R. Wilson, Basel Inst of Immunology,
+            Grenzacherstrasse 487, Basel, SWITZERLAND
+COMMENT     On May 4, 1994 this sequence version replaced gi:62589.
+            See also X61312-4 & X65266.
+FEATURES             Location/Qualifiers
+     source          1..679
+                     /organism="Carassius auratus"
+                     /mol_type="genomic DNA"
+                     /db_xref="taxon:7957"
+                     /clone="99A"
+                     /clone_lib="EMBL4"
+                     /dev_stage="adult"
+                     /germline
+     misc_feature    1..679
+                     /db_xref="IMGT/LIGM:X61312"
+     regulatory      74..81
+                     /regulatory_class="promoter"
+                     /note="octamer"
+     gene            order(203..245,329..>627)
+                     /gene="VH"
+     V_region        join(203..245,329..>627)
+                     /gene="VH"
+                     /product="immunoglobulin heavy chain variable region"
+     intron          246..328
+     regulatory      629..666
+                     /regulatory_class="other"
+                     /note="recombination signal sequence"
+ORIGIN      
+        1 caaaaatatt ttaatatatt ttcccagttc catggtttcc acacatgttg tgtttgtaaa
+       61 acagatacag tgtatgcaaa tgtcatgatt tagtcagagt cactcagtct ctcaaaggac
+      121 tgtgttataa actggatcct cagtcagtgt ttgtgttctg ctgcagtgca gtttcttttc
+      181 ctttgactgt ttttggctga taatggaaat gttacagtat ggagttctgc tgatgattat
+      241 gtcaggtgag aatgatttca cttctccaga ttgttgtcac ttatgttttt tctataccat
+      301 ctaatatgat tttttgcatg tttttcagct gttagtggtc agtctttgac ctcctcagat
+      361 tctgtggtga aaaagcctgg agaatcagtg actctgtcct gcactgcttc tggattctca
+      421 atgagcagct actggatggg ctggatccgt cagaaaccag ggaaagcact ggagtggatt
+      481 ggacagatat ctggctcaac tgtgtattat gctcagtctc tacagggaca gttctccatc
+      541 accacagaca ccagcaaaaa catgctgcat ttagaggtga agagcctgaa gactgaagac
+      601 acagctgttt attactgtgc aagagactca ctgttacaca aaagactgca ggactgaaca
+      661 aaaactattc atgcagcag
+//
+

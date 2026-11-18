@@ -1,0 +1,19 @@
+LOCUS       REMOTE                   300 bp    DNA     linear   SYN 01-JAN-2000
+DEFINITION  synthetic REMOTE.
+ACCESSION   REMOTE
+VERSION     REMOTE.1
+KEYWORDS    .
+SOURCE      synthetic construct
+  ORGANISM  synthetic construct
+            other sequences; artificial sequences.
+FEATURES             Location/Qualifiers
+     CDS             join(J00194.1:100..202,1..245,AF000001.1:<1..>20)
+                     /note="remote parts"
+     misc_feature    complement(X55053.1:20..30)
+ORIGIN
+        1 gctaaagaca attacataac atacacgtca gcacgaaact tgttggccca gtgtgaatcg
+       61 cttaagggtt aagtaagtgt gatgcatacg cctttacttg ctgtgtccac cccatcggac
+      121 tggcattttt attacactca gaaacagaac tcgggtaatt ttgacaggtc acgcagaggc
+      181 gcgccctcct gaagtgcgtg gacactcgct atgaatctct gatttaccca ctctgccaaa
+      241 ctccagcgcg gtcagttcca tcaccctaag taaccgaata atgcgttcgc tctattgact
+//

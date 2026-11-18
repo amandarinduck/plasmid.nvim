@@ -1,0 +1,237 @@
+{
+ "format": "genbank",
+ "key": "a26ea3b52d775638fbb1bf75",
+ "records": [
+  {
+   "name": "NC_000913",
+   "id": "NC_000913.3",
+   "length": 2611,
+   "sha256": "2db46cbadd5b25a1013abfb6c70bd4d1a31f3d3c15a9ba72a4c0693d4901a818",
+   "topology": "linear",
+   "description": "Escherichia coli str. K-12 substr. MG1655, complete genome",
+   "features": [
+    {
+     "type": "source",
+     "parts": [
+      [
+       1,
+       2611,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "taxon:511145"
+      ],
+      [
+       "mol_type",
+       "genomic DNA"
+      ],
+      [
+       "organism",
+       "Escherichia coli str. K-12 substr. MG1655"
+      ],
+      [
+       "strain",
+       "K-12"
+      ],
+      [
+       "sub_strain",
+       "MG1655"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       1,
+       66,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "ECOCYC:EG11277"
+      ],
+      [
+       "db_xref",
+       "GeneID:944742"
+      ],
+      [
+       "gene",
+       "thrL"
+      ],
+      [
+       "gene_synonym",
+       "ECK0001"
+      ],
+      [
+       "locus_tag",
+       "b0001"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       1,
+       66,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "db_xref",
+       "ECOCYC:EG11277"
+      ],
+      [
+       "db_xref",
+       "GeneID:944742"
+      ],
+      [
+       "db_xref",
+       "UniProtKB/Swiss-Prot:P0AD86"
+      ],
+      [
+       "gene",
+       "thrL"
+      ],
+      [
+       "gene_synonym",
+       "ECK0001"
+      ],
+      [
+       "locus_tag",
+       "b0001"
+      ],
+      [
+       "product",
+       "thr operon leader peptide"
+      ],
+      [
+       "protein_id",
+       "NP_414542.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MKRISTTITTTITITTGNGAG"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       148,
+       2610,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "ECOCYC:EG10998"
+      ],
+      [
+       "db_xref",
+       "GeneID:945803"
+      ],
+      [
+       "gene",
+       "thrA"
+      ],
+      [
+       "gene_synonym",
+       "ECK0002; Hs; thrA1; thrA2; thrD"
+      ],
+      [
+       "locus_tag",
+       "b0002"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       148,
+       2610,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "EC_number",
+       "1.1.1.3"
+      ],
+      [
+       "EC_number",
+       "2.7.2.4"
+      ],
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "db_xref",
+       "ECOCYC:EG10998"
+      ],
+      [
+       "db_xref",
+       "GeneID:945803"
+      ],
+      [
+       "db_xref",
+       "UniProtKB/Swiss-Prot:P00561"
+      ],
+      [
+       "gene",
+       "thrA"
+      ],
+      [
+       "gene_synonym",
+       "ECK0002; Hs; thrA1; thrA2; thrD"
+      ],
+      [
+       "locus_tag",
+       "b0002"
+      ],
+      [
+       "product",
+       "fused aspartate kinase/homoserine dehydrogenase 1"
+      ],
+      [
+       "protein_id",
+       "NP_414543.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MRVLKFGGTSVANAERFLRVADILESNARQGQVATVLSAPAKITNHLVAMIEKTISGQDALPNISDAERIFAELLTGLAAAQPGFPLAQLKTFVDQEFAQIKHVLHGISLLGQCPDSINAALICRGEKMSIAIMAGVLEARGHNVTVIDPVEKLLAVGHYLESTVDIAESTRRIAASRIPADHMVLMAGFTAGNEKGELVVLGRNGSDYSAAVLAACLRADCCEIWTDVDGVYTCDPRQVPDARLLKSMSYQEAMELSYFGAKVLHPRTITPIAQFQIPCLIKNTGNPQAPGTLIGASRDEDELPVKGISNLNNMAMFSVSGPGMKGMVGMAARVFAAMSRARISVVLITQSSSEYSISFCVPQSDCVRAERAMQEEFYLELKEGLLEPLAVTERLAIISVVGDGMRTLRGISAKFFAALARANINIVAIAQGSSERSISVVVNNDDATTGVRVTHQMLFNTDQVIEVFVIGVGGVGGALLEQLKRQQSWLKNKHIDLRVCGVANSKALLTNVHGLNLENWQEELAQAKEPFNLGRLIRLVKEYHLLNPVIVDCTSSQAVADQYADFLREGFHVVTPNKKANTSSMDYYHQLRYAAEKSRRKFLYDTNVGAGLPVIENLQNLLNAGDELMKFSGILSGSLSYIFGKLDEGMSFSEATTLAREMGYTEPDPRDDLSGMDVARKLLILARETGRELELADIEIEPVLPAEFNAEGDVAAFMANLSQLDDLFAARVAKARDEGKVLRYVGNIDEDGVCRVKIAEVDGNDPLFKVKNGENALAFYSHYYQPLPLVLRGYGAGNDVTAAGVFADLLRTLSWKLGV"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

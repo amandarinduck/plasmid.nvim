@@ -1,0 +1,3007 @@
+{
+ "format": "genbank",
+ "records": [
+  {
+   "name": "HUMHBB",
+   "id": "U01317.1",
+   "length": 73308,
+   "sha256": "242abf9e1e7f7f053bb34cb3dddf472d1d6d99ffd42fa4ee4625146d06a8ad0b",
+   "topology": "linear",
+   "description": "Human beta globin region on chromosome 11",
+   "features": [
+    {
+     "type": "source",
+     "parts": [
+      [
+       1,
+       73308,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "taxon:9606"
+      ],
+      [
+       "map",
+       "11p15.5"
+      ],
+      [
+       "mol_type",
+       "genomic DNA"
+      ],
+      [
+       "organism",
+       "Homo sapiens"
+      ]
+     ]
+    },
+    {
+     "type": "repeat_region",
+     "parts": [
+      [
+       10597,
+       10611,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "Alu flank repeat 5' copy"
+      ]
+     ]
+    },
+    {
+     "type": "repeat_region",
+     "parts": [
+      [
+       10612,
+       10924,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "rpt_family",
+       "Alu"
+      ],
+      [
+       "rpt_type",
+       "dispersed"
+      ]
+     ]
+    },
+    {
+     "type": "repeat_region",
+     "parts": [
+      [
+       10925,
+       10939,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "Alu flank repeat 3' copy"
+      ]
+     ]
+    },
+    {
+     "type": "repeat_region",
+     "parts": [
+      [
+       16918,
+       17218,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "rpt_family",
+       "Alu"
+      ],
+      [
+       "rpt_type",
+       "dispersed"
+      ]
+     ]
+    },
+    {
+     "type": "repeat_region",
+     "parts": [
+      [
+       17940,
+       18231,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "rpt_family",
+       "Alu"
+      ],
+      [
+       "rpt_type",
+       "dispersed"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       19289,
+       21080,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBE1"
+      ]
+     ]
+    },
+    {
+     "type": "precursor_RNA",
+     "parts": [
+      [
+       19289,
+       21080,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBE1"
+      ],
+      [
+       "note",
+       "hbe mRNA (alt.) [23],[52],[60]"
+      ]
+     ]
+    },
+    {
+     "type": "mRNA",
+     "parts": [
+      [
+       19289,
+       19632,
+       1,
+       null
+      ],
+      [
+       19755,
+       19977,
+       1,
+       null
+      ],
+      [
+       20833,
+       21080,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBE1"
+      ],
+      [
+       "product",
+       "epsilon-globin"
+      ]
+     ]
+    },
+    {
+     "type": "exon",
+     "parts": [
+      [
+       19289,
+       19632,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBE1"
+      ],
+      [
+       "note",
+       "epsilon-globin"
+      ],
+      [
+       "number",
+       "1"
+      ]
+     ]
+    },
+    {
+     "type": "precursor_RNA",
+     "parts": [
+      [
+       19486,
+       21080,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBE1"
+      ],
+      [
+       "note",
+       "hbe mRNA (alt.) [23],[52],[60]"
+      ]
+     ]
+    },
+    {
+     "type": "precursor_RNA",
+     "parts": [
+      [
+       19488,
+       21080,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBE1"
+      ],
+      [
+       "note",
+       "hbe mRNA (alt.) [23],[52],[60]"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       19541,
+       19632,
+       1,
+       null
+      ],
+      [
+       19755,
+       19977,
+       1,
+       null
+      ],
+      [
+       20833,
+       20961,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "gene",
+       "HBE1"
+      ],
+      [
+       "product",
+       "epsilon-globin"
+      ],
+      [
+       "protein_id",
+       "AAA16330.1"
+      ],
+      [
+       "translation",
+       "MVHFTAEEKAAVTSLWSKMNVEEAGGEALGRLLVVYPWTQRFFDSFGNLSSPSAILGNPKVKAHGKKVLTSFGDAIKNMDNLKPAFAKLSELHCDKLHVDPENFKLLGNVMVIILATHFGKEFTPEVQAAWQKLVSAVAIALAHKYH"
+      ]
+     ]
+    },
+    {
+     "type": "exon",
+     "parts": [
+      [
+       19755,
+       19977,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBE1"
+      ],
+      [
+       "number",
+       "2"
+      ]
+     ]
+    },
+    {
+     "type": "exon",
+     "parts": [
+      [
+       20833,
+       21080,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBE1"
+      ],
+      [
+       "note",
+       "epsilon-globin"
+      ],
+      [
+       "number",
+       "3"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       20983,
+       20983,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBE1"
+      ],
+      [
+       "note",
+       "g in [76]; c in [23]"
+      ]
+     ]
+    },
+    {
+     "type": "old_sequence",
+     "parts": [
+      [
+       21354,
+       21360,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "citation",
+       "[76]"
+      ],
+      [
+       "replace",
+       ""
+      ]
+     ]
+    },
+    {
+     "type": "unsure",
+     "parts": [
+      [
+       31888,
+       32020,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "sequenced on one strand only [76]"
+      ]
+     ]
+    },
+    {
+     "type": "repeat_region",
+     "parts": [
+      [
+       32390,
+       32406,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "Alu flank repeat 5' copy [31]"
+      ]
+     ]
+    },
+    {
+     "type": "repeat_region",
+     "parts": [
+      [
+       32407,
+       32711,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "[31]"
+      ],
+      [
+       "rpt_family",
+       "Alu"
+      ],
+      [
+       "rpt_type",
+       "dispersed"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       32608,
+       32608,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "g in [29]; a in [31]"
+      ]
+     ]
+    },
+    {
+     "type": "repeat_region",
+     "parts": [
+      [
+       32712,
+       32728,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "Alu flank repeat 3' copy [31]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       32743,
+       32744,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "ag in [29]; ga in [31]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       33186,
+       33186,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "a in [29]; g in [31]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       33198,
+       33198,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "a in [29]; g in [31]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       34276,
+       34276,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "c in wt; g in persons with elevated gamma chain [77]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       34282,
+       34282,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "c in wt; t in persons with elevated gamma chain [77]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       34321,
+       34321,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "c in wt; t in high G-gamma SS; beta thalassemia; and in low Hb F G-gamma-beta+-HPHF and HPFH [77]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       34361,
+       34361,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "g in wt; a in persons with elevated gamma chain [77]"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       34478,
+       36069,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBG2"
+      ]
+     ]
+    },
+    {
+     "type": "mRNA",
+     "parts": [
+      [
+       34478,
+       34622,
+       1,
+       null
+      ],
+      [
+       34745,
+       34967,
+       1,
+       null
+      ],
+      [
+       35854,
+       36069,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBG2"
+      ],
+      [
+       "product",
+       "G-gamma globin"
+      ]
+     ]
+    },
+    {
+     "type": "exon",
+     "parts": [
+      [
+       34478,
+       34622,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBG2"
+      ],
+      [
+       "note",
+       "G-gamma globin"
+      ],
+      [
+       "number",
+       "1"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       34531,
+       34622,
+       1,
+       null
+      ],
+      [
+       34745,
+       34967,
+       1,
+       null
+      ],
+      [
+       35854,
+       35982,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "gene",
+       "HBG2"
+      ],
+      [
+       "product",
+       "G-gamma globin"
+      ],
+      [
+       "protein_id",
+       "AAA16331.1"
+      ],
+      [
+       "translation",
+       "MGHFTEEDKATITSLWGKVNVEDAGGETLGRLLVVYPWTQRFFDSFGNLSSASAIMGNPKVKAHGKKVLTSLGDAIKHLDDLKGTFAQLSELHCDKLHVDPENFKLLGNVLVTVLAIHFGKEFTPEVQASWQKMVTGVASALSSRYH"
+      ]
+     ]
+    },
+    {
+     "type": "exon",
+     "parts": [
+      [
+       34745,
+       34967,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBG2"
+      ],
+      [
+       "number",
+       "2"
+      ]
+     ]
+    },
+    {
+     "type": "exon",
+     "parts": [
+      [
+       35854,
+       36069,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBG2"
+      ],
+      [
+       "note",
+       "G-gamma globin"
+      ],
+      [
+       "number",
+       "3"
+      ]
+     ]
+    },
+    {
+     "type": "misc_difference",
+     "parts": [
+      [
+       37486,
+       37486,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "citation",
+       "[29]"
+      ],
+      [
+       "note",
+       "conflict"
+      ],
+      [
+       "replace",
+       "t"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       37657,
+       40179,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "g-25 kb-c in wt; gc in silent deletion [91]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       37975,
+       37975,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "citation",
+       "[29]"
+      ],
+      [
+       "note",
+       "t in all Benin-type sickle cell (beta-S) chromosomes and some African beta-A chromosomes; t abolishes a TaqI site"
+      ],
+      [
+       "replace",
+       "t"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       39297,
+       39297,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "g in wt (b allele, see separate sequence); a in HPFH [81],[82]"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       39414,
+       40985,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBG1"
+      ]
+     ]
+    },
+    {
+     "type": "mRNA",
+     "parts": [
+      [
+       39414,
+       39558,
+       1,
+       null
+      ],
+      [
+       39681,
+       39903,
+       1,
+       null
+      ],
+      [
+       40770,
+       40985,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBG1"
+      ],
+      [
+       "product",
+       "A-gamma globin"
+      ]
+     ]
+    },
+    {
+     "type": "exon",
+     "parts": [
+      [
+       39414,
+       39558,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBG1"
+      ],
+      [
+       "note",
+       "A-gamma globin"
+      ],
+      [
+       "number",
+       "1"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       39438,
+       39438,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBG1"
+      ],
+      [
+       "note",
+       "a in [29]; g in [15]"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       39467,
+       39558,
+       1,
+       null
+      ],
+      [
+       39681,
+       39903,
+       1,
+       null
+      ],
+      [
+       40770,
+       40898,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "gene",
+       "HBG1"
+      ],
+      [
+       "product",
+       "A-gamma globin"
+      ],
+      [
+       "protein_id",
+       "AAA16332.1"
+      ],
+      [
+       "translation",
+       "MGHFTEEDKATITSLWGKVNVEDAGGETLGRLLVVYPWTQRFFDSFGNLSSASAIMGNPKVKAHGKKVLTSLGDAIKHLDDLKGTFAQLSELHCDKLHVDPENFKLLGNVLVTVLAIHFGKEFTPEVQASWQKMVTAVASALSSRYH"
+      ]
+     ]
+    },
+    {
+     "type": "exon",
+     "parts": [
+      [
+       39681,
+       39903,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBG1"
+      ],
+      [
+       "number",
+       "2"
+      ]
+     ]
+    },
+    {
+     "type": "exon",
+     "parts": [
+      [
+       40770,
+       40985,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBG1"
+      ],
+      [
+       "note",
+       "A-gamma globin"
+      ],
+      [
+       "number",
+       "3"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       43782,
+       43784,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "gat in [94]; gt in [76]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       43830,
+       43832,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "ttg in [94]; tg in [76]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       43843,
+       43843,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "t in [94]; c in [76]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       44122,
+       44122,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "t in [94]; c in [76]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       45069,
+       45077,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "aaaaaaaaa in [94]; aa in [76]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       45227,
+       45228,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "ca in [94]; ctca in [76]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       45280,
+       45280,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "t in [94]; c in [76]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       45297,
+       45297,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "c in [94]; t in [76]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       45299,
+       45299,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "t in [94]; c in [76]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       45309,
+       45311,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "cat in [94]; ct in [76]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       45317,
+       45319,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "tta in [94]; ta in [76]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       45321,
+       45323,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "tag in [94]; tg in [76]"
+      ]
+     ]
+    },
+    {
+     "type": "mRNA",
+     "parts": [
+      [
+       45657,
+       45800,
+       1,
+       null
+      ],
+      [
+       45922,
+       46145,
+       1,
+       null
+      ],
+      [
+       46997,
+       47370,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "pseudo-hbp mRNA [72]"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       45710,
+       45800,
+       1,
+       null
+      ],
+      [
+       45922,
+       46145,
+       1,
+       null
+      ],
+      [
+       46997,
+       47124,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "note",
+       "pseudo-hbp"
+      ],
+      [
+       "pseudo",
+       ""
+      ]
+     ]
+    },
+    {
+     "type": "exon",
+     "parts": [
+      [
+       45710,
+       45800,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "pseudo-hbp, [72]"
+      ],
+      [
+       "number",
+       "1"
+      ]
+     ]
+    },
+    {
+     "type": "exon",
+     "parts": [
+      [
+       45922,
+       46145,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "pseudo-hbp, [72]"
+      ],
+      [
+       "number",
+       "2"
+      ],
+      [
+       "pseudo",
+       ""
+      ]
+     ]
+    },
+    {
+     "type": "exon",
+     "parts": [
+      [
+       46997,
+       47124,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "pseudo-hbp, [72]"
+      ],
+      [
+       "number",
+       "3"
+      ]
+     ]
+    },
+    {
+     "type": "repeat_region",
+     "parts": [
+      [
+       50889,
+       50894,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "Alu flank repeat 3' copy [47],[62]"
+      ]
+     ]
+    },
+    {
+     "type": "repeat_region",
+     "parts": [
+      [
+       50915,
+       51198,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "[47],[62]"
+      ],
+      [
+       "rpt_family",
+       "Alu"
+      ],
+      [
+       "rpt_type",
+       "dispersed"
+      ]
+     ]
+    },
+    {
+     "type": "repeat_region",
+     "parts": [
+      [
+       51199,
+       51204,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "Alu flank repeat 5' copy [47],[62]"
+      ]
+     ]
+    },
+    {
+     "type": "repeat_region",
+     "parts": [
+      [
+       51966,
+       51975,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "Alu flank repeat 5' copy [62]"
+      ]
+     ]
+    },
+    {
+     "type": "repeat_region",
+     "parts": [
+      [
+       51976,
+       52259,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "[31],[62]"
+      ],
+      [
+       "rpt_family",
+       "Alu"
+      ],
+      [
+       "rpt_type",
+       "dispersed"
+      ]
+     ]
+    },
+    {
+     "type": "repeat_region",
+     "parts": [
+      [
+       52286,
+       52295,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "Alu flank repeat 3' copy [62]"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       54740,
+       56389,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBD"
+      ]
+     ]
+    },
+    {
+     "type": "mRNA",
+     "parts": [
+      [
+       54740,
+       54881,
+       1,
+       null
+      ],
+      [
+       55010,
+       55232,
+       1,
+       null
+      ],
+      [
+       56131,
+       56389,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBD"
+      ],
+      [
+       "product",
+       "delta-globin"
+      ]
+     ]
+    },
+    {
+     "type": "exon",
+     "parts": [
+      [
+       54740,
+       54881,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBD"
+      ],
+      [
+       "note",
+       "delta-globin"
+      ],
+      [
+       "number",
+       "1"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       54790,
+       54881,
+       1,
+       null
+      ],
+      [
+       55010,
+       55232,
+       1,
+       null
+      ],
+      [
+       56131,
+       56259,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "gene",
+       "HBD"
+      ],
+      [
+       "product",
+       "delta-globin"
+      ],
+      [
+       "protein_id",
+       "AAA16333.1"
+      ],
+      [
+       "translation",
+       "MVHLTPEEKTAVNALWGKVNVDAVGGEALGRLLVVYPWTQRFFESFGDLSSPDAVMGNPKVKAHGKKVLGAFSDGLAHLDNLKGTFSQLSELHCDKLHVDPENFRLLGNVLVCVLARNFGKEFTPQMQAAYQKVVAGVANALAHKYH"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       54886,
+       54886,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBD"
+      ],
+      [
+       "note",
+       "g in wt; a in beta thalassemia [89]"
+      ]
+     ]
+    },
+    {
+     "type": "exon",
+     "parts": [
+      [
+       55010,
+       55232,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBD"
+      ],
+      [
+       "number",
+       "2"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       55047,
+       55047,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBD"
+      ],
+      [
+       "note",
+       "g in wt; t in beta-thalassemia Glu->stop"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       55523,
+       55523,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBD"
+      ],
+      [
+       "note",
+       "ct in [54],[62],[76]; tc in [25]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       55571,
+       55572,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBD"
+      ],
+      [
+       "note",
+       "ct in [62],[76]; c in [25]; cc in [54]"
+      ]
+     ]
+    },
+    {
+     "type": "exon",
+     "parts": [
+      [
+       56131,
+       56389,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBD"
+      ],
+      [
+       "note",
+       "delta-globin"
+      ],
+      [
+       "number",
+       "3"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       58855,
+       63093,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "a-4239 bp-c in wt; ac in atypical beta-thalassemia [88]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       59663,
+       72286,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "t-12622 bp-t in wt; tt in Dutch beta-0- thalassemia [93]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       60745,
+       60750,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "tatttt in [62],[76]; t in [37]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       60832,
+       60832,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "a in [37],[62],[76]; g in [51]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       60842,
+       60842,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "c in [62],[76]; ca in [37],[51]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       61148,
+       61148,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "c in [51],[62],[76]; g in [51]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       61294,
+       61294,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "c in [62],[76]; t in [51]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       61308,
+       61308,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "t in [62],[76]; tt in [51]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       61586,
+       61586,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "t in wt; c in Albanian allele (produces RsaI site) [70]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       61608,
+       61609,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "tt in wt; tatat in Albanian allele [70]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       61663,
+       61663,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "a in [62],[76]; g in [51]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       61753,
+       61753,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "gc in [62],[76]; g in [51]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       61773,
+       61773,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "g in [62]; a in [76]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       61797,
+       61797,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "t in [54],[62],[76]; c in [51]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       61824,
+       61824,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "g in [62],[76]; c in [51]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       61922,
+       61922,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "g in [51],[62],[76]; c in [41]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       61932,
+       61932,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "a in [51],[62],[76]; t in [41]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       62050,
+       62050,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "c in wt; g in beta-thalassemia [63]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       62107,
+       62107,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "t in normal promoter; a in thalassemia patient (Hb Lepore-beta+ -thal)"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       62109,
+       62109,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "a in [26],[41],[51]; c in [62],[76],[J. Biol. C"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       62137,
+       63742,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB"
+      ]
+     ]
+    },
+    {
+     "type": "mRNA",
+     "parts": [
+      [
+       62137,
+       62278,
+       1,
+       null
+      ],
+      [
+       62409,
+       62631,
+       1,
+       null
+      ],
+      [
+       63482,
+       63742,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB"
+      ],
+      [
+       "product",
+       "beta-globin"
+      ]
+     ]
+    },
+    {
+     "type": "exon",
+     "parts": [
+      [
+       62137,
+       62278,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB"
+      ],
+      [
+       "note",
+       "beta-globin"
+      ],
+      [
+       "number",
+       "1"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       62156,
+       62156,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB"
+      ],
+      [
+       "note",
+       "c in [62],[76]; t in [48]"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       62187,
+       62278,
+       1,
+       null
+      ],
+      [
+       62409,
+       62631,
+       1,
+       null
+      ],
+      [
+       63482,
+       63610,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "gene",
+       "HBB"
+      ],
+      [
+       "product",
+       "beta-globin"
+      ],
+      [
+       "protein_id",
+       "AAA16334.1"
+      ],
+      [
+       "translation",
+       "MVHLTPEEKSAVTALWGKVNVDEVGGEALGRLLVVYPWTQRFFESFGDLSTPDAVMGNPKVKAHGKKVLGAFSDGLAHLDNLKGTFATLSELHCDKLHVDPENFRLLGNVLVCVLAHHFGKEFTPPVQAAYQKVVAGVANALAHKYH"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       62187,
+       62408,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB thalassemia"
+      ]
+     ]
+    },
+    {
+     "type": "mRNA",
+     "parts": [
+      [
+       62187,
+       62278,
+       1,
+       null
+      ],
+      [
+       62390,
+       62408,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB thalassemia"
+      ],
+      [
+       "product",
+       "beta-globin thalassemia"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       62187,
+       62278,
+       1,
+       null
+      ],
+      [
+       62390,
+       62408,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "gene",
+       "HBB thalassemia"
+      ],
+      [
+       "product",
+       "beta-globin thalassemia"
+      ],
+      [
+       "protein_id",
+       "AAA16335.1"
+      ],
+      [
+       "translation",
+       "MVHLTPEEKSAVTALWGKVNVDEVGGEALGSLFSHP"
+      ]
+     ]
+    },
+    {
+     "type": "exon",
+     "parts": [
+      [
+       62187,
+       62278,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB thalassemia"
+      ],
+      [
+       "note",
+       "beta-globin thalassemia, [30],[43]"
+      ],
+      [
+       "number",
+       "1"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       62195,
+       62195,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB thalassemia"
+      ],
+      [
+       "note",
+       "c in [26],[62],[76]; t in [48]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       62205,
+       62207,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB thalassemia"
+      ],
+      [
+       "note",
+       "gag in wt; gg in beta-thalassemia [64]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       62206,
+       62206,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB thalassemia"
+      ],
+      [
+       "note",
+       "a in normal hbb; t in sickle cell anemia 78]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       62238,
+       62238,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB thalassemia"
+      ],
+      [
+       "note",
+       "a in wt; t in thalassemia [Ann. N.Y. Acad. Sci. 344, 113-119 (1980)]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       62279,
+       62279,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB thalassemia"
+      ],
+      [
+       "note",
+       "g in wt; a in thalassemia [63]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       62283,
+       62283,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB thalassemia"
+      ],
+      [
+       "note",
+       "g in wt; c in thalassemia [63]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       62284,
+       62284,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB thalassemia"
+      ],
+      [
+       "note",
+       "t in wt; c in thalassemia [63]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       62388,
+       62388,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB thalassemia"
+      ],
+      [
+       "note",
+       "g in wt; a in thalassemia [30],[43],[57],[90]"
+      ]
+     ]
+    },
+    {
+     "type": "exon",
+     "parts": [
+      [
+       62390,
+       62408,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB thalassemia"
+      ],
+      [
+       "note",
+       "beta-globin thalassemia, [30],[43]"
+      ],
+      [
+       "number",
+       "2"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       62394,
+       62394,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB thalassemia"
+      ],
+      [
+       "note",
+       "t in wt; g in thalassemia [90]"
+      ]
+     ]
+    },
+    {
+     "type": "exon",
+     "parts": [
+      [
+       62409,
+       62631,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB"
+      ],
+      [
+       "number",
+       "2"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       62430,
+       62430,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB"
+      ],
+      [
+       "note",
+       "g in wt; a in a form of thalassemia [30]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       62632,
+       62632,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB"
+      ],
+      [
+       "note",
+       "g in wt; a in a form of thalassemia [44]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       62647,
+       62647,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB"
+      ],
+      [
+       "note",
+       "c in [26],[48],[62],[76]; g in [48]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       62705,
+       62705,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB"
+      ],
+      [
+       "note",
+       "g in [26],[62],[76]; t in [48]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       62712,
+       62712,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB"
+      ],
+      [
+       "note",
+       "c in [26],[62],[76]; t in [48]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       63297,
+       63297,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB"
+      ],
+      [
+       "note",
+       "t in [26],[48],[62],[76]; c in [48]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       63376,
+       63376,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB"
+      ],
+      [
+       "note",
+       "c in wt; g thalassemia [63] (causes an extra exon)"
+      ]
+     ]
+    },
+    {
+     "type": "exon",
+     "parts": [
+      [
+       63482,
+       63742,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "HBB"
+      ],
+      [
+       "note",
+       "beta-globin"
+      ],
+      [
+       "number",
+       "3"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       63830,
+       63831,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "ta in [62],[76]; t in [26]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       63918,
+       63919,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "ct in wt; cct in a form of thalassemia [45]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       63918,
+       63918,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "c in [62],[76]; cc in [26]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       63957,
+       63958,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "aa in [37],[62],[76]; tt in [26]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       63957,
+       63958,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "tt in wt; aa in a form of thalassemia [45]"
+      ]
+     ]
+    },
+    {
+     "type": "variation",
+     "parts": [
+      [
+       63974,
+       63974,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "g in [37],[62],[76]; c in [26]"
+      ]
+     ]
+    },
+    {
+     "type": "repeat_region",
+     "parts": [
+      [
+       65490,
+       65502,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "Alu flank repeat 5' copy [62],[76]"
+      ]
+     ]
+    },
+    {
+     "type": "repeat_region",
+     "parts": [
+      [
+       65513,
+       65767,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "[62],[76]"
+      ],
+      [
+       "rpt_family",
+       "Alu"
+      ],
+      [
+       "rpt_type",
+       "dispersed"
+      ]
+     ]
+    },
+    {
+     "type": "repeat_region",
+     "parts": [
+      [
+       65768,
+       65780,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "Alu flank repeat 3' copy [62],[76]"
+      ]
+     ]
+    },
+    {
+     "type": "repeat_region",
+     "parts": [
+      [
+       66765,
+       66775,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "Alu flank repeat 5' copy [62],[76]"
+      ]
+     ]
+    },
+    {
+     "type": "repeat_region",
+     "parts": [
+      [
+       66776,
+       67042,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "[62],[76]"
+      ],
+      [
+       "rpt_family",
+       "Alu"
+      ],
+      [
+       "rpt_type",
+       "dispersed"
+      ]
+     ]
+    },
+    {
+     "type": "repeat_region",
+     "parts": [
+      [
+       67069,
+       67079,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "Alu flank repeat 3' copy [62],[76]"
+      ]
+     ]
+    },
+    {
+     "type": "repeat_region",
+     "parts": [
+      [
+       67071,
+       73195,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "[83]"
+      ],
+      [
+       "rpt_family",
+       "KpnI"
+      ],
+      [
+       "rpt_type",
+       "dispersed"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

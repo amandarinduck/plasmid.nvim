@@ -1,0 +1,397 @@
+{
+ "format": "snapgene",
+ "records": [
+  {
+   "name": "<unknown name>",
+   "id": "<unknown id>",
+   "length": 7235,
+   "sha256": "638f86b7fc3ec8faa57d1755f32be060701406e7cf13051a0dcbd7c1a77069dd",
+   "topology": "circular",
+   "description": "<unknown description>",
+   "features": [
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       1653,
+       1655,
+       1,
+       null
+      ],
+      [
+       1656,
+       1658,
+       1,
+       null
+      ],
+      [
+       1659,
+       2372,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "label",
+       "mEGFP"
+      ],
+      [
+       "note",
+       "mammalian codon-optimized"
+      ],
+      [
+       "parts",
+       "2:1a"
+      ],
+      [
+       "product",
+       "enhanced GFP"
+      ],
+      [
+       "transl_table",
+       "1"
+      ],
+      [
+       "translation",
+       "M,V,SKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTLTYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSKLSKDPNEKRDHMVLLEFVTAAGITLGMDELYK*"
+      ]
+     ]
+    },
+    {
+     "type": "mRNA",
+     "parts": [
+      [
+       691,
+       693,
+       1,
+       null
+      ],
+      [
+       768,
+       1631,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "254564564"
+      ],
+      [
+       "db_xref",
+       "8197368"
+      ],
+      [
+       "label",
+       "PAS_chr1-3_0057 mRNA"
+      ],
+      [
+       "locus_tag",
+       "PAS_chr1-3_0057"
+      ],
+      [
+       "product",
+       "Component of both the Nup84 nuclear pore sub-complex and the COPII complex"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       691,
+       693,
+       1,
+       null
+      ],
+      [
+       768,
+       1631,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "db_xref",
+       "254564565"
+      ],
+      [
+       "db_xref",
+       "8197368"
+      ],
+      [
+       "label",
+       "SEC13"
+      ],
+      [
+       "locus_tag",
+       "PAS_chr1-3_0057"
+      ],
+      [
+       "protein_id",
+       "XP_002489393.1"
+      ],
+      [
+       "transl_table",
+       "1"
+      ],
+      [
+       "translation",
+       "M,,VTIGNAHDDLIHDAVLDYYGRRLATCSSDKTIKIFEIDGENQRLVETLIGHEGPVWQVAWAHPKFGVILASCSYDGKVLIWKEDNGVWNKVAEHSVHQASVNSVSWAPHEYGPVLLCASSDGKISIVEFKDGGALEPIVIQGHAIGVNAASWAPISLPDNTRRFVSGGCDNLVKIWRYDDAAKTFIEEEAFQGHSDWVRDVAWSPSRLSKSYIATASQDRTVLIWTKDGKSNKWEKQPLTKEKFPDVCWRASWSLSGNVLAISGGDNKVTLWKENIQGKWESAGEVDQ"
+      ]
+     ]
+    },
+    {
+     "type": "promoter",
+     "parts": [
+      [
+       187,
+       672,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "Pichia pastoris gene for glyceraldehyde 3-phosphate dehydrogenase"
+      ],
+      [
+       "label",
+       "GAP promoter"
+      ],
+      [
+       "note",
+       "strong constitutive promoter from Pichia pastoris"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       4310,
+       4378,
+       -1,
+       null
+      ],
+      [
+       3518,
+       4309,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "gene",
+       "bla"
+      ],
+      [
+       "label",
+       "AmpR"
+      ],
+      [
+       "note",
+       "confers resistance to ampicillin, carbenicillin, and related antibiotics"
+      ],
+      [
+       "parts",
+       "1:signal sequence"
+      ],
+      [
+       "product",
+       "\u03b2-lactamase"
+      ],
+      [
+       "transl_table",
+       "1"
+      ],
+      [
+       "translation",
+       "MSIQHFRVALIPFFAAFCLPVFA,HPETLVKVKDAEDQLGARVGYIELDLNSGKILESFRPEERFPMMSTFKVLLCGAVLSRIDAGQEQLGRRIHYSQNDLVEYSPVTEKHLTDGMTVRELCSAAITMSDNTAANLLLTTIGGPKELTAFLHNMGDHVTRLDRWEPELNEAIPNDERDTTMPVAMATTLRKLLTGELLTLASRQQLIDWMEADKVAGPLLRSALPAGWFIADKSGAGERGSRGIIAALGPDGKPSRIVVIYTTGSQATMDERNRQIAEIGASLIKHW*"
+      ]
+     ]
+    },
+    {
+     "type": "rep_origin",
+     "parts": [
+      [
+       2759,
+       3347,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "direction",
+       "LEFT"
+      ],
+      [
+       "label",
+       "ori"
+      ],
+      [
+       "note",
+       "high-copy-number colE1/pMB1/pBR322/pUC origin of replication"
+      ]
+     ]
+    },
+    {
+     "type": "terminator",
+     "parts": [
+      [
+       2482,
+       2697,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "Pichia pastoris AOX1"
+      ],
+      [
+       "label",
+       "AOX1 terminator"
+      ],
+      [
+       "note",
+       "transcription terminator for AOX1"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       4478,
+       7012,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "db_xref",
+       "238030067"
+      ],
+      [
+       "label",
+       "PpHIS4"
+      ],
+      [
+       "locus_tag",
+       "PAS_chr1-4_0160"
+      ],
+      [
+       "product",
+       "Multifunctional enzyme HIS4"
+      ],
+      [
+       "protein_id",
+       "CAY67990.1"
+      ],
+      [
+       "transl_table",
+       "1"
+      ],
+      [
+       "translation",
+       "MTFPLLPAYASVAEFDNSLSLVGKAVFPYAADQLHNLIKFTQSTELQVNVQVESSVTEDQFEELIDNLLKLYNNGINEVILDLDLAERVVQRMIPGARVIYRTLVDKVASLPANASIAVPFSSPLGDLKSFTNGGSRTVYAFSETAKLVDVTSTVASGIIPIIDARQLTTEYELSEDVKKFPVSEILLASLTTDRPDGLFTTLVADSSNYSLGLVYSSKKSIPEAIRTQTGVYQSRRHGLWYKGATSGATQKLLGIELDCDGDCLKFVVEQTGVGFCHLERTSCFGQSKGLRAMEATLWDRKSNAPEGSYTKRLFDDEVLLNAKIREEADELAEAKSKEDIAWECADLFYFALVRCAKYGVTLDEVERNLDMKSLKVTRRKGDAKPGYTKEQPKEESKPKEVPSEGRIELCKIDVSKASSQEIEDALRRPIQKTEQIMELVKPIVDNVRQNGDKALLELTAKFDGVALKTPVLEAPFPEELMQLPDNVKRAIDLSIDNVRKFHEAQLTETLQVETCPGVVCSRFARPIEKVGLYIPGGTAILPSTSLMLGVPAKVAGRKEIVFASPPKKDGTLTPEVIYVAHKVGAKCIVLAGGAQAVAAMAYGTETVPKCDKIFGPGNQFVTAAKMMVQNDTSALCSIDMPAGPSEVLVIADKYADPDFVASDLLSQAEHGIDSQVILLAVDMTDKELARIEDAVHNQAVQLPRVEIVRKCIAHSTTLSVATYEQALEMSNQYAPEHLILQIENASSYVDQVQHAGSVFVGAYSPESCGDYSSGTNHTLPTYGYARQYSGVNTATFQKFITSQDVTPEGLKHIGQAVMDLAAVEGLDAHRNAVKVRMEKLGLI*"
+      ]
+     ]
+    },
+    {
+     "type": "primer_bind",
+     "parts": [
+      [
+       2253,
+       2291,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "A206K.REV"
+      ]
+     ]
+    },
+    {
+     "type": "primer_bind",
+     "parts": [
+      [
+       2253,
+       2291,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "A206K.FOR"
+      ]
+     ]
+    },
+    {
+     "type": "primer_bind",
+     "parts": [
+      [
+       1610,
+       1640,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "SEC13.REV"
+      ]
+     ]
+    },
+    {
+     "type": "primer_bind",
+     "parts": [
+      [
+       685,
+       719,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "SEC13.FOR"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

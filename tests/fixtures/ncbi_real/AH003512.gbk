@@ -1,0 +1,151 @@
+LOCUS       AH003512                2398 bp    DNA     linear   ROD 10-JUN-2016
+DEFINITION  Mus musculus domesticus clone ChM603-alpha-6 immunoglobulin heavy
+            chain variable region V1 (Igha) gene, partial cds.
+ACCESSION   AH003512 J00427 J00499 J00527 J00528 K02102
+VERSION     AH003512.2
+KEYWORDS    .
+SOURCE      Mus musculus domesticus (western European house mouse)
+  ORGANISM  Mus musculus domesticus
+            Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+            Mammalia; Eutheria; Euarchontoglires; Glires; Rodentia; Myomorpha;
+            Muroidea; Muridae; Murinae; Mus; Mus.
+REFERENCE   1  (bases 425 to 1138)
+  AUTHORS   Early,P., Huang,H., Davis,M., Calame,K. and Hood,L.
+  TITLE     An immunoglobulin heavy chain variable region gene is generated
+            from three segments of DNA: VH, D and JH
+  JOURNAL   Cell 19 (4), 981-992 (1980)
+   PUBMED   6769593
+  REMARK    refers to the (phosphorylcholine-binding) germline gene as S107.
+            It is also referred to as V1 and T15 in other papers
+REFERENCE   2  (bases 1557 to 1896)
+  AUTHORS   Davis,M.M., Kim,S.K. and Hood,L.E.
+  TITLE     DNA sequences mediating class switching in alpha-immunoglobulins
+  JOURNAL   Science 209 (4463), 1360-1365 (1980)
+   PUBMED   6774415
+  REMARK    also sequenced the mu/alpha switch region from myeloma T15 and the
+            germline flanking sequences of mu and alpha switch sites.
+REFERENCE   3  (bases 1 to 2398)
+  AUTHORS   Kim,S., Davis,M., Sinn,E., Patten,P. and Hood,L.
+  TITLE     Antibody diversity: somatic hypermutation of rearranged VH genes
+  JOURNAL   Cell 27 (3 PT 2), 573-581 (1981)
+   PUBMED   6101208
+  REMARK    compares the germline V1 sequence with rearranged M603 and M167
+            sequences. All somatic variations are grouped in and around the
+            V-region; suggests that somatic variation occurs at the point of
+            class-switching because the variant V1 VH genes are found
+            associated with C-gamma and C-alpha only; C-alpha sequence from
+            myeloma M167
+COMMENT     On or before Jun 10, 2016 this sequence version replaced J00527.1,
+            J00499.1, J00528.1, J00427.1, K02102.1, AH003512.1.
+FEATURES             Location/Qualifiers
+     source          1..2398
+                     /organism="Mus musculus domesticus"
+                     /mol_type="genomic DNA"
+                     /strain="BALB/c"
+                     /db_xref="taxon:10092"
+                     /clone="ChM603-alpha-6"
+                     /cell_line="M603"
+                     /tissue_type="myeloma"
+     misc_feature    <1..>324
+                     /note="Igha 5' flanking sequence"
+     gap             325..424
+                     /estimated_length=unknown
+     gene            425..2398
+                     /gene="Igha"
+     intron          <425..455
+                     /gene="Igha"
+                     /number=1
+     mRNA            join(<456..833,2196..>2398)
+                     /gene="Igha"
+                     /product="immunoglobulin heavy chain variable region V1"
+     CDS             join(<456..833,2196..>2398)
+                     /gene="Igha"
+                     /note="IgA chain VH-III; T15"
+                     /codon_start=3
+                     /product="immunoglobulin heavy chain variable region V1"
+                     /protein_id="AAA98728.1"
+                     /translation="IQCEVKLVESGGGLVQPGGSLRLSCATSGFTFSDFYMEWVRQPP
+                     GKRLEWIAASRNKGNKYTTEYSASVKGRFIVSRDTSQSILYLQMNALRAEDTAIYYCA
+                     RNYYGSTWYFDVWGAGTTVTVSSGPTPPPPITIPSCQPSLSLQRPALEDLLLGSDASI
+                     TCTLNGLRNPEGAVFTWEPSTGKDAVQKKAAQN"
+     sig_peptide     <456..466
+                     /gene="Igha"
+     mat_peptide     join(467..833,2196..>2398)
+                     /gene="Igha"
+                     /product="immunoglobulin alpha-chain"
+     exon            456..833
+                     /gene="Igha"
+                     /note="putative"
+                     /number=2
+     misc_recomb     769^770
+                     /gene="Igha"
+     misc_recomb     783^784
+                     /gene="Igha"
+     intron          834..>1138
+                     /gene="Igha"
+                     /note="J-C"
+                     /number=2
+     gap             1139..1238
+                     /estimated_length=unknown
+     intron          <1239..>1456
+                     /gene="Igha"
+                     /note="M603 intron J-C"
+     gap             1457..1556
+                     /estimated_length=unknown
+     intron          <1557..>1896
+                     /gene="Igha"
+                     /note="J-C"
+     misc_recomb     1581^1582
+                     /gene="Igha"
+     misc_recomb     1868^1869
+                     /gene="Igha"
+     gap             1897..1996
+                     /estimated_length=unknown
+     intron          <1997..2195
+                     /gene="Igha"
+                     /note="M603 intron J1-C"
+     exon            2196..>2398
+                     /gene="Igha"
+ORIGIN      
+        1 tttagctttg aacactactt ttttttaagt tcttcacatt tttattcttt gtgcacagag
+       61 atgtacacta ctttttaatt gtgttatttg aggttttgga agttagcttc ttgtgttctt
+      121 tatatttttt gaatattagc cctctatcag atgtggagtt agtgaaaaat ttttcccatt
+      181 ttataggtta tcagtttgtt ttattgactg tgacttttac tttacagaag cttttcagtt
+      241 tcatgaggtc ccatttatca attgttgatt ttagggcctg agcctttgga gttctgttta
+      301 ggaaggttcc cccgtaccaa ttagnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+      361 nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+      421 nnnngtgtat gtaccagctt tctctactat tgcaggtatc cagtgtgagg tgaagctggt
+      481 ggaatctgga ggaggcttgg tacagcctgg gggttctctg agactctcct gtgcaacttc
+      541 tgggttcacc ttcagtgatt tctacatgga gtgggtccgc cagcctccag ggaagagact
+      601 ggagtggatt gctgcaagta gaaacaaggg taataaatat acaacagaat acagtgcatc
+      661 tgtgaagggt cggttcatcg tctccagaga cacttcccaa agcatcctct accttcagat
+      721 gaatgccctg agagctgagg acacagccat ttattactgt gcaagaaatt actacggtag
+      781 tacctggtac ttcgatgtct ggggcgcngg gaccacggtc accgtctcct caggtaagct
+      841 ggcttttttc tttttgcaca ttccattctg aaatgggaaa agatattctc agatctcccc
+      901 atgtcaggcc atctgccaca ctctgcacgc tgcagaagct tttctgtaag gatagggtct
+      961 tcactcccag gaaaagaggc agtcagaggc tagctgcctg tggaacagtg acaatcatgg
+     1021 aaaataggca tttacattgt taggctacaa gggtagatgg gtttttgtac acccactaaa
+     1081 ggggtctatg atagtgtgac tactttgact actggggcca aggcaccact ctcacagtnn
+     1141 nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+     1201 nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnct gtggtttgaa gaagtggttt
+     1261 tgaaacactc tgtccagccc caccaaaccg aaagtccacg ctgagcaaaa caccacctgg
+     1321 gtaatttcta aaataagttg aggattcagc cgaaactgga gaggtcctct ttttaactta
+     1381 ttgagttcaa ccttttaatt ttagcttgag tagttctagt ttccccaaac ttaagtttat
+     1441 cgacttctaa aatgtannnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+     1501 nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnaagg
+     1561 gaacaaggtt gagagcccta gcgtgagtct gagctggggt gagctgagtg ggctgagttg
+     1621 gggtgagctg ggctgagtct ggggtgagct gagctgagct ggggtgagct gagctggggt
+     1681 gagctgagct gagctgagct gggctgagct gagatgagct ggggtgagct gagctgagtt
+     1741 gagctggggt gagctggagc tgggctagct gagctggggt gagctgagct gagctggggc
+     1801 tgagctgagc tgagctgagc tgggctgagc tgggctgagc tgggctgagc tgggctgagc
+     1861 tgggctgagc tgggctggtg cgagctgggt taggctnnnn nnnnnnnnnn nnnnnnnnnn
+     1921 nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+     1981 nnnnnnnnnn nnnnnnagtc ctaccttatc tagatccata tatccctctg atgcacaccc
+     2041 tcacaggaat ccctcagaaa cctccactat ggggattggg ggaaggaagc gtaaacaggt
+     2101 ctagaaggag ctggaggcct cagaacatcc agaaacgggg acagcaaagg agacaaggag
+     2161 aatatactga tttgctagga catcttctgt tacaggtcct actcctcctc ctcctattac
+     2221 tattccttcc tgccagccca gcctgtcact gcagcggcca gctcttgagg acctgctcct
+     2281 gggttcagat gccagcatca catgtactct gaatggcctg agaaatcctg agggagctgt
+     2341 cttcacctgg gagccctcca ctgggaagga tgcagtgcag aagaaagctg cgcagaat
+//
+

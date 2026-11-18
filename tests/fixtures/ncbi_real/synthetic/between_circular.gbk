@@ -1,0 +1,19 @@
+LOCUS       BETWEENCIRC              300 bp    DNA     circular SYN 01-JAN-2000
+DEFINITION  synthetic BETWEENCIRC.
+ACCESSION   BETWEENCIRC
+VERSION     BETWEENCIRC.1
+KEYWORDS    .
+SOURCE      synthetic construct
+  ORGANISM  synthetic construct
+            other sequences; artificial sequences.
+FEATURES             Location/Qualifiers
+     misc_feature    300^1
+                     /note="between last and first base"
+     misc_feature    complement(56^57)
+ORIGIN
+        1 gctaaagaca attacataac atacacgtca gcacgaaact tgttggccca gtgtgaatcg
+       61 cttaagggtt aagtaagtgt gatgcatacg cctttacttg ctgtgtccac cccatcggac
+      121 tggcattttt attacactca gaaacagaac tcgggtaatt ttgacaggtc acgcagaggc
+      181 gcgccctcct gaagtgcgtg gacactcgct atgaatctct gatttaccca ctctgccaaa
+      241 ctccagcgcg gtcagttcca tcaccctaag taaccgaata atgcgttcgc tctattgact
+//

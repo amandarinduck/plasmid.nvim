@@ -1,0 +1,872 @@
+{
+ "format": "genbank",
+ "records": [
+  {
+   "name": "NC_005816",
+   "id": "NC_005816.1",
+   "length": 9609,
+   "sha256": "583303fb96a073c0ed01bac582e661bdf2f166adf4ad5f68dfa7aa87dd8bcb4e",
+   "topology": "circular",
+   "description": "Yersinia pestis biovar Microtus str. 91001 plasmid pPCP1, complete sequence",
+   "features": [
+    {
+     "type": "source",
+     "parts": [
+      [
+       1,
+       9609,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "biovar",
+       "Microtus"
+      ],
+      [
+       "db_xref",
+       "taxon:229193"
+      ],
+      [
+       "mol_type",
+       "genomic DNA"
+      ],
+      [
+       "organism",
+       "Yersinia pestis biovar Microtus str. 91001"
+      ],
+      [
+       "plasmid",
+       "pPCP1"
+      ],
+      [
+       "strain",
+       "91001"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       87,
+       1109,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "istA"
+      ],
+      [
+       "locus_tag",
+       "YP_RS22210"
+      ],
+      [
+       "old_locus_tag",
+       "YP_pPCP01"
+      ],
+      [
+       "old_locus_tag",
+       "pPCP01"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       87,
+       1109,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "GO_function",
+       "GO:0004803 - transposase activity [Evidence IEA]"
+      ],
+      [
+       "GO_process",
+       "GO:0006313 - DNA transposition [Evidence IEA]"
+      ],
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "gene",
+       "istA"
+      ],
+      [
+       "inference",
+       "COORDINATES: similar to AA sequence:RefSeq:WP_000627495.1"
+      ],
+      [
+       "locus_tag",
+       "YP_RS22210"
+      ],
+      [
+       "note",
+       "Derived by automated computational analysis using gene prediction method: Protein Homology."
+      ],
+      [
+       "old_locus_tag",
+       "YP_pPCP01"
+      ],
+      [
+       "old_locus_tag",
+       "pPCP01"
+      ],
+      [
+       "product",
+       "IS21-like element IS100 family transposase"
+      ],
+      [
+       "protein_id",
+       "WP_000255944.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MVTFETVMEIKILHKQGMSSRAIARELGISRNTVKRYLQAKSEPPKYTPRPAVASLLDEYRDYIRQRIADAHPYKIPATVIAREIRDQGYRGGMTILRAFIRSLSVPQEQEPAVRFETEPGRQMQVDWGTMRNGRSPLHVFVAVLGYSRMLYIEFTDNMRYDTLETCHRNAFRFFGGVPREVLYDNMKTVVLQRDAYQTGQHRFHPSLWQFGKEMGFSPRLCRPFRAQTKGKVERMVQYTRNSFYIPLMTRLRPMGITVDVETANRHGLRWLHDVANQRKHETIQARPCDRWLEEQQSMLALPPEKKEYDVHLDENLVNFDKHPLHHPLSIYDSFCRGVA"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       1106,
+       1888,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "istB"
+      ],
+      [
+       "locus_tag",
+       "YP_RS22215"
+      ],
+      [
+       "old_locus_tag",
+       "YP_pPCP02"
+      ],
+      [
+       "old_locus_tag",
+       "pPCP02"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       1106,
+       1888,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "gene",
+       "istB"
+      ],
+      [
+       "inference",
+       "COORDINATES: similar to AA sequence:RefSeq:NP_858162.1"
+      ],
+      [
+       "locus_tag",
+       "YP_RS22215"
+      ],
+      [
+       "note",
+       "Derived by automated computational analysis using gene prediction method: Protein Homology."
+      ],
+      [
+       "old_locus_tag",
+       "YP_pPCP02"
+      ],
+      [
+       "old_locus_tag",
+       "pPCP02"
+      ],
+      [
+       "product",
+       "IS21-like element IS100kyp family helper ATPase IstB"
+      ],
+      [
+       "protein_id",
+       "WP_001317493.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MMMELQHQRLMALAGQLQLESLISAAPALSQQAVDQEWSYMDFLEHLLHEEKLARHQRKQAMYTRMAAFPAVKTFEEYDFTFATGAPQKQLQSLRSLSFIERNENIVLLGPSGVGKTHLAIAMGYEAVRAGIKVRFTTAADLLLQLSTAQRQGRYKTTLQRGVMAPRLLIIDEIGYLPFSQEEAKLFFQVIAKRYEKSAMILTSNLPFGQWDQTFAGDAALTSAMLDRILHHSHVVQIKGESYRLRQKRKAGVIAEANPE"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       2925,
+       3119,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "locus_tag",
+       "YP_RS22220"
+      ],
+      [
+       "old_locus_tag",
+       "YP_pPCP03"
+      ],
+      [
+       "old_locus_tag",
+       "pPCP03"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       2925,
+       3119,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "inference",
+       "COORDINATES: similar to AA sequence:RefSeq:WP_001041627.1"
+      ],
+      [
+       "locus_tag",
+       "YP_RS22220"
+      ],
+      [
+       "note",
+       "Derived by automated computational analysis using gene prediction method: Protein Homology."
+      ],
+      [
+       "old_locus_tag",
+       "YP_pPCP03"
+      ],
+      [
+       "old_locus_tag",
+       "pPCP03"
+      ],
+      [
+       "product",
+       "Rop family plasmid primer RNA-binding protein"
+      ],
+      [
+       "protein_id",
+       "WP_002213433.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MNKQQQTALNMARFIRSQSLILLEKLDALDADEQAAMCERLHELAEELQNSIQARFEAESETGT"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       3785,
+       3898,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "locus_tag",
+       "YP_RS25740"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       3785,
+       3898,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "inference",
+       "COORDINATES: similar to AA sequence:RefSeq:WP_005761324.1"
+      ],
+      [
+       "locus_tag",
+       "YP_RS25740"
+      ],
+      [
+       "note",
+       "Derived by automated computational analysis using gene prediction method: Protein Homology."
+      ],
+      [
+       "product",
+       "hypothetical protein"
+      ],
+      [
+       "protein_id",
+       "WP_002367224.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MHEPPVQPDHCALSGNYRLESNPVRHDFTPLAAAIGN"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       4385,
+       4780,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "locus_tag",
+       "YP_RS22225"
+      ],
+      [
+       "old_locus_tag",
+       "YP_pPCP05"
+      ],
+      [
+       "old_locus_tag",
+       "pPCP05"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       4385,
+       4780,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "inference",
+       "COORDINATES: similar to AA sequence:RefSeq:WP_001247799.1"
+      ],
+      [
+       "locus_tag",
+       "YP_RS22225"
+      ],
+      [
+       "note",
+       "Derived by automated computational analysis using gene prediction method: Protein Homology."
+      ],
+      [
+       "old_locus_tag",
+       "YP_pPCP05"
+      ],
+      [
+       "old_locus_tag",
+       "pPCP05"
+      ],
+      [
+       "product",
+       "pesticin immunity protein"
+      ],
+      [
+       "protein_id",
+       "WP_223661135.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MFLSSSGLAEKNTYTAKDILQNLELNTFGNSLSHGIYGKQTTFKQTEFTNIKSNTKKHIALINKDNSWMISLKILGIKRDEYTVCFEDFSLIRPPTYVAIHPLLIKKVKSGNFIVVKEIKKSIPGCTVYYH"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       4815,
+       5888,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "pst"
+      ],
+      [
+       "locus_tag",
+       "YP_RS22230"
+      ],
+      [
+       "old_locus_tag",
+       "YP_pPCP06"
+      ],
+      [
+       "old_locus_tag",
+       "pPCP06"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       4815,
+       5888,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "EC_number",
+       "3.2.1.17"
+      ],
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "gene",
+       "pst"
+      ],
+      [
+       "inference",
+       "COORDINATES: similar to AA sequence:RefSeq:WP_001285181.1"
+      ],
+      [
+       "locus_tag",
+       "YP_RS22230"
+      ],
+      [
+       "note",
+       "Derived by automated computational analysis using gene prediction method: Protein Homology."
+      ],
+      [
+       "old_locus_tag",
+       "YP_pPCP06"
+      ],
+      [
+       "old_locus_tag",
+       "pPCP06"
+      ],
+      [
+       "product",
+       "pesticin"
+      ],
+      [
+       "protein_id",
+       "WP_002218509.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MSDTMVVNGSGGVPAFLFSGSTLSSYRPNFEANSITIALPHYVDLPGRSNFKLMYIMGFPIDTEMEKDSEYSNKIRQESKISKTEGTVSYEQKITVETGQEKDGVKVYRVMVLEGTIAESIEHLDKKENEDILNNNRNRIVLADNTVINFDNISQLKEFLRRSVNIVDHDIFSSNGFEGFNPTSHFPSNPSSDYFNSTGVTFGSGVDLGQRSKQDLLNDGVPQYIADRLDGYYMLRGKEAYDKVRTAPLTLSDNEAHLLSNIYIDKFSHKIEGLFNDANIGLRFSDLPLRTRTALVSIGYQKGFKLSRTAPTVWNKVIAKDWNGLVNAFNNIVDGMSDRRKREGALVQKDIDSGLLK"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       6116,
+       6421,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "locus_tag",
+       "YP_RS22235"
+      ],
+      [
+       "old_locus_tag",
+       "YP_pPCP07"
+      ],
+      [
+       "old_locus_tag",
+       "pPCP07"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       6116,
+       6421,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "inference",
+       "COORDINATES: similar to AA sequence:RefSeq:WP_002221218.1"
+      ],
+      [
+       "locus_tag",
+       "YP_RS22235"
+      ],
+      [
+       "note",
+       "Derived by automated computational analysis using gene prediction method: Protein Homology."
+      ],
+      [
+       "old_locus_tag",
+       "YP_pPCP07"
+      ],
+      [
+       "old_locus_tag",
+       "pPCP07"
+      ],
+      [
+       "product",
+       "hypothetical protein"
+      ],
+      [
+       "protein_id",
+       "WP_002221218.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MSKTKSGRHRLSKTDKRLLAALVVAGYEERTARDLIQKHVYTLTQADLRHLVSEISNGVGQSQAYDAIYQARRIRLARKYLSGKKPEGVEPREGQEREDLP"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       6664,
+       7602,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "pla"
+      ],
+      [
+       "locus_tag",
+       "YP_RS22240"
+      ],
+      [
+       "old_locus_tag",
+       "YP_pPCP08"
+      ],
+      [
+       "old_locus_tag",
+       "pPCP08"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       6664,
+       7602,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "gene",
+       "pla"
+      ],
+      [
+       "inference",
+       "COORDINATES: similar to AA sequence:RefSeq:WP_002231174.1"
+      ],
+      [
+       "locus_tag",
+       "YP_RS22240"
+      ],
+      [
+       "note",
+       "Derived by automated computational analysis using gene prediction method: Protein Homology."
+      ],
+      [
+       "old_locus_tag",
+       "YP_pPCP08"
+      ],
+      [
+       "old_locus_tag",
+       "pPCP08"
+      ],
+      [
+       "product",
+       "omptin family plasminogen activator Pla"
+      ],
+      [
+       "protein_id",
+       "WP_002231174.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MKKSSIVATIITILSGSANAASSQLIPNISPDSFTVAASTGMLSGKSHEMLYDAETGRKISQLDWKIKNVAILKGDISWDPYSFLTLNARGWTSLASGSGNMDDYDWMNENQSEWTDHSSHPATNVNHANEYDLNVKGWLLQDENYKAGITAGYQETRFSWTATGGSYSYNNGAYTGNFPKGVRVIGYNQRFSMPYIGLAGQYRINDFELNALFKFSDWVRAHDNDEHYMRDLTFREKTSGSRYYGTVINAGYYVTPNAKVFAEFTYSKYDEGKGGTQIIDKNSGDSVSIGGDAAGISNKNYTVTAGLQYRF"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       7789,
+       8088,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "locus_tag",
+       "YP_RS22245"
+      ],
+      [
+       "old_locus_tag",
+       "YP_pPCP09"
+      ],
+      [
+       "old_locus_tag",
+       "pPCP09"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       7789,
+       8088,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "GO_function",
+       "GO:0003677 - DNA binding [Evidence IEA]"
+      ],
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "inference",
+       "COORDINATES: similar to AA sequence:RefSeq:WP_002218230.1"
+      ],
+      [
+       "locus_tag",
+       "YP_RS22245"
+      ],
+      [
+       "note",
+       "Derived by automated computational analysis using gene prediction method: Protein Homology."
+      ],
+      [
+       "old_locus_tag",
+       "YP_pPCP09"
+      ],
+      [
+       "old_locus_tag",
+       "pPCP09"
+      ],
+      [
+       "product",
+       "type II toxin-antitoxin system RelB family anti-toxin"
+      ],
+      [
+       "protein_id",
+       "WP_002213446.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MRTLDEVIASRSPESQTRIKEMADEMILEVGLQMMREELQLSQKQVAEAMGISQPAVTKLEQRGNDLKLATLKRYVEAMGGKLSLDVELPTGRRVAFHV"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       8088,
+       8429,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "locus_tag",
+       "YP_RS22250"
+      ],
+      [
+       "old_locus_tag",
+       "YP_pPCP10"
+      ],
+      [
+       "old_locus_tag",
+       "pPCP10"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       8088,
+       8429,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "GO_component",
+       "GO:0110001 - toxin-antitoxin complex [Evidence IEA]"
+      ],
+      [
+       "GO_function",
+       "GO:0004519 - endonuclease activity [Evidence IEA]; GO:0090729 - toxin activity [Evidence IEA]"
+      ],
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "inference",
+       "COORDINATES: similar to AA sequence:RefSeq:WP_002225538.1"
+      ],
+      [
+       "locus_tag",
+       "YP_RS22250"
+      ],
+      [
+       "note",
+       "Derived by automated computational analysis using gene prediction method: Protein Homology."
+      ],
+      [
+       "old_locus_tag",
+       "YP_pPCP10"
+      ],
+      [
+       "old_locus_tag",
+       "pPCP10"
+      ],
+      [
+       "product",
+       "type II toxin-antitoxin system RelE/ParE family toxin"
+      ],
+      [
+       "protein_id",
+       "WP_002225538.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MVLFSQRFDDWLNEQEDALQEKVLADLKKLQVYGPELPRPYADTVKGSRYKNMKELRVQFSGRPIRAFYAFDPIRRAIVLCAGDKSNDKRFYEKLVRIAEDEFTAHLNTLESK"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

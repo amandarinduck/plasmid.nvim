@@ -1,0 +1,1 @@
+{"key":"122f23fe41da846b3b029b2e","method":"GET","url":"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id=NC_001422.1&rettype=gbwithparts&retmode=text&tool=plasmid.nvim","recorded":"2026-11-17T13:22:27Z","bytes":26238,"ms":415,"headers":{"x-ratelimit-limit":"3","content-type":"text/plain"},"status":200}

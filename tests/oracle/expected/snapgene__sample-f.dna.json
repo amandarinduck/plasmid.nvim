@@ -1,0 +1,110 @@
+{
+ "format": "snapgene",
+ "records": [
+  {
+   "name": "Sample",
+   "id": "Sample",
+   "length": 1000,
+   "sha256": "8f0b340a671741a3fa74aaaf2e9e02c04f6c6644abd2d41a3b68da37e4f9d731",
+   "topology": "circular",
+   "description": "Sample Sequence F",
+   "features": [
+    {
+     "type": "terminator",
+     "parts": [
+      [
+       635,
+       724,
+       -1,
+       null
+      ],
+      [
+       517,
+       634,
+       -1,
+       null
+      ],
+      [
+       400,
+       499,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "FeatureB"
+      ],
+      [
+       "note",
+       "An example of a reverse-strand split feature"
+      ],
+      [
+       "parts",
+       "1:subfeature1;3:subfeature3"
+      ]
+     ]
+    },
+    {
+     "type": "rep_origin",
+     "parts": [
+      [
+       161,
+       180,
+       1,
+       null
+      ],
+      [
+       188,
+       207,
+       1,
+       null
+      ],
+      [
+       215,
+       241,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "direction",
+       "RIGHT"
+      ],
+      [
+       "label",
+       "FeatureA"
+      ],
+      [
+       "note",
+       "An example of a split feature"
+      ],
+      [
+       "parts",
+       "2:subfeature2"
+      ]
+     ]
+    },
+    {
+     "type": "primer_bind",
+     "parts": [
+      [
+       752,
+       776,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "Primer 1"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

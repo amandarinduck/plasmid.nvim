@@ -1,0 +1,2183 @@
+LOCUS       HBA_HUMAN                142 aa            linear   PRI 04-NOV-2026
+DEFINITION  RecName: Full=Hemoglobin subunit alpha; AltName: Full=Alpha-globin;
+            AltName: Full=Hemoglobin alpha chain; Contains: RecName:
+            Full=Hemopressin.
+ACCESSION   P69905
+VERSION     P69905.2
+DBSOURCE    UniProtKB: locus HBA_HUMAN, accession P69905;
+            class: standard.
+            extra accessions:P01922,Q1HDT5,Q3MIF5,Q53F97,Q96KF1,Q9NYR7,Q9UCM0
+            created: Jul 21, 1986.
+            sequence updated: Jan 23, 2007.
+            annotation updated: Nov 4, 2026.
+            xrefs: J00153.1, AAB59407.1, AAB59408.1, V00491.1, CAA23750.1,
+            V00493.1, CAA23752.1, V00488.1, CAA23748.1, V00516.1, CAA23774.1,
+            AF230076.1, AAF72612.1, AF525460.1, AAM83102.1, DQ431198.1,
+            ABD95910.1, ABD95911.1, AF097635.1, AAC72839.1, AF105974.1,
+            AAC97373.1, AF349571.1, AAK37554.1, AF536204.1, AAN04486.1,
+            DQ499017.1, ABF56144.1, DQ499018.1, ABF56145.1, AK223392.1,
+            BAD97112.1, AE006462.1, AAK61215.1, AAK61216.1, Z84721.1,
+            CAB06554.1, CAB06555.1, BC005931.1, AAH05931.1, BC008572.1,
+            AAH08572.1, BC032122.2, AAH32122.1, BC050661.1, AAH50661.1,
+            BC101846.1, AAI01847.1, BC101848.1, AAI01849.1, HAHU, HACZP, HACZ,
+            NP_000508.1, NP_000549.1, 1A00_A, 1A00_C, 1A01_A, 1A01_C, 1A0U_A,
+            1A0U_C, 1A0Z_A, 1A0Z_C, 1A3N_A, 1A3N_C, 1A3O_A, 1A3O_C, 1A9W_A,
+            1A9W_C, 1ABW_A, 1ABY_A, 1AJ9_A, 1B86_A, 1B86_C, 1BAB_A, 1BAB_C,
+            1BBB_A, 1BBB_C, 1BIJ_A, 1BIJ_C, 1BUW_A, 1BUW_C, 1BZ0_A, 1BZ0_C,
+            1BZ1_A, 1BZ1_C, 1BZZ_A, 1BZZ_C, 1C7B_A, 1C7B_C, 1C7C_A, 1C7D_A,
+            1CLS_A, 1CLS_C, 1CMY_A, 1CMY_C, 1COH_A, 1COH_C, 1DKE_A, 1DKE_C,
+            1DXT_A, 1DXT_C, 1DXU_A, 1DXU_C, 1DXV_A, 1DXV_C, 1FDH_A, 1FDH_B,
+            1FN3_A, 1FN3_C, 1G9V_A, 1G9V_C, 1GBU_A, 1GBU_C, 1GBV_A, 1GBV_C,
+            1GLI_A, 1GLI_C, 1GZX_A, 1GZX_C, 1HAB_A, 1HAB_C, 1HAC_A, 1HAC_C,
+            1HBA_A, 1HBA_C, 1HBB_A, 1HBB_C, 1HBS_A, 1HBS_C, 1HBS_E, 1HBS_G,
+            1HCO_A, 1HDB_A, 1HDB_C, 1HGA_A, 1HGA_C, 1HGB_A, 1HGB_C, 1HGC_A,
+            1HGC_C, 1HHO_A, 1IRD_A, 1J3Y_A, 1J3Y_C, 1J3Y_E, 1J3Y_G, 1J3Z_A,
+            1J3Z_C, 1J3Z_E, 1J3Z_G, 1J40_A, 1J40_C, 1J40_E, 1J40_G, 1J41_A,
+            1J41_C, 1J41_E, 1J41_G, 1J7S_A, 1J7S_C, 1J7W_A, 1J7W_C, 1J7Y_A,
+            1J7Y_C, 1JY7_A, 1JY7_C, 1JY7_P, 1JY7_R, 1JY7_U, 1JY7_W, 1K0Y_A,
+            1K0Y_C, 1K1K_A, 1KD2_A, 1KD2_C, 1LFL_A, 1LFL_C, 1LFL_P, 1LFL_R,
+            1LFQ_A, 1LFT_A, 1LFV_A, 1LFY_A, 1LFZ_A, 1LJW_A, 1M9P_A, 1M9P_C,
+            1MKO_A, 1MKO_C, 1NEJ_A, 1NEJ_C, 1NIH_A, 1NIH_C, 1NQP_A, 1NQP_C,
+            1O1I_A, 1O1J_A, 1O1K_A, 1O1K_C, 1O1L_A, 1O1M_A, 1O1N_A, 1O1O_A,
+            1O1O_C, 1O1P_A, 1QI8_A, 1QI8_C, 1QSH_A, 1QSH_C, 1QSI_A, 1QSI_C,
+            1QXD_A, 1QXD_C, 1QXE_A, 1QXE_C, 1R1X_A, 1R1Y_A, 1R1Y_C, 1RPS_A,
+            1RPS_C, 1RQ3_A, 1RQ3_C, 1RQ4_A, 1RQ4_C, 1RQA_A, 1RQA_C, 1RVW_A,
+            1SDK_A, 1SDK_C, 1SDL_A, 1SDL_C, 1SHR_A, 1SHR_C, 1SI4_A, 1SI4_C,
+            1THB_A, 1THB_C, 1UIW_A, 1UIW_C, 1UIW_E, 1UIW_G, 1VWT_A, 1VWT_C,
+            1XXT_A, 1XXT_C, 1XY0_A, 1XY0_C, 1XYE_A, 1XYE_C, 1XZ2_A, 1XZ2_C,
+            1XZ4_A, 1XZ4_C, 1XZ5_A, 1XZ5_C, 1XZ7_A, 1XZ7_C, 1XZU_A, 1XZU_C,
+            1XZV_A, 1XZV_C, 1Y01_B, 1Y09_A, 1Y09_C, 1Y0A_A, 1Y0A_C, 1Y0C_A,
+            1Y0C_C, 1Y0D_A, 1Y0D_C, 1Y0T_A, 1Y0T_C, 1Y0W_A, 1Y0W_C, 1Y22_A,
+            1Y22_C, 1Y2Z_A, 1Y2Z_C, 1Y31_A, 1Y31_C, 1Y35_A, 1Y35_C, 1Y45_A,
+            1Y45_C, 1Y46_A, 1Y46_C, 1Y4B_A, 1Y4B_C, 1Y4F_A, 1Y4F_C, 1Y4G_A,
+            1Y4G_C, 1Y4P_A, 1Y4P_C, 1Y4Q_A, 1Y4Q_C, 1Y4R_A, 1Y4R_C, 1Y4V_A,
+            1Y4V_C, 1Y5F_A, 1Y5F_C, 1Y5J_A, 1Y5J_C, 1Y5K_A, 1Y5K_C, 1Y7C_A,
+            1Y7C_C, 1Y7D_A, 1Y7D_C, 1Y7G_A, 1Y7G_C, 1Y7Z_A, 1Y7Z_C, 1Y83_A,
+            1Y83_C, 1Y85_A, 1Y85_C, 1Y8W_A, 1Y8W_C, 1YDZ_A, 1YDZ_C, 1YE0_A,
+            1YE0_C, 1YE1_A, 1YE1_C, 1YE2_A, 1YE2_C, 1YEN_A, 1YEN_C, 1YEO_A,
+            1YEO_C, 1YEQ_A, 1YEQ_C, 1YEU_A, 1YEU_C, 1YEV_A, 1YEV_C, 1YFF_A,
+            1YFF_C, 1YFF_E, 1YFF_G, 1YG5_A, 1YG5_C, 1YGD_A, 1YGD_C, 1YGF_A,
+            1YGF_C, 1YH9_A, 1YH9_C, 1YHE_A, 1YHE_C, 1YHR_A, 1YHR_C, 1YIE_A,
+            1YIE_C, 1YIH_A, 1YIH_C, 1YVQ_A, 1YVQ_C, 1YVT_A, 1YZI_A, 1Z8U_B,
+            1Z8U_D, 28OD_A, 28OD_C, 2D5Z_A, 2D5Z_C, 2D60_A, 2D60_C, 2DN1_A,
+            2DN2_A, 2DN2_C, 2DN3_A, 2DXM_A, 2DXM_C, 2H35_A, 2H35_C, 2HBC_A,
+            2HBD_A, 2HBE_A, 2HBF_A, 2HBS_A, 2HBS_C, 2HBS_E, 2HBS_G, 2HCO_A,
+            2HHB_A, 2HHB_C, 2HHD_A, 2HHD_C, 2HHE_A, 2HHE_C, 2M6Z_A, 2M6Z_C,
+            2W6V_A, 2W6V_C, 2W72_A, 2W72_C, 2YRS_A, 2YRS_C, 2YRS_I, 2YRS_M,
+            3B75_A, 3B75_C, 3B75_E, 3B75_G, 3B75_S, 3D17_A, 3D17_C, 3D7O_A,
+            3DUT_A, 3DUT_C, 3HHB_A, 3HHB_C, 3HXN_A, 3HXN_C, 3IA3_B, 3IA3_D,
+            3IC0_A, 3IC0_C, 3IC2_A, 3IC2_C, 3KMF_A, 3KMF_E, 3NL7_A, 3NMM_A,
+            3NMM_C, 3ODQ_A, 3ODQ_C, 3ONZ_A, 3OO4_A, 3OO5_A, 3OVU_C, 3P5Q_A,
+            3QJB_A, 3QJC_A, 3QJD_A, 3QJD_C, 3QJE_A, 3QJE_C, 3R5I_A, 3R5I_C,
+            3S48_C, 3S48_D, 3S65_A, 3S65_C, 3S66_A, 3SZK_A, 3SZK_D, 3WCP_A,
+            3WCP_C, 3WHM_A, 3WHM_E, 4FC3_A, 4HHB_A, 4HHB_C, 4IJ2_A, 4IJ2_C,
+            4L7Y_A, 4L7Y_C, 4M4A_A, 4M4B_A, 4MQC_A, 4MQG_A, 4MQH_A, 4MQI_A,
+            4MQJ_A, 4MQJ_C, 4MQJ_E, 4MQJ_G, 4MQK_A, 4MQK_C, 4MQK_E, 4MQK_G,
+            4N7N_A, 4N7N_C, 4N7N_E, 4N7N_G, 4N7N_I, 4N7N_K, 4N7O_A, 4N7O_C,
+            4N7O_E, 4N7O_G, 4N7O_I, 4N7O_K, 4N7P_A, 4N7P_C, 4N7P_E, 4N7P_G,
+            4N7P_I, 4N7P_K, 4N8T_A, 4NI0_A, 4NI1_A, 4ROL_A, 4ROL_C, 4ROM_A,
+            4ROM_C, 4WJG_A, 4WJG_F, 4WJG_K, 4WJG_P, 4WJG_U, 4WJG_Z, 4X0L_A,
+            4XS0_A, 5E29_A, 5E29_C, 5E6E_A, 5E83_A, 5E83_C, 5EE4_C, 5EE4_E,
+            5HU6_A, 5HY8_A, 5HY8_C, 5HY8_E, 5HY8_G, 5HY8_S, 5JDO_C, 5JDO_E,
+            5KDQ_A, 5KDQ_C, 5KSI_A, 5KSI_C, 5KSJ_A, 5KSJ_C, 5NI1_A, 5NI1_C,
+            5SW7_A, 5U3I_A, 5U3I_C, 5UCU_A, 5UFJ_A, 5UFJ_C, 5URC_A, 5URC_C,
+            5VMM_A, 5VMM_C, 5WOG_A, 5WOG_B, 5WOH_A, 5WOH_C, 5X2R_A, 5X2R_C,
+            5X2R_E, 5X2R_G, 5X2R_I, 5X2R_K, 5X2S_A, 5X2S_C, 5X2S_E, 5X2S_G,
+            5X2S_I, 5X2S_K, 5X2T_A, 5X2T_C, 5X2T_E, 5X2T_G, 5X2T_I, 5X2T_K,
+            5X2U_A, 5X2U_C, 5X2U_E, 5X2U_G, 5X2U_I, 5X2U_K, 6BB5_A, 6BNR_A,
+            6BNR_C, 6BWP_A, 6BWP_C, 6BWU_A, 6DI4_A, 6DI4_C, 6HAL_A, 6HAL_C,
+            6HBW_A, 6HBW_C, 6HK2_A, 6HK2_C, 6KA9_A, 6KA9_C, 6KA9_E, 6KA9_G,
+            6KAE_A, 6KAE_C, 6KAE_E, 6KAE_G, 6KAH_A, 6KAH_C, 6KAH_E, 6KAH_G,
+            6KAI_A, 6KAI_C, 6KAI_E, 6KAI_G, 6KAO_A, 6KAP_A, 6KAQ_A, 6KAR_A,
+            6KAS_A, 6KAS_C, 6KAT_A, 6KAT_C, 6KAU_A, 6KAU_C, 6KAV_A, 6KAV_C,
+            6KYE_A, 6KYE_C, 6KYE_E, 6KYE_G, 6KYE_I, 6KYE_K, 6L5V_A, 6L5W_A,
+            6L5X_A, 6L5X_C, 6L5Y_A, 6L5Y_C, 6LCW_A, 6LCW_C, 6LCW_E, 6LCW_G,
+            6LCX_A, 6LCX_C, 6LCX_E, 6LCX_G, 6NBC_A, 6NBC_C, 6NBD_A, 6NBD_C,
+            6NQ5_A, 6TB2_A, 6XD9_A, 6XD9_C, 6XDT_A, 6XDT_C, 6XE7_A, 6XE7_C,
+            7AET, 7AEU, 7AEV, 7CUE_A, 7CUE_C, 7DY3_A, 7DY3_C, 7DY3_E, 7DY3_G,
+            7DY4_A, 7DY4_C, 7DY4_E, 7DY4_G, 7JJQ_A, 7JJQ_C, 7JXZ_A, 7JXZ_C,
+            7JY0_A, 7JY0_C, 7JY1_A, 7JY1_C, 7JY3_A, 7JY3_C, 7K4M_A, 7K4M_C,
+            7K4M_E, 7K4M_G, 7K4M_I, 7PCF_A, 7PCH_A, 7PCH_C, 7PCQ_A, 7PCQ_C,
+            7QU4_A, 7QU4_B, 7UD7_A, 7UD7_C, 7UD8_A, 7UD8_C, 7UF6_A, 7UF6_C,
+            7UF7_A, 7UF7_C, 7UVB_A, 7UVB_C, 7VDE_A, 7VDE_C, 7XGY_A, 7XGY_C,
+            8DOV_A, 8DOV_C, 8DOV_E, 8DOV_G, 8EGI_A, 8EGI_C, 8FDK_A, 8FDK_C,
+            8FDL_A, 8FDL_C, 8FDM_A, 8FDM_C, 8FDN_A, 8FDN_C, 8VYL_A, 8VYL_C,
+            8WJ0_A, 8WJ1_A, 8WJ2_A, 8WXW_P, 8XMP_C, 8XMQ_C, 8XMW_A, 9AV9_A,
+            9AV9_C, 9AYZ_A, 9AYZ_C, 9AYZ_E, 9AYZ_G, 9BCJ_A, 9CQM_A, 9CQM_C,
+            9CQN_A, 9CQN_C, 9CQO_A, 9CQO_C, 9CQP_A, 9CQP_C, 9CQQ_A, 9CQQ_C,
+            9CQR_A, 9CQR_C, 9CQS_A, 9CQS_C, 9CQT_A, 9CQT_C, 9CQU_A, 9CQU_C,
+            9CQV_A, 9CQV_C, 9CQW_A, 9CQW_C, 9FHB_A, 9FMU_A, 9FNO_A, 9HBA_A,
+            9HBA_C, 9HEJ_D, 9HEK_D, 9NB6_D, 9NB8_D, 9S3P_A, 9S3P_C, 9S4F_A,
+            9S4I_A, 9S4J_A, 9S4K_A, 9SZW_A, 9TQD_D, 9TQD_F, 9VIB_A, 9VIC_A
+            xrefs (non-sequence databases): CCDS:CCDS10398.1, CCDS:CCDS10399.1,
+            AlphaFoldDB:P69905, EMDB:EMD-0407, EMDB:EMD-0408, EMDB:EMD-13319,
+            EMDB:EMD-13320, EMDB:EMD-13325, EMDB:EMD-31915, EMDB:EMD-33189,
+            EMDB:EMD-37574, EMDB:EMD-37575, EMDB:EMD-37576, EMDB:EMD-38485,
+            EMDB:EMD-38486, EMDB:EMD-38490, EMDB:EMD-45815, EMDB:EMD-45816,
+            EMDB:EMD-45817, EMDB:EMD-45818, EMDB:EMD-45819, EMDB:EMD-45820,
+            EMDB:EMD-45821, EMDB:EMD-45822, EMDB:EMD-45823, EMDB:EMD-45824,
+            EMDB:EMD-45825, EMDB:EMD-49214, EMDB:EMD-49218, EMDB:EMD-49219,
+            EMDB:EMD-49221, EMDB:EMD-50444, EMDB:EMD-50570, EMDB:EMD-50600,
+            EMDB:EMD-52078, EMDB:EMD-52079, EMDB:EMD-54546, EMDB:EMD-54563,
+            EMDB:EMD-54565, EMDB:EMD-54566, EMDB:EMD-54567, EMDB:EMD-54585,
+            EMDB:EMD-54591, EMDB:EMD-54613, EMDB:EMD-54618, EMDB:EMD-54619,
+            EMDB:EMD-54620, EMDB:EMD-54621, EMDB:EMD-55389, EMDB:EMD-56135,
+            EMDB:EMD-65082, EMDB:EMD-65083, EMDB:EMD-65086, EMDB:EMD-65087,
+            MDposit:P69905, SASBDB:P69905, SMR:P69905, BioGRID:109289,
+            BioGRID:109290, ComplexPortal:CPX-2158, ComplexPortal:CPX-2419,
+            ComplexPortal:CPX-2927, ComplexPortal:CPX-2932,
+            ComplexPortal:CPX-2933, CORUM:P69905, DIP:DIP-35199N,
+            FunCoup:P69905, IntAct:P69905, NDEx:IQUERY-CP-HBA1,
+            STRING:9606.ENSP00000251595, BindingDB:P69905, ChEMBL:CHEMBL2887,
+            DrugBank:DB17706, DrugBank:DB08262, DrugBank:DB07427,
+            DrugBank:DB08077, DrugBank:DB07428, DrugBank:DB02126,
+            DrugBank:DB12298, DrugBank:DB09130, DrugBank:DB13120,
+            DrugBank:DB08486, DrugBank:DB15617, DrugBank:DB09147,
+            DrugBank:DB13995, DrugBank:DB18267, DrugBank:DB14490,
+            DrugBank:DB14491, DrugBank:DB14488, DrugBank:DB14501,
+            DrugBank:DB14489, DrugBank:DB13257, DrugBank:DB01592,
+            DrugBank:DB00893, DrugBank:DB09112, DrugBank:DB18071,
+            DrugBank:DB09140, DrugBank:DB06154, DrugBank:DB07645,
+            DrugBank:DB09517, DrugBank:DB08632, DrugBank:DB14975,
+            DrugBank:DB01593, DrugBank:DB14487, DrugBank:DB14533,
+            DrugBank:DB14548, DrugCentral:P69905, TCDB:1.A.107.1.1,
+            CarbonylDB:P69905, GlyConnect:P69905, GlyCosmos:P69905,
+            GlyGen:P69905, iPTMnet:P69905, MetOSite:P69905,
+            PhosphoSitePlus:P69905, BioMuta:HBA1, DMDM:57013850,
+            REPRODUCTION-2DPAGE:IPI00410714, CPTAC:non-CPTAC-1129,
+            CPTAC:non-CPTAC-1130, jPOST:P69905, MassIVE:P69905,
+            PaxDb:9606-ENSP00000251595, PeptideAtlas:P69905, PRIDE:P69905,
+            ProteomicsDB:57547, TopDownProteomics:P69905, ABCD:P69905,
+            Antibodypedia:65596, Antibodypedia:8893, DNASU:3039,
+            Ensembl:ENST00000251595.11, Ensembl:ENSP00000251595.6,
+            Ensembl:ENSG00000188536.14, Ensembl:ENST00000320868.9,
+            Ensembl:ENSP00000322421.5, Ensembl:ENSG00000206172.9, GeneID:3039,
+            GeneID:3040, KEGG:hsa:3039, KEGG:hsa:3040,
+            MANE-Select:ENST00000251595.11, MANE-Select:ENST00000320868.9,
+            UCSC:uc002cfv.4, AGR:HGNC:4823, AGR:HGNC:4824, ClinPGx:PA29199,
+            CTD:3039, CTD:3040, DisGeNET:3039, DisGeNET:3040, GeneCards:HBA1,
+            GeneCards:HBA2, GeneReviews:HBA1, GeneReviews:HBA2, HGNC:4823,
+            HGNC:4824, HPA:ENSG00000188536, HPA:ENSG00000206172,
+            MalaCards:HBA1, MalaCards:HBA2, MIM:140700, MIM:141800, MIM:141850,
+            MIM:141860, MIM:604131, MIM:613978, OpenTargets:ENSG00000188536,
+            OpenTargets:ENSG00000206172, Orphanet:98791, Orphanet:247511,
+            Orphanet:163596, Orphanet:93616, Orphanet:330041, Orphanet:715143,
+            Orphanet:715154, Orphanet:707789, VEuPathDB:HostDB:ENSG00000188536,
+            VEuPathDB:HostDB:ENSG00000206172, eggNOG:KOG3378,
+            GeneTree:ENSGT00940000154590, InParanoid:P69905, OMA:ACHNPGE,
+            OrthoDB:8751793at2759, PAN-GO:P69905, PhylomeDB:P69905,
+            PathwayCommons:P69905, Reactome:R-HSA-1237044,
+            Reactome:R-HSA-1247673, Reactome:R-HSA-2168880,
+            Reactome:R-HSA-9707564, Reactome:R-HSA-9707616,
+            Reactome:R-HSA-9927020, SignaLink:P69905, SIGNOR:P69905,
+            Agora:ENSG00000188536, Agora:ENSG00000206172, BioGRID-ORCS:3039,
+            BioGRID-ORCS:3040, CD-CODE:232F8A39, ChiTaRS:HBA1, ChiTaRS:HBA2,
+            EvolutionaryTrace:P69905, GeneWiki:HBA2,
+            GeneWiki:Hemoglobin,_alpha_1, GeneWiki:Hemoglobin,_alpha_2,
+            Pharos:P69905, PRO:PR:P69905, Proteomes:UP000005640, RNAct:P69905,
+            Bgee:ENSG00000188536, ExpressionAtlas:P69905, GO:0072562,
+            GO:0005829, GO:0071682, GO:0070062, GO:0005576, GO:0031838,
+            GO:0005833, GO:0016020, GO:0020037, GO:0005506, GO:0019825,
+            GO:0005344, GO:0015670, GO:0098869, GO:0048821, GO:0042744,
+            GO:0006954, GO:0030185, GO:0015671, GO:0042542, CDD:cd08927,
+            FunFam:1.10.490.10:FF:000002, Gene3D:1.10.490.10,
+            InterPro:IPR000971, InterPro:IPR009050, InterPro:IPR012292,
+            InterPro:IPR002338, InterPro:IPR050056, InterPro:IPR002339,
+            PANTHER:PTHR11442, PANTHER:PTHR11442:SF48, Pfam:PF00042,
+            PRINTS:PR00612, PRINTS:PR00815, SUPFAM:SSF46458, PROSITE:PS01033
+KEYWORDS    3D-structure; Acetylation; Direct protein sequencing; Disease
+            variant; Glycation; Glycoprotein; Heme; Hereditary hemolytic
+            anemia; Iron; Metal-binding; Oxygen transport; Phosphoprotein;
+            Proteomics identification; Reference proteome; Transport.
+SOURCE      Homo sapiens (human)
+  ORGANISM  Homo sapiens
+            Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+            Mammalia; Eutheria; Euarchontoglires; Primates; Haplorrhini;
+            Catarrhini; Hominidae; Homo.
+REFERENCE   1  (residues 1 to 142)
+  AUTHORS   Michelson,A.M. and Orkin,S.H.
+  TITLE     The 3' untranslated regions of the duplicated human alpha-globin
+            genes are unexpectedly divergent
+  JOURNAL   Cell 22 (2 Pt 2), 371-377 (1980)
+   PUBMED   7448866
+  REMARK    NUCLEOTIDE SEQUENCE [GENOMIC DNA] (HBA1).
+REFERENCE   2  (residues 1 to 142)
+  AUTHORS   Wilson,J.T., Wilson,L.B., Reddy,V.B., Cavallesco,C., Ghosh,P.K.,
+            deRiel,J.K., Forget,B.G. and Weissman,S.M.
+  TITLE     Nucleotide sequence of the coding portion of human alpha globin
+            messenger RNA
+  JOURNAL   J Biol Chem 255 (7), 2807-2815 (1980)
+   PUBMED   6244294
+  REMARK    NUCLEOTIDE SEQUENCE [MRNA] (HBA2).
+REFERENCE   3  (residues 1 to 142)
+  AUTHORS   Liebhaber,S.A., Goossens,M.J. and Kan,Y.W.
+  TITLE     Cloning and complete nucleotide sequence of human 5'-alpha-globin
+            gene
+  JOURNAL   Proc Natl Acad Sci U S A 77 (12), 7054-7058 (1980)
+   PUBMED   6452630
+  REMARK    NUCLEOTIDE SEQUENCE [GENOMIC DNA] (HBA2).
+REFERENCE   4  (residues 1 to 142)
+  AUTHORS   Orkin,S.H., Goff,S.C. and Hechtman,R.L.
+  TITLE     Mutation in an intervening sequence splice junction in man
+  JOURNAL   Proc Natl Acad Sci U S A 78 (8), 5041-5045 (1981)
+   PUBMED   6946451
+  REMARK    NUCLEOTIDE SEQUENCE [GENOMIC DNA].
+REFERENCE   5  (residues 1 to 142)
+  AUTHORS   Zhao,Y. and Xu,X.
+  TITLE     Alpha2(CD31 AGG-->AAG, Arg-->Lys) causing non-deletional
+            alpha-thalassemia in a Chinese family with HbH disease
+  JOURNAL   Haematologica 86 (5), 541-542 (2001)
+   PUBMED   11410421
+  REMARK    NUCLEOTIDE SEQUENCE [GENOMIC DNA], AND VARIANT LYS-32.
+REFERENCE   6  (residues 1 to 142)
+  AUTHORS   Zhao,Y., Zhong,M., Liu,Z. and Xu,X.
+  TITLE     [Rapid detection of the common alpha-thalassemia-2 determinants by
+            PCR assay]
+  JOURNAL   Zhonghua Yi Xue Yi Chuan Xue Za Zhi 18 (3), 216-218 (2001)
+   PUBMED   11402454
+  REMARK    NUCLEOTIDE SEQUENCE [GENOMIC DNA] (HBA1).
+REFERENCE   7  (residues 1 to 142)
+  AUTHORS   De Gobbi,M., Viprakasit,V., Hughes,J.R., Fisher,C., Buckle,V.J.,
+            Ayyub,H., Gibbons,R.J., Vernimmen,D., Yoshinaga,Y., de Jong,P.,
+            Cheng,J.F., Rubin,E.M., Wood,W.G., Bowden,D. and Higgs,D.R.
+  TITLE     A regulatory SNP causes a human genetic disease by creating a new
+            transcriptional promoter
+  JOURNAL   Science 312 (5777), 1215-1217 (2006)
+   PUBMED   16728641
+  REMARK    NUCLEOTIDE SEQUENCE [GENOMIC DNA] (ALPHA-1 AND ALPHA-2).
+REFERENCE   8  (residues 1 to 142)
+  AUTHORS   Kutlar,F., Leithner,C. and Kutlar,A.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (??-OCT-1998) to the EMBL/GenBank/DDBJ databases
+  REMARK    NUCLEOTIDE SEQUENCE [MRNA] (HBA2).;
+            TISSUE=Blood
+REFERENCE   9  (residues 1 to 142)
+  AUTHORS   Kutlar,F., Leithner,C. and Kutlar,A.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (??-NOV-1998) to the EMBL/GenBank/DDBJ databases
+  REMARK    NUCLEOTIDE SEQUENCE [MRNA] (HBA1).;
+            TISSUE=Blood
+REFERENCE   10 (residues 1 to 142)
+  AUTHORS   Kutlar,F., Holley,L., Leithner,C. and Kutlar,A.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (??-FEB-2001) to the EMBL/GenBank/DDBJ databases
+  REMARK    NUCLEOTIDE SEQUENCE [MRNA].;
+            TISSUE=Blood
+REFERENCE   11 (residues 1 to 142)
+  AUTHORS   Kutlar,F., Elam,D., Hoff,J.V., Holley,L. and Kutlar,A.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (??-AUG-2002) to the EMBL/GenBank/DDBJ databases
+  REMARK    NUCLEOTIDE SEQUENCE [GENOMIC DNA] (HBA2), AND VARIANT EVANS
+            MET-63.;
+            TISSUE=Blood
+REFERENCE   12 (residues 1 to 142)
+  AUTHORS   Kutlar,F., Davis,D.H., Nechtman,J. and Elam,D.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (??-APR-2006) to the EMBL/GenBank/DDBJ databases
+  REMARK    NUCLEOTIDE SEQUENCE [GENOMIC DNA] (HBA2), AND VARIANT
+            G-PHILADELPHIA LYS-69.
+REFERENCE   13 (residues 1 to 142)
+  AUTHORS   Totoki,Y., Toyoda,A., Takeda,T., Sakaki,Y., Tanaka,A. and
+            Yokoyama,S.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (??-APR-2005) to the EMBL/GenBank/DDBJ databases
+  REMARK    NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA].;
+            TISSUE=Thymus
+REFERENCE   14 (residues 1 to 142)
+  AUTHORS   Daniels,R.J., Peden,J.F., Lloyd,C., Horsley,S.W., Clark,K.,
+            Tufarelli,C., Kearney,L., Buckle,V.J., Doggett,N.A., Flint,J. and
+            Higgs,D.R.
+  TITLE     Sequence, structure and pathology of the fully annotated terminal 2
+            Mb of the short arm of human chromosome 16
+  JOURNAL   Hum Mol Genet 10 (4), 339-352 (2001)
+   PUBMED   11157797
+  REMARK    NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA] (HBA1 AND HBA2).
+REFERENCE   15 (residues 1 to 142)
+  AUTHORS   Martin,J., Han,C., Gordon,L.A., Terry,A., Prabhakar,S., She,X.,
+            Xie,G., Hellsten,U., Chan,Y.M., Altherr,M., Couronne,O., Aerts,A.,
+            Bajorek,E., Black,S., Blumer,H., Branscomb,E., Brown,N.C.,
+            Bruno,W.J., Buckingham,J.M., Callen,D.F., Campbell,C.S.,
+            Campbell,M.L., Campbell,E.W., Caoile,C., Challacombe,J.F.,
+            Chasteen,L.A., Chertkov,O., Chi,H.C., Christensen,M., Clark,L.M.,
+            Cohn,J.D., Denys,M., Detter,J.C., Dickson,M.,
+            Dimitrijevic-Bussod,M., Escobar,J., Fawcett,J.J., Flowers,D.,
+            Fotopulos,D., Glavina,T., Gomez,M., Gonzales,E., Goodstein,D.,
+            Goodwin,L.A., Grady,D.L., Grigoriev,I., Groza,M., Hammon,N.,
+            Hawkins,T., Haydu,L., Hildebrand,C.E., Huang,W., Israni,S.,
+            Jett,J., Jewett,P.B., Kadner,K., Kimball,H., Kobayashi,A.,
+            Krawczyk,M.C., Leyba,T., Longmire,J.L., Lopez,F., Lou,Y., Lowry,S.,
+            Ludeman,T., Manohar,C.F., Mark,G.A., McMurray,K.L., Meincke,L.J.,
+            Morgan,J., Moyzis,R.K., Mundt,M.O., Munk,A.C., Nandkeshwar,R.D.,
+            Pitluck,S., Pollard,M., Predki,P., Parson-Quintana,B., Ramirez,L.,
+            Rash,S., Retterer,J., Ricke,D.O., Robinson,D.L., Rodriguez,A.,
+            Salamov,A., Saunders,E.H., Scott,D., Shough,T., Stallings,R.L.,
+            Stalvey,M., Sutherland,R.D., Tapia,R., Tesmer,J.G., Thayer,N.,
+            Thompson,L.S., Tice,H., Torney,D.C., Tran-Gyamfi,M., Tsai,M.,
+            Ulanovsky,L.E., Ustaszewska,A., Vo,N., White,P.S., Williams,A.L.,
+            Wills,P.L., Wu,J.R., Wu,K., Yang,J., Dejong,P., Bruce,D.,
+            Doggett,N.A., Deaven,L., Schmutz,J., Grimwood,J., Richardson,P.,
+            Rokhsar,D.S., Eichler,E.E., Gilna,P., Lucas,S.M., Myers,R.M.,
+            Rubin,E.M. and Pennacchio,L.A.
+  TITLE     The sequence and analysis of duplication-rich human chromosome 16
+  JOURNAL   Nature 432 (7020), 988-994 (2004)
+   PUBMED   15616553
+  REMARK    NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA] (HBA1 AND HBA2).
+REFERENCE   16 (residues 1 to 142)
+  AUTHORS   Gerhard,D.S., Wagner,L., Feingold,E.A., Shenmen,C.M., Grouse,L.H.,
+            Schuler,G., Klein,S.L., Old,S., Rasooly,R., Good,P., Guyer,M.,
+            Peck,A.M., Derge,J.G., Lipman,D., Collins,F.S., Jang,W., Sherry,S.,
+            Feolo,M., Misquitta,L., Lee,E., Rotmistrovsky,K., Greenhut,S.F.,
+            Schaefer,C.F., Buetow,K., Bonner,T.I., Haussler,D., Kent,J.,
+            Kiekhaus,M., Furey,T., Brent,M., Prange,C., Schreiber,K.,
+            Shapiro,N., Bhat,N.K., Hopkins,R.F., Hsie,F., Driscoll,T.,
+            Soares,M.B., Casavant,T.L., Scheetz,T.E., Brown-stein,M.J.,
+            Usdin,T.B., Toshiyuki,S., Carninci,P., Piao,Y., Dudekula,D.B.,
+            Ko,M.S., Kawakami,K., Suzuki,Y., Sugano,S., Gruber,C.E.,
+            Smith,M.R., Simmons,B., Moore,T., Waterman,R., Johnson,S.L.,
+            Ruan,Y., Wei,C.L., Mathavan,S., Gunaratne,P.H., Wu,J., Garcia,A.M.,
+            Hulyk,S.W., Fuh,E., Yuan,Y., Sneed,A., Kowis,C., Hodgson,A.,
+            Muzny,D.M., McPherson,J., Gibbs,R.A., Fahey,J., Helton,E.,
+            Ketteman,M., Madan,A., Rodrigues,S., Sanchez,A., Whiting,M.,
+            Madari,A., Young,A.C., Wetherby,K.D., Granite,S.J., Kwong,P.N.,
+            Brinkley,C.P., Pearson,R.L., Bouffard,G.G., Blakesly,R.W.,
+            Green,E.D., Dickson,M.C., Rodriguez,A.C., Grimwood,J., Schmutz,J.,
+            Myers,R.M., Butterfield,Y.S., Griffith,M., Griffith,O.L.,
+            Krzywinski,M.I., Liao,N., Morin,R., Palmquist,D., Petrescu,A.S.,
+            Skalska,U., Smailus,D.E., Stott,J.M., Schnerch,A., Schein,J.E.,
+            Jones,S.J., Holt,R.A., Baross,A., Marra,M.A., Clifton,S.,
+            Makowski,K.A., Bosak,S. and Malek,J.
+  CONSRTM   MGC Project Team
+  TITLE     The status, quality, and expansion of the NIH full-length cDNA
+            project: the Mammalian Gene Collection (MGC)
+  JOURNAL   Genome Res 14 (10B), 2121-2127 (2004)
+   PUBMED   15489334
+  REMARK    NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA] (HBA1 AND HBA2).;
+            TISSUE=Bone marrow, Brain, Lung, and Spleen
+            Erratum:[Genome Res. 2006 Jun;16(6):804. Morrin, Ryan [corrected to
+            Morin, Ryan]]
+REFERENCE   17 (residues 1 to 142)
+  AUTHORS   Braunitzer,G., Gehring-Muller,R., Hilschmann,N., Hilse,K.,
+            Hobom,G., Rudloff,V. and Wittmann-Liebold,B.
+  TITLE     The constitution of normal adult human haemoglobin
+  JOURNAL   Hoppe-Seyler's Z. Physiol. Chem. 325, 283-286 (1961)
+   PUBMED   13872627
+  REMARK    PROTEIN SEQUENCE OF 2-142.
+REFERENCE   18 (residues 1 to 142)
+  AUTHORS   HILL,R.J. and KONIGSBERG,W.
+  TITLE     The structure of human hemoglobin. IV. The chymotryptic digestion
+            of the alpha chain of human hemoglobin
+  JOURNAL   J Biol Chem 237, 3151-3156 (1962)
+   PUBMED   13954546
+  REMARK    PROTEIN SEQUENCE OF 2-142.
+REFERENCE   19 (residues 1 to 142)
+  AUTHORS   SCHROEDER,W.A., SHELTON,J.R., SHELTON,J.B. and CORMICK,J.
+  TITLE     THE AMINO ACID SEQUENCE OF THE ALPHA CHAIN OF HUMAN FETAL
+            HEMOGLOBIN
+  JOURNAL   Biochemistry 2, 1353-1357 (1963)
+   PUBMED   14093912
+  REMARK    PROTEIN SEQUENCE OF 2-142.
+REFERENCE   20 (residues 1 to 142)
+  AUTHORS   Gevaert,K., Goethals,M., Martens,L., Van Damme,J., Staes,A.,
+            Thomas,G.R. and Vandekerckhove,J.
+  TITLE     Exploring proteomes and analyzing protein processing by mass
+            spectrometric identification of sorted N-terminal peptides
+  JOURNAL   Nat Biotechnol 21 (5), 566-569 (2003)
+   PUBMED   12665801
+  REMARK    PROTEIN SEQUENCE OF 2-32.;
+            TISSUE=Platelet
+REFERENCE   21 (residues 1 to 142)
+  AUTHORS   Webber,B.B., Wilson,J.B., Gu,L.H. and Huisman,T.H.
+  TITLE     Hb Ethiopia or alpha 2(140)(HC2)Tyr----His beta 2
+  JOURNAL   Hemoglobin 16 (5), 441-443 (1992)
+   PUBMED   1428951
+  REMARK    PROTEIN SEQUENCE OF 128-142, AND VARIANT ETHIOPIA HIS-141.;
+            TISSUE=Umbilical cord blood
+REFERENCE   22 (residues 1 to 142)
+  AUTHORS   Shapiro,R., McManus,M.J., Zalut,C. and Bunn,H.F.
+  TITLE     Sites of nonenzymatic glycosylation of human hemoglobin A
+  JOURNAL   J Biol Chem 255 (7), 3120-3127 (1980)
+   PUBMED   7358733
+  REMARK    GLYCATION AT LYS-8; LYS-17; LYS-41 AND LYS-62, AND LACK OF
+            GLYCATION AT LYS-12; LYS-57; LYS-61; LYS-91 AND LYS-100.
+REFERENCE   23 (residues 1 to 142)
+  AUTHORS   Williamson,A.L., Brindley,P.J., Abbenante,G., Datu,B.J., Prociv,P.,
+            Berry,C., Girdwood,K., Pritchard,D.I., Fairlie,D.P., Hotez,P.J.,
+            Zhan,B. and Loukas,A.
+  TITLE     Hookworm aspartic protease, Na-APR-2, cleaves human hemoglobin and
+            serum proteins in a host-specific fashion
+  JOURNAL   J Infect Dis 187 (3), 484-494 (2003)
+   PUBMED   12552433
+  REMARK    PROTEOLYTIC CLEAVAGE (MICROBIAL INFECTION) BY N.AMERICANUS APR-2,
+            AND PARTIAL PROTEIN SEQUENCE.
+REFERENCE   24 (residues 1 to 142)
+  AUTHORS   Heimann,A.S., Gomes,I., Dale,C.S., Pagano,R.L., Gupta,A., de
+            Souza,L.L., Luchessi,A.D., Castro,L.M., Giorgi,R., Rioli,V.,
+            Ferro,E.S. and Devi,L.A.
+  TITLE     Hemopressin is an inverse agonist of CB1 cannabinoid receptors
+  JOURNAL   Proc Natl Acad Sci U S A 104 (51), 20588-20593 (2007)
+   PUBMED   18077343
+  REMARK    FUNCTION (HEMOPRESSIN).
+REFERENCE   25 (residues 1 to 142)
+  AUTHORS   Choudhary,C., Kumar,C., Gnad,F., Nielsen,M.L., Rehman,M.,
+            Walther,T.C., Olsen,J.V. and Mann,M.
+  TITLE     Lysine acetylation targets protein complexes and co-regulates major
+            cellular functions
+  JOURNAL   Science 325 (5942), 834-840 (2009)
+   PUBMED   19608861
+  REMARK    ACETYLATION [LARGE SCALE ANALYSIS] AT LYS-17, AND IDENTIFICATION BY
+            MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+REFERENCE   26 (residues 1 to 142)
+  AUTHORS   Burkard,T.R., Planyavsky,M., Kaupe,I., Breitwieser,F.P.,
+            Burckstummer,T., Bennett,K.L., Superti-Furga,G. and Colinge,J.
+  TITLE     Initial characterization of the human central proteome
+  JOURNAL   BMC Syst Biol 5, 17 (2011)
+   PUBMED   21269460
+  REMARK    IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+REFERENCE   27 (residues 1 to 142)
+  AUTHORS   Bian,Y., Song,C., Cheng,K., Dong,M., Wang,F., Huang,J., Sun,D.,
+            Wang,L., Ye,M. and Zou,H.
+  TITLE     An enzyme assisted RP-RPLC approach for in-depth analysis of human
+            liver phosphoproteome
+  JOURNAL   J Proteomics 96, 253-262 (2014)
+   PUBMED   24275569
+  REMARK    PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT SER-4; THR-9; TYR-25;
+            SER-36 AND SER-50, AND IDENTIFICATION BY MASS SPECTROMETRY [LARGE
+            SCALE ANALYSIS].;
+            TISSUE=Liver
+REFERENCE   28 (residues 1 to 142)
+  AUTHORS   Vaca Jacome,A.S., Rabilloud,T., Schaeffer-Reiss,C., Rompais,M.,
+            Ayoub,D., Lane,L., Bairoch,A., Van Dorsselaer,A. and Carapito,C.
+  TITLE     N-terminome analysis of the human mitochondrial proteome
+  JOURNAL   Proteomics 15 (14), 2519-2524 (2015)
+   PUBMED   25944712
+  REMARK    IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+REFERENCE   29 (residues 1 to 142)
+  AUTHORS   Fermi,G.
+  TITLE     Three-dimensional fourier synthesis of human deoxyhaemoglobin at
+            2-5 A resolution: refinement of the atomic model
+  JOURNAL   J Mol Biol 97 (2), 237-256 (1975)
+   PUBMED   1177322
+  REMARK    X-RAY CRYSTALLOGRAPHY OF DEOXYHEMOGLOBIN.
+REFERENCE   30 (residues 1 to 142)
+  AUTHORS   Baldwin,J.M.
+  TITLE     The structure of human carbonmonoxy haemoglobin at 2.7 A resolution
+  JOURNAL   J Mol Biol 136 (2), 103-128 (1980)
+   PUBMED   7373648
+  REMARK    X-RAY CRYSTALLOGRAPHY.
+REFERENCE   31 (residues 1 to 142)
+  AUTHORS   Silva,M.M., Rogers,P.H. and Arnone,A.
+  TITLE     A third quaternary structure of human hemoglobin A at 1.7-A
+            resolution
+  JOURNAL   J Biol Chem 267 (24), 17248-17256 (1992)
+   PUBMED   1512262
+  REMARK    X-RAY CRYSTALLOGRAPHY OF LIGANDED R2 STATE.
+REFERENCE   32 (residues 1 to 142)
+  AUTHORS   Sutherland-Smith,A.J., Baker,H.M., Hofmann,O.M., Brittain,T. and
+            Baker,E.N.
+  TITLE     Crystal structure of a human embryonic haemoglobin: the
+            carbonmonoxy form of gower II (alpha2 epsilon2) haemoglobin at 2.9
+            A resolution
+  JOURNAL   J Mol Biol 280 (3), 475-484 (1998)
+   PUBMED   9665850
+  REMARK    X-RAY CRYSTALLOGRAPHY OF HB GOWER-2.
+REFERENCE   33 (residues 1 to 142)
+  AUTHORS   Kavanaugh,J.S., Moo-Penn,W.F. and Arnone,A.
+  TITLE     Accommodation of insertions in helices: the mutation in hemoglobin
+            Catonsville (Pro 37 alpha-Glu-Thr 38 alpha) generates a
+            3(10)-->alpha bulge
+  JOURNAL   Biochemistry 32 (10), 2509-2513 (1993)
+   PUBMED   8448109
+  REMARK    X-RAY CRYSTALLOGRAPHY OF VARIANT HB CATONSVILLE GLU-38 INS.
+REFERENCE   34 (residues 1 to 142)
+  AUTHORS   Bowden,C.F.M., Chan,A.C.K., Li,E.J.W., Arrieta,A.L., Eltis,L.D. and
+            Murphy,M.E.P.
+  TITLE     Structure-function analyses reveal key features in Staphylococcus
+            aureus IsdB-associated unfolding of the heme-binding pocket of
+            human hemoglobin
+  JOURNAL   J Biol Chem 293 (1), 177-190 (2018)
+   PUBMED   29109153
+  REMARK    X-RAY CRYSTALLOGRAPHY, AND INTERACTION WITH STAPHYLOCOCCUS AUREUS
+            PROTEIN ISDB.
+REFERENCE   35 (residues 1 to 142)
+  AUTHORS   Botha,M.C., Beale,D., Isaacs,W.A. and Lehmann,H.
+  TITLE     Hemoglobin J Cape Town-alpha-2 92 arginine replaced by glutamine
+            beta-2
+  JOURNAL   Nature 212 (5064), 792-795 (1966)
+   PUBMED   5988206
+  REMARK    VARIANT J-CAPE TOWN GLN-93.
+REFERENCE   36 (residues 1 to 142)
+  AUTHORS   Smith,L.L., Barton,B.P. and Huisman,T.H.
+  TITLE     Subunit dissociation of the unstable hemoglobin Bibba (alpha
+            2-136Pro(H19)beta 2)
+  JOURNAL   J Biol Chem 245 (8), 2185-2188 (1970)
+   PUBMED   5440849
+  REMARK    VARIANT BIBBA PRO-137.
+REFERENCE   37 (residues 1 to 142)
+  AUTHORS   Nagel,R.L., Gibson,Q.H. and Jenkins,T.
+  TITLE     Ligand binding in hemoglobin J Capetown
+  JOURNAL   J Mol Biol 58 (3), 643-650 (1971)
+   PUBMED   5091982
+  REMARK    CHARACTERIZATION OF VARIANT J-CAPE TOWN GLN-93.
+REFERENCE   38 (residues 1 to 142)
+  AUTHORS   Charache,S., Ostertag,W. and von Ehrenstein,G.
+  TITLE     Clinical studies and physiological properties of Hopkins-2
+            haemoglobin
+  JOURNAL   Nat New Biol 234 (51), 248-251 (1971)
+   PUBMED   5288820
+  REMARK    VARIANT HOPKINS-II ASP-113.
+REFERENCE   39 (residues 1 to 142)
+  AUTHORS   Wiltshire,B.G., Clark,K.G., Lorkin,P.A. and Lehmann,H.
+  TITLE     Haemoglobin Denmark Hill 95 (G2) Pro-Ala, a variant with unusual
+            electrophoretic and oxygen-binding properties
+  JOURNAL   Biochim Biophys Acta 278 (3), 459-464 (1972)
+   PUBMED   5085669
+  REMARK    VARIANT DENMARK HILL ALA-96.
+REFERENCE   40 (residues 1 to 142)
+  AUTHORS   Wajcman,H., Belkhodja,O. and Labie,D.
+  TITLE     Hb Setif: G1 (94) Asp-Tyr. A new chain hemoglobin variant with
+            substitution of the residue involved in hydrogen bond between
+            unlike subunits
+  JOURNAL   FEBS Lett 27 (2), 298-300 (1972)
+   PUBMED   4667378
+  REMARK    VARIANT SETIF TYR-95.
+REFERENCE   41 (residues 1 to 142)
+  AUTHORS   Adams,J.G. III, Winter,W.P., Rucknagel,D.L. and Spencer,H.H.
+  TITLE     Biosynthesis of hemoglobin Ann Arbor: evidence for catabolic and
+            feedback regulation
+  JOURNAL   Science 176 (4042), 1427-1429 (1972)
+   PUBMED   5033650
+  REMARK    VARIANT ANN ARBOR ARG-81.
+REFERENCE   42 (residues 1 to 142)
+  AUTHORS   Sumida,I., Ota,Y., Imamura,T. and Yanase,T.
+  TITLE     Hemoglobin Sawara: alpha 6(A4) aspartic acid leads to alanine
+  JOURNAL   Biochim Biophys Acta 322 (1), 23-26 (1973)
+   PUBMED   4744335
+  REMARK    VARIANT SAWARA ALA-7.
+REFERENCE   43 (residues 1 to 142)
+  AUTHORS   Pulsinelli,P.D., Perutz,M.F. and Nagel,R.L.
+  TITLE     Structure of hemoglobin M Boston, a variant with a five-coordinated
+            ferric heme
+  JOURNAL   Proc Natl Acad Sci U S A 70 (12), 3870-3874 (1973)
+   PUBMED   4521212
+  REMARK    VARIANT M-BOSTON/M-OSAKA TYR-59.
+REFERENCE   44 (residues 1 to 142)
+  AUTHORS   Alberti,R., Mariuzzi,G.M., Artibani,L., Bruni,E. and Tentori,L.
+  TITLE     A new haemoglobin variant: J-Rovigo alpha 53 (E-2) alanine leads to
+            aspartic acid
+  JOURNAL   Biochim Biophys Acta 342 (1), 1-4 (1974)
+   PUBMED   4824923
+  REMARK    VARIANT J-ROVIGO ASP-54.
+REFERENCE   45 (residues 1 to 142)
+  AUTHORS   Ohba,Y., Miyaji,T., Matsuoka,M., Yokoyama,M. and Numakura,H.
+  TITLE     Hemoglobin Hirosaki (alpha 43 [CE 1] Phe replaced by Leu), a new
+            unstable variant
+  JOURNAL   Biochim Biophys Acta 405 (1), 155-160 (1975)
+   PUBMED   1182166
+  REMARK    VARIANT HIROSAKI LEU-44.
+REFERENCE   46 (residues 1 to 142)
+  AUTHORS   Thillet,J., Blouquit,Y., Perrone,F. and Rosa,J.
+  TITLE     Hemoglobin Pontoise alpha63 Ala replaced by Asp(E12). A new fast
+            moving variant
+  JOURNAL   Biochim Biophys Acta 491 (1), 16-22 (1977)
+   PUBMED   849454
+  REMARK    VARIANT PONTOISE ASP-64.
+REFERENCE   47 (residues 1 to 142)
+  AUTHORS   Sasaki,J., Imamura,T., Sumida,I., Yanase,T. and Ohya,M.
+  TITLE     Increased oxygen affinity for hemoglobin Sawara: alphaA4(6)
+            aspartic acid replaced by alanine
+  JOURNAL   Biochim Biophys Acta 495 (1), 183-186 (1977)
+   PUBMED   20980
+  REMARK    CHARACTERIZATION OF VARIANT SAWARA ALA-7.
+REFERENCE   48 (residues 1 to 142)
+  AUTHORS   Brennan,S.O., Tauro,G.P. and Melrose,W.
+  TITLE     Haemoglobin Port Phillip alpha91 (FG3) Leu replaced by Pro, a new
+            unstable haemoglobin
+  JOURNAL   FEBS Lett 81 (1), 115-117 (1977)
+   PUBMED   902765
+  REMARK    VARIANT PORT PHILLIP PRO-92.
+REFERENCE   49 (residues 1 to 142)
+  AUTHORS   Knuth,A., Pribilla,W., Marti,H.R. and Winterhalter,K.H.
+  TITLE     Hemoglobin Moabit: alpha 86 (F7) Leu leads to Arg: a new unstable
+            abnormal hemoglobin
+  JOURNAL   Acta Haematol 61 (3), 121-124 (1979)
+   PUBMED   108887
+  REMARK    VARIANT MOABIT ARG-87.
+REFERENCE   50 (residues 1 to 142)
+  AUTHORS   Marinucci,M., Mavilio,F., Massa,A., Gabbianelli,M.,
+            Fontanarosa,P.P., Camagna,A., Ignesti,C. and Tentori,L.
+  TITLE     A new abnormal human hemoglobin: Hb Prato (alpha 2 31 (B12) Arg
+            leads to Ser beta 2)
+  JOURNAL   Biochim Biophys Acta 578 (2), 534-540 (1979)
+   PUBMED   486536
+  REMARK    VARIANT PRATO SER-32.
+REFERENCE   51 (residues 1 to 142)
+  AUTHORS   Jue,D.L., Johnson,M.H., Patchen,L.C. and Moo-Penn,W.F.
+  TITLE     Hemoglobin Dunn: alpha 6 (A4) aspartic acid replaced by asparagine
+  JOURNAL   Hemoglobin 3 (2-3), 137-143 (1979)
+   PUBMED   478975
+  REMARK    VARIANT DUNN ASN-7.
+REFERENCE   52 (residues 1 to 142)
+  AUTHORS   Charache,S., Brimhall,B. and Zaatari,G.
+  TITLE     Oxygen affinity and stability of hemoglobin Dunn alpha 6(A4)Asp
+            replaced by Asn): use of isoelectric focusing in recognition of a
+            new abnormal hemoglobin
+  JOURNAL   Am J Hematol 9 (2), 151-160 (1980)
+   PUBMED   7435503
+  REMARK    CHARACTERIZATION OF VARIANT DUNN ASN-7.
+REFERENCE   53 (residues 1 to 142)
+  AUTHORS   Honig,G.R., Vida,L.N., Shamsuddin,M., Mason,R.G., Schlumpf,H.W. and
+            Luke,R.A.
+  TITLE     Hemoglobin Milledgeville (alpha 44 (CD2) Pro leads to Leu): a new
+            variant with increased oxygen affinity
+  JOURNAL   Biochim Biophys Acta 626 (2), 424-431 (1980)
+   PUBMED   7213661
+  REMARK    VARIANT MILLEDGEVILLE LEU-45.
+REFERENCE   54 (residues 1 to 142)
+  AUTHORS   Giuliani,A., Maffi,D., Cappabianca,M.P. and Tentori,L.
+  TITLE     Hemoglobin Legnano (alpha 2 141 (HC3) Arg leads to Leu beta2) a new
+            high oxygen affinity variant. Functional and structural studies
+  JOURNAL   J Biochem 88 (5), 1233-1237 (1980)
+   PUBMED   7462179
+  REMARK    VARIANT LEGNANO LEU-142.
+REFERENCE   55 (residues 1 to 142)
+  AUTHORS   Poyart,C., Bursaux,E., Arnone,A., Bonaventura,J. and Bonaventura,C.
+  TITLE     Structural and functional studies of hemoglobin Suresnes (arg 141
+            alpha 2 replaced by His beta 2). Consequences of disrupting an
+            oxygen-linked anion-binding site
+  JOURNAL   J Biol Chem 255 (19), 9465-9473 (1980)
+   PUBMED   7410435
+  REMARK    VARIANT SURESNES HIS-142.
+REFERENCE   56 (residues 1 to 142)
+  AUTHORS   Lee-Potter,J.P., Deacon-Smith,R.A., Lehmann,H. and Robb,L.
+  TITLE     Haemoglobin Ferndown (alpha 6 [A4] aspartic acid replaced by
+            valine)
+  JOURNAL   FEBS Lett 126 (1), 117-119 (1981)
+   PUBMED   7238857
+  REMARK    VARIANT FERNDOWN VAL-7.
+REFERENCE   57 (residues 1 to 142)
+  AUTHORS   Nakatsuji,T., Miwa,S., Ohba,Y., Miyaji,T., Matsumoto,N. and
+            Matsuoka,I.
+  TITLE     Hemoglobin Tottori (alpha 59[E8] glycine replaced by valine)
+  JOURNAL   Hemoglobin 5 (5), 427-439 (1981)
+   PUBMED   7275660
+  REMARK    VARIANT TOTTORI VAL-60.
+REFERENCE   58 (residues 1 to 142)
+  AUTHORS   Harano,T., Harano,K., Ueda,S., Shibata,S., Imai,K., Ohba,Y.,
+            Shinohara,T., Horio,S., Nishioka,K. and Shirotani,H.
+  TITLE     Hemoglobin Kawachi [alpha 44 (CE2) Pro leads to Arg]: a new
+            hemoglobin variant of high oxygen affinity with amino acid
+            substitution at alpha 1 beta 2 contact
+  JOURNAL   Hemoglobin 6 (1), 43-49 (1982)
+   PUBMED   7068434
+  REMARK    VARIANT KAWACHI ARG-45.
+REFERENCE   59 (residues 1 to 142)
+  AUTHORS   Ohba,Y., Hattori,Y., Matsuoka,M., Miyaji,T. and Fuyuno,K.
+  TITLE     HB Kokura [alpha 47 (CE 5) Asp leads to Gly]: a slightly unstable
+            variant
+  JOURNAL   Hemoglobin 6 (1), 69-74 (1982)
+   PUBMED   7068437
+  REMARK    VARIANT KOKURA GLY-48.
+REFERENCE   60 (residues 1 to 142)
+  AUTHORS   Moo-Penn,W.F., Baine,R.M., Jue,D.L., Johnson,M.H., McGuffey,J.E.
+            and Benson,J.M.
+  TITLE     Hemoglobin Evanston: alpha 14(A12) Trp leads to Arg. A variant
+            hemoglobin associated with alpha-thalassemia-2
+  JOURNAL   Biochim Biophys Acta 747 (1-2), 65-70 (1983)
+   PUBMED   6882779
+  REMARK    VARIANT EVANSTON ARG-15.
+REFERENCE   61 (residues 1 to 142)
+  AUTHORS   Harano,T., Harano,K., Shibata,S., Ueda,S., Imai,K. and Seki,M.
+  TITLE     Hemoglobin Tokoname [alpha 139 (HC 1) Lys leads to Thr]: a new
+            hemoglobin variant with a slightly increased oxygen affinity
+  JOURNAL   Hemoglobin 7 (1), 85-90 (1983)
+   PUBMED   6188720
+  REMARK    VARIANT TOKONAME THR-140.
+REFERENCE   62 (residues 1 to 142)
+  AUTHORS   Liu,G.Y., Zhang,G.X., Nie,S.Y., Luo,H.Y., Teng,Y.Q., Liu,S.P.,
+            Song,M., Son,L., Chen,S.S., Jia,P.C. and Liang,C.C.
+  TITLE     A case of hemoglobin Iwata [alpha 87(F8)His leads to Arg] in China
+  JOURNAL   Hemoglobin 7 (3), 279-282 (1983)
+   PUBMED   6874376
+  REMARK    VARIANT IWATA ARG-88.
+REFERENCE   63 (residues 1 to 142)
+  AUTHORS   Headlee,M.G., Nakatsuji,T., Lam,H., Wrightstone,R.N. and
+            Huisman,T.H.
+  TITLE     Hb Etobicoke, alpha 85(F5) Ser leads to Arg found in a newborn of
+            French-Indian-English descent
+  JOURNAL   Hemoglobin 7 (3), 285-287 (1983)
+   PUBMED   6874377
+  REMARK    VARIANT ETOBICOKE ARG-85.
+REFERENCE   64 (residues 1 to 142)
+  AUTHORS   Harano,T., Harano,K., Shibata,S., Ueda,S., Mori,H. and Seki,M.
+  TITLE     Hemoglobin Aichi [alpha 50(CE8) His----Arg]: a new slightly
+            unstable hemoglobin variant discovered in Japan
+  JOURNAL   FEBS Lett 169 (2), 297-299 (1984)
+   PUBMED   6714429
+  REMARK    VARIANT AICHI ARG-51.
+REFERENCE   65 (residues 1 to 142)
+  AUTHORS   Nakatsuji,T., Wilson,J.B. and Huisman,T.H.
+  TITLE     Hb Cordele alpha(2)47 (CE5)Asp----Ala beta 2. A mildly unstable
+            variant observed in black twins
+  JOURNAL   Hemoglobin 8 (1), 37-46 (1984)
+   PUBMED   6547117
+  REMARK    VARIANT CORDELE ALA-48.
+REFERENCE   66 (residues 1 to 142)
+  AUTHORS   Sciarratta,G.V., Ivaldi,G., Molaro,G.L., Sansone,G., Salkie,M.L.,
+            Wilson,J.B., Reese,A.L. and Huisman,T.H.
+  TITLE     The characterization of hemoglobin Manitoba or alpha
+            (2)102(G9)Ser----Arg beta 2 and hemoglobin Contaldo or alpha
+            (2)103(G10)His----Arg beta 2 by high performance liquid
+            chromatography
+  JOURNAL   Hemoglobin 8 (2), 169-181 (1984)
+   PUBMED   6547932
+  REMARK    VARIANT MANITOBA ARG-103, AND VARIANT CONTALDO ARG-104.
+REFERENCE   67 (residues 1 to 142)
+  AUTHORS   Honig,G.R., Shamsuddin,M., Vida,L.N., Mompoint,M., Valcourt,E.,
+            Bowie,L.J., Jones,E.C., Powers,P.A., Spritz,R.A., Guis,M. et al.
+  TITLE     Hemoglobin Evanston (alpha 14 Trp----Arg). An unstable alpha-chain
+            variant expressed as alpha-thalassemia
+  JOURNAL   J Clin Invest 73 (6), 1740-1749 (1984)
+   PUBMED   6725558
+  REMARK    CHARACTERIZATION OF VARIANT EVANSTON ARG-15.
+REFERENCE   68 (residues 1 to 142)
+  AUTHORS   Shimasaki,S.
+  TITLE     A new hemoglobin variant, hemoglobin Nunobiki [alpha 141 (HC3)
+            Arg----Cys]. Notable influence of the carboxy-terminal cysteine
+            upon various physico-chemical characteristics of hemoglobin
+  JOURNAL   J Clin Invest 75 (2), 695-701 (1985)
+   PUBMED   3973024
+  REMARK    VARIANT NUNOBIKI CYS-142.
+REFERENCE   69 (residues 1 to 142)
+  AUTHORS   Baklouti,F., Baudin-Chich,V., Kister,J., Marden,M., Teyssier,G.,
+            Poyart,C., Delaunay,J. and Wajcman,H.
+  TITLE     Increased oxygen affinity with normal heterotropic effects in
+            hemoglobin Loire [alpha 88(F9)Ala----Ser]
+  JOURNAL   Eur J Biochem 177 (2), 307-312 (1988)
+   PUBMED   3142772
+  REMARK    VARIANT LOIRE SER-89.
+REFERENCE   70 (residues 1 to 142)
+  AUTHORS   Groff,P., Galacteros,F., Kalmes,G., Blouquit,Y. and Wajcman,H.
+  TITLE     Hb Luxembourg [alpha 24(B5) Tyr----His]: a new unstable variant
+  JOURNAL   Hemoglobin 13 (5), 429-436 (1989)
+   PUBMED   2599879
+  REMARK    VARIANT LUXEMBOURG HIS-25.
+REFERENCE   71 (residues 1 to 142)
+  AUTHORS   Ohba,Y., Imai,K., Uenaka,R., Ami,M., Fujisawa,K., Itoh,K.,
+            Hirakawa,K. and Miyaji,T.
+  TITLE     Hb Miyano or alpha 41(C6)Thr----Ser: a new high oxygen affinity
+            alpha chain variant found in an erythremic blood donor
+  JOURNAL   Hemoglobin 13 (7-8), 637-647 (1989)
+   PUBMED   2634665
+  REMARK    VARIANT MIYANO SER-42.
+REFERENCE   72 (residues 1 to 142)
+  AUTHORS   Bardakdjian-Michau,J., Rosa,J., Galacteros,F., Lancelot,M. and
+            Marquart,F.X.
+  TITLE     Hb Reims [alpha 2(23)(B4)Glu----Gly beta 2]: a new alpha chain
+            variant with slightly decreased stability
+  JOURNAL   Hemoglobin 13 (7-8), 733-735 (1989)
+   PUBMED   2634669
+  REMARK    VARIANT REIMS GLY-24.
+REFERENCE   73 (residues 1 to 142)
+  AUTHORS   McDonald,M.J., Michalski,L.A., Turci,S.M., Guillette,R.A.,
+            Jue,D.L., Johnson,M.H. and Moo-Penn,W.F.
+  TITLE     Structural, functional, and subunit assembly properties of
+            hemoglobin Attleboro [alpha 138 (H21) Ser----Pro], a variant
+            possessing a site maturation at a critical C-terminal residue
+  JOURNAL   Biochemistry 29 (1), 173-178 (1990)
+   PUBMED   2108715
+  REMARK    VARIANT ATTLEBORO PRO-139.
+REFERENCE   74 (residues 1 to 142)
+  AUTHORS   Hidaka,K., Iuchi,I., Kobayashi,T., Katoh,K. and Yaguchi,K.
+  TITLE     Hb Fukutomi [alpha 126(H9)Asp----Val]: a new hemoglobin variant
+            with high oxygen affinity
+  JOURNAL   Hemoglobin 14 (5), 499-509 (1990)
+   PUBMED   2079432
+  REMARK    VARIANT FUKUTOMI VAL-127.
+REFERENCE   75 (residues 1 to 142)
+  AUTHORS   Lendaro,E., Ippoliti,R., Brancaccio,A., Bellelli,A., Vallone,B.,
+            Ivaldi,G., Sciarratta,G.V., Castello,C., Tomova,S., Brunori,M. et
+            al.
+  TITLE     Hemoglobin Dallas (alpha 97(G4)Asn-->Lys): functional
+            characterization of a high oxygen affinity natural mutant
+  JOURNAL   Biochim Biophys Acta 1180 (1), 15-20 (1992)
+   PUBMED   1390940
+  REMARK    VARIANT DALLAS LYS-98.
+REFERENCE   76 (residues 1 to 142)
+  AUTHORS   Wajcman,H., Kister,J., Marden,M., Lahary,A., Monconduit,M. and
+            Galacteros,F.
+  TITLE     Hemoglobin Rouen (alpha-140 (HC2) Tyr-->His): alteration of the
+            alpha-chain C-terminal region and moderate increase in oxygen
+            affinity
+  JOURNAL   Biochim Biophys Acta 1180 (1), 53-57 (1992)
+   PUBMED   1390944
+  REMARK    VARIANT ROUEN/ETHIOPIA HIS-141.
+REFERENCE   77 (residues 1 to 142)
+  AUTHORS   Abbes,S., M'Rad,A., Fitzgerald,P.A., Dormer,P., Blouquit,Y.,
+            Kister,J., Galacteros,F. and Wajcman,H.
+  TITLE     HB Al-Ain Abu Dhabi [alpha 18(A16)Gly----Asp]: a new hemoglobin
+            variant discovered in an Emiratee family
+  JOURNAL   Hemoglobin 16 (5), 355-362 (1992)
+   PUBMED   1428941
+  REMARK    VARIANT AL-AIN ABU DHABI ASP-19.
+REFERENCE   78 (residues 1 to 142)
+  AUTHORS   Wajcman,H., Vasseur,C., Blouquit,Y., Rosa,J., Labie,D., Najman,A.,
+            Reman,O., Leporrier,M. and Galacteros,F.
+  TITLE     Unstable alpha-chain hemoglobin variants with factitious
+            beta-thalassemia biosynthetic ratio: Hb Questembert (alpha
+            131[H14]Ser-->Pro) and Hb Caen (alpha 132[H15]Val-->Gly)
+  JOURNAL   Am J Hematol 42 (4), 367-374 (1993)
+   PUBMED   8493987
+  REMARK    VARIANT QUESTEMBERT PRO-132.
+REFERENCE   79 (residues 1 to 142)
+  AUTHORS   Curuk,M.A., Dimovski,A.J., Baysal,E., Gu,L.H., Kutlar,F.,
+            Molchanova,T.P., Webber,B.B., Altay,C., Gurgey,A. and Huisman,T.H.
+  TITLE     Hb Adana or alpha 2(59)(E8)Gly-->Asp beta 2, a severely unstable
+            alpha 1-globin variant, observed in combination with the
+            -(alpha)20.5 Kb alpha-thal-1 deletion in two Turkish patients
+  JOURNAL   Am J Hematol 44 (4), 270-275 (1993)
+   PUBMED   8237999
+  REMARK    VARIANT ADANA ASP-60.
+REFERENCE   80 (residues 1 to 142)
+  AUTHORS   Wajcman,H., Kister,J., Galacteros,F., Spielvogel,A., Lin,M.J.,
+            Vidugiris,G.J., Hirsch,R.E., Friedman,J.M. and Nagel,R.L.
+  TITLE     Hb Montefiore (126(H9)Asp-->Tyr). High oxygen affinity and loss of
+            cooperativity secondary to C-terminal disruption
+  JOURNAL   J Biol Chem 271 (38), 22990-22998 (1996)
+   PUBMED   8798486
+  REMARK    VARIANT MONTEFIORE TYR-127.
+REFERENCE   81 (residues 1 to 142)
+  AUTHORS   Fujiwara,N., Maekawa,T. and Matsuda,G.
+  TITLE     Hemoglobin Atago (alpha2-85Tyr beta-2) a new abnormal human
+            hemoglobin found in Nagasaki. Biochemical studies on hemoglobins
+            and myoglobins. VI
+  JOURNAL   Int J Protein Res 3 (1), 35-39 (1971)
+   PUBMED   5115619
+  REMARK    VARIANT ATAGO TYR-86.
+REFERENCE   82 (residues 1 to 142)
+  AUTHORS   Brennan,S.O. and Matthews,J.R.
+  TITLE     Hb Auckland [alpha 87(F8) His-->Asn]: a new mutation of the
+            proximal histidine identified by electrospray mass spectrometry
+  JOURNAL   Hemoglobin 21 (5), 393-403 (1997)
+   PUBMED   9322075
+  REMARK    VARIANT AUCKLAND ASN-88.
+REFERENCE   83 (residues 1 to 142)
+  AUTHORS   Brimhall,B.J., Duerst,M., Hollan,S.R., Stenzel,P., Szelenyi,J. and
+            Jones,R.T.
+  TITLE     Structural characterizations of hemoglobins J-Buda (alpha 61 (E10)
+            Lys-to-Asn) and G-Pest (alpha 74 (EF3) Asp-to-Asn)
+  JOURNAL   Biochim. Biophys. Acta 336, 344-360 (1974)
+  REMARK    VARIANTS ASN-62 AND ASN-75.
+REFERENCE   84 (residues 1 to 142)
+  AUTHORS   Wajcman,H., Kister,J., M'Rad,A., Soummer,A.M. and Galacteros,F.
+  TITLE     Hb Cemenelum [alpha 92 (FG4) Arg-->Trp]: a hemoglobin variant of
+            the alpha 1/beta 2 interface that displays a moderate increase in
+            oxygen affinity
+  JOURNAL   Ann Hematol 68 (2), 73-76 (1994)
+   PUBMED   8148419
+  REMARK    VARIANT CEMENELUM TRP-93.
+REFERENCE   85 (residues 1 to 142)
+  AUTHORS   Zeng,Y.-T., Huang,S.-Z., Qiu,X.-K., Cheng,G.-C., Ren,Z.-R.,
+            Jin,Q.-C., Chen,C.-Y., Jiao,C.-T., Tang,Z.-G., Liu,R.-H.,
+            Bao,X.-H., Zeng,L.-Z., Duan,Y.-Q. and Zhang,G.-Y.
+  TITLE     Hemoglobin Chongqing [alpha 2(NA2)Leu----Arg] and hemoglobin Harbin
+            [alpha 16(A14)Lys----Met] found in China
+  JOURNAL   Hemoglobin 8 (6), 569-581 (1984)
+   PUBMED   6526652
+  REMARK    VARIANTS ARG-3 AND MET-17.
+REFERENCE   86 (residues 1 to 142)
+  AUTHORS   Ayala,S., Colomer,D., Gelpi,J.L. and Corrons,J.L.
+  TITLE     alpha-Thalassaemia due to a single codon deletion in the
+            alpha1-globin gene. Computational structural analysis of the new
+            alpha-chain variant. Mutations in brief no. 132. Online
+  JOURNAL   Hum Mutat 11 (5), 412 (1998)
+   PUBMED   10206681
+  REMARK    VARIANT CLINIC LYS-61 DEL.
+REFERENCE   87 (residues 1 to 142)
+  AUTHORS   Wilson,J.B., Webber,B.B., Plaseska,D., de Alarcon,P.A.,
+            McMillan,S.K. and Huisman,T.H.
+  TITLE     Hb Davenport or alpha 2(78)(EF7)Asn----His beta 2
+  JOURNAL   Hemoglobin 14 (6), 599-605 (1990)
+   PUBMED   2101836
+  REMARK    VARIANT DAVENPORT HIS-79.
+REFERENCE   88 (residues 1 to 142)
+  AUTHORS   Wilson,J.B., Webber,B.B., Kutlar,A., Reese,A.L., McKie,V.C.,
+            Lutcher,C.L., Felice,A.E. and Huisman,T.H.
+  TITLE     Hb Evans or alpha 262(E11)Val----Met beta 2; an unstable hemoglobin
+            causing a mild hemolytic anemia
+  JOURNAL   Hemoglobin 13 (6), 557-566 (1989)
+   PUBMED   2606724
+  REMARK    VARIANT EVANS MET-63.
+REFERENCE   89 (residues 1 to 142)
+  AUTHORS   Cash,F.E., Monplaisir,N., Goossens,M. and Liebhaber,S.A.
+  TITLE     Locus assignment of two alpha-globin structural mutants from the
+            Caribbean basin: alpha Fort de France (alpha 45 Arg) and alpha
+            Spanish Town (alpha 27 Val)
+  JOURNAL   Blood 74 (2), 833-835 (1989)
+   PUBMED   2752146
+  REMARK    VARIANTS VAL-28 AND ARG-46.
+REFERENCE   90 (residues 1 to 142)
+  AUTHORS   Wajcman,H., Kister,J., Riou,J., Galacteros,F., Girot,R.,
+            Maier-Redelsperger,M., Nayudu,N.V. and Giordano,P.C.
+  TITLE     Hb Godavari [alpha 95(G2)Pro-->Thr]: a neutral amino acid
+            substitution in the alpha 1 beta 2 interface that modifies the
+            electrophoretic mobility of hemoglobin
+  JOURNAL   Hemoglobin 22 (1), 11-22 (1998)
+   PUBMED   9494044
+  REMARK    VARIANT GODAVARI THR-96.
+REFERENCE   91 (residues 1 to 142)
+  AUTHORS   Huisman,T.H., Wilson,J.B., Gravely,M. and Hubbard,M.
+  TITLE     Hemoglobin Grady: the first example of a variant with elongated
+            chains due to an insertion of residues
+  JOURNAL   Proc Natl Acad Sci U S A 71 (8), 3270-3273 (1974)
+   PUBMED   4528583
+  REMARK    VARIANT GRADY GLU-PHE-THR-119 INS.
+REFERENCE   92 (residues 1 to 142)
+  AUTHORS   Orisaka,M., Tajima,T., Harano,T., Harano,K., Kushida,Y. and Imai,K.
+  TITLE     A new alpha chain variant, Hb Hanamaki or alpha
+            2(139)(HC1)Lys----Glu beta 2, found in a Japanese family
+  JOURNAL   Hemoglobin 16 (1-2), 67-71 (1992)
+   PUBMED   1634363
+  REMARK    VARIANT HANAMAKI GLU-140.
+REFERENCE   93 (residues 1 to 142)
+  AUTHORS   Harano,T., Harano,K., Shibata,S., Ueda,S., Imai,K. and Seki,M.
+  TITLE     HB Handa [alpha 90 (FG 2) Lys replaced by Met]: structure and
+            biosynthesis of a new slightly higher oxygen affinity variant
+  JOURNAL   Hemoglobin 6 (4), 379-389 (1982)
+   PUBMED   6815131
+  REMARK    VARIANT HANDA MET-91.
+REFERENCE   94 (residues 1 to 142)
+  AUTHORS   Charache,S., Mondzac,A.M. and Gessner,U.
+  TITLE     Hemoglobin Hasharon (alpha-2-47 his(CD5)beta-2): a hemoglobin found
+            in low concentration
+  JOURNAL   J Clin Invest 48 (5), 834-847 (1969)
+   PUBMED   5780195
+  REMARK    VARIANT HASHARON HIS-48.
+REFERENCE   95 (residues 1 to 142)
+  AUTHORS   Fleming,P.J., Sumner,D.R., Wyatt,K., Hughes,W.G., Melrose,W.D.,
+            Jupe,D.M. and Baikie,M.J.
+  TITLE     Hemoglobin Hobart or alpha 20(Bl)His----Arg: a new alpha chain
+            hemoglobin variant
+  JOURNAL   Hemoglobin 11 (3), 211-220 (1987)
+   PUBMED   3654264
+  REMARK    VARIANT HOBART ARG-21.
+REFERENCE   96 (residues 1 to 142)
+  AUTHORS   Reed,R.E., Winter,W.P. and Rucknagel,D.L.
+  TITLE     Haemoglobin inkster (alpha2 85aspartic acid leads to valine beta2)
+            coexisting with beta-thalassaemia in a Caucasian family
+  JOURNAL   Br J Haematol 26 (3), 475-484 (1974)
+   PUBMED   4212045
+  REMARK    VARIANT INKSTER VAL-86.
+REFERENCE   97 (residues 1 to 142)
+  AUTHORS   Miyashita,H., Hashimoto,K., Mohri,H., Ohokubo,T., Harano,T.,
+            Harano,K. and Imai,K.
+  TITLE     Hb Kanagawa [alpha 40(C5)Lys----Met]: a new alpha chain variant
+            with an increased oxygen affinity
+  JOURNAL   Hemoglobin 16 (1-2), 1-10 (1992)
+   PUBMED   1634355
+  REMARK    VARIANT KANAGAWA MET-41.
+REFERENCE   98 (residues 1 to 142)
+  AUTHORS   Giordano,P.C., Harteveld,C.L., Streng,H., Oosterwijk,J.C.,
+            Heister,J.G., Amons,R. and Bernini,L.F.
+  TITLE     Hb Kurdistan [alpha 47(CE5)Asp-->Tyr], a new alpha chain variant in
+            combination with beta (0)-thalassemia
+  JOURNAL   Hemoglobin 18 (1), 11-18 (1994)
+   PUBMED   8195005
+  REMARK    VARIANT KURDISTAN TYR-48.
+REFERENCE   99 (residues 1 to 142)
+  AUTHORS   Harano,T., Harano,K., Imai,K., Murakami,T. and Matsubara,H.
+  TITLE     Hb Kurosaki [alpha 7(A5)Lys-->Glu]: a new alpha chain variant found
+            in a Japanese woman
+  JOURNAL   Hemoglobin 19 (3-4), 197-201 (1995)
+   PUBMED   7558876
+  REMARK    VARIANT KUROSAKI GLU-8.
+REFERENCE   100 (residues 1 to 142)
+  AUTHORS   Yalcin,A., Avcu,F., Beyan,C., Gurgey,A. and Ural,A.U.
+  TITLE     A case of HB J-Meerut (or Hb J-Birmingham) [alpha 120(H3)Ala-->Glu]
+  JOURNAL   Hemoglobin 18 (6), 433-435 (1994)
+   PUBMED   7713747
+  REMARK    VARIANT J-MEERUT/J-BIRMINGHAM GLU-121.
+REFERENCE   101 (residues 1 to 142)
+  AUTHORS   Wajcman,H., Kalmes,G., Groff,P., Prome,D., Riou,J. and
+            Galacteros,F.
+  TITLE     Hb Melusine [alpha 114(GH2)Pro-->Ser]: a new neutral hemoglobin
+            variant
+  JOURNAL   Hemoglobin 17 (5), 397-405 (1993)
+   PUBMED   8294199
+  REMARK    VARIANT MELUSINE SER-115.
+REFERENCE   102 (residues 1 to 142)
+  AUTHORS   Brimhall,B., Jones,R.T., Schneider,R.G., Hosty,T.S., Tomlin,G. and
+            Atkins,R.
+  TITLE     Two new hemoglobins. Hemoglobin Alabama (beta39(C5)Gln leads to
+            Lys) and hemoglobin Montgomery (alpha 48(CD 6) Leu leads to Arg)
+  JOURNAL   Biochim Biophys Acta 379 (1), 28-32 (1975)
+   PUBMED   1115799
+  REMARK    VARIANT MONTGOMERY ARG-49.
+REFERENCE   103 (residues 1 to 142)
+  AUTHORS   Honig,G.R., Shamsuddin,M., Zaizov,R., Steinherz,M., Solar,I. and
+            Kirschmann,C.
+  TITLE     Hemoglobin Petah Tikva (alpha 110 ala replaced by asp): a new
+            unstable variant with alpha-thalassemia-like expression
+  JOURNAL   Blood 57 (4), 705-711 (1981)
+   PUBMED   7470621
+  REMARK    VARIANT PETAH TIKVA ASP-111.
+REFERENCE   104 (residues 1 to 142)
+  AUTHORS   Wajcman,H., Prehu,M.O., Prehu,C., Blouquit,Y., Prome,D. and
+            Galacteros,F.
+  TITLE     Hemoglobin Phnom Penh [alpha117Phe(H1)-Ile-alpha118Thr(H2)];
+            evidence for a hotspot for insertion of residues in the third exon
+            of the alpha1-globin gene
+  JOURNAL   Hum. Mutat. Suppl. 1, S20-S22 (1998)
+   PUBMED   9452028
+  REMARK    VARIANT PHNOM PENH ILE-118 INS.
+REFERENCE   105 (residues 1 to 142)
+  AUTHORS   Zwerdling,T., Williams,S., Nasr,S.A. and Rucknagel,D.L.
+  TITLE     Hb Port Huron [alpha 56 (E5)Lys----ARG]: a new alpha chain variant
+  JOURNAL   Hemoglobin 15 (5), 381-391 (1991)
+   PUBMED   1802882
+  REMARK    VARIANT PORT HURON ARG-57.
+REFERENCE   106 (residues 1 to 142)
+  AUTHORS   Zeng,Y.T., Huang,S.Z., Zhou,X.D., Qiu,X.K., Dong,Q.Y., Li,M.Y. and
+            Bai,J.H.
+  TITLE     Hb Shenyang (alpha 26 (B7) Ala replaced by Glu): a new unstable
+            variant found in China
+  JOURNAL   Hemoglobin 6 (6), 625-628 (1982)
+   PUBMED   7161109
+  REMARK    VARIANT SHENYANG GLU-27.
+REFERENCE   107 (residues 1 to 142)
+  AUTHORS   Sanguansermsri,T., Matragoon,S., Changloah,L. and Flatz,G.
+  TITLE     Hemoglobin Suan-Dok (alpha 2 109 (G16) Leu replaced by Arg beta 2):
+            an unstable variant associated with alpha-thalassemia
+  JOURNAL   Hemoglobin 3 (2-3), 161-174 (1979)
+   PUBMED   478977
+  REMARK    VARIANT SUAN-DOK ARG-110.
+REFERENCE   108 (residues 1 to 142)
+  AUTHORS   Ohba,Y., Yamamoto,K., Hattori,Y., Kawata,R. and Miyaji,T.
+  TITLE     Hyperunstable hemoglobin Toyama [alpha 2 136(H19)Leu----Arg beta
+            2]: detection and identification by in vitro biosynthesis with
+            radioactive amino acids
+  JOURNAL   Hemoglobin 11 (6), 539-556 (1987)
+   PUBMED   2833478
+  REMARK    INVOLVEMENT IN HEIBAN, AND VARIANT TOYAMA ARG-137.
+REFERENCE   109 (residues 1 to 142)
+  AUTHORS   Harkness,M., Harkness,D.R., Kutlar,F., Kutlar,A., Wilson,J.B.,
+            Webber,B.B., Codrington,J.F. and Huisman,T.H.
+  TITLE     Hb Sun Prairie or alpha(2)130(H13)Ala----Pro beta 2, a new unstable
+            variant occurring in low quantities
+  JOURNAL   Hemoglobin 14 (5), 479-489 (1990)
+   PUBMED   2079430
+  REMARK    VARIANT SUN PRAIRIE PRO-131.
+REFERENCE   110 (residues 1 to 142)
+  AUTHORS   Harano,T., Harano,K., Imai,K. and Terunuma,S.
+  TITLE     HB Swan River [alpha 6(A4)ASP-->Gly] observed in a Japanese man
+  JOURNAL   Hemoglobin 20 (1), 75-78 (1996)
+   PUBMED   8745434
+  REMARK    VARIANT SWAN RIVER GLY-7.
+REFERENCE   111 (residues 1 to 142)
+  AUTHORS   Vasseur,C., Blouquit,Y., Kister,J., Prome,D., Kavanaugh,J.S.,
+            Rogers,P.H., Guillemin,C., Arnone,A., Galacteros,F., Poyart,C.,
+            Rosa,J. and Wajcman,H.
+  TITLE     Hemoglobin Thionville. An alpha-chain variant with a substitution
+            of a glutamate for valine at NA-1 and having an acetylated
+            methionine NH2 terminus
+  JOURNAL   J Biol Chem 267 (18), 12682-12691 (1992)
+   PUBMED   1618774
+  REMARK    VARIANT THIONVILLE GLU-2.
+REFERENCE   112 (residues 1 to 142)
+  AUTHORS   Darbellay,R., Mach-Pascual,S., Rose,K., Graf,J. and Beris,P.
+  TITLE     Haemoglobin Tunis-Bizerte: a new alpha 1 globin 129 Leu-->Pro
+            unstable variant with thalassaemic phenotype
+  JOURNAL   Br J Haematol 90 (1), 71-76 (1995)
+   PUBMED   7786798
+  REMARK    VARIANT TUNIS-BIZERTE PRO-130.
+REFERENCE   113 (residues 1 to 142)
+  AUTHORS   Langdown,J.V., Davidson,R.J. and Williamson,D.
+  TITLE     A new alpha chain variant, Hb Turriff [alpha 99(G6)Lys----Glu]: the
+            interference of abnormal hemoglobins in Hb A1c determination
+  JOURNAL   Hemoglobin 16 (1-2), 11-17 (1992)
+   PUBMED   1634357
+  REMARK    VARIANT TURRIFF GLU-100.
+REFERENCE   114 (residues 1 to 142)
+  AUTHORS   Wajcman,H., Kister,J., M'Rad,A., Marden,M.C., Riou,J. and
+            Galacteros,F.
+  TITLE     Hb Val de Marne [alpha 133(H16)Ser-->Arg]: a new hemoglobin variant
+            with moderate increase in oxygen affinity
+  JOURNAL   Hemoglobin 17 (5), 407-417 (1993)
+   PUBMED   8294200
+  REMARK    VARIANT VAL DE MARNE ARG-134.
+REFERENCE   115 (residues 1 to 142)
+  AUTHORS   Jiang,N.H., Liang,S., Wen,X.J., Liang,R., Su,C. and Tang,Z.
+  TITLE     Hb Westmead: an alpha 2-globin gene mutation detected by polymerase
+            chain reaction and Stu I cleavage
+  JOURNAL   Hemoglobin 15 (4), 291-295 (1991)
+   PUBMED   1686260
+  REMARK    VARIANT WESTMEAD GLN-123.
+REFERENCE   116 (residues 1 to 142)
+  AUTHORS   Como,P.F., Barber,S., Sage,R.E., Trent,R.J. and Kronenberg,H.
+  TITLE     Hemoglobin Woodville: alpha (2)6(A4) aspartic acid----tyrosine
+  JOURNAL   Hemoglobin 10 (2), 135-141 (1986)
+   PUBMED   3754246
+  REMARK    VARIANT WOODVILLE TYR-7.
+REFERENCE   117 (residues 1 to 142)
+  AUTHORS   Fujisawa,K., Hattori,Y., Ohba,Y. and Ando,S.
+  TITLE     Hb Yuda or alpha 130(H13)Ala----Asp; a new alpha chain variant with
+            low oxygen affinity
+  JOURNAL   Hemoglobin 16 (5), 435-439 (1992)
+   PUBMED   1428950
+  REMARK    VARIANT YUDA ASP-131.
+REFERENCE   118 (residues 1 to 142)
+  AUTHORS   Wajcman,H., Blouquit,Y., Vasseur,C., Le Querrec,A., Laniece,M.,
+            Melevendi,C., Rasore,A. and Galacteros,F.
+  TITLE     Two new human hemoglobin variants caused by unusual mutational
+            events: Hb Zaire contains a five residue repetition within the
+            alpha-chain and Hb Duino has two residues substituted in the
+            beta-chain
+  JOURNAL   Hum Genet 89 (6), 676-680 (1992)
+   PUBMED   1511986
+  REMARK    VARIANT ZAIRE HIS-LEU-PRO-ALA-GLU-117 INS.
+REFERENCE   119 (residues 1 to 142)
+  AUTHORS   Traeger-Synodinos,J., Harteveld,C.L., Kanavakis,E., Giordano,P.C.,
+            Kattamis,C. and Bernini,L.F.
+  TITLE     Hb Aghia Sophia [alpha62(E11)Val-->0 (alpha1)], an 'in-frame'
+            deletion causing alpha-thalassemia
+  JOURNAL   Hemoglobin 23 (4), 317-324 (1999)
+   PUBMED   10569720
+  REMARK    VARIANT HBH VAL-63 DEL.
+REFERENCE   120 (residues 1 to 142)
+  AUTHORS   Lacan,P., Francina,A., Souillet,G., Aubry,M., Couprie,N.,
+            Dementhon,L. and Becchi,M.
+  TITLE     Two new alpha chain variants: Hb Boghe [alpha58(E7)His-->Gln,
+            alpha2], a variant on the distal histidine, and Hb CHarolles
+            [alpha103(G10)His-Tyr, alpha1]
+  JOURNAL   Hemoglobin 23 (4), 345-352 (1999)
+   PUBMED   10569723
+  REMARK    VARIANT BOGHE GLN-59, AND VARIANT CHAROLLES TYR-104.
+REFERENCE   121 (residues 1 to 142)
+  AUTHORS   Jorge,S.B., Melo,M.B., Costa,F.F. and Sonati,M.F.
+  TITLE     Screening for mutations in human alpha-globin genes by
+            nonradioactive single-strand conformation polymorphism
+  JOURNAL   Braz J Med Biol Res 36 (11), 1471-1474 (2003)
+   PUBMED   14576901
+  REMARK    VARIANT CAMPINAS VAL-27, AND VARIANT WEST ONE GLY-127.
+REFERENCE   122 (residues 1 to 142)
+  AUTHORS   Abdulmalik,O., Safo,M.K., Lerner,N.B., Ochotorena,J., Daikhin,E.,
+            Lakka,V., Santacroce,R., Abraham,D.J. and Asakura,T.
+  TITLE     Characterization of hemoglobin bassett (alpha94Asp-->Ala), a
+            variant with very low oxygen affinity
+  JOURNAL   Am J Hematol 77 (3), 268-276 (2004)
+   PUBMED   15495251
+  REMARK    VARIANT BASSETT ALA-95, AND CHARACTERIZATION OF VARIANT BASSETT
+            ALA-95.
+REFERENCE   123 (residues 1 to 142)
+  AUTHORS   Martin,G., Villegas,A., Gonzalez,F.A., Ropero,P., Hojas,R.,
+            Polo,M., Mateo,M., Salvador,M. and Benavente,C.
+  TITLE     A novel mutation of the alpha2-globin causing alpha(+)-thalassemia:
+            Hb Plasencia [alpha125(H8)Leu--Arg (alpha2)
+  JOURNAL   Hemoglobin 29 (2), 113-117 (2005)
+   PUBMED   15921163
+  REMARK    VARIANT PLASENCIA ARG-126.
+COMMENT     On or before May 8, 2009 this sequence version replaced
+            gi:121946761, gi:74740373, gi:74720245, gi:121949023, gi:74751979,
+            gi:74753073, gi:7428611, gi:319896, gi:7428612, gi:122412.
+            [FUNCTION] Involved in oxygen transport from the lung to the
+            various peripheral tissues.
+            [FUNCTION] [Hemopressin]: Hemopressin acts as an antagonist peptide
+            of the cannabinoid receptor CNR1 (PubMed:18077343).
+            Hemopressin-binding efficiently blocks cannabinoid receptor CNR1
+            and subsequent signaling (PubMed:18077343).
+            {ECO:0000269|PubMed:18077343}.
+            [SUBUNIT] Heterotetramer of two alpha chains and two beta chains in
+            adult hemoglobin A (HbA); two alpha chains and two delta chains in
+            adult hemoglobin A2 (HbA2); two alpha chains and two epsilon chains
+            in early embryonic hemoglobin Gower-2; two alpha chains and two
+            gamma chains in fetal hemoglobin F (HbF).
+            [SUBUNIT] (Microbial infection) Interacts with Staphylococcus
+            aureus protein isdB. {ECO:0000269|PubMed:29109153}.
+            [INTERACTION] P69905; Q9NZD4: AHSP; NbExp=3; IntAct=EBI-714680,
+            EBI-720250; P69905; Q2TAC2: CCDC57; NbExp=3; IntAct=EBI-714680,
+            EBI-2808286; P69905; P00387: CYB5R3; NbExp=2; IntAct=EBI-714680,
+            EBI-1046040; P69905; P68871: HBB; NbExp=32; IntAct=EBI-714680,
+            EBI-715554; P69905; P02042: HBD; NbExp=3; IntAct=EBI-714680,
+            EBI-6152722; P69905; P02100: HBE1; NbExp=4; IntAct=EBI-714680,
+            EBI-6190240; P69905; P69892: HBG2; NbExp=3; IntAct=EBI-714680,
+            EBI-3910089; P69905; P09105: HBQ1; NbExp=3; IntAct=EBI-714680,
+            EBI-10193656; P69905; Q15323: KRT31; NbExp=3; IntAct=EBI-714680,
+            EBI-948001; P69905; O76011: KRT34; NbExp=3; IntAct=EBI-714680,
+            EBI-1047093; P69905; Q6A162: KRT40; NbExp=3; IntAct=EBI-714680,
+            EBI-10171697; P69905; P29474: NOS3; NbExp=2; IntAct=EBI-714680,
+            EBI-1391623; P69905; P0DPK4: NOTCH2NLC; NbExp=3; IntAct=EBI-714680,
+            EBI-22310682.
+            [TISSUE SPECIFICITY] Red blood cells.
+            [PTM] The initiator Met is not cleaved in variant Thionville and is
+            acetylated.
+            [DISEASE] Heinz body anemias (HEIBAN) [MIM:140700]: Form of
+            non-spherocytic hemolytic anemia of Dacie type 1. After
+            splenectomy, which has little benefit, basophilic inclusions called
+            Heinz bodies are demonstrable in the erythrocytes. Before
+            splenectomy, diffuse or punctate basophilia may be evident. Most of
+            these cases are probably instances of hemoglobinopathy. The
+            hemoglobin demonstrates heat lability. Heinz bodies are observed
+            also with the Ivemark syndrome (asplenia with cardiovascular
+            anomalies) and with glutathione peroxidase deficiency.
+            {ECO:0000269|PubMed:2833478}. Note=The disease may be caused by
+            variants affecting the gene represented in this entry.
+            [DISEASE] Alpha-thalassemia (A-THAL) [MIM:604131]: A form of
+            thalassemia. Thalassemias are common monogenic diseases occurring
+            mostly in Mediterranean and Southeast Asian populations. The
+            hallmark of alpha-thalassemia is an imbalance in globin-chain
+            production in the adult HbA molecule. The level of alpha chain
+            production can range from none to very nearly normal levels.
+            Deletion of both copies of each of the two alpha-globin genes
+            causes alpha(0)-thalassemia, also known as homozygous alpha
+            thalassemia. Due to the complete absence of alpha chains, the
+            predominant fetal hemoglobin is a tetramer of gamma-chains (Bart
+            hemoglobin) that has essentially no oxygen carrying capacity. This
+            causes oxygen starvation in the fetal tissues leading to prenatal
+            lethality or early neonatal death. The loss of two alpha genes
+            results in mild alpha-thalassemia, also known as heterozygous
+            alpha-thalassemia. Affected individuals have small red cells and a
+            mild anemia (microcytosis). If three of the four alpha-globin genes
+            are functional, individuals are completely asymptomatic. Some rare
+            forms of alpha-thalassemia are due to point mutations
+            (non-deletional alpha-thalassemia). Note=The disease is caused by
+            variants affecting the gene represented in this entry.
+            [DISEASE] Note=Alpha(0)-thalassemia is associated with non-immune
+            hydrops fetalis, a generalized edema of the fetus with fluid
+            accumulation in the body cavities due to non-immune causes.
+            Non-immune hydrops fetalis is not a diagnosis in itself but a
+            symptom, a feature of many genetic disorders, and the end-stage of
+            a wide variety of disorders.
+            [DISEASE] Hemoglobin H disease (HBH) [MIM:613978]: A form of
+            alpha-thalassemia due to the loss of three alpha genes. This
+            results in high levels of a tetramer of four beta chains
+            (hemoglobin H), causing a severe and life-threatening anemia.
+            Untreated, most patients die in childhood or early adolescence.
+            {ECO:0000269|PubMed:10569720}. Note=The disease is caused by
+            variants affecting the gene represented in this entry.
+            [MISCELLANEOUS] Gives blood its red color.
+            [SIMILARITY] Belongs to the globin family.
+            {ECO:0000255|PROSITE-ProRule:PRU00238}.
+            [SEQUENCE CAUTION] Sequence=BAD97112.1; Type=Erroneous initiation;
+            Evidence={ECO:0000305}.
+            [WEB RESOURCE] Name=HbVar; Note=Human hemoglobin variants and
+            thalassemias;
+            URL='https://globin.bx.psu.edu/cgi-
+            bin/hbvar/query_vars3?mode=directlink&gene=HBA1'.
+            [WEB RESOURCE] Name=HbVar; Note=Human hemoglobin variants and
+            thalassemias;
+            URL='https://globin.bx.psu.edu/cgi-
+            bin/hbvar/query_vars3?mode=directlink&gene=HBA2'.
+            [WEB RESOURCE] Name=Wikipedia; Note=Hemoglobin entry;
+            URL='https://en.wikipedia.org/wiki/Hemoglobin'.
+            [WEB RESOURCE] Name=Protein Spotlight; Note=Journey into a tiny
+            world - Issue 84 of July 2007;
+            URL='https://www.proteinspotlight.org/back_issues/084/'.
+FEATURES             Location/Qualifiers
+     source          1..142
+                     /organism="Homo sapiens"
+                     /db_xref="taxon:9606"
+     gene            1..142
+                     /gene="HBA1"
+     gene            1..142
+                     /gene="HBA2"
+     Protein         1..142
+                     /product="Hemoglobin subunit alpha"
+                     /note="Alpha-globin; Hemoglobin alpha chain"
+                     /UniProtKB_evidence="Evidence at protein level"
+     Region          2..142
+                     /region_name="Domain"
+                     /note="Globin.
+                     /evidence=ECO:0000255|PROSITE-ProRule:PRU00238."
+     Region          2..142
+                     /region_name="Mature chain"
+                     /note="Hemoglobin subunit alpha. /id=PRO_0000052653."
+     Region          2
+                     /region_name="Variant"
+                     /note="V -> E (in Thionville; O(2) affinity down;
+                     dbSNP:rs33981821). /evidence=ECO:0000269|PubMed:1618774.
+                     /id=VAR_002719."
+     Region          3..142
+                     /region_name="Hb-alpha-like"
+                     /note="Hemoglobin alpha, zeta, mu, theta, and related Hb
+                     subunits; cd08927"
+                     /db_xref="CDD:381263"
+     Region          3
+                     /region_name="Variant"
+                     /note="L -> R (in ChongQing; O(2) affinity up;
+                     dbSNP:rs36030576). /evidence=ECO:0000269|PubMed:6526652.
+                     /id=VAR_002720."
+     Site            4
+                     /site_type="phosphorylation"
+                     /note="Phosphoserine.
+                     /evidence=ECO:0007744|PubMed:24275569."
+     Region          5..18
+                     /region_name="Helical region"
+                     /note="/evidence=ECO:0007829|PDB:2W72."
+     Region          6
+                     /region_name="Variant"
+                     /note="A -> D (in J-Toronto; dbSNP:rs34090856).
+                     /id=VAR_002721."
+     Region          6
+                     /region_name="Variant"
+                     /note="A -> P (in Karachi; dbSNP:rs34751764).
+                     /id=VAR_002722."
+     Region          7
+                     /region_name="Variant"
+                     /note="D -> A (in Sawara; O(2) affinity up;
+                     dbSNP:rs33986902). /evidence=ECO:0000269|PubMed:20980,
+                     ECO:0000269|PubMed:4744335. /id=VAR_002723."
+     Region          7
+                     /region_name="Variant"
+                     /note="D -> G (in Swan River; dbSNP:rs281864805).
+                     /evidence=ECO:0000269|PubMed:8745434. /id=VAR_002724."
+     Region          7
+                     /region_name="Variant"
+                     /note="D -> N (in Dunn; O(2) affinity up;
+                     dbSNP:rs33961916). /evidence=ECO:0000269|PubMed:478975,
+                     ECO:0000269|PubMed:7435503. /id=VAR_002725."
+     Region          7
+                     /region_name="Variant"
+                     /note="D -> V (in Ferndown; O(2) affinity up;
+                     dbSNP:rs281864805). /evidence=ECO:0000269|PubMed:7238857.
+                     /id=VAR_002726."
+     Region          7
+                     /region_name="Variant"
+                     /note="D -> Y (in Woodville; O(2) affinity up;
+                     dbSNP:rs281864806). /evidence=ECO:0000269|PubMed:3754246.
+                     /id=VAR_002727."
+     Region          8
+                     /region_name="Variant"
+                     /note="K -> E (in Kurosaki; dbSNP:rs34817956).
+                     /evidence=ECO:0000269|PubMed:7558876. /id=VAR_002728."
+     Site            8
+                     /site_type="glycosylation"
+                     /note="N-linked (Glc) (glycation) lysine; alternate.
+                     /evidence=ECO:0000269|PubMed:7358733."
+     Site            8
+                     /site_type="modified"
+                     /note="N6-succinyllysine; alternate.
+                     /evidence=ECO:0000250|UniProtKB:P01942."
+     Site            9..10
+                     /site_type="other"
+                     /note="(Microbial infection) Cleavage; by N.americanus
+                     apr-2. /evidence=ECO:0000269|PubMed:12552433."
+     Site            9
+                     /site_type="phosphorylation"
+                     /note="Phosphothreonine.
+                     /evidence=ECO:0007744|PubMed:24275569."
+     Region          10
+                     /region_name="Conflict"
+                     /note="N -> H (in Ref. 13; BAD97112).
+                     /evidence=ECO:0000305."
+     Region          10
+                     /region_name="Variant"
+                     /note="N -> T (in Broomfield; dbSNP:rs281860608).
+                     /id=VAR_038149."
+     Region          12
+                     /region_name="Variant"
+                     /note="K -> E (in Anantharaj; dbSNP:rs33938574).
+                     /id=VAR_002729."
+     Site            12
+                     /site_type="modified"
+                     /note="N6-succinyllysine.
+                     /evidence=ECO:0000250|UniProtKB:P01942."
+     Site            12
+                     /site_type="other"
+                     /note="Not glycated.
+                     /evidence=ECO:0000269|PubMed:7358733."
+     Region          13
+                     /region_name="Variant"
+                     /note="A -> D (in J-Paris 1/J-Aljezur; dbSNP:rs35615982).
+                     /id=VAR_002730."
+     Site            14..15
+                     /site_type="other"
+                     /note="(Microbial infection) Cleavage; by N.americanus
+                     apr-2. /evidence=ECO:0000269|PubMed:12552433."
+     Region          14
+                     /region_name="Variant"
+                     /note="A -> P (in Ravenscourt Park; causes
+                     alpha-thalassemia; dbSNP:rs35331909). /id=VAR_038150."
+     Region          15
+                     /region_name="Variant"
+                     /note="W -> R (in Evanston; O(2) affinity up;
+                     dbSNP:rs33964317). /evidence=ECO:0000269|PubMed:6725558,
+                     ECO:0000269|PubMed:6882779. /id=VAR_002731."
+     Region          16
+                     /region_name="Variant"
+                     /note="G -> R (in Ottawa/Siam; dbSNP:rs35816645).
+                     /id=VAR_002732."
+     Region          17
+                     /region_name="Variant"
+                     /note="K -> M (in Harbin; slightly unstable;
+                     dbSNP:rs35210126). /evidence=ECO:0000269|PubMed:6526652.
+                     /id=VAR_002733."
+     Region          17
+                     /region_name="Variant"
+                     /note="K -> N (in Beijing; dbSNP:rs281860648 and
+                     dbSNP:rs281860619). /id=VAR_002734."
+     Site            17
+                     /site_type="glycosylation"
+                     /note="N-linked (Glc) (glycation) lysine; alternate.
+                     /evidence=ECO:0000269|PubMed:7358733."
+     Site            17
+                     /site_type="acetylation"
+                     /note="N6-acetyllysine; alternate.
+                     /evidence=ECO:0007744|PubMed:19608861."
+     Site            17
+                     /site_type="modified"
+                     /note="N6-succinyllysine; alternate.
+                     /evidence=ECO:0000250|UniProtKB:P01942."
+     Region          19..21
+                     /region_name="Helical region"
+                     /note="/evidence=ECO:0007829|PDB:2W72."
+     Region          19
+                     /region_name="Variant"
+                     /note="G -> D (in Al-Ain Abu Dhabi; dbSNP:rs35993097).
+                     /evidence=ECO:0000269|PubMed:1428941. /id=VAR_002735."
+     Region          19
+                     /region_name="Variant"
+                     /note="G -> R (in Handsworth; dbSNP:rs34504387).
+                     /id=VAR_002736."
+     Region          20
+                     /region_name="Variant"
+                     /note="A -> D (in J-Kurosh). /id=VAR_002737."
+     Region          20
+                     /region_name="Variant"
+                     /note="A -> E (in J-Tashikuergan; dbSNP:rs35628685).
+                     /id=VAR_002738."
+     Region          21
+                     /region_name="Variant"
+                     /note="H -> Q (in Le Lamentin; dbSNP:rs41525149).
+                     /id=VAR_002739."
+     Region          21
+                     /region_name="Variant"
+                     /note="H -> R (in Hobart; dbSNP:rs33943087).
+                     /evidence=ECO:0000269|PubMed:3654264. /id=VAR_002740."
+     Region          22..36
+                     /region_name="Helical region"
+                     /note="/evidence=ECO:0007829|PDB:2W72."
+     Region          22
+                     /region_name="Variant"
+                     /note="A -> D (in J-Nyanza; dbSNP:rs11548605).
+                     /id=VAR_002741."
+     Region          22
+                     /region_name="Variant"
+                     /note="A -> P (in Fontainebleau; dbSNP:rs34324664).
+                     /id=VAR_002742."
+     Region          23
+                     /region_name="Variant"
+                     /note="G -> D (in J-Medellin; dbSNP:rs34608326).
+                     /id=VAR_002743."
+     Region          24
+                     /region_name="Variant"
+                     /note="E -> G (in Reims; slightly unstable;
+                     dbSNP:rs33939421). /evidence=ECO:0000269|PubMed:2634669.
+                     /id=VAR_002744."
+     Region          24
+                     /region_name="Variant"
+                     /note="E -> K (in Chad; dbSNP:rs281864819).
+                     /id=VAR_002745."
+     Site            25..26
+                     /site_type="other"
+                     /note="(Microbial infection) Cleavage; by N.americanus
+                     apr-2. /evidence=ECO:0000269|PubMed:12552433."
+     Region          25
+                     /region_name="Variant"
+                     /note="Y -> H (in Luxembourg; unstable;
+                     dbSNP:rs281864821). /evidence=ECO:0000269|PubMed:2599879.
+                     /id=VAR_002746."
+     Site            25
+                     /site_type="phosphorylation"
+                     /note="Phosphotyrosine.
+                     /evidence=ECO:0007744|PubMed:24275569."
+     Region          27
+                     /region_name="Variant"
+                     /note="A -> E (in Shenyang; unstable; dbSNP:rs281864822).
+                     /evidence=ECO:0000269|PubMed:7161109. /id=VAR_002747."
+     Region          27
+                     /region_name="Variant"
+                     /note="A -> V (in Campinas; dbSNP:rs281864822).
+                     /evidence=ECO:0000269|PubMed:14576901. /id=VAR_025387."
+     Region          28
+                     /region_name="Variant"
+                     /note="E -> D (in Hekinan; dbSNP:rs281865556).
+                     /id=VAR_002748."
+     Region          28
+                     /region_name="Variant"
+                     /note="E -> G (in Fort Worth; dbSNP:rs281864823).
+                     /id=VAR_002749."
+     Region          28
+                     /region_name="Variant"
+                     /note="E -> V (in Spanish town; dbSNP:rs281864823).
+                     /evidence=ECO:0000269|PubMed:2752146. /id=VAR_002750."
+     Site            30..31
+                     /site_type="other"
+                     /note="(Microbial infection) Cleavage; by N.americanus
+                     apr-2. /evidence=ECO:0000269|PubMed:12552433."
+     Region          31
+                     /region_name="Variant"
+                     /note="E -> K (in O-Padova; dbSNP:rs111033605).
+                     /id=VAR_002751."
+     Site            order(32,35..36,42..43,93,95..96,104,108,111..112,
+                     118..120,123..124,127,141..142)
+                     /site_type="other"
+                     /note="tetramer interface [polypeptide binding]"
+                     /db_xref="CDD:381263"
+     Region          32
+                     /region_name="Variant"
+                     /note="R -> K (causes alpha-thalassemia;
+                     dbSNP:rs281864543). /evidence=ECO:0000269|PubMed:11410421.
+                     /id=VAR_025002."
+     Region          32
+                     /region_name="Variant"
+                     /note="R -> S (in Prato; unstable; dbSNP:rs111033606).
+                     /evidence=ECO:0000269|PubMed:486536. /id=VAR_002752."
+     Site            order(33,43..44,59,62..63,66,84,88,98..99,102,137)
+                     /site_type="other"
+                     /note="heme binding site [chemical binding]"
+                     /db_xref="CDD:381263"
+     Region          35
+                     /region_name="Variant"
+                     /note="L -> R (in Queens/Ogi; dbSNP:rs281864825).
+                     /id=VAR_002753."
+     Site            36
+                     /site_type="phosphorylation"
+                     /note="Phosphoserine.
+                     /evidence=ECO:0007744|PubMed:24275569."
+     Region          38..43
+                     /region_name="Helical region"
+                     /note="/evidence=ECO:0007829|PDB:2W72."
+     Region          38
+                     /region_name="Variant"
+                     /note="P -> PE (in Catonsville).
+                     /evidence=ECO:0000269|PubMed:8448109. /id=VAR_002755."
+     Region          38
+                     /region_name="Variant"
+                     /note="P -> R (in Bourmedes; dbSNP:rs281864826).
+                     /id=VAR_002754."
+     Region          41
+                     /region_name="Variant"
+                     /note="K -> M (in Kanagawa; O(2) affinity up;
+                     dbSNP:rs281864828). /evidence=ECO:0000269|PubMed:1634355.
+                     /id=VAR_002756."
+     Site            41
+                     /site_type="glycosylation"
+                     /note="N-linked (Glc) (glycation) lysine; alternate.
+                     /evidence=ECO:0000269|PubMed:7358733."
+     Site            41
+                     /site_type="modified"
+                     /note="N6-succinyllysine; alternate.
+                     /evidence=ECO:0000250|UniProtKB:P01942."
+     Region          42
+                     /region_name="Variant"
+                     /note="T -> S (in Miyano; O(2) affinity up;
+                     dbSNP:rs281860623). /evidence=ECO:0000269|PubMed:2634665.
+                     /id=VAR_002757."
+     Region          44
+                     /region_name="Variant"
+                     /note="F -> L (in Hirosaki; unstable; dbSNP:rs41491146).
+                     /evidence=ECO:0000269|PubMed:1182166. /id=VAR_002758."
+     Region          45..47
+                     /region_name="Beta-strand region"
+                     /note="/evidence=ECO:0007829|PDB:1M9P."
+     Region          45
+                     /region_name="Variant"
+                     /note="P -> L (in Milledgeville; O(2) affinity up;
+                     dbSNP:rs33978134 and dbSNP:rs281864830).
+                     /evidence=ECO:0000269|PubMed:7213661. /id=VAR_002759."
+     Region          45
+                     /region_name="Variant"
+                     /note="P -> R (in Kawachi; O(2) affinity up;
+                     dbSNP:rs281864830). /evidence=ECO:0000269|PubMed:7068434.
+                     /id=VAR_002760."
+     Site            46..47
+                     /site_type="other"
+                     /note="(Microbial infection) Cleavage; by N.americanus
+                     apr-2. /evidence=ECO:0000269|PubMed:12552433."
+     Region          46
+                     /region_name="Variant"
+                     /note="H -> Q (in Bari; dbSNP:rs281860624).
+                     /id=VAR_002761."
+     Region          46
+                     /region_name="Variant"
+                     /note="H -> R (in Fort de France; O(2) affinity up;
+                     dbSNP:rs281864831). /evidence=ECO:0000269|PubMed:2752146.
+                     /id=VAR_002762."
+     Site            48..49
+                     /site_type="other"
+                     /note="(Microbial infection) Cleavage; by N.americanus
+                     apr-2. /evidence=ECO:0000269|PubMed:12552433."
+     Region          48
+                     /region_name="Variant"
+                     /note="D -> A (in Cordele; unstable; dbSNP:rs281864833).
+                     /evidence=ECO:0000269|PubMed:6547117. /id=VAR_002763."
+     Region          48
+                     /region_name="Variant"
+                     /note="D -> G (in Kokura; also in Umi/Michigan; unstable;
+                     dbSNP:rs281864833). /evidence=ECO:0000269|PubMed:7068437.
+                     /id=VAR_002764."
+     Region          48
+                     /region_name="Variant"
+                     /note="D -> H (in Hasharon/Sinai; unstable;
+                     dbSNP:rs281864834). /evidence=ECO:0000269|PubMed:5780195.
+                     /id=VAR_002765."
+     Region          48
+                     /region_name="Variant"
+                     /note="D -> Y (in Kurdistan; dbSNP:rs281864834).
+                     /evidence=ECO:0000269|PubMed:8195005. /id=VAR_002766."
+     Region          49
+                     /region_name="Variant"
+                     /note="L -> R (in Montgomery; dbSNP:rs41392146).
+                     /evidence=ECO:0000269|PubMed:1115799. /id=VAR_002767."
+     Region          50..52
+                     /region_name="Beta-strand region"
+                     /note="/evidence=ECO:0007829|PDB:6XDT."
+     Region          50
+                     /region_name="Variant"
+                     /note="S -> R (in Savaria; dbSNP:rs41518249).
+                     /id=VAR_002768."
+     Site            50
+                     /site_type="phosphorylation"
+                     /note="Phosphoserine.
+                     /evidence=ECO:0007744|PubMed:24275569."
+     Region          51
+                     /region_name="Variant"
+                     /note="H -> R (in Aichi; slightly unstable;
+                     dbSNP:rs281864835). /evidence=ECO:0000269|PubMed:6714429.
+                     /id=VAR_002769."
+     Region          52
+                     /region_name="Variant"
+                     /note="G -> D (in J-Abidjan; dbSNP:rs281864836).
+                     /id=VAR_002770."
+     Region          52
+                     /region_name="Variant"
+                     /note="G -> R (in Russ; dbSNP:rs281864837).
+                     /id=VAR_002771."
+     Site            53..54
+                     /site_type="other"
+                     /note="(Microbial infection) Cleavage; by N.americanus
+                     apr-2. /evidence=ECO:0000269|PubMed:12552433."
+     Region          54..72
+                     /region_name="Helical region"
+                     /note="/evidence=ECO:0007829|PDB:2W72."
+     Region          54
+                     /region_name="Variant"
+                     /note="A -> D (in J-Rovigo; unstable; dbSNP:rs281864838).
+                     /evidence=ECO:0000269|PubMed:4824923. /id=VAR_002772."
+     Region          55
+                     /region_name="Variant"
+                     /note="Q -> R (in Hikoshima/Shimonoseki;
+                     dbSNP:rs281864839). /id=VAR_002773."
+     Site            56..57
+                     /site_type="other"
+                     /note="(Microbial infection) Cleavage; by N.americanus
+                     apr-2. /evidence=ECO:0000269|PubMed:12552433."
+     Region          57
+                     /region_name="Variant"
+                     /note="K -> R (in Port Huron; dbSNP:rs281864841).
+                     /evidence=ECO:0000269|PubMed:1802882. /id=VAR_002774."
+     Region          57
+                     /region_name="Variant"
+                     /note="K -> T (in Thailand; dbSNP:rs281864841).
+                     /id=VAR_002775."
+     Site            57
+                     /site_type="other"
+                     /note="Not glycated.
+                     /evidence=ECO:0000269|PubMed:7358733."
+     Region          58
+                     /region_name="Variant"
+                     /note="G -> R (in L-Persian Gulf; dbSNP:rs281864843).
+                     /id=VAR_002776."
+     Region          59
+                     /region_name="Variant"
+                     /note="H -> Q (in Boghe; dbSNP:rs41378349).
+                     /evidence=ECO:0000269|PubMed:10569723. /id=VAR_025388."
+     Region          59
+                     /region_name="Variant"
+                     /note="H -> Y (in M-Boston/M-Osaka; O(2) affinity down;
+                     dbSNP:rs281864845). /evidence=ECO:0000269|PubMed:4521212.
+                     /id=VAR_002777."
+     Site            60..61
+                     /site_type="other"
+                     /note="(Microbial infection) Cleavage; by N.americanus
+                     apr-2. /evidence=ECO:0000269|PubMed:12552433."
+     Region          60
+                     /region_name="Variant"
+                     /note="G -> D (in Adana; unstable; causes
+                     alpha-thalassemia; dbSNP:rs28928878).
+                     /evidence=ECO:0000269|PubMed:8237999. /id=VAR_002778."
+     Region          60
+                     /region_name="Variant"
+                     /note="G -> V (in Tottori; unstable; dbSNP:rs281864846).
+                     /evidence=ECO:0000269|PubMed:7275660. /id=VAR_002779."
+     Region          61
+                     /region_name="Variant"
+                     /note="K -> N (in Zambia; dbSNP:rs281860659 and
+                     dbSNP:rs111033598). /id=VAR_002780."
+     Region          61
+                     /region_name="Variant"
+                     /note="Missing (in Clinic; unstable; causes
+                     alpha-thalassemia). /evidence=ECO:0000269|PubMed:10206681.
+                     /id=VAR_002781."
+     Site            61
+                     /site_type="other"
+                     /note="Not glycated.
+                     /evidence=ECO:0000269|PubMed:7358733."
+     Region          62
+                     /region_name="Variant"
+                     /note="K -> N (in J-Buda; dbSNP:rs33985574).
+                     /evidence=ECO:0000269|Ref.83. /id=VAR_002782."
+     Region          62
+                     /region_name="Variant"
+                     /note="K -> T (in J-Anatolia; dbSNP:rs281865558).
+                     /id=VAR_002783."
+     Site            62
+                     /site_type="glycosylation"
+                     /note="N-linked (Glc) (glycation) lysine.
+                     /evidence=ECO:0000269|PubMed:7358733."
+     Region          63
+                     /region_name="Variant"
+                     /note="Missing (in HBH; hemoglobin Aghia Sophia).
+                     /evidence=ECO:0000269|PubMed:10569720. /id=VAR_066401."
+     Region          63
+                     /region_name="Variant"
+                     /note="V -> M (in Evans; unstable; dbSNP:rs41515649).
+                     /evidence=ECO:0000269|PubMed:2606724, ECO:0000269|Ref.11.
+                     /id=VAR_002784."
+     Region          64
+                     /region_name="Variant"
+                     /note="A -> D (in Pontoise; unstable; dbSNP:rs34502246).
+                     /evidence=ECO:0000269|PubMed:849454. /id=VAR_002785."
+     Region          65
+                     /region_name="Variant"
+                     /note="D -> Y (in Persepolis; dbSNP:rs33984024).
+                     /id=VAR_002786."
+     Region          69
+                     /region_name="Variant"
+                     /note="N -> K (in G-Philadelphia; dbSNP:rs1060339).
+                     /evidence=ECO:0000269|Ref.12. /id=VAR_002787."
+     Region          72
+                     /region_name="Variant"
+                     /note="A -> E (in J-Habana; dbSNP:rs281864853).
+                     /id=VAR_002788."
+     Region          72
+                     /region_name="Variant"
+                     /note="A -> V (in Ozieri; dbSNP:rs281864853).
+                     /id=VAR_002789."
+     Region          73..75
+                     /region_name="Hydrogen bonded turn"
+                     /note="/evidence=ECO:0007829|PDB:2W72."
+     Region          73
+                     /region_name="Variant"
+                     /note="H -> R (in Daneskgah-Teheran; dbSNP:rs281864854).
+                     /id=VAR_002790."
+     Region          75
+                     /region_name="Variant"
+                     /note="D -> A (in Lille; dbSNP:rs281864856).
+                     /id=VAR_002791."
+     Region          75
+                     /region_name="Variant"
+                     /note="D -> G (in Chapel Hill; dbSNP:rs33921047).
+                     /id=VAR_002792."
+     Region          75
+                     /region_name="Variant"
+                     /note="D -> N (in G-Pest; dbSNP:rs281864857).
+                     /evidence=ECO:0000269|Ref.83. /id=VAR_002793."
+     Region          76
+                     /region_name="Variant"
+                     /note="D -> A (in Duan; dbSNP:rs33991223).
+                     /id=VAR_002794."
+     Region          76
+                     /region_name="Variant"
+                     /note="D -> H (in Q-Iran; dbSNP:rs281864858).
+                     /id=VAR_002795."
+     Region          77..80
+                     /region_name="Helical region"
+                     /note="/evidence=ECO:0007829|PDB:2W72."
+     Region          77
+                     /region_name="Variant"
+                     /note="M -> K (in Noko; dbSNP:rs33969953).
+                     /id=VAR_002796."
+     Region          77
+                     /region_name="Variant"
+                     /note="M -> T (in Aztec; dbSNP:rs33969953).
+                     /id=VAR_002797."
+     Region          78
+                     /region_name="Variant"
+                     /note="P -> R (in Guizhou; dbSNP:rs281864861).
+                     /id=VAR_002798."
+     Region          79
+                     /region_name="Variant"
+                     /note="N -> H (in Davenport; dbSNP:rs111033602).
+                     /evidence=ECO:0000269|PubMed:2101836. /id=VAR_002799."
+     Region          79
+                     /region_name="Variant"
+                     /note="N -> K (in Stanleyville-2; dbSNP:rs281860607).
+                     /id=VAR_002800."
+     Region          80
+                     /region_name="Variant"
+                     /note="A -> G (in Singapore; dbSNP:rs281860603).
+                     /id=VAR_012662."
+     Region          81
+                     /region_name="Variant"
+                     /note="L -> R (in Ann Arbor; unstable; dbSNP:rs281864863).
+                     /evidence=ECO:0000269|PubMed:5033650. /id=VAR_002801."
+     Region          82..87
+                     /region_name="Helical region"
+                     /note="/evidence=ECO:0007829|PDB:2W72."
+     Region          82
+                     /region_name="Variant"
+                     /note="S -> C (in Nigeria; dbSNP:rs281864864).
+                     /id=VAR_002802."
+     Region          83
+                     /region_name="Variant"
+                     /note="A -> D (in Garden State; dbSNP:rs281864865).
+                     /id=VAR_002803."
+     Region          85
+                     /region_name="Variant"
+                     /note="S -> R (in Etobicoke; O(2) affinity up;
+                     dbSNP:rs281860612). /evidence=ECO:0000269|PubMed:6874377.
+                     /id=VAR_002804."
+     Region          86
+                     /region_name="Variant"
+                     /note="D -> V (in Inkster; O(2) affinity up;
+                     dbSNP:rs41331747). /evidence=ECO:0000269|PubMed:4212045.
+                     /id=VAR_002805."
+     Region          86
+                     /region_name="Variant"
+                     /note="D -> Y (in Atago; O(2) affinity up;
+                     dbSNP:rs281864777). /evidence=ECO:0000269|PubMed:5115619.
+                     /id=VAR_002806."
+     Region          87
+                     /region_name="Variant"
+                     /note="L -> R (in Moabit; unstable; dbSNP:rs281864866).
+                     /evidence=ECO:0000269|PubMed:108887. /id=VAR_002807."
+     Region          88..92
+                     /region_name="Helical region"
+                     /note="/evidence=ECO:0007829|PDB:2W72."
+     Region          88
+                     /region_name="Variant"
+                     /note="H -> N (in Auckland; unstable; dbSNP:rs281864868).
+                     /evidence=ECO:0000269|PubMed:9322075. /id=VAR_002808."
+     Region          88
+                     /region_name="Variant"
+                     /note="H -> R (in Iwata; unstable; dbSNP:rs281864867).
+                     /id=VAR_002809."
+     Region          89
+                     /region_name="Variant"
+                     /note="A -> S (in Loire; O(2) affinity up;
+                     dbSNP:rs35239527). /evidence=ECO:0000269|PubMed:3142772.
+                     /id=VAR_002810."
+     Region          91
+                     /region_name="Variant"
+                     /note="K -> M (in Handa; O(2) affinity up;
+                     dbSNP:rs281864873). /evidence=ECO:0000269|PubMed:6815131.
+                     /id=VAR_002811."
+     Site            91
+                     /site_type="other"
+                     /note="Not glycated.
+                     /evidence=ECO:0000269|PubMed:7358733."
+     Site            92..93
+                     /site_type="other"
+                     /note="(Microbial infection) Cleavage; by N.americanus
+                     apr-2. /evidence=ECO:0000269|PubMed:12552433."
+     Region          92
+                     /region_name="Variant"
+                     /note="L -> F (in dbSNP:rs281864494). /id=VAR_049272."
+     Region          92
+                     /region_name="Variant"
+                     /note="L -> P (in Port Phillip; unstable;
+                     dbSNP:rs281864874). /evidence=ECO:0000269|PubMed:902765.
+                     /id=VAR_002812."
+     Region          93
+                     /region_name="Variant"
+                     /note="R -> Q (in J-Cape Town; O(2) affinity up;
+                     dbSNP:rs281864875). /evidence=ECO:0000269|PubMed:5091982,
+                     ECO:0000269|PubMed:5988206. /id=VAR_002813."
+     Region          93
+                     /region_name="Variant"
+                     /note="R -> W (in Cemenelum; O(2) affinity up;
+                     dbSNP:rs281864876). /evidence=ECO:0000269|PubMed:8148419.
+                     /id=VAR_020775."
+     Region          95
+                     /region_name="Variant"
+                     /note="D -> A (in Bassett; markedly reduced oxygen
+                     affinity; dbSNP:rs281864879).
+                     /evidence=ECO:0000269|PubMed:15495251. /id=VAR_025389."
+     Region          95
+                     /region_name="Variant"
+                     /note="D -> Y (in Setif; unstable; dbSNP:rs281864878).
+                     /evidence=ECO:0000269|PubMed:4667378. /id=VAR_002814."
+     Region          96..104
+                     /region_name="Processed active peptide"
+                     /note="Hemopressin. /evidence=ECO:0000305|PubMed:18077343.
+                     /id=PRO_0000455882."
+     Region          96
+                     /region_name="Variant"
+                     /note="P -> A (in Denmark Hill; O(2) affinity up;
+                     dbSNP:rs281864881). /evidence=ECO:0000269|PubMed:5085669.
+                     /id=VAR_002815."
+     Region          96
+                     /region_name="Variant"
+                     /note="P -> T (in Godavari; O(2) affinity up;
+                     dbSNP:rs281864881). /evidence=ECO:0000269|PubMed:9494044.
+                     /id=VAR_002816."
+     Region          97..113
+                     /region_name="Helical region"
+                     /note="/evidence=ECO:0007829|PDB:2W72."
+     Region          98
+                     /region_name="Variant"
+                     /note="N -> K (in Dallas; O(2) affinity up;
+                     dbSNP:rs41338947). /evidence=ECO:0000269|PubMed:1390940.
+                     /id=VAR_002817."
+     Region          100
+                     /region_name="Variant"
+                     /note="K -> E (in Turriff; dbSNP:rs281864882).
+                     /evidence=ECO:0000269|PubMed:1634357. /id=VAR_002818."
+     Site            100
+                     /site_type="other"
+                     /note="Not glycated.
+                     /evidence=ECO:0000269|PubMed:7358733."
+     Region          103
+                     /region_name="Variant"
+                     /note="S -> R (in Manitoba; slightly unstable;
+                     dbSNP:rs41344646). /evidence=ECO:0000269|PubMed:6547932.
+                     /id=VAR_002819."
+     Site            103
+                     /site_type="phosphorylation"
+                     /note="Phosphoserine.
+                     /evidence=ECO:0000250|UniProtKB:P01942."
+     Region          104
+                     /region_name="Variant"
+                     /note="H -> R (in Contaldo; unstable; dbSNP:rs63750752).
+                     /evidence=ECO:0000269|PubMed:6547932. /id=VAR_002820."
+     Region          104
+                     /region_name="Variant"
+                     /note="H -> Y (in Charolles; dbSNP:rs63750073).
+                     /evidence=ECO:0000269|PubMed:10569723. /id=VAR_025390."
+     Site            107..108
+                     /site_type="other"
+                     /note="(Microbial infection) Cleavage; by N.americanus
+                     apr-2. /evidence=ECO:0000269|PubMed:12552433."
+     Site            109..110
+                     /site_type="other"
+                     /note="(Microbial infection) Cleavage; by N.americanus
+                     apr-2. /evidence=ECO:0000269|PubMed:12552433."
+     Site            109
+                     /site_type="phosphorylation"
+                     /note="Phosphothreonine.
+                     /evidence=ECO:0000250|UniProtKB:P01942."
+     Region          110
+                     /region_name="Variant"
+                     /note="L -> R (in Suan-Dok; unstable; causes
+                     alpha-thalassemia; dbSNP:rs41479844).
+                     /evidence=ECO:0000269|PubMed:478977. /id=VAR_002821."
+     Region          111
+                     /region_name="Variant"
+                     /note="A -> D (in Petah Tikva; unstable; causes
+                     alpha-thalassemia; dbSNP:rs28928889).
+                     /evidence=ECO:0000269|PubMed:7470621. /id=VAR_002822."
+     Region          113
+                     /region_name="Variant"
+                     /note="H -> D (in Hopkins-II; unstable;
+                     dbSNP:rs281864885). /evidence=ECO:0000269|PubMed:5288820.
+                     /id=VAR_002823."
+     Region          114
+                     /region_name="Variant"
+                     /note="L -> H (in Twin Peaks; dbSNP:rs281860618).
+                     /id=VAR_002824."
+     Region          115..117
+                     /region_name="Hydrogen bonded turn"
+                     /note="/evidence=ECO:0007829|PDB:2W72."
+     Region          115
+                     /region_name="Variant"
+                     /note="P -> L (in Nouakchott; dbSNP:rs267607269).
+                     /id=VAR_002825."
+     Region          115
+                     /region_name="Variant"
+                     /note="P -> R (in Chiapas; dbSNP:rs267607269).
+                     /id=VAR_002826."
+     Region          115
+                     /region_name="Variant"
+                     /note="P -> S (in Melusine; dbSNP:rs281864887).
+                     /evidence=ECO:0000269|PubMed:8294199. /id=VAR_002827."
+     Region          116
+                     /region_name="Variant"
+                     /note="A -> D (in J-Tongariki; dbSNP:rs281864888).
+                     /id=VAR_002828."
+     Region          117
+                     /region_name="Variant"
+                     /note="E -> A (in Ube-4; dbSNP:rs281864946).
+                     /id=VAR_002829."
+     Region          117
+                     /region_name="Variant"
+                     /note="E -> EHLPAE (in Zaire).
+                     /evidence=ECO:0000269|PubMed:1511986. /id=VAR_002830."
+     Region          118
+                     /region_name="Variant"
+                     /note="F -> FI (in Phnom Penh).
+                     /evidence=ECO:0000269|PubMed:9452028. /id=VAR_002831."
+     Region          119
+                     /region_name="Variant"
+                     /note="T -> TEFT (in Grady).
+                     /evidence=ECO:0000269|PubMed:4528583. /id=VAR_002832."
+     Region          120..138
+                     /region_name="Helical region"
+                     /note="/evidence=ECO:0007829|PDB:2W72."
+     Region          121
+                     /region_name="Variant"
+                     /note="A -> E (in J-Meerut/J-Birmingham;
+                     dbSNP:rs36075744). /evidence=ECO:0000269|PubMed:7713747.
+                     /id=VAR_002833."
+     Site            122..123
+                     /site_type="other"
+                     /note="(Microbial infection) Cleavage; by N.americanus
+                     apr-2. /evidence=ECO:0000269|PubMed:12552433."
+     Region          122
+                     /region_name="Variant"
+                     /note="V -> M (in Owari; dbSNP:rs35187567).
+                     /id=VAR_002834."
+     Region          123
+                     /region_name="Variant"
+                     /note="H -> Q (in Westmead; dbSNP:rs41479347).
+                     /evidence=ECO:0000269|PubMed:1686260. /id=VAR_002835."
+     Site            125
+                     /site_type="phosphorylation"
+                     /note="Phosphoserine.
+                     /evidence=ECO:0000250|UniProtKB:P01942."
+     Region          126
+                     /region_name="Variant"
+                     /note="L -> P (in Quong Sze; causes alpha-thalassemia;
+                     dbSNP:rs41397847). /id=VAR_002836."
+     Region          126
+                     /region_name="Variant"
+                     /note="L -> R (in Plasencia; family with moderate
+                     microcytosis and hypochromia; dbSNP:rs41397847).
+                     /evidence=ECO:0000269|PubMed:15921163. /id=VAR_025391."
+     Region          127
+                     /region_name="Variant"
+                     /note="D -> G (in West One; dbSNP:rs33957766).
+                     /evidence=ECO:0000269|PubMed:14576901. /id=VAR_025392."
+     Region          127
+                     /region_name="Variant"
+                     /note="D -> V (in Fukutomi; O(2) affinity up;
+                     dbSNP:rs33957766). /evidence=ECO:0000269|PubMed:2079432.
+                     /id=VAR_002837."
+     Region          127
+                     /region_name="Variant"
+                     /note="D -> Y (in Montefiore; O(2) affinity up;
+                     dbSNP:rs33933481). /evidence=ECO:0000269|PubMed:8798486.
+                     /id=VAR_002838."
+     Region          128
+                     /region_name="Variant"
+                     /note="K -> N (in Jackson; dbSNP:rs33972894).
+                     /id=VAR_002839."
+     Region          130
+                     /region_name="Variant"
+                     /note="L -> P (in Tunis-Bizerte; unstable; causes
+                     alpha-thalassemia; dbSNP:rs281864889).
+                     /evidence=ECO:0000269|PubMed:7786798. /id=VAR_002840."
+     Region          131
+                     /region_name="Variant"
+                     /note="A -> D (in Yuda; O(2) affinity down;
+                     dbSNP:rs41528545). /evidence=ECO:0000269|PubMed:1428950.
+                     /id=VAR_002842."
+     Region          131
+                     /region_name="Variant"
+                     /note="A -> P (in Sun Prairie; unstable;
+                     dbSNP:rs41529844). /evidence=ECO:0000269|PubMed:2079430.
+                     /id=VAR_002841."
+     Region          132
+                     /region_name="Variant"
+                     /note="S -> P (in Questembert; highly unstable; causes
+                     alpha-thalassemia; dbSNP:rs63751417).
+                     /evidence=ECO:0000269|PubMed:8493987. /id=VAR_002843."
+     Site            132
+                     /site_type="phosphorylation"
+                     /note="Phosphoserine.
+                     /evidence=ECO:0000250|UniProtKB:P01942."
+     Site            134..135
+                     /site_type="other"
+                     /note="(Microbial infection) Cleavage; by N.americanus
+                     apr-2. /evidence=ECO:0000269|PubMed:12552433."
+     Region          134
+                     /region_name="Variant"
+                     /note="S -> R (in Val de Marne; O(2) affinity up;
+                     dbSNP:rs56308100 and dbSNP:rs55948437).
+                     /evidence=ECO:0000269|PubMed:8294200. /id=VAR_002844."
+     Site            135
+                     /site_type="phosphorylation"
+                     /note="Phosphothreonine.
+                     /evidence=ECO:0000250|UniProtKB:P01942."
+     Region          136
+                     /region_name="Variant"
+                     /note="V -> E (in Pavie; dbSNP:rs63749809).
+                     /id=VAR_002845."
+     Region          137
+                     /region_name="Variant"
+                     /note="L -> M (in Chicago; dbSNP:rs41364652).
+                     /id=VAR_002846."
+     Region          137
+                     /region_name="Variant"
+                     /note="L -> P (in Bibba; unstable; causes
+                     alpha-thalassemia; dbSNP:rs41469945).
+                     /evidence=ECO:0000269|PubMed:5440849. /id=VAR_002847."
+     Region          137
+                     /region_name="Variant"
+                     /note="L -> R (in Toyama; dbSNP:rs41469945).
+                     /evidence=ECO:0000269|PubMed:2833478. /id=VAR_035242."
+     Site            138
+                     /site_type="phosphorylation"
+                     /note="Phosphothreonine.
+                     /evidence=ECO:0000250|UniProtKB:P01942."
+     Region          139..141
+                     /region_name="Helical region"
+                     /note="/evidence=ECO:0007829|PDB:6HK2."
+     Region          139
+                     /region_name="Variant"
+                     /note="S -> P (in Attleboro; O(2) affinity up;
+                     dbSNP:rs63750801). /evidence=ECO:0000269|PubMed:2108715.
+                     /id=VAR_002848."
+     Site            139
+                     /site_type="phosphorylation"
+                     /note="Phosphoserine.
+                     /evidence=ECO:0000250|UniProtKB:P01942."
+     Region          140
+                     /region_name="Variant"
+                     /note="K -> E (in Hanamaki; O(2) affinity up;
+                     dbSNP:rs41361546). /evidence=ECO:0000269|PubMed:1634363.
+                     /id=VAR_002849."
+     Region          140
+                     /region_name="Variant"
+                     /note="K -> T (in Tokoname; O(2) affinity up;
+                     dbSNP:rs56348461). /evidence=ECO:0000269|PubMed:6188720.
+                     /id=VAR_002850."
+     Region          141
+                     /region_name="Variant"
+                     /note="Y -> H (in Rouen/Ethiopia; O(2) affinity up;
+                     dbSNP:rs55870409). /evidence=ECO:0000269|PubMed:1390944,
+                     ECO:0000269|PubMed:1428951. /id=VAR_002851."
+     Region          142
+                     /region_name="Variant"
+                     /note="R -> C (in Nunobiki; O(2) affinity up;
+                     dbSNP:rs63750134). /evidence=ECO:0000269|PubMed:3973024.
+                     /id=VAR_002852."
+     Region          142
+                     /region_name="Variant"
+                     /note="R -> H (in Suresnes; O(2) affinity up;
+                     dbSNP:rs33935328). /evidence=ECO:0000269|PubMed:7410435.
+                     /id=VAR_002854."
+     Region          142
+                     /region_name="Variant"
+                     /note="R -> L (in Legnano; O(2) affinity up;
+                     dbSNP:rs33935328). /evidence=ECO:0000269|PubMed:7462179.
+                     /id=VAR_002853."
+     Region          142
+                     /region_name="Variant"
+                     /note="R -> P (in Singapore; dbSNP:rs33935328).
+                     /id=VAR_002855."
+ORIGIN      
+        1 mvlspadktn vkaawgkvga hageygaeal ermflsfptt ktyfphfdls hgsaqvkghg
+       61 kkvadaltna vahvddmpna lsalsdlhah klrvdpvnfk llshcllvtl aahlpaeftp
+      121 avhasldkfl asvstvltsk yr
+//
+

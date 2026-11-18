@@ -1,0 +1,154 @@
+{
+ "format": "snapgene",
+ "records": [
+  {
+   "name": "<unknown name>",
+   "id": "<unknown id>",
+   "length": 2414,
+   "sha256": "9b4bf38b3334a0820afc9d1f062f2b5966cae6418599bb5f9bd2673dfb4b8da7",
+   "topology": "linear",
+   "description": "<unknown description>",
+   "features": [
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       1001,
+       1414,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "label",
+       "hht2-ORF"
+      ],
+      [
+       "transl_table",
+       "1"
+      ],
+      [
+       "translation",
+       "MARTKQTARKSTGGKAPRKQLASKAARKSAPPTTGGVKKPHRYRPGTVALREIRRYQKSTELLIRKLPFQRLVREIAQDFKTDLRFQSSAIGALQEAVEAYLVSLFEDTNLCAIHGKRVTIQPKDMQLARRLRGERS*"
+      ]
+     ]
+    },
+    {
+     "type": "misc_feature",
+     "parts": [
+      [
+       1,
+       1000,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "1000US"
+      ]
+     ]
+    },
+    {
+     "type": "misc_feature",
+     "parts": [
+      [
+       1415,
+       2414,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "1000DS"
+      ]
+     ]
+    },
+    {
+     "type": "misc_feature",
+     "parts": [
+      [
+       1415,
+       1494,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "hht2(postORF)"
+      ],
+      [
+       "note",
+       "tail for long reverse primer for tagging hht2"
+      ]
+     ]
+    },
+    {
+     "type": "misc_feature",
+     "parts": [
+      [
+       1332,
+       1411,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "hht2(Cter)"
+      ],
+      [
+       "note",
+       "tail of long forward primer for tagging hht2"
+      ]
+     ]
+    },
+    {
+     "type": "primer_bind",
+     "parts": [
+      [
+       498,
+       516,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "XhoI-hht2(US)-Fwd"
+      ]
+     ]
+    },
+    {
+     "type": "primer_bind",
+     "parts": [
+      [
+       1397,
+       1411,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "XmaI-hht2(Cter)-Rev"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

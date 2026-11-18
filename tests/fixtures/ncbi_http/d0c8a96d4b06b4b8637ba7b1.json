@@ -1,0 +1,1 @@
+{"key":"d0c8a96d4b06b4b8637ba7b1","method":"GET","url":"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=nuccore&term=zzqxqzzq%5Btitle%5D&retmax=20&retmode=json&tool=plasmid.nvim","recorded":"2026-11-17T13:22:38Z","bytes":347,"ms":235,"headers":{"x-ratelimit-limit":"3","content-type":"application/json; charset=UTF-8"},"status":200}

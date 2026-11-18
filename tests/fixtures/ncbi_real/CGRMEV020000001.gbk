@@ -1,0 +1,57 @@
+LOCUS       CGRMEV020000001         1012 bp    DNA     linear   ENV 14-NOV-2026
+DEFINITION  MAG: Clostridia bacterium isolate L1HJB1800328-GF10PPE_4_bin.84
+            genome assembly, contig: k141_151210, whole genome shotgun
+            sequence.
+ACCESSION   CGRMEV020000001 CGRMEV020000000
+VERSION     CGRMEV020000001.1
+DBLINK      BioProject: PRJEB128554
+            BioSample: SAMEA124217684
+            Sequence Read Archive: SRR38270447
+KEYWORDS    WGS; ENV; Metagenome Assembled Genome; MAG.
+SOURCE      Clostridia bacterium (feces metagenome)
+  ORGANISM  Clostridia bacterium
+            Bacteria; Bacillati; Bacillota; Clostridia.
+REFERENCE   1  (bases 1 to 1012)
+  AUTHORS   Xu,Z.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (18-OCT-2026) XMU, Epidemiology research group, No. 4221
+            Xiangan South Road, Xiangan District, Xiamen, Fujian, China, China
+REFERENCE   2  (bases 1 to 1012)
+  AUTHORS   Xu,Z.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (29-OCT-2026) XMU, Epidemiology research group, No. 4221
+            Xiangan South Road, Xiangan District, Xiamen, Fujian, China, China
+FEATURES             Location/Qualifiers
+     source          1..1012
+                     /organism="Clostridia bacterium"
+                     /mol_type="genomic DNA"
+                     /submitter_seqid="k141_151210"
+                     /isolate="L1HJB1800328-GF10PPE_4_bin.84"
+                     /isolation_source="feces"
+                     /db_xref="taxon:2044939"
+                     /environmental_sample
+                     /geo_loc_name="China"
+                     /collection_date="2025-05-09"
+                     /metagenome_source="feces metagenome"
+                     /note="contig: k141_151210;
+                     metagenomic"
+ORIGIN      
+        1 catatggaca aggtctggga cacctggcgg gtgatgatcc aaaacaacat gaccacctgc
+       61 gttgaatccc ccggcgagac cgcccgcagc gactgccacg cctggagcgc cctgatcctc
+      121 cacgaactgc cggccgtcac cctcggcgtc cagccggcgg cccccggcta cgcagccgtc
+      181 cgggtaagac cggtccccgg ctccctcacc cacgccgaag gcaccgtcct cacccccagg
+      241 ggaaaggtat cggtccgctg gacgctcaaa gacgggcgcc cggacgtcac cgtcaaagcg
+      301 ctggacgggg tcgaggtcat cgtcgaagca taaaagcgca ttttccctgc tgtaaaggag
+      361 gcccgtatat cacggcctcc tttttattat cccgactagt tgcaaaaagc taaccttttt
+      421 gtcaatttta gaaaaggttt aggaacatat tgacaaaaat tcaccaatct gctatatttt
+      481 ggaaggaacg tatgttaccc gttccccgct ttgacagggg atctgccgcc ggagtgccgc
+      541 ggcccctgtg ttaaccccaa aacggcagcc atccacccgc gaaccaaatg aaagaaggga
+      601 accatcaagt tatgcgcaaa tcttcaaccc cccaccgtcc ggccgccaaa aaggccgccc
+      661 gcttttcttt gaccaaaaac gcagattggg gtacgctcac ggtaccctag gaaaggaaat
+      721 ccatgaagag acagaaaaaa gaaaacaact tcccgctgat ggcgaagttt ttaaagggga
+      781 acctcctctt ctttgcgacg gcgctcctct gttcggtgct ttcgaccgtc tgcaactcgc
+      841 tgacccccca ggtcatcagc gtcaccgtcg actcggtgct ggggaccgag gactacaccc
+      901 tcccggccgt cctccaggcg tttacctccc tggactggct gcgggaaaac cccggccaga
+      961 cgcttctttt agcggccggc gcgatcatcc tcgccgccct gatcggcggc ct
+//
+

@@ -1,0 +1,1 @@
+{"key":"01e331d30edd48e13ddb0df5","method":"GET","url":"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=nuccore&id=20141090&retmode=json&tool=plasmid.nvim","recorded":"2026-11-17T13:22:34Z","bytes":640,"ms":243,"headers":{"x-ratelimit-limit":"3","content-type":"application/json; charset=UTF-8"},"status":200}

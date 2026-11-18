@@ -1,0 +1,57 @@
+{
+ "format": "genbank",
+ "key": "3328654f4bb4c1163be03c88",
+ "records": [
+  {
+   "name": "LN625376",
+   "id": "LN625376.1",
+   "length": 1765,
+   "sha256": "2778bd43a2c132b13942467fc10a4e119e73a95a952425db9aad2aaf8974ca93",
+   "topology": "linear",
+   "description": "Cryptococcus gattii, R265, WGS project CBZL01000000 data, scaffold: contig_97, whole genome shotgun sequence",
+   "features": [
+    {
+     "type": "source",
+     "parts": [
+      [
+       1,
+       1765,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "taxon:1859096"
+      ],
+      [
+       "isolate",
+       "HL_B8"
+      ],
+      [
+       "mol_type",
+       "genomic DNA"
+      ],
+      [
+       "organism",
+       "Cryptococcus deuterogattii"
+      ],
+      [
+       "strain",
+       "R265"
+      ],
+      [
+       "submitter_seqid",
+       "contig_97"
+      ],
+      [
+       "type_material",
+       "culture from holotype of Cryptococcus deuterogattii"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

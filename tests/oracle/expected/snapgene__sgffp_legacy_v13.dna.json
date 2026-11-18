@@ -1,0 +1,638 @@
+{
+ "format": "snapgene",
+ "records": [
+  {
+   "name": "<unknown name>",
+   "id": "<unknown id>",
+   "length": 5618,
+   "sha256": "c064cfde928772c88872616eb38efc34a7e8f316843976af988bf8709cf4b567",
+   "topology": "circular",
+   "description": "<unknown description>",
+   "features": [
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       1440,
+       2210,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "label",
+       "POL30 K127R/K164R"
+      ],
+      [
+       "note",
+       "POL30"
+      ],
+      [
+       "transl_table",
+       "1"
+      ],
+      [
+       "translation",
+       "LEAKFEEASLFKRIIDGFKDCVQLVNFQCKEDGIIAQAVDDSRVLLVSLEIGVEAFQEYRCDHPVTLGMDLTSLSKILRCGNNTDTLTLIADNTPDSIILLFEDTKKDRIAEYSLKLMDIDADFLRIEELQYDSTLSLPSSEFSKIVRDLSQLSDSINIMITRETIKFVADGDIGSGSVIIKPFVDMEHPETSIKLEMDQPVDLTFGAKYLLDIIKGSSLSDRVGIRLSSEAPALFQFDLKSGFLQFFLAPKFNDEE"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       300,
+       1400,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "gene",
+       "malE (mutated)"
+      ],
+      [
+       "label",
+       "MBP"
+      ],
+      [
+       "note",
+       "This version of the gene does not encode a signal sequence, so MBP will remain in the cytosol."
+      ],
+      [
+       "product",
+       "maltose binding protein from E. coli"
+      ],
+      [
+       "transl_table",
+       "1"
+      ],
+      [
+       "translation",
+       "MKTEEGKLVIWINGDKGYNGLAEVGKKFEKDTGIKVTVEHPDKLEEKFPQVAATGDGPDIIFWAHDRFGGYAQSGLLAEITPDKAFQDKLYPFTWDAVRYNGKLIAYPIAVEALSLIYNKDLLPNPPKTWEEIPALDKELKAKGKSALMFNLQEPYFTWPLIAADGGYAFKYENGKYDIKDVGVDNAGAKAGLTFLVDLIKNKHMNADTDYSIAEAAFNKGETAMTINGPWAWSNIDTSKVNYGVTVLPTFKGQPSKPFVGVLSAGINAASPNKELAKEFLENYLLTDEGLEAVNKDKPLGAVALKSYEEELAKDPRIAATMENAQKGEIMPNIPQMSAFWYAVRTAVINAASGRQTVDEALKDAQT"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       1410,
+       1433,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "label",
+       "HRV 3C site"
+      ],
+      [
+       "product",
+       "recognition and cleavage site for human rhinovirus 3C and PreScission proteases"
+      ],
+      [
+       "transl_table",
+       "1"
+      ],
+      [
+       "translation",
+       "LEVLFQGP"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       4396,
+       5478,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "gene",
+       "lacI"
+      ],
+      [
+       "label",
+       "lacI"
+      ],
+      [
+       "note",
+       "The lac repressor binds to the lac operator to inhibit transcription in E. coli. This inhibition can be relieved by adding lactose or isopropyl-\u03b2-D-thiogalactopyranoside (IPTG)."
+      ],
+      [
+       "product",
+       "lac repressor"
+      ],
+      [
+       "transl_table",
+       "1"
+      ],
+      [
+       "translation",
+       "VKPVTLYDVAEYAGVSYQTVSRVVNQASHVSAKTREKVEAAMAELNYIPNRVAQQLAGKQSLLIGVATSSLALHAPSQIVAAIKSRADQLGASVVVSMVERSGVEACKAAVHNLLAQRVSGLIINYPLDDQDAIAVEAACTNVPALFLDVSDQTPINSIIFSHEDGTRLGVEHLVALGHQQIALLAGPLSSVSARLRLAGWHKYLTRNQIQPIAEREGDWSAMSGFQQTMQMLNEGIVPTAMLVANDQMALGAMRAITESGLRVGADISVVGYDDTEDSSCYIPPLTTIKQDFRLLGQTSVDRLLQLSQGQAVKGNQLLPVSLVKRKTTLAPNTQTASPRALADSLMQLARQVSRLESGQ*"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       2528,
+       3343,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "gene",
+       "aph(3')-Ia"
+      ],
+      [
+       "label",
+       "KanR"
+      ],
+      [
+       "note",
+       "confers resistance to kanamycin"
+      ],
+      [
+       "product",
+       "aminoglycoside phosphotransferase"
+      ],
+      [
+       "transl_table",
+       "1"
+      ],
+      [
+       "translation",
+       "MSHIQRETSCSRPRLNSNMDADLYGYKWARDNVGQSGATIYRLYGKPDAPELFLKHGKGSVANDVTDEMVRLNWLTEFMPLPTIKHFIRTPDDAWLLTTAIPGKTAFQVLEEYPDSGENIVDALAVFLRRLHSIPVCNCPFNSDRVFRLAQAQSRMNNGLVDASDFDDERNGWPVEQVWKEMHKLLPFSPDSVVTHGDFSLDNLIFDEGKLIGCIDVGRVGIADRYQDLAILWNCLGEFSPSLQKRLFQKYGIDNPDMNKLQFHLMLDEFF*"
+      ]
+     ]
+    },
+    {
+     "type": "promoter",
+     "parts": [
+      [
+       3344,
+       3435,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "bla"
+      ],
+      [
+       "label",
+       "AmpR promoter"
+      ]
+     ]
+    },
+    {
+     "type": "promoter",
+     "parts": [
+      [
+       5479,
+       5556,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "lacI"
+      ],
+      [
+       "label",
+       "lacI promoter"
+      ],
+      [
+       "note",
+       ""
+      ]
+     ]
+    },
+    {
+     "type": "terminator",
+     "parts": [
+      [
+       2251,
+       2298,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "T7 terminator"
+      ],
+      [
+       "note",
+       "transcription terminator for bacteriophage T7 RNA polymerase"
+      ]
+     ]
+    },
+    {
+     "type": "protein_bind",
+     "parts": [
+      [
+       3,
+       27,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "bound_moiety",
+       "lac repressor encoded by lacI"
+      ],
+      [
+       "label",
+       "lac operator"
+      ],
+      [
+       "note",
+       "The lac repressor binds to the lac operator to inhibit transcription in E. coli. This inhibition can be relieved by adding lactose or isopropyl-\u03b2-D-thiogalactopyranoside (IPTG)."
+      ]
+     ]
+    },
+    {
+     "type": "protein_bind",
+     "parts": [
+      [
+       233,
+       257,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "bound_moiety",
+       "lac repressor encoded by lacI"
+      ],
+      [
+       "label",
+       "lac operator"
+      ],
+      [
+       "note",
+       "The lac repressor binds to the lac operator to inhibit transcription in E. coli. This inhibition can be relieved by adding lactose or isopropyl-\u03b2-D-thiogalactopyranoside (IPTG)."
+      ]
+     ]
+    },
+    {
+     "type": "promoter",
+     "parts": [
+      [
+       214,
+       232,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "T7 promoter"
+      ],
+      [
+       "note",
+       "promoter for bacteriophage T7 RNA polymerase"
+      ]
+     ]
+    },
+    {
+     "type": "promoter",
+     "parts": [
+      [
+       5602,
+       5618,
+       1,
+       null
+      ],
+      [
+       1,
+       2,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "T7 promoter"
+      ],
+      [
+       "note",
+       "promoter for bacteriophage T7 RNA polymerase"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       83,
+       100,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "label",
+       "6xHis"
+      ],
+      [
+       "product",
+       "6xHis affinity tag"
+      ],
+      [
+       "transl_table",
+       "1"
+      ],
+      [
+       "translation",
+       "HHHHHH"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       71,
+       73,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "label",
+       "ATG"
+      ],
+      [
+       "product",
+       "start codon"
+      ],
+      [
+       "transl_table",
+       "1"
+      ],
+      [
+       "translation",
+       "M"
+      ]
+     ]
+    },
+    {
+     "type": "RBS",
+     "parts": [
+      [
+       58,
+       63,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "RBS"
+      ],
+      [
+       "note",
+       "ribosome binding site"
+      ]
+     ]
+    },
+    {
+     "type": "RBS",
+     "parts": [
+      [
+       286,
+       291,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "RBS"
+      ],
+      [
+       "note",
+       "ribosome binding site"
+      ]
+     ]
+    },
+    {
+     "type": "rep_origin",
+     "parts": [
+      [
+       3451,
+       4200,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "direction",
+       "LEFT"
+      ],
+      [
+       "label",
+       "RSF ori"
+      ],
+      [
+       "note",
+       "Plasmids containing the RSF 1030 origin of replication can be propagated in E. coli cells that contain additional plasmids with compatible origins."
+      ]
+     ]
+    },
+    {
+     "type": "primer_bind",
+     "parts": [
+      [
+       2186,
+       2221,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "o8508"
+      ]
+     ]
+    },
+    {
+     "type": "primer_bind",
+     "parts": [
+      [
+       1435,
+       1465,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "o8507"
+      ]
+     ]
+    },
+    {
+     "type": "primer_bind",
+     "parts": [
+      [
+       1416,
+       1441,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "o7407"
+      ]
+     ]
+    },
+    {
+     "type": "primer_bind",
+     "parts": [
+      [
+       297,
+       320,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "o207"
+      ]
+     ]
+    },
+    {
+     "type": "primer_bind",
+     "parts": [
+      [
+       189,
+       208,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "o1144"
+      ]
+     ]
+    },
+    {
+     "type": "primer_bind",
+     "parts": [
+      [
+       189,
+       208,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "o1145"
+      ]
+     ]
+    },
+    {
+     "type": "primer_bind",
+     "parts": [
+      [
+       2237,
+       2255,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "o701"
+      ]
+     ]
+    },
+    {
+     "type": "primer_bind",
+     "parts": [
+      [
+       5559,
+       5577,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "o1143"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

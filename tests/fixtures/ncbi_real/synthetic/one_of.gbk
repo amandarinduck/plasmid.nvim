@@ -1,0 +1,53 @@
+LOCUS       ONEOF                   2265 bp    DNA     linear   SYN 01-JAN-2000
+DEFINITION  synthetic ONEOF.
+ACCESSION   ONEOF
+VERSION     ONEOF.1
+KEYWORDS    .
+SOURCE      synthetic construct
+  ORGANISM  synthetic construct
+            other sequences; artificial sequences.
+FEATURES             Location/Qualifiers
+     exon            one-of(1888,1901)..2200
+                     /number=1
+     CDS             join(one-of(10,12)..100,200..300)
+                     /note="one-of start"
+ORIGIN
+        1 gctaaagaca attacataac atacacgtca gcacgaaact tgttggccca gtgtgaatcg
+       61 cttaagggtt aagtaagtgt gatgcatacg cctttacttg ctgtgtccac cccatcggac
+      121 tggcattttt attacactca gaaacagaac tcgggtaatt ttgacaggtc acgcagaggc
+      181 gcgccctcct gaagtgcgtg gacactcgct atgaatctct gatttaccca ctctgccaaa
+      241 ctccagcgcg gtcagttcca tcaccctaag taaccgaata atgcgttcgc tctattgact
+      301 acgacgcgct cattcccttg tcggagagtt atggaacaag gacgctgtct gagactagaa
+      361 gacagatagt gcacacgacc ggcgtcggag aaactctatt tgccgcctga caagtcaatg
+      421 cgatccgtag gggcagcgca gtatgccaag actataggca ctgtcgcatc acaaacgatt
+      481 aactgataaa tgagcccttt atgacacggg catatgactg gtttacgata gtatgtccaa
+      541 cggcgagctt tacatttgct gtgagaggta cagggattag tgagaagccg tgcgtatcaa
+      601 ttcgtacctt gggggtcgtt accactctgt tcccacgagc ggcatttctg gatggccagc
+      661 ttttgacatt taatttcacc cataaaccag cgtaaagctg caagtggctc catgaactta
+      721 gctgctagtg tcagactcgc ctcggatcct tactacacta acttgaacgc ctagtggtca
+      781 aagagtactg gtaatcgtcg gtatctatat aagcagggga ggggaaacat ttgttctcag
+      841 ccggtgactc ctaatgctaa gacatttccc ttcagggggg gctcccccgc gatgccataa
+      901 atctgagcaa ccagctgaag caggcacgac agtgcgacat tatatcactg tggtaggtta
+      961 gcttcatcta atgtccaact agccggccaa ttcgcatgat acctctccat ctgacccaag
+     1021 attgtgcttg ttcaattctt cttaacgtga taacagaatc aaacctgcca ggcggtcgtc
+     1081 gcggacctcg gtcgaagtag tggtgcggat ccaggggaac cgttgactca aaaggagctg
+     1141 ccgtccacct aacgtgaagt tccaaaatcc caaacctctc gagatattta tccagcaagg
+     1201 agtggcaacg cccgctgctt taatcgctac caaaacgcaa acaaaagcat acccaaaagt
+     1261 acacgggtga gggaggtgat atagtacagc tacgaagtat ctggcgcctc aataggatta
+     1321 tagcggtctc tcaggctgct tgccgtccgg cccggccgcg acactccggt gcaagcttaa
+     1381 ttcgtacgta cttcccattg gatctcgttt atcgattaag cccgatctag gttcctagag
+     1441 gttaaattgg acgtcttccc actccgttgc tgcgtgtcta ggcggtttag cgtaagcgaa
+     1501 caggaccctg cctcagctca taagtcctta ttctctcacg ttgtgttacg aaagattcac
+     1561 tcgaggtcgt gtgagggttg ggctagcggc aattatgaaa ctatcacatc acataagcgg
+     1621 gctagatata atttaatctt aatccataaa acactagctc agcagttgaa aaaatggcta
+     1681 ggttccagct tttggggaga cgtctttctg agggtcagcc gtgattccga ttcgattaga
+     1741 ctggtcccca cgggtccatg agtacgagga aactcggtat cgagcctaaa agttataagg
+     1801 catctcgccc aggaaagtaa cgacgtatgg gtagttctcc atcaccagct ataatggcta
+     1861 gcgcactctc gttccagggc gtagttacac tgagcgtgcc atgtcagcat gctagcgtat
+     1921 cgccccccaa tgccccgcaa tagggtaatt cgccgacgag taagcgtaga ttacacaccc
+     1981 aggaaacgat ctagacagat tgaaatcccc ttcattatag gtcgtgtagc gctagacagt
+     2041 cacctttaaa ggaagaatca gaggcaagat ctacgtggca gtctcgtgtt gacgccttag
+     2101 ccggtggcga acagtattga cctggccgat gctaatattc tgatttgggg ttgatttgcg
+     2161 cttcaggcgc taaagtggtt ttgagtaaca tgtccttttg acgggagcag gtcgcctcaa
+     2221 gataagagta aacctgccta ccaaaacttt aagccggcag aagct
+//

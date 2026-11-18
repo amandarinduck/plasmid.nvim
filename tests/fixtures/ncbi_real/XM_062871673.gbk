@@ -1,0 +1,94 @@
+LOCUS       XM_062871673            1491 bp    mRNA    linear   ROD 07-FEB-2024
+DEFINITION  PREDICTED: Mus musculus serine-rich, secreted, X-linked (Srsx),
+            mRNA.
+ACCESSION   XM_062871673
+VERSION     XM_062871673.1
+DBLINK      BioProject: PRJNA169
+KEYWORDS    RefSeq; includes ab initio.
+SOURCE      Mus musculus (house mouse)
+  ORGANISM  Mus musculus
+            Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+            Mammalia; Eutheria; Euarchontoglires; Glires; Rodentia; Myomorpha;
+            Muroidea; Muridae; Murinae; Mus; Mus.
+COMMENT     MODEL REFSEQ:  This record is predicted by automated computational
+            analysis. This record is derived from a genomic sequence
+            (NC_000086.8) annotated using gene prediction method: Gnomon,
+            supported by mRNA evidence.
+            Also see:
+                Documentation of NCBI's Annotation Process
+            
+            ##Genome-Annotation-Data-START##
+            Annotation Provider         :: NCBI RefSeq
+            Annotation Status           :: Updated annotation
+            Annotation Name             :: GCF_000001635.27-RS_2024_02
+            Annotation Pipeline         :: NCBI eukaryotic genome annotation
+                                           pipeline
+            Annotation Software Version :: 10.2
+            Annotation Method           :: Best-placed RefSeq; Gnomon;
+                                           RefSeqFE; cmsearch; tRNAscan-SE
+            Features Annotated          :: Gene; mRNA; CDS; ncRNA
+            Annotation Date             :: 02/01/2024
+            ##Genome-Annotation-Data-END##
+            
+            ##RefSeq-Attributes-START##
+            ab initio :: 31% of CDS bases
+            ##RefSeq-Attributes-END##
+FEATURES             Location/Qualifiers
+     source          1..1491
+                     /organism="Mus musculus"
+                     /mol_type="mRNA"
+                     /strain="C57BL/6J"
+                     /db_xref="taxon:10090"
+                     /chromosome="X"
+     gene            1..1491
+                     /gene="Srsx"
+                     /note="serine-rich, secreted, X-linked; Derived by
+                     automated computational analysis using gene prediction
+                     method: Gnomon. Supporting evidence includes similarity
+                     to: 1 mRNA, and 6% coverage of the annotated genomic
+                     feature by RNAseq alignments"
+                     /db_xref="GeneID:100151772"
+                     /db_xref="MGI:MGI:3777603"
+     CDS             196..1491
+                     /gene="Srsx"
+                     /codon_start=1
+                     /product="uncharacterized protein Srsx"
+                     /protein_id="XP_062727657.1"
+                     /db_xref="GeneID:100151772"
+                     /db_xref="MGI:MGI:3777603"
+                     /translation="MQNSAEIPPVTQEVIESLSATQDSPKLPAPSPLCPEAEEPLTYT
+                     QSISKSSESVPETPEALASVLGSLCLLKPNEGALGPLVSEQGILRTPAFPQESLELSQ
+                     PAQGPLKPVPSPPVTMGASFSTEFQGLSLCAEGDIIPTPPHEDVWRNSSYHKKSPRRF
+                     KSNQSILKHVPFPEGDIRYCLSDLDALKCISSAESSLTSSKYAEKESSPTSTPQRSIS
+                     PLKSSQLSFRSSILCKKGLSHSPPPGDCPTPSKLRKTRPSPSSVDQESLKSVRSKHAG
+                     WKHCHSSKMWVRACKSKKRGVKLKTVTNINFATSDSAKGACRCSPSYEVGLRSPLPNQ
+                     GIHRPSKSTETPSEKAPSDQWDTQASNSEHEVGKPSSIPTEECMRTTVSHEDSLRHPT
+                     SPHEIPRHATSTRRKQRKASLTQGALQTSPTDQECIESS"
+ORIGIN      
+        1 cagagacctt ccctgtctgc ccaaggtgta ctagaaacat caatatcttc ccaagggctt
+       61 acagaaactt ccttgttacc tcaagagcct ccaggaccct gtttggaaaa agaggcttta
+      121 ggatattcac catccaatcc agaagatctt ggactttctg attcttccca ggacagacta
+      181 gaaaaacagg catgtatgca aaatagtgca gaaataccac ctgtcaccca agaggtcata
+      241 gaatctttgt cagccacaca agattctccc aaattaccag ctccttcacc actttgtcca
+      301 gaggcagaag aacctctgac atatacacaa tccatttcta agagttcaga atctgtgcca
+      361 gagactccag aagctttggc atctgtttta gggtctctgt gtcttttgaa acccaatgaa
+      421 ggtgctctgg gccctttagt atctgaacaa gggatcctga gaacaccagc atttccccag
+      481 gaaagtctag aactttctca accagcccaa gggcctctaa aacctgtgcc atctccccca
+      541 gtaaccatgg gtgcttcctt ttcaacagag tttcagggac tgtccctttg tgcagaaggg
+      601 gacattatcc ctacccctcc tcatgaagat gtctggagaa attcctctta tcacaagaag
+      661 agccctagac gtttcaaatc taaccaaagc atattgaaac atgtcccatt tcctgaaggg
+      721 gatatcagat actgcctttc agaccttgat gccttaaaat gtatctcttc tgccgaaagt
+      781 agcctcacat cttccaagta tgcagaaaag gaatccagtc ctacctctac tcctcaaagg
+      841 agcatctccc ccttgaaatc atcacaattg agtttcagat ctagtatcct ttgtaaaaaa
+      901 ggtctcagtc attctcctcc tccaggagat tgccccacac cttctaaatt gcggaaaaca
+      961 agaccaagcc cttcctctgt cgatcaagag agcctgaaat ctgtacgctc aaaacatgcg
+     1021 ggctggaaac actgccattc ttccaaaatg tgggtaagag cttgcaaatc taagaaaaga
+     1081 ggtgtaaagc ttaaaactgt gactaacata aacttcgcca cttctgattc tgctaaagga
+     1141 gcctgcagat gctcaccatc ttatgaggtg ggtctcagaa gtcccctacc aaaccaaggc
+     1201 attcacagac catccaagtc tactgaaacc ccatcagaaa aagccccttc tgaccaatgg
+     1261 gacacccaag cttccaattc agagcatgag gttggcaagc catcctccat ccctacagaa
+     1321 gagtgcatgc gaacaactgt ttctcatgaa gacagcctca ggcatcccac ctctcctcat
+     1381 gagattccca gacacgctac ttctaccaga agaaaacaga ggaaagcctc tcttacccaa
+     1441 ggagccctgc aaacttcccc tacagatcaa gaatgcattg agtcatcttg a
+//
+

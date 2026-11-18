@@ -1,0 +1,33 @@
+{
+ "format": "fasta",
+ "records": [
+  {
+   "name": "sp|P69905.2|HBA_HUMAN",
+   "id": "sp|P69905.2|HBA_HUMAN",
+   "length": 142,
+   "sha256": "14725a10598943a7aa719eed7d24c7fee599192a6c63c75b051ee6f156341242",
+   "description": "sp|P69905.2|HBA_HUMAN RecName: Full=Hemoglobin subunit alpha; AltName: Full=Alpha-globin; AltName: Full=Hemoglobin alpha chain; Contains: RecName: Full=Hemopressin"
+  },
+  {
+   "name": "sp|P68871.2|HBB_HUMAN",
+   "id": "sp|P68871.2|HBB_HUMAN",
+   "length": 147,
+   "sha256": "9ebf320eb707d71644444fe5006ed58af56a0bf0ec9568eb6a3a65e0e8191465",
+   "description": "sp|P68871.2|HBB_HUMAN RecName: Full=Hemoglobin subunit beta; AltName: Full=Beta-globin; AltName: Full=Hemoglobin beta chain; Contains: RecName: Full=LVV-hemorphin-7; Contains: RecName: Full=Spinorphin"
+  },
+  {
+   "name": "AAB59735.1",
+   "id": "AAB59735.1",
+   "length": 396,
+   "sha256": "27caae7e0153afb364b0f12c8ac82367a49ed6fe094a33d168867c622554ad90",
+   "description": "AAB59735.1 tetracycline resistance protein [Cloning vector pBR322]"
+  },
+  {
+   "name": "AAB59737.1",
+   "id": "AAB59737.1",
+   "length": 286,
+   "sha256": "c9c4ef97b0e66cb20b51ba90e5889a0467f8155ef356c7a5a74914f06b91d468",
+   "description": "AAB59737.1 beta-lactamase [Cloning vector pBR322]"
+  }
+ ]
+}

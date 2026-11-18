@@ -1,0 +1,145 @@
+{
+ "format": "snapgene",
+ "records": [
+  {
+   "name": "<unknown name>",
+   "id": "<unknown id>",
+   "length": 44,
+   "sha256": "ed70088448bff6d5961f19c19ce140ef221544d92700b96879280706aa1dad7f",
+   "topology": "circular",
+   "description": "<unknown description>",
+   "features": [
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       5,
+       37,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "label",
+       "renamed"
+      ]
+     ]
+    },
+    {
+     "type": "misc_feature",
+     "parts": [
+      [
+       38,
+       44,
+       -1,
+       null
+      ],
+      [
+       1,
+       7,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "origin_spanning_left"
+      ]
+     ]
+    },
+    {
+     "type": "misc_feature",
+     "parts": [
+      [
+       35,
+       44,
+       1,
+       null
+      ],
+      [
+       1,
+       12,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "wrap"
+      ]
+     ]
+    },
+    {
+     "type": "protein_bind",
+     "parts": [
+      [
+       20,
+       40,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "LacO &lt;test&gt; &amp; \"q\""
+      ]
+     ]
+    },
+    {
+     "type": "primer_bind",
+     "parts": [
+      [
+       39,
+       44,
+       1,
+       null
+      ],
+      [
+       1,
+       8,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "Primer 1"
+      ]
+     ]
+    },
+    {
+     "type": "primer_bind",
+     "parts": [
+      [
+       37,
+       44,
+       -1,
+       null
+      ],
+      [
+       1,
+       11,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "Primer 2"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

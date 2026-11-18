@@ -1,0 +1,169 @@
+{
+ "format": "genbank",
+ "records": [
+  {
+   "name": "BNAKINI",
+   "id": "M81224.1",
+   "length": 441,
+   "sha256": "6a6d9314b2af7094b2c68d0222552db1d0748e01cc6e257eb8ce62cca3f0c448",
+   "topology": "linear",
+   "description": "Rapeseed Kin1 protein (kin1) mRNA, complete cds",
+   "features": [
+    {
+     "type": "source",
+     "parts": [
+      [
+       1,
+       441,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "cultivar",
+       "Jet Neuf"
+      ],
+      [
+       "db_xref",
+       "taxon:3708"
+      ],
+      [
+       "dev_stage",
+       "cold induced"
+      ],
+      [
+       "mol_type",
+       "mRNA"
+      ],
+      [
+       "organism",
+       "Brassica napus"
+      ],
+      [
+       "tissue_type",
+       "leaf"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       1,
+       441,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "kin1"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       34,
+       231,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "experiment",
+       "experimental evidence, no additional details recorded"
+      ],
+      [
+       "gene",
+       "kin1"
+      ],
+      [
+       "protein_id",
+       "AAA32993.1"
+      ],
+      [
+       "translation",
+       "MADNKQSFQAGQASGRAEEKGNVLMDKVKDAATAAGASAQTAGQKITEAAGGAVNLVKEKTGMNK"
+      ]
+     ]
+    },
+    {
+     "type": "regulatory",
+     "parts": [
+      [
+       241,
+       247,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "kin1"
+      ],
+      [
+       "note",
+       "putative"
+      ],
+      [
+       "regulatory_class",
+       "polyA_signal_sequence"
+      ]
+     ]
+    },
+    {
+     "type": "regulatory",
+     "parts": [
+      [
+       294,
+       300,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "kin1"
+      ],
+      [
+       "note",
+       "putative"
+      ],
+      [
+       "regulatory_class",
+       "polyA_signal_sequence"
+      ]
+     ]
+    },
+    {
+     "type": "polyA_site",
+     "parts": [
+      [
+       441,
+       441,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "kin1"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

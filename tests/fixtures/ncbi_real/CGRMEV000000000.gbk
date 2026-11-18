@@ -1,0 +1,42 @@
+LOCUS       CGRMEV020000000          807 rc    DNA     linear   ENV 14-NOV-2026
+DEFINITION  MAG: Clostridia bacterium isolate L1HJB1800328-GF10PPE_4_bin.84,
+            whole genome shotgun sequencing project.
+ACCESSION   CGRMEV000000000
+VERSION     CGRMEV000000000.2
+DBLINK      BioProject: PRJEB128554
+            BioSample: SAMEA124217684
+            Sequence Read Archive: SRR38270447
+KEYWORDS    WGS; ENV; Metagenome Assembled Genome; MAG.
+SOURCE      Clostridia bacterium (feces metagenome)
+  ORGANISM  Clostridia bacterium
+            Bacteria; Bacillati; Bacillota; Clostridia.
+REFERENCE   1  (bases 1 to 807)
+  AUTHORS   Xu,Z.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (18-OCT-2026) XMU, Epidemiology research group, No. 4221
+            Xiangan South Road, Xiangan District, Xiamen, Fujian, China, China
+REFERENCE   2  (bases 1 to 807)
+  AUTHORS   Xu,Z.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (29-OCT-2026) XMU, Epidemiology research group, No. 4221
+            Xiangan South Road, Xiangan District, Xiamen, Fujian, China, China
+COMMENT     On Nov 15, 2026 this sequence version replaced CGRMEV000000000.1.
+            The Clostridia bacterium whole genome shotgun (WGS) project has the
+            project accession CGRMEV000000000.  This version of the project
+            (02) has the accession number CGRMEV020000000, and consists of
+            sequences CGRMEV020000001-CGRMEV020000807.
+FEATURES             Location/Qualifiers
+     source          1..807
+                     /organism="Clostridia bacterium"
+                     /mol_type="genomic DNA"
+                     /isolate="L1HJB1800328-GF10PPE_4_bin.84"
+                     /isolation_source="feces"
+                     /db_xref="taxon:2044939"
+                     /environmental_sample
+                     /geo_loc_name="China"
+                     /collection_date="2025-05-09"
+                     /metagenome_source="feces metagenome"
+                     /note="metagenomic"
+WGS         CGRMEV020000001-CGRMEV020000807
+//
+

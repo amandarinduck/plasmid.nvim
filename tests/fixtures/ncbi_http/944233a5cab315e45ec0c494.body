@@ -1,0 +1,42 @@
+LOCUS       LN625376                1765 bp    DNA     linear   CON 04-AUG-2026
+DEFINITION  Cryptococcus gattii, R265, WGS project CBZL01000000 data, scaffold:
+            contig_97, whole genome shotgun sequence.
+ACCESSION   LN625376
+VERSION     LN625376.1
+DBLINK      BioProject: PRJEB5464
+            BioSample: SAMEA3146310
+KEYWORDS    WGS.
+SOURCE      Cryptococcus deuterogattii (Cryptococcus gattii VGII)
+  ORGANISM  Cryptococcus deuterogattii
+            Eukaryota; Fungi; Dikarya; Basidiomycota; Agaricomycotina;
+            Tremellomycetes; Tremellales; Cryptococcaceae; Cryptococcus;
+            Cryptococcus gattii species complex.
+REFERENCE   1  (bases 1 to 1765)
+  AUTHORS   Hagen,F., Ceresini,P.C., Polacheck,I., Ma,H., van Nieuwerburgh,F.,
+            Gabaldon,T., Kagan,S., Pursall,E.R., Hoogveld,H.L., van
+            Iersel,L.J., Klau,G.W., Kelk,S.M., Stougie,L., Bartlett,K.H.,
+            Voelz,K., Pryszcz,L.P., Castaneda,E., Lazera,M., Meyer,W.,
+            Deforce,D., Meis,J.F., May,R.C., Klaassen,C.H. and Boekhout,T.
+  TITLE     Ancient dispersal of the human fungal pathogen Cryptococcus gattii
+            from the Amazon rainforest
+  JOURNAL   PLoS One 8 (8), e71148 (2013)
+   PUBMED   23940707
+  REMARK    Submission is described in the paper.
+REFERENCE   2  (bases 1 to 1765)
+  AUTHORS   Pryszcz,L.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (10-DEC-2013) CRG-Centre for Genomic Regulation,
+            Bioinformatics and Genomics, Aiguader 88, Catalunya, SPAIN
+FEATURES             Location/Qualifiers
+     source          1..1765
+                     /organism="Cryptococcus deuterogattii"
+                     /mol_type="genomic DNA"
+                     /submitter_seqid="contig_97"
+                     /strain="R265"
+                     /isolate="HL_B8"
+                     /type_material="culture from holotype of Cryptococcus
+                     deuterogattii"
+                     /db_xref="taxon:1859096"
+CONTIG      join(CBZL010000100.1:1..1765)
+//
+

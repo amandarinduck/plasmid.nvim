@@ -1,0 +1,41 @@
+{
+ "format": "genbank",
+ "key": "9d7f1218e4e3912b37b19ecd",
+ "records": [
+  {
+   "name": "SYNPUC19CV",
+   "id": "L09137.2",
+   "length": 2686,
+   "sha256": "8a205af08518dae1b0045c7b098986dca18824ef654e75233603602ab89cad04",
+   "topology": "circular",
+   "description": "Cloning vector pUC19c, complete sequence",
+   "features": [
+    {
+     "type": "source",
+     "parts": [
+      [
+       1,
+       2686,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "taxon:174689"
+      ],
+      [
+       "mol_type",
+       "genomic DNA"
+      ],
+      [
+       "organism",
+       "Cloning vector pUC19c"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

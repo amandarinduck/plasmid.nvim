@@ -1,0 +1,427 @@
+[
+ {
+  "file": "U55762.gbk",
+  "db": "nuccore",
+  "ids": "U55762.1",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "pEGFP-N1: commercial circular vector (sparse 2003 annotation: 4 features)",
+  "commit": true,
+  "bytes": 9370
+ },
+ {
+  "file": "X52328.gbk",
+  "db": "nuccore",
+  "ids": "X52328.1",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "pBluescript II: classic circular cloning vector, EMBL-origin 1990 record",
+  "commit": true,
+  "bytes": 5150
+ },
+ {
+  "file": "U13850.gbk",
+  "db": "nuccore",
+  "ids": "U13850.1",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "pGEX-2T: circular GST expression vector, 1994 SYN record with 13 features",
+  "commit": true,
+  "bytes": 11833
+ },
+ {
+  "file": "X06403.gbk",
+  "db": "nuccore",
+  "ids": "X06403.1",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "pACYC184: pre-2000 circular plasmid",
+  "commit": true,
+  "bytes": 7961
+ },
+ {
+  "file": "NC_001669.gbk",
+  "db": "nuccore",
+  "ids": "NC_001669.1",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "SV40 RefSeq: circular, origin-spanning joins (join(...,1..N))",
+  "commit": true,
+  "bytes": 71860
+ },
+ {
+  "file": "NC_012920.gbk",
+  "db": "nuccore",
+  "ids": "NC_012920.1",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "human mtDNA rCRS: circular, D-loop spans origin, tRNA/rRNA, transl_except, overlapping genes",
+  "commit": true,
+  "bytes": 64640
+ },
+ {
+  "file": "NC_000932.gbk",
+  "db": "nuccore",
+  "ids": "NC_000932.1",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "Arabidopsis chloroplast: circular 154 kb, trans-spliced rps12, many complement(join())",
+  "commit": true,
+  "bytes": 302109
+ },
+ {
+  "file": "NC_002483.gbk",
+  "db": "nuccore",
+  "ids": "NC_002483.1",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "E. coli F plasmid: bacterial plasmid with many features",
+  "commit": true,
+  "bytes": 258254
+ },
+ {
+  "file": "NC_001416.gbk",
+  "db": "nuccore",
+  "ids": "NC_001416.1",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "phage lambda: 48.5 kb phage genome",
+  "commit": true,
+  "bytes": 176721
+ },
+ {
+  "file": "NC_045512.gbk",
+  "db": "nuccore",
+  "ids": "NC_045512.2",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "SARS-CoV-2: ss-RNA, ribosomal-slippage join with overlapping parts, mat_peptide, long notes",
+  "commit": true,
+  "bytes": 78517
+ },
+ {
+  "file": "NC_001802.gbk",
+  "db": "nuccore",
+  "ids": "NC_001802.1",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "HIV-1: RNA virus, LTRs, join() CDSs",
+  "commit": true,
+  "bytes": 36547
+ },
+ {
+  "file": "influenza_PR8.gbk",
+  "db": "nuccore",
+  "ids": "NC_002016.1,NC_002017.1,NC_002018.1,NC_002019.1,NC_002020.1,NC_002021.1,NC_002022.1,NC_002023.1",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "influenza A/PR/8/34: 8-segment genome as one multi-record file (/segment qualifiers)",
+  "commit": true,
+  "bytes": 48825
+ },
+ {
+  "file": "NM_000546.gbk",
+  "db": "nuccore",
+  "ids": "NM_000546.6",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "TP53 mRNA (RefSeq NM_): many misc_feature, variation, regulatory",
+  "commit": true,
+  "bytes": 37805
+ },
+ {
+  "file": "XM_062871673.gbk",
+  "db": "nuccore",
+  "ids": "XM_062871673.1",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "predicted model mRNA (XM_, Gnomon): mouse Srsx",
+  "commit": true,
+  "bytes": 5402
+ },
+ {
+  "file": "NM_001267550.gbk",
+  "db": "nuccore",
+  "ids": "NM_001267550.2",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "TTN mRNA: ~105 kb, /translation of ~35,000 aa (very long qualifier)",
+  "commit": true,
+  "bytes": 321561
+ },
+ {
+  "file": "NM_000581.gbk",
+  "db": "nuccore",
+  "ids": "NM_000581.4",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "GPX1 mRNA: selenocysteine /transl_except",
+  "commit": true,
+  "bytes": 15211
+ },
+ {
+  "file": "NR_003286.gbk",
+  "db": "nuccore",
+  "ids": "NR_003286.4",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "18S rRNA (NR_): non-coding RefSeq",
+  "commit": true,
+  "bytes": 8083
+ },
+ {
+  "file": "NC_000017_TP53_rev.gbk",
+  "db": "nuccore",
+  "ids": "NC_000017.11",
+  "rettype": "gbwithparts",
+  "params": {
+   "seq_start": 7668402,
+   "seq_stop": 7687550,
+   "strand": 2
+  },
+  "reason": "TP53 locus extract, strand=2 (gene on minus strand shown forward), spliced mRNA/CDS joins",
+  "commit": true,
+  "bytes": 228944
+ },
+ {
+  "file": "NC_000011_HBB_fwd.gbk",
+  "db": "nuccore",
+  "ids": "NC_000011.10",
+  "rettype": "gbwithparts",
+  "params": {
+   "seq_start": 5225464,
+   "seq_stop": 5229395,
+   "strand": 1
+  },
+  "reason": "HBB locus extract, plus strand (gene on minus: complement(join()))",
+  "commit": true,
+  "bytes": 48425
+ },
+ {
+  "file": "NC_000011_HBB_rev.gbk",
+  "db": "nuccore",
+  "ids": "NC_000011.10",
+  "rettype": "gbwithparts",
+  "params": {
+   "seq_start": 5225464,
+   "seq_stop": 5229395,
+   "strand": 2
+  },
+  "reason": "same HBB extract, strand=2",
+  "commit": true,
+  "bytes": 48015
+ },
+ {
+  "file": "NC_000012_GAPDH_fwd.gbk",
+  "db": "nuccore",
+  "ids": "NC_000012.12",
+  "rettype": "gbwithparts",
+  "params": {
+   "seq_start": 6534000,
+   "seq_stop": 6539000
+  },
+  "reason": "GAPDH locus extract, features truncated by the window get < / >",
+  "commit": true,
+  "bytes": 83406
+ },
+ {
+  "file": "NZ_JCEXQL010000002_con.gbk",
+  "db": "nuccore",
+  "ids": "NZ_JCEXQL010000002.1",
+  "rettype": "gb",
+  "params": {},
+  "reason": "RefSeq CON record as rettype=gb: CONTIG join(), no ORIGIN",
+  "commit": true,
+  "bytes": 55243
+ },
+ {
+  "file": "NZ_JCEXQL010000002_parts.gbk",
+  "db": "nuccore",
+  "ids": "NZ_JCEXQL010000002.1",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "same CON record expanded with gbwithparts",
+  "commit": true,
+  "bytes": 105820
+ },
+ {
+  "file": "NW_028328278_con.gbk",
+  "db": "nuccore",
+  "ids": "NW_028328278.1",
+  "rettype": "gb",
+  "params": {},
+  "reason": "RefSeq scaffold (NW_) as rettype=gb",
+  "commit": true,
+  "bytes": 2730
+ },
+ {
+  "file": "CGRMEV000000000.gbk",
+  "db": "nuccore",
+  "ids": "CGRMEV000000000.2",
+  "rettype": "gb",
+  "params": {},
+  "reason": "WGS master record: no sequence, WGS / WGS_SCAFLD lines",
+  "commit": true,
+  "bytes": 2034
+ },
+ {
+  "file": "CGRMEV020000001.gbk",
+  "db": "nuccore",
+  "ids": "CGRMEV020000001",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "WGS contig of the master above",
+  "commit": true,
+  "bytes": 3075
+ },
+ {
+  "file": "AH005336.gbk",
+  "db": "nuccore",
+  "ids": "AH005336.3",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "segmented set (AH_): several source features, gap features, many secondary accessions",
+  "commit": true,
+  "bytes": 26421
+ },
+ {
+  "file": "AH003512.gbk",
+  "db": "nuccore",
+  "ids": "AH003512.2",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "segmented set with between-base misc_recomb sites (769^770)",
+  "commit": true,
+  "bytes": 8078
+ },
+ {
+  "file": "S75221.gbk",
+  "db": "nuccore",
+  "ids": "S75221.1",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "between-base location 212^213 (misc_recomb), MMTV int-6-LTR fusion, 1990s record",
+  "commit": true,
+  "bytes": 3143
+ },
+ {
+  "file": "AF084526.gbk",
+  "db": "nuccore",
+  "ids": "AF084526.1",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "between-base misc_feature 2638^2639 (RNA-editing insertion sites), Physarum mitochondrial cox3",
+  "commit": true,
+  "bytes": 14182
+ },
+ {
+  "file": "X61312.gbk",
+  "db": "nuccore",
+  "ids": "X61312.1",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "order() gene location with > partial",
+  "commit": true,
+  "bytes": 3150
+ },
+ {
+  "file": "J01636.gbk",
+  "db": "nuccore",
+  "ids": "J01636.1",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "E. coli lac operon: 1980s record",
+  "commit": true,
+  "bytes": 29765
+ },
+ {
+  "file": "U49845.gbk",
+  "db": "nuccore",
+  "ids": "U49845.1",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "NCBI's own sample record: <1..>206 partial CDS, complement()",
+  "commit": true,
+  "bytes": 10322
+ },
+ {
+  "file": "NP_000537.gp",
+  "db": "protein",
+  "ids": "NP_000537.3",
+  "rettype": "gp",
+  "params": {},
+  "reason": "RefSeq protein p53: Region/Site features, order() sites",
+  "commit": true,
+  "bytes": 28023
+ },
+ {
+  "file": "NP_005219.gp",
+  "db": "protein",
+  "ids": "NP_005219.2",
+  "rettype": "gp",
+  "params": {},
+  "reason": "RefSeq protein EGFR: many Region/Site, long /note",
+  "commit": true,
+  "bytes": 28952
+ },
+ {
+  "file": "AAB02572.gp",
+  "db": "protein",
+  "ids": "AAB02572.1",
+  "rettype": "gp",
+  "params": {},
+  "reason": "GenPept (INSDC, non-RefSeq) protein: EGFP from cloning vector pEGFP-1, 1996 record",
+  "commit": true,
+  "bytes": 2721
+ },
+ {
+  "file": "P01308.gp",
+  "db": "protein",
+  "ids": "P01308.1",
+  "rettype": "gp",
+  "params": {},
+  "reason": "UniProtKB-derived GenPept (insulin): Bond features bond(a,b), long COMMENT",
+  "commit": true,
+  "bytes": 61458
+ },
+ {
+  "file": "P04637.gp",
+  "db": "protein",
+  "ids": "P04637.2",
+  "rettype": "gp",
+  "params": {},
+  "reason": "UniProtKB-derived GenPept (P53_HUMAN): hundreds of Site/Region features",
+  "commit": true,
+  "bytes": 143327
+ },
+ {
+  "file": "4HHB_A.gp",
+  "db": "protein",
+  "ids": "4HHB_A",
+  "rettype": "gp",
+  "params": {},
+  "reason": "PDB-derived GenPept: SecStr and Het features (bond())",
+  "commit": true,
+  "bytes": 4318
+ },
+ {
+  "file": "NC_000908.gbk",
+  "db": "nuccore",
+  "ids": "NC_000908.2",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "Mycoplasma genitalium chromosome 580 kb (scaling point)",
+  "commit": false,
+  "bytes": 1514846
+ },
+ {
+  "file": "NC_000913.gbk",
+  "db": "nuccore",
+  "ids": "NC_000913.3",
+  "rettype": "gbwithparts",
+  "params": {},
+  "reason": "E. coli K-12 MG1655 chromosome 4.6 Mb (big record)",
+  "commit": false,
+  "bytes": 11450917
+ }
+]

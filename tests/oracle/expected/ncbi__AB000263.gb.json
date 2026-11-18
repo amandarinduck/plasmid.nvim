@@ -1,0 +1,77 @@
+{
+ "format": "genbank",
+ "records": [
+  {
+   "name": "AB000263",
+   "id": "AB000263.1",
+   "length": 368,
+   "sha256": "2f60d4b575b7de25247da8648f343bb65910fd0a7071e97ec08512525fea93a5",
+   "topology": "linear",
+   "description": "Homo sapiens mRNA for prepro cortistatin like peptide, complete cds",
+   "features": [
+    {
+     "type": "source",
+     "parts": [
+      [
+       1,
+       368,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "clone",
+       "phCSP6"
+      ],
+      [
+       "db_xref",
+       "taxon:9606"
+      ],
+      [
+       "mol_type",
+       "mRNA"
+      ],
+      [
+       "organism",
+       "Homo sapiens"
+      ],
+      [
+       "tissue_type",
+       "Brain"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       6,
+       323,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "product",
+       "prepro cortistatin like peptide"
+      ],
+      [
+       "protein_id",
+       "BAA19770.1"
+      ],
+      [
+       "translation",
+       "MPLSPGLLLLLLSGATATAALPLEGGPTGRDSEHMQEAAGIRKSSLLTFLAWWFEWTSQASAGPLIGEEAREVARRQEGAPPQQSARRDRMPCRNFFWKTFSSCK"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

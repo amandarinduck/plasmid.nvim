@@ -1,0 +1,19 @@
+LOCUS       MIXEDORDER               300 bp    DNA     linear   SYN 01-JAN-2000
+DEFINITION  synthetic MIXEDORDER.
+ACCESSION   MIXEDORDER
+VERSION     MIXEDORDER.1
+KEYWORDS    .
+SOURCE      synthetic construct
+  ORGANISM  synthetic construct
+            other sequences; artificial sequences.
+FEATURES             Location/Qualifiers
+     misc_feature    order(complement(1..10),20..30)
+     misc_feature    complement(order(40..50,60..70))
+     misc_feature    join(complement(100..120),complement(80..90))
+ORIGIN
+        1 gctaaagaca attacataac atacacgtca gcacgaaact tgttggccca gtgtgaatcg
+       61 cttaagggtt aagtaagtgt gatgcatacg cctttacttg ctgtgtccac cccatcggac
+      121 tggcattttt attacactca gaaacagaac tcgggtaatt ttgacaggtc acgcagaggc
+      181 gcgccctcct gaagtgcgtg gacactcgct atgaatctct gatttaccca ctctgccaaa
+      241 ctccagcgcg gtcagttcca tcaccctaag taaccgaata atgcgttcgc tctattgact
+//

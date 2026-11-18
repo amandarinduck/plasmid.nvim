@@ -1,0 +1,57 @@
+LOCUS       NW_028328278       281759365 bp    DNA     linear   CON 12-NOV-2026
+DEFINITION  Mastigoproctus giganteus isolate SK-2022 chromosome 1 genomic
+            scaffold, ASM4854438v1 scaffold_1, whole genome shotgun sequence.
+ACCESSION   NW_028328278
+VERSION     NW_028328278.1
+DBLINK      BioProject: PRJNA1559623
+            BioSample: SAMN45938700
+            Assembly: GCF_048544385.1
+KEYWORDS    WGS; RefSeq.
+SOURCE      Mastigoproctus giganteus (giant whipscorpion)
+  ORGANISM  Mastigoproctus giganteus
+            Eukaryota; Metazoa; Ecdysozoa; Arthropoda; Chelicerata; Arachnida;
+            Uropygi; Thelyphonida; Thelyphonidae; Mastigoproctus.
+REFERENCE   1  (bases 1 to 281759365)
+  AUTHORS   Kulkarni,S.S., Klementz,B.C. and Sharma,P.P.
+  TITLE     A chromosome-level genome of the giant vinegaroon Mastigoproctus
+            giganteus exhibits the signature of pre-Silurian whole genome
+            duplication
+  JOURNAL   J Hered (2024) In press
+   PUBMED   39679458
+  REMARK    Publication Status: Available-Online prior to print
+COMMENT     REFSEQ INFORMATION: The reference sequence is identical to
+            CM108635.1.
+            Assembly name: ASM4854438v1
+            The genomic sequence for this RefSeq record is from the
+            whole-genome assembly released by the University of
+            Wisconsin-Madison on 2025/03/12. The original whole-genome shotgun
+            project has the accession JBLYVN000000000.1.
+            This sequence is part of a chromosome or linkage group.  Current
+            annotation for this sequence is available on the chromosome or
+            linkage group record.
+            
+            ##Genome-Assembly-Data-START##
+            Assembly Provider      :: University of Wisconsin-Madison
+            Assembly Date          :: 22-FEB-2024
+            Assembly Method        :: Hifiasm v. 0.15.1-r329
+            Genome Representation  :: Full
+            Expected Final Version :: Yes
+            Genome Coverage        :: 31.1x
+            Sequencing Technology  :: PacBio Sequel
+            ##Genome-Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..281759365
+                     /organism="Mastigoproctus giganteus"
+                     /mol_type="genomic DNA"
+                     /isolate="SK-2022"
+                     /isolation_source="wild caught from burrows"
+                     /db_xref="taxon:58767"
+                     /chromosome="1"
+                     /sex="male"
+                     /tissue_type="whole body"
+                     /dev_stage="adult"
+                     /geo_loc_name="USA: Texas"
+                     /collection_date="2022"
+CONTIG      join(JBLYVN010000001.1:1..281759365)
+//
+

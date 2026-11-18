@@ -1,0 +1,1157 @@
+{
+ "format": "genbank",
+ "key": "0989b1e8d6812e2b50c02e28",
+ "records": [
+  {
+   "name": "NP_000509",
+   "id": "NP_000509.1",
+   "length": 147,
+   "sha256": "9ebf320eb707d71644444fe5006ed58af56a0bf0ec9568eb6a3a65e0e8191465",
+   "topology": "linear",
+   "description": "hemoglobin subunit beta [Homo sapiens]",
+   "features": [
+    {
+     "type": "source",
+     "parts": [
+      [
+       1,
+       147,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "chromosome",
+       "11"
+      ],
+      [
+       "db_xref",
+       "taxon:9606"
+      ],
+      [
+       "map",
+       "11p15.4"
+      ],
+      [
+       "organism",
+       "Homo sapiens"
+      ]
+     ]
+    },
+    {
+     "type": "Protein",
+     "parts": [
+      [
+       1,
+       147,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "calculated_mol_wt",
+       "15867"
+      ],
+      [
+       "note",
+       "beta globin chain; hemoglobin, beta; hemoglobin beta subunit; Hb Monza protein"
+      ],
+      [
+       "product",
+       "hemoglobin subunit beta"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       2,
+       2,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "N-acetylvaline. /evidence=ECO:0000250|UniProtKB:P02086; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "acetylation"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       2,
+       2,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "N-linked (Glc) (glycation) valine, in Hb A1c. /evidence=ECO:0000269|PubMed:635569; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "glycosylation"
+      ]
+     ]
+    },
+    {
+     "type": "Region",
+     "parts": [
+      [
+       8,
+       146,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "CDD:381262"
+      ],
+      [
+       "note",
+       "Hemoglobin beta, gamma, delta, epsilon, and related Hb subunits; cd08925"
+      ],
+      [
+       "region_name",
+       "Hb-beta-like"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       8,
+       9,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "(Microbial infection) Cleavage, by N.americanus apr-2. /evidence=ECO:0000269|PubMed:12552433; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "other"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       9,
+       9,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "N-linked (Glc) (glycation) lysine. /evidence=ECO:0000269|PubMed:7358733; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "glycosylation"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       10,
+       10,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "Phosphoserine. /evidence=ECO:0007744|PubMed:24275569; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "phosphorylation"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       13,
+       13,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "Phosphothreonine. /evidence=ECO:0007744|PubMed:24275569; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "phosphorylation"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       18,
+       18,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "N-linked (Glc) (glycation) lysine. /evidence=ECO:0000269|PubMed:7358733; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "glycosylation"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       26,
+       27,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "(Microbial infection) Cleavage, by N.americanus apr-2. /evidence=ECO:0000269|PubMed:12552433; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "other"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       30,
+       31,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "(Microbial infection) Cleavage, by N.americanus apr-2. /evidence=ECO:0000269|PubMed:12552433; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "other"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       31,
+       31,
+       1,
+       null
+      ],
+      [
+       34,
+       35,
+       1,
+       null
+      ],
+      [
+       38,
+       38,
+       1,
+       null
+      ],
+      [
+       41,
+       41,
+       1,
+       null
+      ],
+      [
+       98,
+       98,
+       1,
+       null
+      ],
+      [
+       100,
+       100,
+       1,
+       null
+      ],
+      [
+       103,
+       103,
+       1,
+       null
+      ],
+      [
+       109,
+       109,
+       1,
+       null
+      ],
+      [
+       112,
+       113,
+       1,
+       null
+      ],
+      [
+       116,
+       117,
+       1,
+       null
+      ],
+      [
+       120,
+       120,
+       1,
+       null
+      ],
+      [
+       123,
+       125,
+       1,
+       null
+      ],
+      [
+       128,
+       129,
+       1,
+       null
+      ],
+      [
+       132,
+       132,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "CDD:381262"
+      ],
+      [
+       "note",
+       "tetramer interface [polypeptide binding]"
+      ],
+      [
+       "site_type",
+       "other"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       32,
+       32,
+       1,
+       null
+      ],
+      [
+       42,
+       43,
+       1,
+       null
+      ],
+      [
+       64,
+       64,
+       1,
+       null
+      ],
+      [
+       67,
+       68,
+       1,
+       null
+      ],
+      [
+       71,
+       71,
+       1,
+       null
+      ],
+      [
+       89,
+       89,
+       1,
+       null
+      ],
+      [
+       93,
+       93,
+       1,
+       null
+      ],
+      [
+       97,
+       97,
+       1,
+       null
+      ],
+      [
+       99,
+       99,
+       1,
+       null
+      ],
+      [
+       103,
+       104,
+       1,
+       null
+      ],
+      [
+       107,
+       107,
+       1,
+       null
+      ],
+      [
+       142,
+       142,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "CDD:381262"
+      ],
+      [
+       "note",
+       "heme binding site [chemical binding]"
+      ],
+      [
+       "site_type",
+       "other"
+      ]
+     ]
+    },
+    {
+     "type": "mat_peptide",
+     "parts": [
+      [
+       33,
+       42,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "calculated_mol_wt",
+       "1309"
+      ],
+      [
+       "note",
+       "propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "product",
+       "LVV-hemorphin-7. /id=PRO_0000296641"
+      ]
+     ]
+    },
+    {
+     "type": "mat_peptide",
+     "parts": [
+      [
+       33,
+       39,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "calculated_mol_wt",
+       "877"
+      ],
+      [
+       "note",
+       "propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "product",
+       "Spinorphin. /id=PRO_0000424226"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       36,
+       37,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "(Microbial infection) Cleavage, by N.americanus apr-2. /evidence=ECO:0000269|PubMed:12552433; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "other"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       38,
+       39,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "(Microbial infection) Cleavage, by N.americanus apr-2. /evidence=ECO:0000269|PubMed:12552433; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "other"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       45,
+       45,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "Phosphoserine. /evidence=ECO:0007744|PubMed:24275569; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "phosphorylation"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       46,
+       47,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "(Microbial infection) Cleavage, by N.americanus apr-2. /evidence=ECO:0000269|PubMed:12552433; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "other"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       51,
+       51,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "Phosphothreonine. /evidence=ECO:0007744|PubMed:24275569; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "phosphorylation"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       53,
+       54,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "(Microbial infection) Cleavage, by N.americanus apr-2. /evidence=ECO:0000269|PubMed:12552433; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "other"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       57,
+       58,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "(Microbial infection) Cleavage, by N.americanus apr-2. /evidence=ECO:0000269|PubMed:12552433; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "other"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       60,
+       60,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "N6-acetyllysine. /evidence=ECO:0000269|PubMed:4531009; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "acetylation"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       60,
+       60,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "Not glycated. /evidence=ECO:0000269|PubMed:7358733; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "other"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       67,
+       67,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "N-linked (Glc) (glycation) lysine. /evidence=ECO:0000269|PubMed:7358733; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "glycosylation"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       72,
+       73,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "(Microbial infection) Cleavage, by N.americanus apr-2. /evidence=ECO:0000269|PubMed:12552433; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "other"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       75,
+       76,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "(Microbial infection) Cleavage, by N.americanus apr-2. /evidence=ECO:0000269|PubMed:12552433; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "other"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       83,
+       83,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "N6-acetyllysine. /evidence=ECO:0000269|PubMed:4531009; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "acetylation"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       83,
+       83,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "Not glycated. /evidence=ECO:0000269|PubMed:7358733; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "other"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       85,
+       86,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "(Microbial infection) Cleavage, by N.americanus apr-2. /evidence=ECO:0000269|PubMed:12552433; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "other"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       88,
+       88,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "Phosphothreonine. /evidence=ECO:0007744|PubMed:24275569; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "phosphorylation"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       93,
+       94,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "(Microbial infection) Cleavage, by N.americanus apr-2. /evidence=ECO:0000269|PubMed:12552433; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "other"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       96,
+       96,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "Not glycated. /evidence=ECO:0000269|PubMed:7358733; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "other"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       105,
+       106,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "(Microbial infection) Cleavage, by N.americanus apr-2. /evidence=ECO:0000269|PubMed:12552433; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "other"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       111,
+       112,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "(Microbial infection) Cleavage, by N.americanus apr-2. /evidence=ECO:0000269|PubMed:12552433; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "other"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       120,
+       121,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "(Microbial infection) Cleavage, by N.americanus apr-2. /evidence=ECO:0000269|PubMed:12552433; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "other"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       121,
+       121,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "N-linked (Glc) (glycation) lysine. /evidence=ECO:0000269|PubMed:7358733; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "glycosylation"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       123,
+       124,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "(Microbial infection) Cleavage, by N.americanus apr-2. /evidence=ECO:0000269|PubMed:12552433; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "other"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       129,
+       130,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "(Microbial infection) Cleavage, by N.americanus apr-2. /evidence=ECO:0000269|PubMed:12552433; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "other"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       141,
+       142,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "(Microbial infection) Cleavage, by N.americanus apr-2. /evidence=ECO:0000269|PubMed:12552433; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "other"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       145,
+       146,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "(Microbial infection) Cleavage, by N.americanus apr-2. /evidence=ECO:0000269|PubMed:12552433; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "other"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       145,
+       145,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "N-linked (Glc) (glycation) lysine, alternate. /evidence=ECO:0000269|PubMed:7358733; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "glycosylation"
+      ]
+     ]
+    },
+    {
+     "type": "Site",
+     "parts": [
+      [
+       145,
+       145,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "N6-acetyllysine, alternate. /evidence=ECO:0000269|PubMed:4531009; propagated from UniProtKB/Swiss-Prot (P68871.2)"
+      ],
+      [
+       "site_type",
+       "acetylation"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       1,
+       147,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "coded_by",
+       "NM_000518.5:51..494"
+      ],
+      [
+       "db_xref",
+       "CCDS:CCDS7753.1"
+      ],
+      [
+       "db_xref",
+       "GeneID:3043"
+      ],
+      [
+       "db_xref",
+       "HGNC:HGNC:4827"
+      ],
+      [
+       "db_xref",
+       "MIM:141900"
+      ],
+      [
+       "gene",
+       "HBB"
+      ],
+      [
+       "gene_synonym",
+       "beta-globin; CD113t-C; ECYT6"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

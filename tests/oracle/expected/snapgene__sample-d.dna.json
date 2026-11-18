@@ -1,0 +1,111 @@
+{
+ "format": "snapgene",
+ "records": [
+  {
+   "name": "Sample",
+   "id": "Sample",
+   "length": 1000,
+   "sha256": "7c2c710d912f79353e116a3b89dbef7ca9d4ecf165bfa02828c4f021a7a0d03a",
+   "topology": "linear",
+   "description": "Sample Sequence D",
+   "features": [
+    {
+     "type": "misc_binding",
+     "parts": [
+      [
+       500,
+       700,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "bound_moiety",
+       "Random DNA-Binding Protein 1"
+      ],
+      [
+       "label",
+       "FeatureB"
+      ],
+      [
+       "note",
+       "Sample feature B"
+      ]
+     ]
+    },
+    {
+     "type": "promoter",
+     "parts": [
+      [
+       50,
+       150,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "FeatureA"
+      ],
+      [
+       "note",
+       "Sample feature A"
+      ]
+     ]
+    },
+    {
+     "type": "misc_feature",
+     "parts": [
+      [
+       701,
+       720,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "FeatureC"
+      ],
+      [
+       "note",
+       "Another note for sample feature C"
+      ],
+      [
+       "note",
+       "Sample feature C, with explicit label"
+      ]
+     ]
+    },
+    {
+     "type": "misc_feature",
+     "parts": [
+      [
+       721,
+       740,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "SampleFeatureD"
+      ],
+      [
+       "name",
+       "FeatureD"
+      ],
+      [
+       "note",
+       "Sample feature D, with a label different from the feature name"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

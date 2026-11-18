@@ -1,0 +1,14 @@
+{
+ "format": "snapgene",
+ "records": [
+  {
+   "name": "<unknown name>",
+   "id": "<unknown id>",
+   "length": 163,
+   "sha256": "d117da732a1147e497946e078aca896743a5701dcaa8302dd39ecf1351e97ece",
+   "topology": "linear",
+   "description": "<unknown description>",
+   "features": []
+  }
+ ]
+}

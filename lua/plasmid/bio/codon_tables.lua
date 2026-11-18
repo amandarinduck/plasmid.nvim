@@ -1,0 +1,32 @@
+-- NCBI genetic codes. Generated from the NCBI gc.prt tables (via Biopython).
+-- aa: amino acid per codon, codons ordered TTT,TTC,TTA,TTG,TCT,... (TCAG order).
+-- starts: codons that initiate translation.
+return {
+  [1] = { name = "Standard", aa = "FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG", starts = { "ATG","CTG","TTG" } },
+  [2] = { name = "Vertebrate Mitochondrial", aa = "FFLLSSSSYY**CCWWLLLLPPPPHHQQRRRRIIMMTTTTNNKKSS**VVVVAAAADDEEGGGG", starts = { "ATA","ATC","ATG","ATT","GTG" } },
+  [3] = { name = "Yeast Mitochondrial", aa = "FFLLSSSSYY**CCWWTTTTPPPPHHQQRRRRIIMMTTTTNNKKSSRRVVVVAAAADDEEGGGG", starts = { "ATA","ATG","GTG" } },
+  [4] = { name = "Mold Mitochondrial", aa = "FFLLSSSSYY**CCWWLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG", starts = { "ATA","ATC","ATG","ATT","CTG","GTG","TTA","TTG" } },
+  [5] = { name = "Invertebrate Mitochondrial", aa = "FFLLSSSSYY**CCWWLLLLPPPPHHQQRRRRIIMMTTTTNNKKSSSSVVVVAAAADDEEGGGG", starts = { "ATA","ATC","ATG","ATT","GTG","TTG" } },
+  [6] = { name = "Ciliate Nuclear", aa = "FFLLSSSSYYQQCC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG", starts = { "ATG" } },
+  [9] = { name = "Echinoderm Mitochondrial", aa = "FFLLSSSSYY**CCWWLLLLPPPPHHQQRRRRIIIMTTTTNNNKSSSSVVVVAAAADDEEGGGG", starts = { "ATG","GTG" } },
+  [10] = { name = "Euplotid Nuclear", aa = "FFLLSSSSYY**CCCWLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG", starts = { "ATG" } },
+  [11] = { name = "Bacterial", aa = "FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG", starts = { "ATA","ATC","ATG","ATT","CTG","GTG","TTG" } },
+  [12] = { name = "Alternative Yeast Nuclear", aa = "FFLLSSSSYY**CC*WLLLSPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG", starts = { "ATG","CTG" } },
+  [13] = { name = "Ascidian Mitochondrial", aa = "FFLLSSSSYY**CCWWLLLLPPPPHHQQRRRRIIMMTTTTNNKKSSGGVVVVAAAADDEEGGGG", starts = { "ATA","ATG","GTG","TTG" } },
+  [14] = { name = "Alternative Flatworm Mitochondrial", aa = "FFLLSSSSYYY*CCWWLLLLPPPPHHQQRRRRIIIMTTTTNNNKSSSSVVVVAAAADDEEGGGG", starts = { "ATG" } },
+  [15] = { name = "Blepharisma Macronuclear", aa = "FFLLSSSSYY*QCC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG", starts = { "ATG" } },
+  [16] = { name = "Chlorophycean Mitochondrial", aa = "FFLLSSSSYY*LCC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG", starts = { "ATG" } },
+  [21] = { name = "Trematode Mitochondrial", aa = "FFLLSSSSYY**CCWWLLLLPPPPHHQQRRRRIIMMTTTTNNNKSSSSVVVVAAAADDEEGGGG", starts = { "ATG","GTG" } },
+  [22] = { name = "Scenedesmus obliquus Mitochondrial", aa = "FFLLSS*SYY*LCC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG", starts = { "ATG" } },
+  [23] = { name = "Thraustochytrium Mitochondrial", aa = "FF*LSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG", starts = { "ATG","ATT","GTG" } },
+  [24] = { name = "Pterobranchia Mitochondrial", aa = "FFLLSSSSYY**CCWWLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSSKVVVVAAAADDEEGGGG", starts = { "ATG","CTG","GTG","TTG" } },
+  [25] = { name = "Candidate Division SR1", aa = "FFLLSSSSYY**CCGWLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG", starts = { "ATG","GTG","TTG" } },
+  [26] = { name = "Pachysolen tannophilus Nuclear", aa = "FFLLSSSSYY**CC*WLLLAPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG", starts = { "ATG","CTG" } },
+  [27] = { name = "Karyorelict Nuclear", aa = "FFLLSSSSYYQQCC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG", starts = { "ATG" } },
+  [28] = { name = "Condylostoma Nuclear", aa = "FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG", starts = { "ATG" } },
+  [29] = { name = "Mesodinium Nuclear", aa = "FFLLSSSSYYYYCC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG", starts = { "ATG" } },
+  [30] = { name = "Peritrich Nuclear", aa = "FFLLSSSSYYEECC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG", starts = { "ATG" } },
+  [31] = { name = "Blastocrithidia Nuclear", aa = "FFLLSSSSYY**CCWWLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG", starts = { "ATG" } },
+  [32] = { name = "Balanophoraceae Plastid", aa = "FFLLSSSSYY*WCC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG", starts = { "ATA","ATC","ATG","ATT","CTG","GTG","TTG" } },
+  [33] = { name = "Cephalodiscidae Mitochondrial", aa = "FFLLSSSSYYY*CCWWLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSSKVVVVAAAADDEEGGGG", starts = { "ATG","CTG","GTG","TTG" } },
+}

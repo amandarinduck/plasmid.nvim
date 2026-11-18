@@ -1,0 +1,737 @@
+*plasmid.txt*   DNA and protein sequences in Neovim
+
+==============================================================================
+CONTENTS                                                    *plasmid-contents*
+
+  1. Introduction ......................... |plasmid-intro|
+  2. Views ................................ |plasmid-views|
+  3. Crowded regions ...................... |plasmid-priority|
+  4. Selection ............................ |plasmid-selection|
+  5. Adding and editing features .......... |plasmid-features|
+  6. Sequence editing ..................... |plasmid-editing|
+  7. Open reading frames .................. |plasmid-orfs|
+  8. Feature detection .................... |plasmid-detect|
+  9. Search ............................... |plasmid-search|
+ 10. Restriction enzymes .................. |plasmid-enzymes|
+ 11. Primers .............................. |plasmid-primers|
+ 12. NCBI fetch ........................... |plasmid-fetch|
+ 13. Mappings ............................. |plasmid-mappings|
+ 14. Commands ............................. |plasmid-commands|
+ 15. Configuration ........................ |plasmid-config|
+ 16. Highlights ........................... |plasmid-highlights|
+ 17. Files and fidelity ................... |plasmid-files|
+ 18. Known issues ......................... |plasmid-issues|
+
+==============================================================================
+1. INTRODUCTION                                                *plasmid-intro*
+
+Opening a GenBank, FASTA or SnapGene file shows a rendered, read-only view of
+the sequence instead of its raw text. The underlying record model is the
+source of truth; |:w| serialises it back to disk. Residues and features can
+be edited (|plasmid-editing|, |plasmid-features|), every change is one undo
+step, and features follow the bases they annotate.
+
+==============================================================================
+2. VIEWS                                                       *plasmid-views*
+
+Linear ~
+  Sequence rows with base-pair numbers at both ends, residues grouped by ten,
+  the complement strand, feature tracks (arrowheads mark the 3' end, dashed
+  segments mark introns), and, under each CDS, its translation aligned to the
+  middle base of each codon.
+
+  Residues are grouped by ten by default. `linear.group = 0` (or |:DnaGroup|)
+  shows them continuously, with a ruler row numbering every 10th residue, so
+  no codon is ever split by a gap and each residue sits under the middle of
+  its codon at an even spacing of three. Other group sizes are accepted;
+  line widths stay multiples of 10 and of the group size.
+
+  With the cursor on an amino acid, its codon is highlighted on both strands
+  (|hl-PlasmidCodon|), including codons split by a line break, an intron or
+  the origin, and the winbar shows e.g. "codon 55/397 ATG→M 248..250".
+
+Circular ~
+  A braille-dot plasmid map. The origin is at 12 o'clock and numbering runs
+  clockwise. Features are arcs on rings inside the backbone; labels sit outside
+  with leader lines. Moving the cursor over the ring or a label reports the base
+  pair and feature in the winbar.
+
+The header counts annotated features; detection proposals and ORFs are listed
+separately ("9 features · 2 proposed · 3 ORFs").
+
+==============================================================================
+3. CROWDED REGIONS                                          *plasmid-priority*
+
+When features overlap, each one gets a score and the highest scores are placed
+first, nearest the sequence:
+
+  score = priority.types[type] (or priority.default)
+          + priority.labelled_bonus   if the feature has a real name
+          + priority.pinned_bonus     if you added or accepted it this session
+
+Ties go to the longer feature. The linear view draws at most
+`linear.max_tracks` feature rows per line; anything that did not fit is
+summarised under the line as "+N more: type, ...". Placement is decided per
+line, so a feature hidden in one crowded line still appears where there is
+room. `+` shows every track, `-` returns to the limit, and |:DnaTracks| sets a
+limit for the buffer. The circular map uses `circular.max_tracks` rings and
+reports "n over ring limit" in its header.
+
+==============================================================================
+4. SELECTION                                               *plasmid-selection*
+
+A selection is a range of base pairs held by the plugin, independent of the
+text on screen, so it survives view switches and works across line breaks.
+
+  vaf  yaf    Text object: the whole span of the feature under the cursor.
+  vif  yif    Text object: the feature's own residues, spliced (join) and read
+              5'->3' on its strand. `yif` on a reverse-strand CDS yanks the
+              coding sequence starting with its start codon.
+  v ... y     Visual mode: yank the bases under the selection (top strand).
+  v ... Y     Visual mode: yank the reverse complement (bottom strand 5'->3').
+  v ... gy    Visual mode: choose the strand and direction (below).
+  gy  gY      Yank the current selection (gY: reverse complement).
+  <Esc>       Clear the selection.
+
+Strand and direction ~                                      *plasmid-strands*
+Visual `gy` and |:DnaYank| without an argument offer four orientations, each
+with a preview:
+
+  top        top strand 5'->3'           (as displayed on the top row)
+  top35      top strand 3'->5'           (reversed)
+  bottom     bottom strand 5'->3'        (reverse complement)
+  bottom35   bottom strand 3'->5'        (complement, as displayed)
+
+For an inner feature selection (`vif`) the residues are spliced first and the
+feature's own strand is marked in the list.
+
+Yanks contain residues only, never display text, in the case the view shows
+(`linear.case`: upper case for GenBank/SnapGene, FASTA soft-masking kept).
+The winbar shows the selection's range and length. See also |:DnaSelect|.
+
+Clipboard ~                                               *plasmid-clipboard*
+A plain yank (no register given) goes to the unnamed register and to the
+system clipboard ("+"), so it can be pasted into other programs. A named
+register (`"ay`, `:DnaYank bottom a`) stays inside Neovim; `"+` and `"*` go to
+the clipboard. `yank_clipboard` changes this: true (default) = "+", "auto" =
+follow 'clipboard' (unnamedplus -> "+", unnamed -> "*"), false = never.
+
+The copy uses Neovim's clipboard provider when one exists (xclip, xsel,
+wl-copy, pbcopy, win32yank, |g:clipboard|). Without one, and with a terminal
+attached, it is sent to the terminal as an OSC 52 escape sequence, which most
+terminals turn into a clipboard copy, also over SSH (kitty, WezTerm, iTerm2,
+Alacritty, foot, Windows Terminal; tmux needs `set -g set-clipboard on`).
+|:checkhealth| plasmid reports which path is in use.
+
+==============================================================================
+5. ADDING AND EDITING FEATURES                              *plasmid-features*
+
+  ga          Add a feature over the selection (or visual range). Prompts for
+              label, type and strand. On a proposal or ORF with nothing
+              selected, accepts / promotes it instead.
+  gE          Edit the feature under the cursor in a scratch buffer: first
+              line TYPE LOCATION in GenBank syntax, then /qualifier=value
+              lines. |:w| applies, |:q| discards.
+  u  <C-r>    Undo / redo feature changes (each add, edit, delete, accept or
+              batch accept is one step).
+
+Features you add are "pinned": they win space in crowded regions until the
+file is reopened. New features are written as GenBank qualifiers; in a SnapGene
+file the Features packet is regenerated, keeping every untouched feature's XML
+verbatim. FASTA cannot hold features: writing one warns that feature changes
+are not saved (write to a .gb name to keep them).
+
+Personal library ~
+|:DnaFeatureSave| stores the feature under the cursor (or the selection) in a
+GenBank file, one record per feature (`library_path`, default
+stdpath("data")/plasmid/library.gb). |:DnaDetect| always searches it, so
+elements you save once are found again in other plasmids.
+
+==============================================================================
+6. SEQUENCE EDITING                                          *plasmid-editing*
+
+The plasmid view stays read-only text; edits go through the record, so
+annotations move with their bases. Every edit is one undo step (`u`, `<C-r>`),
+and the winbar shows "unsaved" until |:w|.
+
+Keys (cursor base = the base pair under the cursor, in either view) ~
+  i  a        Insert residues before / after the cursor base (prompt).
+  [count]x    Delete bases from the cursor.
+  [count]r{c} Replace bases with the letter {c}.
+  p  P        Insert register contents after / before the cursor base.
+  v ... d  x  Delete the selected bases.
+  v ... c     Replace the selected bases (prompt).
+  v ... p     Replace the selected bases with register contents.
+  v ... R     Reverse-complement the selected bases in place.
+  daf  dif    Delete the feature under the cursor (dif: only its own parts,
+              e.g. the exons of a spliced CDS).
+  caf         Replace the feature's span (prompt).
+Deleted residues go to the unnamed register and "1, as with Vim's x and d, so
+`xp` swaps two bases. Letters are checked (IUPAC nucleotide codes, or amino
+acids in protein records); digits, spaces and "/" are ignored, so ORIGIN text
+from a GenBank file can be pasted. New residues follow the record's case and
+its T/U convention.
+
+How features follow an edit ~
+  - Deleted bases leave every feature; a feature losing all its bases is
+    removed.
+  - An insertion strictly inside a feature extends it; at its first base or
+    after its last base it shifts the feature instead. On a circular record an
+    insertion at the origin extends a feature that crosses it.
+  - Replacement bases belong to the features that covered the bases they
+    replace.
+  - Reverse-complementing a region flips the strand of features wholly inside
+    it; features only partly inside keep their coordinates.
+  - |:DnaRotate| splits features crossing the new origin into a join and
+    merges a former origin-crossing pair.
+
+Impact report ~
+After each edit a message summarises what happened to the features, and
+|:DnaEditReport| lists them all: truncated, extended, destroyed, bases changed,
+and for CDS features FRAMESHIFT, a new stop codon, a lost start or stop codon,
+the number of changed amino acids (or "silent"). `/translation` of a changed
+CDS is rewritten, or removed when the coding sequence now contains a stop
+codon (`edit.update_translations`). Features cut by a deletion are handled per
+`edit.cut_policy`:
+  "truncate"  report only (default)
+  "flag"      also add a /note to the truncated feature
+  "refuse"    cancel the edit; commands with ! (and |:DnaEdit| with :w!) force it
+Proposals from |:DnaDetect| are cleared by an edit (run it again); ORFs are
+recomputed.
+
+:DnaEdit ~
+Opens a range (default: the selection) as an ordinary buffer, 60 residues per
+line: every Vim motion, search, macro and Vim's own undo work there. |:w|
+compares the text with the original residues and applies only the differences
+(insertions, deletions, replacements) as one change, so features inside the
+region keep their bases; |:q| discards. If the record's sequence changed while
+the buffer was open, the write is refused. Regions crossing the origin of a
+circular record are refused (rotate first).
+
+Saving ~
+GenBank: ORIGIN and the LOCUS length are rewritten, BASE COUNT is dropped,
+features that only moved get new location lines and keep their original
+qualifier lines. FASTA keeps its line width. A file opened from SnapGene
+(.dna) cannot be written back once its residues changed: save it as GenBank
+(`:w name.gb`).
+
+==============================================================================
+7. OPEN READING FRAMES                                          *plasmid-orfs*
+
+`go` (or |:DnaOrfs|) overlays open reading frames on all six frames. Each ORF
+is the longest one ending at its stop codon, starting at the first in-frame
+start codon. Defaults: ATG starts, at least 75 aa, the record's /transl_table
+or else code 11 for circular and code 1 for linear records. ORFs may cross the
+origin of circular records. ORFs ending at the stop codon of an annotated CDS
+are hidden (`orfs.hide_annotated`). ORFs are drawn with their translation;
+`ga` or |:DnaOrfAdd| on one turns it into a CDS feature.
+
+==============================================================================
+8. FEATURE DETECTION                                          *plasmid-detect*
+
+|:DnaDetect| searches the record for known elements and draws matches as
+proposals (italic, |hl-PlasmidProposed|). Nothing is added until you accept:
+
+  ga / :DnaDetectAccept           accept the proposal under the cursor
+  :DnaDetectAccept!               accept every full-length proposal
+  :DnaDetectAccept! fragments     ... and partial matches too
+  :DnaDetectReview                pick proposals from a list
+  :DnaDetect off                  remove the proposals
+
+An accepted feature carries the reference's description as /note and a second
+/note recording the source, e.g. "detected by plasmid.nvim: snapgene/AmpR,
+100.0% identity, 100% of the reference". Partial matches keep "(fragment)" in
+their label.
+
+Search ~
+References of 20 bp or more are found by shared 12-mers followed by banded
+Smith-Waterman alignment on both strands, across the origin of circular
+records; shorter ones (primer sites, tags) by exact search on both strands. A
+full-length hit needs `detect.min_identity` (0.95) and `detect.min_coverage`
+(0.95 of the reference); partial hits need `min_fragment_coverage` (0.5) and
+`min_fragment_length` (50 bp). A hit lying inside a better hit of the same
+type is dropped unless `nested_same_type` is true.
+
+Databases ~
+No database ships with the plugin. Import one with |:DnaFeatureDbImport|;
+imported data is kept under `featuredb_dir` (default
+stdpath("data")/plasmid/featuredb) as FASTA + TSV.
+
+pLannotate's SnapGene-derived set (GPL-3; https://github.com/mmcguffi/pLannotate)
+                                                          *plasmid-plannotate*
+  1. Download plannotate-databases-v2.tar.gz from the pLannotate releases and
+     unpack it.
+  2. :DnaFeatureDbImport /path/to/BLAST_dbs
+     This reads snapgene.* with `blastdbcmd` (NCBI BLAST+ must be on PATH) and
+     the descriptions from the bundled SQLite file (`sqlite3` or Python).
+     About 1,370 references are imported.
+  Without BLAST+, export the sequences yourself and import FASTA + CSV:
+     blastdbcmd -db BLAST_dbs/snapgene -entry all > snapgene.fasta
+     :DnaFeatureDbImport snapgene.fasta snapgene descriptions.csv
+
+Other sources ~
+  :DnaFeatureDbImport {file.fasta} [name] [descriptions.csv]
+      FASTA headers ">id" or ">id name"; the optional CSV maps id to
+      name/type/description (pLannotate columns sseqid,Feature,Type,
+      Description are recognised, as are common aliases).
+  :DnaFeatureDbImport {file-or-folder} [name]
+      GenBank (.gb .gbk .gbff .genbank .ape) or SnapGene .dna files; every
+      annotated feature of 8 bp or more (except source) becomes a reference.
+
+|:DnaFeatureDbList| shows imported databases; `:DnaDetect {name} ...` limits
+the search to named databases.
+
+==============================================================================
+9. SEARCH                                                     *plasmid-search*
+
+/  ?       Prompt for a motif and search forward / backward. Type
+            "GGTCTC" for exact matches, "GGTCTC 1" to allow one mismatch,
+            "aa:MSIQHF" for amino acids (six-frame translation, or the
+            residues of a protein record).
+n  N       Next / previous hit (in the direction of the search; counts
+            work).
+gn         Select the current hit (then |plasmid-selection| keys, edits
+            or :DnaEdit apply to it).
+
+IUPAC codes in the motif match the bases they stand for (R = A or G, N = any).
+A sequence letter matches only when every base it may be is allowed: an N in
+the sequence matches an N in the motif and nothing else. Both strands are
+searched; a palindromic site is reported once. Circular records are searched
+across the origin. Hits are highlighted on the strand they lie on (bottom-
+strand hits on the complement row), marked outside the backbone on the
+circular map, and counted in the winbar ("/GGTCTC 2/25"). They are searched
+again after every edit and undo.
+
+:DnaFind {motif} [mismatches]                                     *:DnaFind*
+:DnaFind! {motif} [mismatches]  Search; ! searches backwards.
+:DnaFind off                    Clear the hits.
+
+==============================================================================
+10. RESTRICTION ENZYMES                                      *plasmid-enzymes*
+
+gz         Show / hide restriction sites (`enzymes.default_set`, "unique").
+gZ         List every enzyme with its number of sites; choosing one adds it
+            to (or removes it from) the named set.
+K  <CR>    On an enzyme label: site, cuts on both strands, overhang, number
+            of sites, and a Dam/Dcm warning where it applies.
+
+Sets: "unique" (one site), "dual" (one or two), "all" (every cutting enzyme)
+consider enzymes with at least `enzymes.min_site` specific letters (6), and
+leave out DpnI, which only cuts methylated DNA. Named sets show exactly the
+enzymes named. Enzymes that cut at the same place share one label.
+
+Linear view: a label "▏EcoRI" puts its bar on the left edge of the base after
+the top-strand cut, i.e. on the cut; "EcoRI▕" (used when the label must go
+left) puts it on the right edge of the base before the cut. A row under the
+complement marks bottom-strand cuts, so 5' and 3' overhangs show as a stagger.
+Sites are underlined. At most `enzymes.lanes` label rows are used per line;
+the rest are counted as "(+n)". Circular view: cut ticks cross the backbone
+and labels are placed around the map after feature labels.
+
+Methylation: an enzyme flagged as Dam- or Dcm-sensitive warns when a GATC or
+CCWGG overlaps its site. Flags come from NEB's published sensitivity
+information and are present for 41 of the 222 bundled enzymes only; no
+warning does not mean the enzyme is insensitive.
+
+Enzyme data ~                                                *plasmid-rebase*
+The bundled table holds 222 common commercial Type II enzymes (palindromic,
+degenerate and Type IIS), each checked against Biopython's Bio.Restriction.
+For the full REBASE set, download the EMBOSS-format files from REBASE
+(emboss_e.NNN, optionally emboss_r.NNN and emboss_s.NNN) and import them.
+Enzymes with two cut pairs or no defined cut are skipped. The import is
+stored in stdpath("data")/plasmid/rebase_enzymes.json and is used instead of
+the bundled table until cleared. With supplier data, the unique/dual/all sets
+keep to commercially available enzymes (`enzymes.commercial_only`). REBASE
+data is not distributed with the plugin.
+
+Digests ~                                                    *plasmid-digest*
+:DnaDigest lists the fragments of a digest in a split: span, length, both
+ends with their overhang ("EcoRI 5′ AATT", "PstI 3′ TGCA", "blunt") and the
+features each contains ("…" marks a cut feature), with a gel lane below. In
+that window:
+  <CR>     Select the fragment in the plasmid view.
+  e        Open the fragment as a new linear GenBank record: the top strand
+           from its left cut to the base before its right cut. Whole features
+           are kept, cut ones truncated (the editing rules,
+           |plasmid-editing|). :w saves it next to the source.
+  q        Close.
+The table refuses to act once the sequence has changed; digest again.
+
+:DnaGel draws one lane per digest next to a 1 kb or 100 bp ladder (chosen
+from the sizes, or `ladder=1kb` / `ladder=100bp`). Bands are placed on a log
+scale; fragments that migrate together are marked ×n; sizes outside the
+ladder are listed below. Uncut circular DNA is drawn at its linear size;
+supercoiled and nicked forms are not modelled.
+
+:DnaEnzymes [set]                                               *:DnaEnzymes*
+                                unique | dual | all | off | pick |
+                                Enzyme ... ; no argument toggles.
+:DnaEnzymeImport {emboss_e} [{emboss_r} [{emboss_s}]]     *:DnaEnzymeImport*
+:DnaEnzymeImport clear          Back to the bundled table.
+:DnaEnzymeImport                Show which table is in use.
+:DnaDigest [Enzyme ...]                                          *:DnaDigest*
+                                Digest; default: the named set shown.
+:DnaGel {digest} | {digest} ... [ladder=1kb|100bp]                  *:DnaGel*
+                                A digest is a list of enzymes, or "uncut".
+
+==============================================================================
+11. PRIMERS                                                  *plasmid-primers*
+
+gp         Visual: make a primer from the selection (forward or reverse).
+K  <CR>    On a primer: sequence, annealing, Tm, structures, binding sites
+            and the best facing pair with its Ta.
+
+A primer binds where its 3'-terminal 10 bases match the template exactly. The
+annealed region then extends towards its 5' end across mismatches - a changed
+codon, say - as long as at least 5 matching bases follow; whatever is left
+over at the 5' end is a tail (restriction site, Gibson overlap, ...). The rule
+reproduces SnapGene's own annealing calls on 19 of the 20 primer sites in the
+test files. Tune it with `primers.binding` (|plasmid-config|).
+
+Primers are drawn base by base over the template they copy: forward primers
+above the sequence, reverse primers below the complement, tails in lowercase,
+mismatched bases highlighted, and the name at the 3' end ("›M13fwd",
+"M13rev‹"). At most `primers.lanes` rows are used per line and per side.
+`primers.show = false` draws them as ordinary features instead.
+
+The full oligo is kept: SnapGene files store it in their primer record, and
+in GenBank it is written as /note="primer sequence: ...". Primers read from
+either come back with their tails intact.
+
+:DnaPrimerAdd {sequence} [name]                               *:DnaPrimerAdd*
+:DnaPrimerAdd [fwd|rev] [name]  From the selection (fwd = top strand).
+                                With several binding sites, pick one or all.
+
+Melting temperature ~                                             *plasmid-tm*
+:DnaTm {seq} [{seq2}] [polymerase=] [dmso=] [conc=] [salt=]            *:DnaTm*
+                                Tm; with two sequences also the annealing
+                                temperature. No sequence: the selection.
+:DnaPolymerase [key]                                           *:DnaPolymerase*
+                                Choose the polymerase (picker without
+                                argument); it applies to every Tm shown.
+
+The model is the NEB Tm Calculator's: SantaLucia 1998 nearest-neighbour
+thermodynamics, Owczarzy 2004 salt correction (Schildkraut-Lifson with
+conc/4 for Phusion), each product's buffer salt, primer concentration, Ta
+rule and cap, and -0.6 degC per % DMSO. 22 NEB products are built in. The Lua
+port came from polymerase-tm (MIT) and was checked against NEB's own Tm API:
+5,940 Tm values (22 products) and 2,580 Ta values (the 19 with a Ta rule)
+with no mismatch (docs/tm_report.md).
+`method = "owczarzy2008"` with `mg_mM` applies the Mg-aware correction used
+for site-directed mutagenesis primers.
+
+Oligo structures ~                                             *plasmid-oligo*
+The primer float also reports GC content, the 3'-terminal G/C count, the
+longest homopolymer run, 3'-end stability and hairpin / self-dimer /
+cross-dimer free energies, computed with SantaLucia & Hicks 2004 parameters.
+These are estimates, not primer3's numbers: over ~3,900 oligos the free
+energies correlate with primer3 at r = 0.96-0.99 (median error 0.4 kcal/mol)
+and the two agree on whether to warn in 93.0-99.1 % of cases; 3'-end
+stability is exact. docs/oligo_report.md has the tables.
+
+Design ~                                                      *plasmid-design*
+:DnaPrimerDesign [name=] [tm=] [len=18-30] [slack=] [dtm=]  *:DnaPrimerDesign*
+                [fwd=Enzyme|SEQ] [rev=Enzyme|SEQ]
+                                Rank primer pairs for the selection.
+
+Candidates vary in length and may start up to `slack` bases outside the
+selection; the product then grows but the selection stays inside it, which is
+what makes a Tm match possible at a GC-rich boundary. Each primer is scored on
+its distance from the target Tm, GC content, a 3'-terminal G/C, homopolymer
+runs, hairpin and self-dimer free energy and whether it binds the template
+only once; pairs are scored on the Tm difference between them. `fwd=EcoRI`
+adds that recognition site as a 5' tail (no protective bases are invented).
+Choosing a pair adds both primers in one undoable step. When nothing fits, the
+message names the Tm range that side can actually reach, or the closest Tm
+difference available.
+
+PCR ~                                                            *plasmid-pcr*
+:DnaPCR [primer1] [primer2]                                           *:DnaPCR*
+                                Primer names or sequences; with none, the
+                                record's own primers.
+
+Products are found on linear and circular templates, including across the
+origin, and opened as a new linear record: 5' tails and primer mismatches are
+written into the product, the template's features come along (truncated where
+the product cuts them, |plasmid-editing|), and both primers are re-annotated
+full length. :w saves it next to the source file. Products agree with pydna
+on 232 of 232 amplifying pairs and on 8 of 8 non-amplifying ones.
+
+==============================================================================
+12. NCBI FETCH                                                 *plasmid-fetch*
+                                                                *plasmid-ncbi*
+Records are downloaded from NCBI's E-utilities with `curl` (asynchronously;
+Neovim stays usable) and open in a new, unsaved buffer named after the
+accession, in `fetch.dir` or the current directory. `:w` keeps the file.
+
+:DnaFetch[!] {acc}[:{from}-{to}][:-]                               *:DnaFetch*
+                                Open a record. Nucleotide accessions come as
+                                GenBank with all parts (contig records include
+                                their sequence); protein accessions (NP_, XP_,
+                                UniProt such as P69905, PDB chains such as
+                                4HHB_A) as GenPept. GI numbers and accessions
+                                without a version resolve to a versioned
+                                accession, shown in the message and the file
+                                name. {from}-{to} fetches only that region,
+                                renumbered from 1; a trailing :- gives the
+                                reverse complement. ! re-downloads (ignoring
+                                the cache) and lifts `ncbi.max_length`.
+                                Prefix "protein:" or "nuccore:" to force the
+                                database.
+:DnaFetch cancel                Stop running requests.
+
+:DnaSearch[!] {query}                                             *:DnaSearch*
+                                Entrez search of nuccore (! protein), e.g.
+                                `pBR322[title] AND complete sequence[title]`.
+                                Lists up to `fetch.search_results` hits with
+                                length, topology and title; pick one to open.
+
+:DnaGene {symbol} [organism] [flank=N] [plus]                       *:DnaGene*
+                                Look the symbol up in NCBI Gene (organism
+                                defaults to `fetch.organism`, else human) and
+                                fetch the gene's genomic region. Minus-strand
+                                genes are reverse-complemented so the gene
+                                reads 5'->3'; `plus` keeps the reference
+                                strand. flank=N adds N bases on each side.
+
+:DnaFetchCache [clear]                                       *:DnaFetchCache*
+                                List or empty the cache
+                                (stdpath("cache")/plasmid/ncbi, kept
+                                `ncbi.cache_days`).
+
+Links ~                                                    *plasmid-gF*
+On a feature with /protein_id, /db_xref="GeneID:..." or a UniProt cross
+reference, |K| shows a `links` line and `gF` opens the linked record (for a
+gene, its region).
+
+Size guard ~
+Before downloading, the record's length is checked against `ncbi.max_length`
+(5,000,000) so a chromosome accession does not pull hundreds of megabytes.
+Fetch a sub-range, or use :DnaFetch!.
+
+Rate limits and privacy ~
+Requests are spaced to NCBI's limit of 3 per second, or 10 per second with an
+API key (`ncbi.api_key` or $NCBI_API_KEY), and retried with backoff on HTTP
+429 and transient server errors. No e-mail address is sent unless you set
+`ncbi.email`; NCBI's usage guidelines ask heavy users to set both. The key is
+passed to curl on standard input, never on its command line.
+
+==============================================================================
+13. MAPPINGS                                                *plasmid-mappings*
+
+  <Tab>     Toggle linear/circular, keeping the base-pair position.
+  <CR>      Linear: feature details. Circular: open that position in linear.
+  K         Details of the feature under the cursor.
+  ]f  [f    Next / previous feature.
+  gO        Feature picker.
+  +  -      Show all feature tracks / back to the track limit.
+  af  if    Feature text objects (|plasmid-selection|).
+  y  Y      Visual: yank bases / reverse complement.
+  gy        Visual: yank in a chosen strand and direction.
+  gy  gY    Yank the selection / its reverse complement.
+  <Esc>     Clear the selection.
+  go        Toggle ORFs.
+  ga        Add feature / accept proposal / promote ORF.
+  gE        Edit the feature under the cursor.
+  u  <C-r>  Undo / redo (features and residues).
+  i a x r p P, visual d x c p R, daf dif caf
+            Sequence edits (|plasmid-editing|).
+  /  ?  n  N  gn
+            Motif search (|plasmid-search|).
+  gz  gZ    Restriction sites / enzyme picker (|plasmid-enzymes|).
+  gp        Visual: primer from the selection (|plasmid-primers|).
+  gF        Open the record a feature links to (|plasmid-fetch|).
+
+Change or disable (set to "") via the `keymaps` table in |plasmid-config|.
+
+==============================================================================
+14. COMMANDS                                                *plasmid-commands*
+
+Viewing ~
+:DnaOpen {file}                 Open a sequence file.               *:DnaOpen*
+:DnaView[!] [linear|circular]   Switch view. ! draws a linear       *:DnaView*
+                                molecule as a circle.
+:DnaToggle                      Toggle view.                      *:DnaToggle*
+:DnaGoto {bp}                   Go to a base pair.                  *:DnaGoto*
+:DnaFeatures                    Feature picker.                 *:DnaFeatures*
+:DnaFeatureInfo                 Feature under the cursor.    *:DnaFeatureInfo*
+:DnaRecord [n]                  Select a record of a              *:DnaRecord*
+                                multi-record file.
+:DnaTopology {linear|circular}  Set topology; marks the         *:DnaTopology*
+                                buffer modified.
+:DnaInfo                        Length, GC %, feature counts.       *:DnaInfo*
+:DnaRaw                         Raw file text in a split.            *:DnaRaw*
+:DnaCalibrate                   Test circle for tuning          *:DnaCalibrate*
+                                `circular.aspect`.
+:DnaTracks [n|all]              Track limit for this buffer;      *:DnaTracks*
+                                no argument returns to config.
+:DnaGroup [n]                   Residues per group for this        *:DnaGroup*
+                                buffer (0 = continuous with a
+                                ruler); no argument toggles
+                                between continuous and the
+                                configured grouping.
+
+Selection ~
+:DnaSelect {start}..{stop}      Select a range (also "10 20",     *:DnaSelect*
+:DnaSelect {label}              "10-20"), or a feature by label.
+:DnaSelectClear                 Clear the selection.         *:DnaSelectClear*
+:DnaYank [orientation] [reg]    Yank the selection as top,          *:DnaYank*
+                                top35, bottom or bottom35
+                                (|plasmid-strands|); no argument
+                                opens a picker. Aliases: revcomp,
+                                complement, reverse.
+
+Features ~
+:DnaFeatureAdd[!] [{s}..{e}]    Add over the selection or     *:DnaFeatureAdd*
+                                range; ! opens the full editor.
+:DnaFeatureEdit                 Edit the feature under the   *:DnaFeatureEdit*
+                                cursor.
+:DnaFeatureDelete[!]            Delete it (! skips the     *:DnaFeatureDelete*
+                                confirmation).
+:DnaFeatureSave                 Save it (or the selection)   *:DnaFeatureSave*
+                                to the personal library.
+:DnaLibrary                     Open the personal library.       *:DnaLibrary*
+:DnaUndo  :DnaRedo              Undo / redo feature changes.        *:DnaUndo*
+                                                                    *:DnaRedo*
+Sequence editing ~
+:DnaInsert[!] {pos} {residues}  Insert before {pos}.              *:DnaInsert*
+:DnaDelete[!] [{s}..{e}]        Delete a range (default: the      *:DnaDelete*
+                                selection).
+:DnaReplace[!] [{s}..{e}] {res} Replace a range.                 *:DnaReplace*
+:DnaRevComp[!] [{s}..{e}|all]   Reverse-complement a range or    *:DnaRevComp*
+                                the whole record.
+:DnaRotate [{bp}]               Make {bp} (default: the cursor)   *:DnaRotate*
+                                base 1 of a circular record.
+:DnaEdit [{s}..{e}|all]         Edit residues as plain text.        *:DnaEdit*
+:DnaEditReport                  Features affected by the     *:DnaEditReport*
+                                last edit.
+! overrides `edit.cut_policy = "refuse"`. A circular range may wrap ({s} > {e}).
+
+ORFs ~
+:DnaOrfs [min_aa|off]           Show ORFs (optionally with a        *:DnaOrfs*
+                                minimum length) or hide them.
+:DnaOrfAdd                      ORF under the cursor -> CDS.      *:DnaOrfAdd*
+
+Detection ~
+:DnaFeatureDbImport {path} [name] [descriptions]       *:DnaFeatureDbImport*
+                                Import a database (|plasmid-detect|).
+:DnaFeatureDbList               List imported databases.    *:DnaFeatureDbList*
+:DnaDetect [db ...|off]         Propose known features.           *:DnaDetect*
+:DnaDetectAccept[!] [fragments] Accept proposals.           *:DnaDetectAccept*
+:DnaDetectReview                Pick proposals from a list. *:DnaDetectReview*
+
+==============================================================================
+15. CONFIGURATION                                             *plasmid-config*
+
+Defaults, abridged (see lua/plasmid/config.lua for every key):
+>lua
+  require("plasmid").setup({
+    default_view = "linear",          -- "circular" | "auto"
+    hidden_types = { source = true },
+    label_qualifiers = { "label", "gene", "product", "locus_tag",
+                         "standard_name", "allele", "note" },
+    priority = {
+      types = { CDS = 100, gene = 95, promoter = 80, rep_origin = 80,
+                primer_bind = 55, misc_feature = 30, ... },
+      default = 40, labelled_bonus = 10, pinned_bonus = 1000,
+    },
+    linear = { line_width = "auto", show_complement = true,
+               show_translation = true, color_bases = false,
+               case = "auto", max_tracks = 4,
+               group = 10 },          -- 0 = continuous with a ruler
+    circular = { aspect = 1.0, max_tracks = 6, label_width = 22 },
+    orfs = { min_aa = 75, starts = "atg",   -- or "alternative"
+             table = nil, hide_annotated = true },
+    detect = { min_identity = 0.95, min_coverage = 0.95,
+               fragments = true, min_fragment_coverage = 0.5,
+               min_fragment_length = 50, nested_same_type = false },
+    yank_clipboard = true,            -- "auto" | false (|plasmid-clipboard|)
+    edit = { cut_policy = "truncate", -- "flag" | "refuse" (|plasmid-editing|)
+             update_translations = true },
+    enzymes = { default_set = "unique", min_site = 6, lanes = 4,
+                commercial_only = true },
+    gel = { ladder = "auto", height = 24 },   -- "1kb" | "100bp"
+    primers = {
+      polymerase = "q5",              -- :DnaPolymerase (|plasmid-tm|)
+      dmso = 0, conc_nM = nil, salt_mM = nil,
+      show = true, lanes = 3,
+      binding = { anchor = 10, max_mismatches = 3,
+                  resume = 5, min_anneal = 10 },
+      design = { len = { 18, 30 }, tm = { 57, 68 }, max_dtm = 3,
+                 gc = { 0.35, 0.65 }, max_run = 4, slack = 8, pairs = 8 },
+    },
+    ncbi = { api_key = nil, email = nil,     -- |plasmid-fetch|
+             max_length = 5000000, cache = true, cache_days = 30 },
+    fetch = { dir = nil,              -- nil: current directory
+              search_results = 20, gene_flank = 0, organism = nil },
+    featuredb_dir = nil,              -- stdpath("data")/plasmid/featuredb
+    library_path = nil,               -- stdpath("data")/plasmid/library.gb
+    winbar = true,
+  })
+<
+Without setup(), defaults are used, or `vim.g.plasmid` if set before loading.
+
+==============================================================================
+16. HIGHLIGHTS                                            *plasmid-highlights*
+
+PlasmidTitle PlasmidHeader PlasmidRuler PlasmidComplement PlasmidBackbone
+PlasmidTick PlasmidLeader PlasmidCenter PlasmidBaseA PlasmidBaseC
+PlasmidBaseG PlasmidBaseT PlasmidFeature{Type} (e.g. PlasmidFeatureCDS)
+PlasmidPalette1..8 (types with no configured colour)
+PlasmidSelection (selected residues)
+PlasmidCodon (codon under the cursor; links to IncSearch)     *hl-PlasmidCodon*
+PlasmidCodonInfo (codon text in the winbar)
+PlasmidProposed (detection proposals)                      *hl-PlasmidProposed*
+PlasmidSearch PlasmidSearchCurrent PlasmidSearchInfo (search hits)
+PlasmidEnzyme PlasmidEnzymeUnique (labels) PlasmidEnzymeCut (cut bars)
+PlasmidEnzymeSite (site underline)
+PlasmidGelLadder PlasmidGelBand PlasmidGelBandStrong PlasmidGelLabel
+PlasmidGelWell
+PlasmidPrimer PlasmidPrimerTail (5' tails) PlasmidPrimerMismatch
+PlasmidPrimerArrow PlasmidPrimerLabel
+
+==============================================================================
+17. FILES AND FIDELITY                                         *plasmid-files*
+
+Formats: GenBank/GenPept, FASTA (DNA, RNA, protein), and SnapGene .dna,
+.rna and .prot (read; written back only for files opened from SnapGene).
+Protein records use the linear view only, with positions in aa.
+
+Files are written back byte-for-byte when unmodified: header blocks, every
+feature's original lines, and the file trailer are kept verbatim. Changed parts
+are regenerated in NCBI layout. Writing to a name with another format's
+extension converts the file (`:w copy.fasta`). FASTA keeps lowercase
+soft-masking, line width, and CRLF line endings.
+
+SnapGene text fields are HTML; the plugin decodes entities for display and
+encodes them on write. Edited primers cannot yet be written to SnapGene files
+(the write is refused rather than losing them).
+
+==============================================================================
+18. KNOWN ISSUES                                              *plasmid-issues*
+
+Neovim 0.12.2 headless (`nvim --headless`, `nvim -l`) can crash in
+`:redraw!` after a message wider than 'columns'; this happens without the
+plugin. The plugin truncates its own messages to the available width.
+
+Hairpin and dimer free energies are estimates from published nearest-neighbour
+tables, not primer3's values; they agree on whether to warn in 93.0-99.1 % of
+cases (|plasmid-oligo|). Tm and Ta match NEB's calculator exactly.
+
+:DnaEnzymeImport follows REBASE's documented EMBOSS layout as Biopython's
+converter reads it; it is tested on fixtures and on files generated from
+Biopython's enzyme data, not yet on a downloaded REBASE release.
+
+Whole bacterial genomes open but are heavy: E. coli K-12 (4.6 Mb, 9,285
+features) takes about 6 s and 950 MB to lay out in the linear view. Fetch a
+sub-range or a gene region instead.
+
+NCBI occasionally answers with HTTP 429 or a transient "Search Backend
+failed"; requests are retried with backoff, but a busy period can still
+surface an error. Try again, or set an API key.
+
+Neovim 0.12.2 can crash ("double free or corruption") when the experimental
+`nvim__redraw({ buf = ... })` targets a buffer while another window is
+current; the plugin repaints through extmarks instead.
+
+ vim:tw=78:ts=8:ft=help:norl:

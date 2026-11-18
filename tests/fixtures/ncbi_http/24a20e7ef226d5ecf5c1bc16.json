@@ -1,0 +1,1 @@
+{"key":"24a20e7ef226d5ecf5c1bc16","method":"GET","url":"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=gene&id=945803&retmode=text&tool=plasmid.nvim","recorded":"2026-11-17T13:22:42Z","bytes":308,"ms":308,"headers":{"x-ratelimit-limit":"3","content-type":"text/plain; charset=UTF-8"},"status":200}

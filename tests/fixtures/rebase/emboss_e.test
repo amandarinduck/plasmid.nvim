@@ -1,0 +1,22 @@
+# plasmid.nvim test fixture, hand-written in the EMBOSS "e" layout.
+# Not REBASE data: a few textbook enzymes plus synthetic edge cases.
+#
+# Columns: name  site  length  ncuts  blunt  c1  c2  c3  c4
+# Cut positions count the gaps between site bases with no 0:
+# -1 = just before the first base, 1 = after the first base.
+#
+EcoRI	GAATTC	6	2	0	1	5	0	0
+KpnI	GGTACC	6	2	0	5	1	0	0
+BsaI	GGTCTC	6	2	0	7	11	0	0
+TspRI	CASTG	5	2	0	7	-3	0	0
+MboI	GATC	4	2	0	-1	4	0	0
+AvaI	CYCGRG	6	2	0	1	5	0	0
+BglI	GCCNNNNNGGC	11	2	0	7	4	0	0
+EcoRV	gatatc	6	2	1	3	3	0	0
+CviKI-1	RGCY	4	2	1	2	2	0	0
+TwoCutI	CGANNNNNNTGC	12	4	0	-11	-13	24	22
+NoCutI	GGNNCCA	7	0	0	0	0	0	0
+BadSiteI	GAXTTC	6	2	0	1	5	0	0
+DupI	GACCGA	6	2	0	17	15	0	0
+DupI	CACCCA	6	2	0	17	15	0	0
+this line is not a record

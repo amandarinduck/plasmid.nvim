@@ -1,0 +1,78 @@
+# plasmid.nvim test fixture, hand-written in the EMBOSS "r" layout.
+# Not REBASE data. Per record: name, organism, isoschizomers,
+# methylation site, source, supplier codes, number of references,
+# the references, then a line containing //.
+#
+EcoRI
+Escherichia coli
+ 
+3(6)
+test fixture
+NRF
+0
+//
+KpnI
+Klebsiella pneumoniae
+Acc65I
+ 
+test fixture
+NF
+0
+//
+BsaI
+Bacillus stearothermophilus
+Eco31I
+ 
+test fixture
+N
+1
+a reference line
+//
+TspRI
+Thermus sp.
+ 
+ 
+test fixture
+N
+0
+//
+MboI
+Moraxella bovis
+DpnII,Sau3AI
+ 
+test fixture
+NR
+0
+//
+AvaI
+Anabaena variabilis
+BsoBI
+ 
+test fixture
+NR
+0
+//
+BglI
+Bacillus globigii
+ 
+ 
+test fixture
+NRF
+0
+//
+DupI
+synthetic
+ 
+ 
+test fixture
+
+0
+//
+CviKI-1
+Chlorella virus
+ 
+ 
+test fixture
+N
+0
+//

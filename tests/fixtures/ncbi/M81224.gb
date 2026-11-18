@@ -1,0 +1,58 @@
+LOCUS       BNAKINI                  441 bp    mRNA    linear   PLN 27-APR-1993
+DEFINITION  Rapeseed Kin1 protein (kin1) mRNA, complete cds.
+ACCESSION   M81224
+VERSION     M81224.1
+KEYWORDS    .
+SOURCE      Brassica napus (rape)
+  ORGANISM  Brassica napus
+            Eukaryota; Viridiplantae; Streptophyta; Embryophyta; Tracheophyta;
+            Spermatophyta; Magnoliopsida; eudicotyledons; Gunneridae;
+            Pentapetalae; rosids; malvids; Brassicales; Brassicaceae;
+            Brassiceae; Brassica.
+REFERENCE   1  (bases 1 to 441)
+  AUTHORS   Orr,W., Iu,B., White,T.C., Robert,L.S. and Singh,J.
+  TITLE     Complementary DNA Sequence of a Low Temperature-Induced Brassica
+            napus Gene with Homology to the Arabidopsis thaliana kin1 Gene
+  JOURNAL   Plant Physiol. 98 (4), 1532-1534 (1992)
+   PUBMED   16668830
+COMMENT     Original source text: Brassica napus (cultivar Jet neuf) cold
+            induced leaf cDNA to mRNA.
+FEATURES             Location/Qualifiers
+     source          1..441
+                     /organism="Brassica napus"
+                     /mol_type="mRNA"
+                     /cultivar="Jet Neuf"
+                     /db_xref="taxon:3708"
+                     /tissue_type="leaf"
+                     /dev_stage="cold induced"
+     gene            1..441
+                     /gene="kin1"
+     CDS             34..231
+                     /gene="kin1"
+                     /experiment="experimental evidence, no additional details
+                     recorded"
+                     /codon_start=1
+                     /protein_id="AAA32993.1"
+                     /translation="MADNKQSFQAGQASGRAEEKGNVLMDKVKDAATAAGASAQTAGQ
+                     KITEAAGGAVNLVKEKTGMNK"
+     regulatory      241..247
+                     /regulatory_class="polyA_signal_sequence"
+                     /gene="kin1"
+                     /note="putative"
+     regulatory      294..300
+                     /regulatory_class="polyA_signal_sequence"
+                     /gene="kin1"
+                     /note="putative"
+     polyA_site      441
+                     /gene="kin1"
+ORIGIN      
+        1 aaaaaaacac aacaaaactc aataaataaa caaatggcag acaacaagca gagcttccaa
+       61 gccggtcaag cctctggtcg tgctgaggag aagggtaatg tgctgatgga caaggtcaag
+      121 gatgctgcta ccgcagctgg agcgtctgcg caaaccgcgg gacagaagat aacggaggcg
+      181 gcagggggag ccgttaatct cgtgaaggag aagaccggca tgaacaagta gccccattgg
+      241 aaataaaatt gggagttata gtttcccttt ttaatgttaa tcgttgtggt tttaaataaa
+      301 aattgggtgt tctaattgat cttcaccgta gttgttgttg ttgttgtttt tagtgtttga
+      361 agtaatgttt tcaaccttta ggtgtatgtc ttgatgttta tgtacttagt tcccccttaa
+      421 tgaacatctg atttaagctt c
+//
+

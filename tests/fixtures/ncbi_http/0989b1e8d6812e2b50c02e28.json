@@ -1,0 +1,1 @@
+{"key":"0989b1e8d6812e2b50c02e28","method":"GET","url":"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=protein&id=NP_000509.1&rettype=gp&retmode=text&tool=plasmid.nvim","recorded":"2026-11-17T13:22:31Z","bytes":17982,"ms":692,"headers":{"x-ratelimit-limit":"3","content-type":"text/plain"},"status":200}

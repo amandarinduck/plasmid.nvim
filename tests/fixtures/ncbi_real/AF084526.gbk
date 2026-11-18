@@ -1,0 +1,244 @@
+LOCUS       AF084526                3505 bp    DNA     linear   INV 26-JUL-2016
+DEFINITION  Physarum polycephalum cytochrome oxidase subunit 3 (cox3) gene,
+            complete cds; mitochondrial gene for mitochondrial product.
+ACCESSION   AF084526
+VERSION     AF084526.1
+KEYWORDS    .
+SOURCE      mitochondrion Badhamia polycephala
+  ORGANISM  Badhamia polycephala
+            Eukaryota; Amoebozoa; Evosea; Eumycetozoa; Myxogastria;
+            Myxogastromycetidae; Physariida; Physaraceae; Badhamia.
+REFERENCE   1  (bases 1 to 3505)
+  AUTHORS   Costandy,H. and Miller,D.L.
+  TITLE     RNA editing of the cox3 mRNA in mitochondria of Physarum
+            polycephalum
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 3505)
+  AUTHORS   Costandy,H. and Miller,D.L.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (15-AUG-1998) Molecular and Cell Biology, The University
+            of Texas at Dallas, 2601 N. Floyd Road, Richardson, TX 75080, USA
+FEATURES             Location/Qualifiers
+     source          1..3505
+                     /organism="Badhamia polycephala"
+                     /organelle="mitochondrion"
+                     /mol_type="genomic DNA"
+                     /strain="M3"
+                     /db_xref="taxon:5791"
+                     /note="microplasmodium"
+     gene            2610..3370
+                     /gene="cox3"
+     CDS             2610..3370
+                     /gene="cox3"
+                     /exception="RNA editing"
+                     /codon_start=1
+                     /product="cytochrome oxidase subunit 3"
+                     /protein_id="AAD30659.1"
+                     /translation="MNNKHPYHLVNPSPWPISVSAALLGLTIGGVSYFHSFNNGIYLL
+                     TSSFILLAILAGFWWRDLIREGTYLHNHTKEVLLGLRLGFILFIVSEVMFFFSFFWAY
+                     FHSSLSPNIEIGSQWPPFALEVIGLALPVVNTVILLTSGATITVAHLAILRNKKQIAI
+                     ESLIATIVLALVFTAIQMYEYRHAPFSISDGIYGSVFYMLTGFHGIHVLIGTIFICVQ
+                     FVRLTKDHLLSNSHLGFEACAWYWHFVDVVWLLLFVIVYAYGSNAL"
+     misc_feature    2624..2626
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence;
+                     specific location within this span uncertain"
+     misc_feature    2638^2639
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence"
+     misc_feature    2660^2661
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence"
+     misc_feature    2690^2691
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence"
+     misc_feature    2711..2713
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence;
+                     specific location within this span uncertain"
+     misc_feature    2727^2728
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence"
+     misc_feature    2750^2751
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence"
+     misc_feature    2766^2767
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence"
+     misc_feature    2785^2786
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence"
+     misc_feature    2799..2801
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence;
+                     specific location within this span uncertain"
+     misc_feature    2826..2828
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence;
+                     specific location within this span uncertain"
+     misc_feature    2842^2843
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence"
+     misc_feature    2873^2874
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence"
+     misc_feature    2897..2899
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence;
+                     specific location within this span uncertain"
+     misc_feature    2913^2914
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence"
+     misc_feature    2933^2934
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence"
+     misc_feature    2964^2965
+                     /gene="cox3"
+                     /note="site of a uridine-cytidine dinucleotide insertion
+                     in the mRNA during RNA editing relative to the
+                     mitochondrial DNA sequence"
+     misc_feature    2991..2993
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence;
+                     specific location within this span uncertain"
+     misc_feature    3014..3016
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence;
+                     specific location within this span uncertain"
+     misc_feature    3034^3035
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence"
+     misc_feature    3068^3069
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence"
+     misc_feature    3083..3085
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence;
+                     specific location within this span uncertain"
+     misc_feature    3110^3111
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence"
+     misc_feature    3129^3130
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence"
+     misc_feature    3142^3143
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence"
+     misc_feature    3161^3162
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence"
+     misc_feature    3212^3213
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence"
+     misc_feature    3226^3227
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence"
+     misc_feature    3247..3249
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence"
+     misc_feature    3269^3270
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence"
+     misc_feature    3292^3293
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence"
+     misc_feature    3318^3319
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence"
+     misc_feature    3341^3342
+                     /gene="cox3"
+                     /note="site of cytidine insertion in the mRNA during RNA
+                     editing relative to the mitochondrial DNA sequence"
+ORIGIN      
+        1 gtatctagca aatgttatta tttttgtttt taatttaaat taaacaagat tttccattta
+       61 aaataaatat taatccttaa gaatacctaa ctatgggcat aaaatccatc tgatatcttt
+      121 cgattagata agtaaagatg gcaatatcaa ttaagagatc ctttatagcc aatgttttta
+      181 tttataagaa gtgaaaaaaa tgttttaaaa tattcagcac ttatgtttct tatacataag
+      241 aagaaatatt aatctagaaa attagaactt gaaaagataa aattaaacct atcgaaatcc
+      301 ttttatgcga gatctttagt tttctctcat taaacatttc atatggtcca tctctttttt
+      361 agctattttg ttttagatgt tggagagaag ctttacgtgc taaaaagaat tacgtgaaaa
+      421 accattttat tatttagtgg tgctcttctt atgaaatacg tgttcatatt attactttga
+      481 aaatatatgt atttacctaa tcctgaaaat attctagaaa agatatattt ggaaacgtta
+      541 aaatggttct attatttggg ttagatcgca aggtattaaa gttaataatt tattaaagat
+      601 ttaatataaa aataaaagaa tcttgtctaa gctttttgtt gaaaatgtct taatataaaa
+      661 actatcagat aggtaaatat ttatcatgcg atctctatac aaataccatc agcatggatt
+      721 ataataatct tgcctttttt ccaaaagcac gtaaggttat cgttttttta aacatttaaa
+      781 atattaaaat tttattaaga ttttttaaat actgtcgtta tactaactaa aaaaaaggtt
+      841 attatttatt aacttattat ttgtatggtc acatcctatt tattttttct tattttaatt
+      901 caggttaata aaaagaaaag ataaacttca aacgtactta acaaaataat ttattacaaa
+      961 gtttactatt tttatattta caagatttaa atctatttat tacgctataa taagaaacta
+     1021 ttacaaactc gataatttta tataactata tgcgaaaatt taatattcac gatggctaaa
+     1081 atacttttat ccctaatgat cgtaactgat tgttcgtttc tcggattgaa taacgaaatt
+     1141 atagtgcaca atttctagta aattatatag tattaaactt ggtaatattt taattttaat
+     1201 agtataataa aacaataatt cgttactata aacgcgtagt gccattgagg tttcagattt
+     1261 atatttcagg tcgtttaacc gtaaagaacg tgcagatata tgttaaagca tataaagtat
+     1321 gcctttagct acagctaaaa tagagtggat tatgcttctg attcaaaatt atgcgtttgg
+     1381 tgtcgttggt attaaaattt atttattaca tctgaagatg ttcatactat tatttctttg
+     1441 aattaagact aaaatatgaa aaaatttcta ataatactaa atttaaacga cacataaaat
+     1501 caaaatataa aaggaaataa aggcattttt cttagcgctt ttctgtaggt gttgacttaa
+     1561 agcaagagat atttatctta tgaacagtta gagactgcac gtagagttat acacgtttag
+     1621 ttaagctaaa gagcttaaaa ataaaaagaa ttaacaatac ttaaaagtat caacaaaaat
+     1681 tcagtgacag actagaagac ctagagtaaa caaaaaaaat tctctatatt cgatctaact
+     1741 atgcttacct ctacaaaaaa acctttacaa gttagaatgg gaaggaaaag ggtcaataga
+     1801 taaatgggtt tttgctgcta ataaattaga gttattttga aatgactcga caagatttaa
+     1861 actacgtaaa gtacatcgtt tattaagtgt ttccgtgtta aaatgccgac aaaactaaaa
+     1921 ataattatca tcgattacat accgtagaga aactaatttt gtatccaaat atatataata
+     1981 ttaaaatttt taattattaa cttatatatt atatttcaat caaaaatcta attctagtaa
+     2041 tttattagaa aaccatttat tttaaaataa tatttaataa aaaactaaat aatgttatta
+     2101 caagataata accttttctt tattcgaata tgcttttaag tttatatttt tctcttatta
+     2161 ttatatatac agtaacacca aatgctatca tgcattatta gctttaattt tattattcat
+     2221 aacttctcat ttctattatt tttaacgatt cagctttctt aggattgctt atattttagt
+     2281 ttatatggtg ctatttgtgt actatttttt atataatatt acttcacatt tacgctcata
+     2341 cacgcttatg caacgtcaaa attccatttt attattattt taatttttat atttttaata
+     2401 taatgacttt tttatttagc gatacaatct cgagattgta ttttctctaa ttatctttta
+     2461 aatgattaga actttttacc tcatattctt taaaacacac aacattatat gtttttaagt
+     2521 atttttcttt tattattgca ttattcttat tgtattttta tctactaaat ttgtcggata
+     2581 taataaaaca actgctataa ttttataata tgaataataa acatcatatc atttagtaat
+     2641 ccatccccat ggcctatatt gtttcagcag ctttattagg attaactatg gaggtgtttc
+     2701 ttattttcac tctttaacaa tggtattatt tattaacttc ttcttttatt tacttgctat
+     2761 tttagaggtt tttggtggag agattaattc gtgaaggtac tatttacata atcatactaa
+     2821 agaagtcttt taggtttacg ttaggtttta ttttatttat tgtttctgaa gtatgttttt
+     2881 cttttctttt ttctgggcta ttttcatagt agttaagccc taatattgaa atggtagtca
+     2941 atggcctcct tttgctttag aagataggtt tagctttacc tgttgttaat acgttattct
+     3001 tttaacttct ggagcacaat tactgtagcc cattagctat cttacgtaat aaaaaacaaa
+     3061 ttgctatgaa tctttaatag ctacattgtt ttagctttag tttttactgt attcaaatgt
+     3121 atgagtatgt catgctcctt ttctatttct gatggaattt atggttcagt ttttatatgt
+     3181 taacaggttt tcatggaatt catgttctta tggtactatc tttattgtgt tcaatttgtt
+     3241 cgtcttacaa agatcattta ttatctaaag tcatttagga tttgaagctt ggcttggtat
+     3301 tggcatttcg ttgatgtgtt tggttacttt tatttgtaat gtgtatgctt atggaagtaa
+     3361 tgccctttaa tctttttaat tttactatta tataaatata tatgaagttt attgctttaa
+     3421 atattaatct cttttttaag ttatatatag tatagctata taatatcaat taatatataa
+     3481 gtatttgatt tataaaaaaa ataat
+//
+

@@ -1,0 +1,72 @@
+LOCUS       LN625376                1765 bp    DNA     linear   CON 04-AUG-2026
+DEFINITION  Cryptococcus gattii, R265, WGS project CBZL01000000 data, scaffold:
+            contig_97, whole genome shotgun sequence.
+ACCESSION   LN625376
+VERSION     LN625376.1
+DBLINK      BioProject: PRJEB5464
+            BioSample: SAMEA3146310
+KEYWORDS    WGS.
+SOURCE      Cryptococcus deuterogattii (Cryptococcus gattii VGII)
+  ORGANISM  Cryptococcus deuterogattii
+            Eukaryota; Fungi; Dikarya; Basidiomycota; Agaricomycotina;
+            Tremellomycetes; Tremellales; Cryptococcaceae; Cryptococcus;
+            Cryptococcus gattii species complex.
+REFERENCE   1  (bases 1 to 1765)
+  AUTHORS   Hagen,F., Ceresini,P.C., Polacheck,I., Ma,H., van Nieuwerburgh,F.,
+            Gabaldon,T., Kagan,S., Pursall,E.R., Hoogveld,H.L., van
+            Iersel,L.J., Klau,G.W., Kelk,S.M., Stougie,L., Bartlett,K.H.,
+            Voelz,K., Pryszcz,L.P., Castaneda,E., Lazera,M., Meyer,W.,
+            Deforce,D., Meis,J.F., May,R.C., Klaassen,C.H. and Boekhout,T.
+  TITLE     Ancient dispersal of the human fungal pathogen Cryptococcus gattii
+            from the Amazon rainforest
+  JOURNAL   PLoS One 8 (8), e71148 (2013)
+   PUBMED   23940707
+  REMARK    Submission is described in the paper.
+REFERENCE   2  (bases 1 to 1765)
+  AUTHORS   Pryszcz,L.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (10-DEC-2013) CRG-Centre for Genomic Regulation,
+            Bioinformatics and Genomics, Aiguader 88, Catalunya, SPAIN
+FEATURES             Location/Qualifiers
+     source          1..1765
+                     /organism="Cryptococcus deuterogattii"
+                     /mol_type="genomic DNA"
+                     /submitter_seqid="contig_97"
+                     /strain="R265"
+                     /isolate="HL_B8"
+                     /type_material="culture from holotype of Cryptococcus
+                     deuterogattii"
+                     /db_xref="taxon:1859096"
+ORIGIN      
+        1 cccctccccc tccccctcct ctgccctgcc cggaaccatc catctccagt tcacctccac
+       61 cgcctccgcc atcctccacc tccacccgtc ctccccctcc gcccgccttt ccatctcgga
+      121 cctcaccacc gaccccgtcc cccccgccat cgctgcctcg tccccgtcgc cgaccgacgc
+      181 cgaacgggaa gagcagaccg gctacgccaa aggcgcgctg agcgggctcg gcgggtacgt
+      241 ggggctcggc gcgctcggtg ggaagcagcc gacgcccgtg ggtacacgca cagtcggcgg
+      301 tgaagtcttg ctcgccagag aaggtgcgtc gttctctccc agacgtccaa cgctcacagt
+      361 ggcttctaca gagacaggcg tgttctactc gtccgaaggc aactatacca gacaaagttc
+      421 catccactgg ccctacgcgc cagacggtat cgtattctca aacccataca tctactcgat
+      481 cctgccctct ccatcgcctc aacacggttc gtcacctact gtccagatcc acctcgcatc
+      541 cacactatcc ctccgccaga ctgtggccct accccttccc tctacaggca gttgggccgc
+      601 cacatgtttc tctctcatct cttcttcctc tcccacctcg ccctcgccca cgcccacggc
+      661 cacaccgaaa ctactcatcg caacctaccc gacagacaaa tccctccatc cacaaggaag
+      721 ttccatccac ctcctctcct ctccacccct cccatccgaa atcgaacatt tcttgctcaa
+      781 cggacgtatc gacgatgcca tcggcctcgt cgaagctacc cctctcgccg ctgtcacccc
+      841 ccacgcgccc caacttgacc tgggccacct gaaaaccctg aaagcggtac aactattcga
+      901 ccgcggggca taccaacccg ccatggaact gtttgtccag cacaacgtca accccgcgct
+      961 cgtcctctcg cttttcccga acagtatttc cggcgggttg ggcgtgcgca gggaagggtg
+     1021 gatggagttg tttggagcgc cgaggggcgc tcggttgggt ctcgagcagg agcaggagaa
+     1081 agagtcacac gacgagtcac agggagaagg tatggagtta catgaagaca aggatggaga
+     1141 agacgacgac agtgtcaaga gtatacacag tgtaaaaacc gatacagcgg aaaatcaaga
+     1201 tacggataaa caagtcccga aagcagccct tgaagcactc ttgtactttc tctctgaccg
+     1261 ccgtcaaaaa ctatcaggcg ccatatccgc cctcccaccc gaatccccgc tcccgcccga
+     1321 atcttccctc ccccgacttt ccgccctccc acccaccgcc ctccacgctc tcccgtccat
+     1381 cccgttcacc gagatgaacc ccacagaatt ggtgcgcatg gcacaagtgg tgtataccgc
+     1441 tttgatgcgc gtttacttga aagcgaggcc cgtgttggta ggtagtttgt gtaggattga
+     1501 gaattggtgt gatgtcaagg aagtggaggg gttgttgaaa gagcaaaagg tgggggtttt
+     1561 tttttttttc ttttttttgc ttacactgac tgattgggat tttagaaatt caccgatttg
+     1621 gtagatcttt atcaagggaa aaaaatgcat agaaaagcgc ttaccatgct acacgagtaa
+     1681 gttttttcca attccccccc cccccccccc ccgccccgcc ccgcccccat cccccccccc
+     1741 attcccgcca ttctgtcaac tccaa
+//
+

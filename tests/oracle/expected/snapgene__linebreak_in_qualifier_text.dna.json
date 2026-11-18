@@ -1,0 +1,87 @@
+{
+ "format": "snapgene",
+ "records": [
+  {
+   "name": "<unknown name>",
+   "id": "<unknown id>",
+   "length": 246,
+   "sha256": "ec13bd12f989e94716f8732f19c9a5abe2b1ec9922eb43b1e3ab6c59e0ba9d64",
+   "topology": "linear",
+   "description": "<unknown description>",
+   "features": [
+    {
+     "type": "oriT",
+     "parts": [
+      [
+       1,
+       246,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "oriT"
+      ],
+      [
+       "note",
+       "Origin of transference region of RP4 plasmid"
+      ]
+     ]
+    },
+    {
+     "type": "primer_bind",
+     "parts": [
+      [
+       154,
+       163,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "AC4_Fragment.REV"
+      ]
+     ]
+    },
+    {
+     "type": "primer_bind",
+     "parts": [
+      [
+       21,
+       41,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "P.SEVA.AbR.R"
+      ]
+     ]
+    },
+    {
+     "type": "primer_bind",
+     "parts": [
+      [
+       207,
+       224,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "P.SEVA.ORI.F"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

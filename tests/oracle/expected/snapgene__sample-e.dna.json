@@ -1,0 +1,57 @@
+{
+ "format": "snapgene",
+ "records": [
+  {
+   "name": "Sample",
+   "id": "Sample",
+   "length": 1000,
+   "sha256": "8f0b340a671741a3fa74aaaf2e9e02c04f6c6644abd2d41a3b68da37e4f9d731",
+   "topology": "circular",
+   "description": "Sample Sequence E",
+   "features": [
+    {
+     "type": "terminator",
+     "parts": [
+      [
+       400,
+       750,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "label",
+       "FeatureB"
+      ]
+     ]
+    },
+    {
+     "type": "rep_origin",
+     "parts": [
+      [
+       161,
+       241,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "direction",
+       "RIGHT"
+      ],
+      [
+       "label",
+       "FeatureA"
+      ],
+      [
+       "note",
+       "Random origin of replication"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,237 @@
+{
+ "format": "genbank",
+ "key": "bf973108baa2eb3c91cab85c",
+ "records": [
+  {
+   "name": "NC_000913",
+   "id": "NC_000913.3",
+   "length": 2611,
+   "sha256": "eeb6749c66665090aad5ada932b8d657b8a4dcf7d2755f6b0856002f37fbb29f",
+   "topology": "linear",
+   "description": "Escherichia coli str. K-12 substr. MG1655, complete genome",
+   "features": [
+    {
+     "type": "source",
+     "parts": [
+      [
+       1,
+       2611,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "taxon:511145"
+      ],
+      [
+       "mol_type",
+       "genomic DNA"
+      ],
+      [
+       "organism",
+       "Escherichia coli str. K-12 substr. MG1655"
+      ],
+      [
+       "strain",
+       "K-12"
+      ],
+      [
+       "sub_strain",
+       "MG1655"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       2,
+       2464,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "ECOCYC:EG10998"
+      ],
+      [
+       "db_xref",
+       "GeneID:945803"
+      ],
+      [
+       "gene",
+       "thrA"
+      ],
+      [
+       "gene_synonym",
+       "ECK0002; Hs; thrA1; thrA2; thrD"
+      ],
+      [
+       "locus_tag",
+       "b0002"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       2,
+       2464,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "EC_number",
+       "1.1.1.3"
+      ],
+      [
+       "EC_number",
+       "2.7.2.4"
+      ],
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "db_xref",
+       "ECOCYC:EG10998"
+      ],
+      [
+       "db_xref",
+       "GeneID:945803"
+      ],
+      [
+       "db_xref",
+       "UniProtKB/Swiss-Prot:P00561"
+      ],
+      [
+       "gene",
+       "thrA"
+      ],
+      [
+       "gene_synonym",
+       "ECK0002; Hs; thrA1; thrA2; thrD"
+      ],
+      [
+       "locus_tag",
+       "b0002"
+      ],
+      [
+       "product",
+       "fused aspartate kinase/homoserine dehydrogenase 1"
+      ],
+      [
+       "protein_id",
+       "NP_414543.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MRVLKFGGTSVANAERFLRVADILESNARQGQVATVLSAPAKITNHLVAMIEKTISGQDALPNISDAERIFAELLTGLAAAQPGFPLAQLKTFVDQEFAQIKHVLHGISLLGQCPDSINAALICRGEKMSIAIMAGVLEARGHNVTVIDPVEKLLAVGHYLESTVDIAESTRRIAASRIPADHMVLMAGFTAGNEKGELVVLGRNGSDYSAAVLAACLRADCCEIWTDVDGVYTCDPRQVPDARLLKSMSYQEAMELSYFGAKVLHPRTITPIAQFQIPCLIKNTGNPQAPGTLIGASRDEDELPVKGISNLNNMAMFSVSGPGMKGMVGMAARVFAAMSRARISVVLITQSSSEYSISFCVPQSDCVRAERAMQEEFYLELKEGLLEPLAVTERLAIISVVGDGMRTLRGISAKFFAALARANINIVAIAQGSSERSISVVVNNDDATTGVRVTHQMLFNTDQVIEVFVIGVGGVGGALLEQLKRQQSWLKNKHIDLRVCGVANSKALLTNVHGLNLENWQEELAQAKEPFNLGRLIRLVKEYHLLNPVIVDCTSSQAVADQYADFLREGFHVVTPNKKANTSSMDYYHQLRYAAEKSRRKFLYDTNVGAGLPVIENLQNLLNAGDELMKFSGILSGSLSYIFGKLDEGMSFSEATTLAREMGYTEPDPRDDLSGMDVARKLLILARETGRELELADIEIEPVLPAEFNAEGDVAAFMANLSQLDDLFAARVAKARDEGKVLRYVGNIDEDGVCRVKIAEVDGNDPLFKVKNGENALAFYSHYYQPLPLVLRGYGAGNDVTAAGVFADLLRTLSWKLGV"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       2546,
+       2611,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "ECOCYC:EG11277"
+      ],
+      [
+       "db_xref",
+       "GeneID:944742"
+      ],
+      [
+       "gene",
+       "thrL"
+      ],
+      [
+       "gene_synonym",
+       "ECK0001"
+      ],
+      [
+       "locus_tag",
+       "b0001"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       2546,
+       2611,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "db_xref",
+       "ECOCYC:EG11277"
+      ],
+      [
+       "db_xref",
+       "GeneID:944742"
+      ],
+      [
+       "db_xref",
+       "UniProtKB/Swiss-Prot:P0AD86"
+      ],
+      [
+       "gene",
+       "thrL"
+      ],
+      [
+       "gene_synonym",
+       "ECK0001"
+      ],
+      [
+       "locus_tag",
+       "b0001"
+      ],
+      [
+       "product",
+       "thr operon leader peptide"
+      ],
+      [
+       "protein_id",
+       "NP_414542.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MKRISTTITTTITITTGNGAG"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

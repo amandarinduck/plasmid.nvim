@@ -1,0 +1,1 @@
+{"key":"783d8e3c6feb7e7255efb915","method":"GET","url":"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=nuccore&term=pUC19%5Btitle%5D%20AND%20complete%20sequence%5Btitle%5D&retmax=20&retmode=json&tool=plasmid.nvim","recorded":"2026-11-17T13:22:35Z","bytes":400,"ms":288,"headers":{"x-ratelimit-limit":"3","content-type":"application/json; charset=UTF-8"},"status":200}

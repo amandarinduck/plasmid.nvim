@@ -1,0 +1,26 @@
+{
+ "format": "fasta",
+ "records": [
+  {
+   "name": "L09137.2",
+   "id": "L09137.2",
+   "length": 2686,
+   "sha256": "8a205af08518dae1b0045c7b098986dca18824ef654e75233603602ab89cad04",
+   "description": "L09137.2 Cloning vector pUC19c, complete sequence"
+  },
+  {
+   "name": "J01749.1",
+   "id": "J01749.1",
+   "length": 4361,
+   "sha256": "536042a7485bdabdf49c4d21a306213a098d77d19bdba57a1c6adc76ce2b8372",
+   "description": "J01749.1 Cloning vector pBR322, complete sequence"
+  },
+  {
+   "name": "NC_001422.1",
+   "id": "NC_001422.1",
+   "length": 5386,
+   "sha256": "97038c7e1edea2297667d7f0426ba942b322c74cb30e072ec66ba47f9c0448d0",
+   "description": "NC_001422.1 Escherichia phage phiX174, complete genome"
+  }
+ ]
+}

@@ -1,0 +1,9 @@
+LOCUS       CGRMEV020000000          807 rc    DNA     linear   ENV 14-NOV-2026
+DEFINITION  MAG: Clostridia bacterium, whole genome shotgun sequencing project.
+ACCESSION   CGRMEV000000000
+VERSION     CGRMEV000000000.2
+FEATURES             Location/Qualifiers
+     source          1..807
+                     /mol_type="genomic DNA"
+WGS         CGRMEV020000001-CGRMEV020000807
+//

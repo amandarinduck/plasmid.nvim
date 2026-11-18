@@ -1,0 +1,63 @@
+LOCUS       S75221                   687 bp    DNA     linear   VRL 04-NOV-2016
+DEFINITION  Mouse mammary tumor virus int-6-LTR fusion protein (int-6-LTR
+            fusion) gene, exon 4 and partial cds.
+ACCESSION   S75221
+VERSION     S75221.1
+KEYWORDS    .
+SOURCE      Mouse mammary tumor virus
+  ORGANISM  Mouse mammary tumor virus
+            Viruses; Riboviria; Pararnavirae; Artverviricota; Revtraviricetes;
+            Ortervirales; Retroviridae; Orthoretrovirinae; Betaretrovirus;
+            Betaretrovirus murmamtum.
+REFERENCE   1  (bases 1 to 687)
+  AUTHORS   Marchetti,A., Buttitta,F., Miyazaki,S., Gallahan,D., Smith,G.H. and
+            Callahan,R.
+  TITLE     Int-6, a highly conserved, widely expressed gene, is mutated by
+            mouse mammary tumor virus in mammary preneoplasia
+  JOURNAL   J. Virol. 69 (3), 1932-1938 (1995)
+   PUBMED   7853537
+  REMARK    GenBank staff at the National Library of Medicine created this
+            entry [NCBI gibbsq 160123] from the original journal article.
+FEATURES             Location/Qualifiers
+     source          213..687
+                     /organism="Mouse mammary tumor virus"
+                     /mol_type="genomic DNA"
+                     /db_xref="taxon:11757"
+                     /focus
+     source          1..212
+                     /organism="Mus musculus"
+                     /mol_type="genomic DNA"
+                     /strain="Czech II"
+                     /db_xref="taxon:10090"
+                     /cell_type="preneoplastic hyperplastic outgrowth HOG
+                     mammary tumor cells"
+     gene            <1..285
+                     /gene="int-6-LTR fusion"
+     CDS             join(<1..147,214..285)
+                     /gene="int-6-LTR fusion"
+                     /codon_start=1
+                     /product="int-6-LTR fusion protein"
+                     /protein_id="AAC00046.1"
+                     /translation="DGRMLFDYLADKHGFRQEYLDTLYRYAKFQYECGNYSGAAEYLY
+                     FFRVLLPQSADLRATGVCGGTLWKVMDK"
+     exon            <1..147
+                     /gene="int-6-LTR fusion"
+                     /number=4
+     misc_recomb     212^213
+                     /gene="int-6-LTR fusion"
+                     /note="viral integration site"
+ORIGIN      
+        1 gatggcagga tgttatttga ctacctggca gacaaacatg ggtttaggca agagtactta
+       61 gatacactct acagatacgc aaaattccag tatgagtgtg gaaattactc tggagctgca
+      121 gagtatcttt acttctttag agttttgaat tgaagatgta ttgactgtca atggcatatt
+      181 agaaccttta acagcacttt ccatcatgca cagctgccgc agtcggccga cctgagggcc
+      241 accggggtct gcggggggac cctctggaag gtaatggata agtgacgagc ggagacggga
+      301 tggcgaacag acacaaacac acgagagacg aatgttagga ctgttgcaag tttactcaaa
+      361 aatcagcact ctttatatca tggtttacat aagcatttac ataagacttg gatagattcc
+      421 aaaagaacat aggaggttag aacactcaga gcttagatca aaacatttga taccaaacca
+      481 ggtcaggaaa ccacttgtct cacatccttg ttttaagaac agtttgtaac catgaaatta
+      541 tttgaacctt gggaaccgca gcaatacctt aatatgtatc ataaacagtc agaggtaatg
+      601 ccttaatatg ttttataata tgttctttgc cctcttcctt acttttagga tttattctcc
+      661 aatgttttat ccctgtgcct aaataaa
+//
+
