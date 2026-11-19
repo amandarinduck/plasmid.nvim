@@ -1,0 +1,257 @@
+{
+ "format": "genbank",
+ "records": [
+  {
+   "name": "tet_part",
+   "id": "J01749.1",
+   "length": 1213,
+   "sha256": "714d5523304b814091a550c86fbfe75f9ed522fb180df926f048c04eb3417ef7",
+   "topology": "linear",
+   "description": "Cloning vector pBR322, complete sequence",
+   "features": [
+    {
+     "type": "source",
+     "parts": [
+      [
+       12,
+       1202,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "taxon:47470"
+      ],
+      [
+       "focus",
+       ""
+      ],
+      [
+       "mol_type",
+       "other DNA"
+      ],
+      [
+       "organism",
+       "Cloning vector pBR322"
+      ],
+      [
+       "tissue_lib",
+       "ATCC 31344, ATCC 37017"
+      ]
+     ]
+    },
+    {
+     "type": "source",
+     "parts": [
+      [
+       12,
+       1202,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "taxon:2625"
+      ],
+      [
+       "mol_type",
+       "other DNA"
+      ],
+      [
+       "organism",
+       "Plasmid pSC101"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       12,
+       1202,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "tet"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       12,
+       1202,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "gene",
+       "tet"
+      ],
+      [
+       "product",
+       "tetracycline resistance protein"
+      ],
+      [
+       "protein_id",
+       "AAB59735.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MKSNNALIVILGTVTLDAVGIGLVMPVLPGLLRDIVHSDSIASHYGVLLALYALMQFLCAPVLGALSDRFGRRPVLLASLLGATIDYAIMATTPVLWILYAGRIVAGITGATGAVAGAYIADITDGEDRARHFGLMSACFGVGMVAGPVAGGLLGAISLHAPFLAAAVLNGLNLLLGCFLMQESHKGERRPMPLRAFNPVSSFRWARGMTIVAALMTVFFIMQLVGQVPAALWVIFGEDRFRWSATMIGLSLAVFGILHALAQAFVTGPATKRFGEKQAIIAGMAADALGYVLLAFATRGWMAFPIMILLASGGIGMPALQAMLSRQVDDDHQGQLQGSLAALTSLTSITGPLIVTAIYAASASTWNGLAWIVGAALYLVCLPALRRGAWSRATST"
+      ]
+     ]
+    },
+    {
+     "type": "misc_feature",
+     "parts": [
+      [
+       67,
+       68,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "Endo.Sce I cleavage site coordinated with site at base 146 (10)"
+      ]
+     ]
+    },
+    {
+     "type": "misc_feature",
+     "parts": [
+      [
+       72,
+       73,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "tet"
+      ],
+      [
+       "note",
+       "Endo.Sce I cleavage site coordinated with site at base 142 (10)"
+      ]
+     ]
+    },
+    {
+     "type": "misc_binding",
+     "parts": [
+      [
+       337,
+       340,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "bound_moiety",
+       "echinomycin"
+      ],
+      [
+       "gene",
+       "tet"
+      ]
+     ]
+    },
+    {
+     "type": "misc_difference",
+     "parts": [
+      [
+       352,
+       352,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "citation",
+       "[11]"
+      ],
+      [
+       "gene",
+       "tet"
+      ],
+      [
+       "note",
+       "conflict"
+      ],
+      [
+       "replace",
+       ""
+      ]
+     ]
+    },
+    {
+     "type": "misc_binding",
+     "parts": [
+      [
+       395,
+       398,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "bound_moiety",
+       "echinomycin"
+      ],
+      [
+       "gene",
+       "tet"
+      ]
+     ]
+    },
+    {
+     "type": "old_sequence",
+     "parts": [
+      [
+       452,
+       454,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "citation",
+       "[17]"
+      ],
+      [
+       "gene",
+       "tet"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

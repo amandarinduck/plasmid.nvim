@@ -1,0 +1,493 @@
+{
+ "format": "genbank",
+ "records": [
+  {
+   "name": "pBR_dest",
+   "id": "J01749.1",
+   "length": 2304,
+   "sha256": "4ecfb0ac1b1b7c0794d0c288f1a7521d9daee0dcd2f58891baa0b2b5fb96cb54",
+   "topology": "circular",
+   "description": "Cloning vector pBR322, complete sequence",
+   "features": [
+    {
+     "type": "source",
+     "parts": [
+      [
+       5,
+       2166,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "db_xref",
+       "taxon:47470"
+      ],
+      [
+       "focus",
+       ""
+      ],
+      [
+       "mol_type",
+       "other DNA"
+      ],
+      [
+       "organism",
+       "Cloning vector pBR322"
+      ],
+      [
+       "tissue_lib",
+       "ATCC 31344, ATCC 37017"
+      ]
+     ]
+    },
+    {
+     "type": "repeat_region",
+     "parts": [
+      [
+       50,
+       54,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "gamma-delta insertion target sequence"
+      ],
+      [
+       "rpt_type",
+       "direct"
+      ]
+     ]
+    },
+    {
+     "type": "misc_feature",
+     "parts": [
+      [
+       156,
+       219,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "citation",
+       "[5]"
+      ],
+      [
+       "note",
+       "L-strand Y effector site"
+      ]
+     ]
+    },
+    {
+     "type": "misc_binding",
+     "parts": [
+      [
+       244,
+       252,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "bound_moiety",
+       "dnaA"
+      ]
+     ]
+    },
+    {
+     "type": "rep_origin",
+     "parts": [
+      [
+       340,
+       340,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": []
+    },
+    {
+     "type": "old_sequence",
+     "parts": [
+      [
+       534,
+       535,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "citation",
+       "[17]"
+      ],
+      [
+       "citation",
+       "[2]"
+      ],
+      [
+       "note",
+       "revision according to (17)"
+      ],
+      [
+       "replace",
+       "at"
+      ]
+     ]
+    },
+    {
+     "type": "old_sequence",
+     "parts": [
+      [
+       534,
+       534,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "citation",
+       "[17]"
+      ]
+     ]
+    },
+    {
+     "type": "old_sequence",
+     "parts": [
+      [
+       535,
+       535,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "citation",
+       "[16]"
+      ],
+      [
+       "citation",
+       "[17]"
+      ],
+      [
+       "citation",
+       "[2]"
+      ],
+      [
+       "note",
+       "revision according to (16)"
+      ],
+      [
+       "replace",
+       "t"
+      ]
+     ]
+    },
+    {
+     "type": "mobile_element",
+     "parts": [
+      [
+       953,
+       2166,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "mobile_element_type",
+       "transposon:Tn3"
+      ]
+     ]
+    },
+    {
+     "type": "repeat_region",
+     "parts": [
+      [
+       953,
+       990,
+       1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "corresponds to one of the 38bp repeats found in Tn3 (bp 1-38 and complement (4920-4957))"
+      ],
+      [
+       "rpt_type",
+       "inverted"
+      ]
+     ]
+    },
+    {
+     "type": "gene",
+     "parts": [
+      [
+       1098,
+       1958,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "bla"
+      ]
+     ]
+    },
+    {
+     "type": "CDS",
+     "parts": [
+      [
+       1098,
+       1958,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "codon_start",
+       "1"
+      ],
+      [
+       "gene",
+       "bla"
+      ],
+      [
+       "note",
+       "E-286"
+      ],
+      [
+       "product",
+       "beta-lactamase"
+      ],
+      [
+       "protein_id",
+       "AAB59737.1"
+      ],
+      [
+       "transl_table",
+       "11"
+      ],
+      [
+       "translation",
+       "MSIQHFRVALIPFFAAFCLPVFAHPETLVKVKDAEDQLGARVGYIELDLNSGKILESFRPEERFPMMSTFKVLLCGAVLSRVDAGQEQLGRRIHYSQNDLVEYSPVTEKHLTDGMTVRELCSAAITMSDNTAANLLLTTIGGPKELTAFLHNMGDHVTRLDRWEPELNEAIPNDERDTTMPAAMATTLRKLLTGELLTLASRQQLIDWMEADKVAGPLLRSALPAGWFIADKSGAGERGSRGIIAALGPDGKPSRIVVIYTTGSQATMDERNRQIAEIGASLIKHW"
+      ]
+     ]
+    },
+    {
+     "type": "sig_peptide",
+     "parts": [
+      [
+       1890,
+       1958,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "bla"
+      ]
+     ]
+    },
+    {
+     "type": "mat_peptide",
+     "parts": [
+      [
+       1101,
+       1889,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "gene",
+       "bla"
+      ],
+      [
+       "product",
+       "beta-lactamase"
+      ]
+     ]
+    },
+    {
+     "type": "regulatory",
+     "parts": [
+      [
+       1966,
+       1970,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "Shine-Dalgarno sequence"
+      ],
+      [
+       "regulatory_class",
+       "ribosome_binding_site"
+      ]
+     ]
+    },
+    {
+     "type": "regulatory",
+     "parts": [
+      [
+       1993,
+       1999,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "note",
+       "promoter P3 (6)"
+      ],
+      [
+       "regulatory_class",
+       "promoter"
+      ]
+     ]
+    },
+    {
+     "type": "misc_binding",
+     "parts": [
+      [
+       2073,
+       2076,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "bound_moiety",
+       "echinomycin"
+      ]
+     ]
+    },
+    {
+     "type": "misc_binding",
+     "parts": [
+      [
+       2085,
+       2088,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "bound_moiety",
+       "echinomycin"
+      ]
+     ]
+    },
+    {
+     "type": "misc_binding",
+     "parts": [
+      [
+       2090,
+       2093,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "bound_moiety",
+       "echinomycin"
+      ]
+     ]
+    },
+    {
+     "type": "misc_binding",
+     "parts": [
+      [
+       2101,
+       2104,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "bound_moiety",
+       "echinomycin"
+      ]
+     ]
+    },
+    {
+     "type": "misc_binding",
+     "parts": [
+      [
+       2116,
+       2119,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "bound_moiety",
+       "echinomycin"
+      ]
+     ]
+    },
+    {
+     "type": "misc_binding",
+     "parts": [
+      [
+       2122,
+       2125,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "bound_moiety",
+       "echinomycin"
+      ]
+     ]
+    },
+    {
+     "type": "misc_binding",
+     "parts": [
+      [
+       2136,
+       2139,
+       -1,
+       null
+      ]
+     ],
+     "qualifiers": [
+      [
+       "bound_moiety",
+       "echinomycin"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

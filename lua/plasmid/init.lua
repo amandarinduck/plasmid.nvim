@@ -365,7 +365,7 @@ local function register_commands()
     local buf = cur()
     if not buf then return end
     require("plasmid.primerdesign").run(buf, a.fargs)
-  end, { nargs = "*", desc = "Design a primer pair for the selection: [name=] [tm=] [len=18-30] [slack=8] [dtm=3] [fwd=Enzyme|SEQ] [rev=...]" })
+  end, { nargs = "*", desc = "Design a primer pair for the selection: [name=] [tm=] [len=18-30] [slack=8] [dtm=3] [fwd=Enzyme|SEQ] [rev=...] [into=part] [enzyme=BsaI] [homology=25] [overhangs=AATG/GCTT]" })
   cmd("DnaTm", function(a)
     require("plasmid.primerinfo").command(cur(), a.fargs)
   end, { nargs = "*", desc = "Tm (and Ta for two): {seq} [{seq2}] [polymerase=q5] [dmso=%] [conc=nM] [salt=mM]; no seq: selection" })

@@ -196,6 +196,16 @@ local function has_site(rec, ename)
   return #R.sites(R.prepare(rec), e) > 0
 end
 
+--- Does the record carry a site for `ename`, or for any Type IIS enzyme when
+--- no name is given? Used by :DnaClone and by assembly-aware primer design.
+function M.has_type_iis(rec, ename)
+  if ename then return has_site(rec, ename) end
+  local names = { cfg().enzyme or "BsaI" }
+  for _, n in ipairs(A.TYPE_IIS) do if n ~= names[1] then names[#names + 1] = n end end
+  for _, n in ipairs(names) do if has_site(rec, n) then return true, n end end
+  return false
+end
+
 --- The method :DnaClone picks: Golden Gate when every part carries a site for
 --- one Type IIS enzyme, Gibson when two parts share terminal homology,
 --- otherwise ligation. Returns method and (for Golden Gate) the enzyme.

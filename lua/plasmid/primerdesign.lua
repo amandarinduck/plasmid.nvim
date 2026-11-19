@@ -162,6 +162,101 @@ function M.candidates(rec, sel, over)
   return top
 end
 
+---------------------------------------------------------------------------
+-- Tails for an assembly (:DnaPrimerDesign into=…)
+---------------------------------------------------------------------------
+
+local function A() return require("plasmid.bio.assembly") end
+local function cloning_cfg() return require("plasmid.config").options.cloning or {} end
+
+--- Tails that make the product assemble into `vec` (a linear record for
+--- Gibson, or a Type IIS destination vector for Golden Gate).
+--- spec: { method = "gibson"|"golden_gate", enzyme, homology, overhangs = { l, r } }
+--- Returns { fwd_tail, rev_tail }, a description, and a list of warnings.
+function M.assembly_tails(vec, spec)
+  local Asm = A()
+  local P2 = require("plasmid.bio.primer")
+  local warn = {}
+  if spec.method == "gibson" then
+    local h = spec.homology or cloning_cfg().min_homology or 20
+    if vec:is_circular() then
+      return nil, "the destination is circular; cut or linearise it first (Gibson needs ends)"
+    end
+    local s = vec.seq:tostring():upper()
+    if #s < h * 2 then return nil, ("%s is only %d bp; it cannot provide %d bp of homology at each end")
+      :format(vec.name, #s, h) end
+    local fwd = s:sub(#s - h + 1)          -- the product continues the vector's 3' end
+    local rev = P2.revcomp(s:sub(1, h))    -- and runs back into its 5' end
+    return { fwd:lower(), rev:lower() },
+      ("Gibson into %s (%d bp homology each side)"):format(vec.name, h), warn
+  end
+  local R = require("plasmid.bio.restriction")
+  local name = spec.enzyme or cloning_cfg().enzyme or "BsaI"
+  local e = R.get(name)
+  if not e then return nil, ("unknown enzyme %s"):format(name) end
+  if e.cut5 >= 0 and e.cut5 <= #e.site then
+    return nil, ("%s cuts inside its recognition site; Golden Gate needs a Type IIS enzyme"):format(e.name)
+  end
+  local left, right = nil, nil
+  if spec.overhangs then
+    left, right = spec.overhangs[1]:upper(), spec.overhangs[2]:upper()
+  else
+    local parts, problems = Asm.type_iis_parts({ vec }, e.name)
+    if not parts or #parts == 0 then
+      return nil, (problems and problems[1]) or ("%s gives no usable fragment"):format(vec.name)
+    end
+    for _, p in ipairs(problems or {}) do
+      -- a lone destination always has two unpaired overhangs: that is what the
+      -- primers are about to supply
+      if not p:find("has no partner") then warn[#warn + 1] = p end
+    end
+    -- the product's left end joins the backbone's right end, and vice versa
+    left, right = Asm.end_seq(parts[1], "right"), Asm.end_seq(parts[1], "left")
+    if #left == 0 or #right == 0 then
+      return nil, ("%s does not leave overhangs when cut with %s"):format(vec.name, e.name)
+    end
+  end
+  local spacer = ("a"):rep(math.max(1, e.cut5 - #e.site))
+  local site = e.site:lower()
+  local fwd = site .. spacer .. left:lower()
+  local rev = site .. spacer .. P2.revcomp(right):lower()
+  return { fwd, rev },
+    ("Golden Gate into %s (%s, %s / %s)"):format(vec.name, e.name, left, right), warn
+end
+
+--- Does the designed pair actually assemble with the destination? Simulates
+--- the product (tails included) and runs it through the assembler.
+--- Returns ok, message.
+function M.verify_assembly(rec, pair, tails, vec, spec)
+  local Asm = A()
+  local P2 = require("plasmid.bio.primer")
+  local model = require("plasmid.model.record")
+  local template = rec.seq:tostring()
+  local L = #template
+  local a, b = pair.fwd.start, pair.rev.stop
+  local mid = (a <= b) and template:sub(a, b) or (template:sub(a, L) .. template:sub(1, b))
+  local seq = tails[1] .. mid:upper() .. P2.revcomp(tails[2]:upper())
+  local product = model.Record.new({ name = "product", seq = seq, alphabet = "dna", topology = "linear" })
+  local parts, problems
+  if spec.method == "gibson" then
+    parts, problems = Asm.gibson_parts({ { rec = product, name = "product" }, { rec = vec, name = vec.name } })
+  else
+    parts, problems = Asm.type_iis_parts({ { rec = product, name = "product" }, { rec = vec, name = vec.name } },
+      spec.enzyme or cloning_cfg().enzyme or "BsaI")
+  end
+  if not parts or #parts < 2 then
+    return false, (problems and problems[1]) or "the product does not give a usable fragment"
+  end
+  local asms = Asm.assemble(parts, spec.method == "gibson"
+    and { join = "homology", min_homology = spec.homology or cloning_cfg().min_homology or 20 } or {})
+  local circular = {}
+  for _, x in ipairs(asms) do if x.circular then circular[#circular + 1] = x end end
+  if #circular == 0 then return false, "the product and the destination do not close into a circle" end
+  local built = Asm.build(circular[1], { name = "check" })
+  return true, ("assembles with %s into %d bp circular%s"):format(vec.name, built:len(),
+    #circular > 1 and (" (%d possible assemblies)"):format(#circular) or "")
+end
+
 local function tail_for(arg)
   if not arg or arg == "" then return "" end
   local e = require("plasmid.bio.restriction").get(arg)
@@ -210,9 +305,26 @@ function M.run(buf, args)
   if not sel then return notify("select the region to amplify first", vim.log.levels.WARN) end
   local over, name, tails = {}, nil, { "", "" }
   local tnames = {}
+  local spec, dest = {}, nil
   for _, a in ipairs(args or {}) do
     local k, v = a:match("^(%w+)=(.+)$")
-    if k == "tm" then over.target_tm = tonumber(v)
+    if k == "into" then
+      local part, err = require("plasmid.clone").resolve(buf, v)
+      if not part then return notify(err, vim.log.levels.ERROR) end
+      dest = part
+    elseif k == "enzyme" then spec.enzyme, spec.method = v, "golden_gate"
+    elseif k == "homology" then spec.homology, spec.method = tonumber(v), "gibson"
+    elseif k == "method" then
+      if v ~= "gibson" and v ~= "golden_gate" then
+        return notify("method wants gibson or golden_gate", vim.log.levels.ERROR)
+      end
+      spec.method = v
+    elseif k == "overhangs" then
+      local l, r = v:match("^([ACGTacgt]+)[/,]([ACGTacgt]+)$")
+      if not l then return notify("overhangs wants two sequences, e.g. overhangs=AATG/GCTT",
+        vim.log.levels.ERROR) end
+      spec.overhangs, spec.method = { l, r }, "golden_gate"
+    elseif k == "tm" then over.target_tm = tonumber(v)
     elseif k == "len" then
       local lo, hi = v:match("^(%d+)%-(%d+)$")
       if not lo then return notify("len wants a range, e.g. len=18-30", vim.log.levels.ERROR) end
@@ -227,6 +339,31 @@ function M.run(buf, args)
       tnames[k == "fwd" and 1 or 2] = enz or v
     elseif k then return notify("unknown option " .. k, vim.log.levels.ERROR) end
   end
+  local assembly_label
+  if dest then
+    if (#tails[1] + #tails[2]) > 0 then
+      return notify("into= writes the tails itself; drop fwd=/rev=", vim.log.levels.ERROR)
+    end
+    if not spec.method then
+      spec.method = require("plasmid.clone").has_type_iis(dest.rec, spec.enzyme) and "golden_gate" or "gibson"
+    end
+    local t, label, warn = M.assembly_tails(dest.rec, spec)
+    if not t then return notify(label, vim.log.levels.WARN) end
+    tails, assembly_label = t, label
+    tnames = { "assembly tail", "assembly tail" }
+    for _, w in ipairs(warn or {}) do notify(w, vim.log.levels.WARN) end
+    if spec.method == "golden_gate" then
+      local R = require("plasmid.bio.restriction")
+      local e = R.get(spec.enzyme or (require("plasmid.config").options.cloning or {}).enzyme or "BsaI")
+      local S = require("plasmid.select")
+      local inside = require("plasmid.digest").extract(rec,
+        { start = sel.start, stop = sel.stop, length = S.length(rec, sel) })
+      if e and #R.sites(R.prepare(inside), e) > 0 then
+        notify(("the selected region already contains a %s site; domesticate it first"):format(e.name),
+          vim.log.levels.WARN)
+      end
+    end
+  end
   local list, err = M.candidates(rec, sel, over)
   if not list then return notify(err, vim.log.levels.WARN) end
   name = name or ("P" .. sel.start)
@@ -234,11 +371,18 @@ function M.run(buf, args)
   vim.ui.select(list, {
     prompt = ("Primer pair for %d..%d (%d bp selected)%s"):format(sel.start, sel.stop,
       (sel.stop >= sel.start) and (sel.stop - sel.start + 1) or (rec:len() - sel.start + 1 + sel.stop),
-      (#tails[1] + #tails[2]) > 0 and (" + tails " .. (tnames[1] or tails[1]) .. "/" .. (tnames[2] or tails[2])) or ""),
+      assembly_label and (" — " .. assembly_label)
+        or ((#tails[1] + #tails[2]) > 0
+          and (" + tails " .. (tnames[1] or tails[1]) .. "/" .. (tnames[2] or tails[2])) or "")),
     format_item = describe,
   }, function(choice)
     if not choice then return end
     M.accept(buf, sel, choice, names, tails)
+    if dest then
+      local ok, msg = M.verify_assembly(rec, choice, tails, dest.rec, spec)
+      notify(ok and ("checked: " .. msg) or ("the pair does not assemble: " .. msg),
+        ok and vim.log.levels.INFO or vim.log.levels.WARN)
+    end
   end)
   return list
 end
