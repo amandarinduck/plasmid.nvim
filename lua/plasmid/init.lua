@@ -395,6 +395,51 @@ local function register_commands()
     if not buf then return end
     require("plasmid.digest").gel(buf, a.args)
   end, { nargs = "+", desc = "Gel with one lane per digest: :DnaGel EcoRI | EcoRI HindIII | uncut [ladder=100bp]" })
+  -- Cloning simulation ----------------------------------------------------
+  -- These run from a sequence buffer or from a digest table, so they take the
+  -- current buffer as it is instead of insisting on a record.
+  local function clone_parts_complete(lead)
+    local out = { "selection" }
+    local C = require("plasmid.clone")
+    for _, p in ipairs(C.staged) do out[#out + 1] = p.name end
+    for b, st in pairs(require("plasmid.buffer").state) do
+      if vim.api.nvim_buf_is_valid(b) then out[#out + 1] = require("plasmid.buffer").record(st).name end
+    end
+    return vim.tbl_filter(function(w) return w:lower():find(lead:lower(), 1, true) == 1 end, out)
+  end
+  cmd("DnaCloneAdd", function(a)
+    require("plasmid.clone").add(vim.api.nvim_get_current_buf(), a.args ~= "" and a.args or nil)
+  end, { nargs = "?", desc = "Stage a cloning part: the digest fragment under the cursor, the selection, or this record" })
+  cmd("DnaCloneList", function()
+    require("plasmid.clone").list(vim.api.nvim_get_current_buf())
+  end, { desc = "Show the staged cloning parts (name, length, ends)" })
+  cmd("DnaCloneClear", function() require("plasmid.clone").clear() end, { desc = "Empty the staged part list" })
+  cmd("DnaClone", function(a)
+    require("plasmid.clone").run(vim.api.nvim_get_current_buf(), nil, a.fargs)
+  end, { nargs = "*", complete = clone_parts_complete,
+    desc = "Assemble parts, inferring the method (Type IIS sites → Golden Gate, terminal homology → Gibson, else ligation)" })
+  cmd("DnaLigate", function(a)
+    require("plasmid.clone").run(vim.api.nvim_get_current_buf(), "ligation", a.fargs)
+  end, { nargs = "*", complete = clone_parts_complete, desc = "Ligate parts by their ends (default: the staged parts or this digest)" })
+  cmd("DnaGibson", function(a)
+    require("plasmid.clone").run(vim.api.nvim_get_current_buf(), "gibson", a.fargs)
+  end, { nargs = "*", complete = clone_parts_complete, desc = "Gibson/HiFi assembly by terminal homology (cloning.min_homology)" })
+  cmd("DnaGoldenGate", function(a)
+    local args, enzyme = vim.deepcopy(a.fargs), nil
+    local first = args[1]
+    if first and not require("plasmid.clone").resolve(vim.api.nvim_get_current_buf(), first)
+      and require("plasmid.bio.restriction").get(first) then
+      enzyme = table.remove(args, 1)
+    end
+    require("plasmid.clone").run(vim.api.nvim_get_current_buf(), "goldengate", args, { enzyme = enzyme })
+  end, { nargs = "*", desc = "Golden Gate assembly: :DnaGoldenGate [enzyme] [parts...] (default enzyme: cloning.enzyme)",
+    complete = function(lead)
+      local out = clone_parts_complete(lead)
+      for _, n in ipairs(require("plasmid.bio.assembly").TYPE_IIS) do
+        if n:lower():find(lead:lower(), 1, true) == 1 then out[#out + 1] = n end
+      end
+      return out
+    end })
   cmd("DnaFind", function(a)
     local buf = cur()
     if not buf then return end

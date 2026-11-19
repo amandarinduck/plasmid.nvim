@@ -217,7 +217,19 @@ function M.cut(rec, names, name)
   return M.from_digest(rec, frags, name), cuts, none, unknown
 end
 
---- The same fragment on the other strand.
+--- The ends of the same fragment on the other strand, without copying the
+--- record: enough for M.compatible, M.homology and M.end_text, but not for
+--- M.assemble or M.build (there are no features on it).
+function M.flip_ends(frag)
+  local seq = alphabet.revcomp(seqof(frag))
+  return { name = frag.name, source = frag.source, ends_only = true,
+    rec = { seq = { tostring = function() return seq end } },
+    left = { len = frag.right.len, strand = -frag.right.strand },
+    right = { len = frag.left.len, strand = -frag.left.strand },
+    flipped = not frag.flipped }
+end
+
+--- The same fragment on the other strand, record and features included.
 function M.flip(frag)
   local copy = M.copy(frag.rec)
   T.apply(copy, { op = "revcomp", start = 1, stop = copy:len() })
@@ -370,17 +382,20 @@ local function mirror_key(chain)
   return table.concat(t, ",")
 end
 
---- Every assembly that uses each fragment exactly once.
+--- Every assembly that uses each fragment exactly once. A fragment that is an
+--- intact circle, or one from M.flip_ends, is a programming error here.
 --- opts: { circular = true | false | nil (circular, else linear),
 ---         join = "ends" | "homology", min_homology, allow_flip = true,
 ---         max_solutions = 50 }
 --- Returns a list of { parts = { { frag, index, flipped, junction } ... },
---- circular = bool, method }, and a table of near misses for the report.
+--- circular = bool } and, when no circular assembly closed and the search fell
+--- back to linear products, true as a second value.
 function M.assemble(frags, opts)
   opts = opts or {}
   local join = joiner(opts)
   for _, f in ipairs(frags) do
     assert(not f.circular, ("%s is an intact circle; cut it first"):format(f.name))
+    assert(not f.ends_only, ("%s carries no record; use M.flip, not M.flip_ends"):format(f.name))
   end
   local allow_flip = opts.allow_flip ~= false
   local n = #frags

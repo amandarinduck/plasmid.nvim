@@ -61,6 +61,15 @@ M.defaults = {
     ladder = "auto",          -- "auto" | "1kb" | "100bp"
     height = 24,              -- rows from the wells to the bottom
   },
+  -- cloning simulation (:DnaClone, :DnaLigate, :DnaGoldenGate, :DnaGibson)
+  cloning = {
+    min_homology = 20,        -- shortest terminal overlap Gibson/HiFi will join
+    max_homology = 200,       -- longest overlap looked for (a longer match is reported at this length)
+    enzyme = "BsaI",          -- default Type IIS enzyme for :DnaGoldenGate and for method inference
+    annotate_parts = true,    -- mark each part in the product as a misc_feature
+    annotate_junctions = true,-- mark each junction (overhang or overlap) in the product
+    max_solutions = 50,       -- stop the search after this many assemblies (the rest are not offered)
+  },
   edit = {
     -- features cut by a deletion: "truncate" (just report), "flag" (also add
     -- a /note to the feature), "refuse" (cancel the edit; ! forces it)
@@ -167,6 +176,7 @@ M.defaults = {
     search_prev = "N",
     select_hit = "gn",        -- select the current hit (then gy, ga, c, ...)
     add_primer = "gp",        -- visual: make a primer from the selection (forward or reverse)
+    clone_add = "gA",         -- stage this record (or the selection) as a cloning part (:DnaCloneAdd)
     toggle_enzymes = "gz",    -- show/hide restriction sites (enzymes.default_set)
     pick_enzymes = "gZ",      -- choose enzymes from a list with site counts
     expand_tracks = "+",      -- show every feature track
