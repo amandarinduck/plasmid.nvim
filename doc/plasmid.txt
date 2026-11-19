@@ -15,12 +15,13 @@ CONTENTS                                                    *plasmid-contents*
  10. Restriction enzymes .................. |plasmid-enzymes|
  11. Primers .............................. |plasmid-primers|
  12. NCBI fetch ........................... |plasmid-fetch|
- 13. Mappings ............................. |plasmid-mappings|
- 14. Commands ............................. |plasmid-commands|
- 15. Configuration ........................ |plasmid-config|
- 16. Highlights ........................... |plasmid-highlights|
- 17. Files and fidelity ................... |plasmid-files|
- 18. Known issues ......................... |plasmid-issues|
+ 13. Cloning .............................. |plasmid-cloning|
+ 14. Mappings ............................. |plasmid-mappings|
+ 15. Commands ............................. |plasmid-commands|
+ 16. Configuration ........................ |plasmid-config|
+ 17. Highlights ........................... |plasmid-highlights|
+ 18. Files and fidelity ................... |plasmid-files|
+ 19. Known issues ......................... |plasmid-issues|
 
 ==============================================================================
 1. INTRODUCTION                                                *plasmid-intro*
@@ -517,7 +518,88 @@ API key (`ncbi.api_key` or $NCBI_API_KEY), and retried with backoff on HTTP
 passed to curl on standard input, never on its command line.
 
 ==============================================================================
-13. MAPPINGS                                                *plasmid-mappings*
+13. CLONING                                                  *plasmid-cloning*
+
+Gibson/HiFi, Golden Gate and restriction-ligation, on top of the digest and
+PCR machinery. Parts are staged, then assembled; the product opens as a new
+unsaved record and a report split explains the result.
+
+Staging ~
+:DnaCloneAdd [name]                                             *:DnaCloneAdd*
+                                Stage a part: in a digest table the fragment
+                                under the cursor (or fragment N when the
+                                argument is a number), in a sequence buffer
+                                the selection, else the whole record. [name]
+                                labels the part. Mapped to gA.
+:DnaCloneList                   The staged parts with their      *:DnaCloneList*
+                                lengths and ends.
+:DnaCloneClear                  Empty the list.                 *:DnaCloneClear*
+
+Assembling ~
+:DnaClone [parts ...]           Assemble; the method is inferred.   *:DnaClone*
+:DnaLigate [parts ...]          Join by ends, sticky or blunt.     *:DnaLigate*
+:DnaGoldenGate [enzyme] [parts ...]                            *:DnaGoldenGate*
+                                One-pot Type IIS assembly; the enzyme
+                                defaults to `cloning.enzyme` (BsaI).
+:DnaGibson [parts ...]          Join by terminal homology.         *:DnaGibson*
+
+A part argument is a staged part, the word `selection`, a digest fragment
+number, an open buffer (by record or file name), or a file path. With no
+arguments the staged list is used, else the fragments of the current digest.
+
+:DnaClone picks Golden Gate when every part carries a site for one Type IIS
+enzyme, Gibson when parts share terminal homology of at least
+`cloning.min_homology`, otherwise ligation.
+
+What is modelled ~
+Two ends anneal when they are the same length, lie on opposite strands and
+read the same along the top strand; blunt ends always ligate. Fragments may be
+used in either orientation, so blunt parts give two products and a picker;
+distinct overhangs or homology arms give one. Gibson joins are exact terminal
+matches, longest first, between `cloning.min_homology` and
+`cloning.max_homology` bases. Partial overlaps, chew-back and fill-in are not
+modelled, and ends of different lengths never anneal.
+
+Every part's features are carried into the product and remapped; a feature
+that a cut had split is re-joined when the assembly puts it back together.
+Each part and each junction is annotated unless `cloning.annotate_parts` or
+`cloning.annotate_junctions` is false.
+
+The report ~
+On success: the parts in order with length, orientation and ends; every
+junction with its overhang or overlap; the features carried; and warnings --
+Golden Gate parts with no site or with several site-free pieces, overhangs
+that are palindromic, unpaired, of different lengths or used more than twice,
+a product that stayed linear, parts that contributed nothing.
+
+When nothing assembles the report lists every ordered pair of ends and the
+reason it was refused (a 5' overhang cannot anneal to a 3' overhang, the
+overhangs are not complementary, a blunt end and a 4 base end), with a hint
+for the method in use.
+
+Primers for an assembly ~                                *plasmid-clone-design*
+>vim
+  :DnaPrimerDesign name=tet into=pBR_dest enzyme=BsmBI
+  :DnaPrimerDesign name=tet into=pVec_linear homology=25
+<
+`into=` takes the tails from the destination: its terminal bases for Gibson,
+or the enzyme site, spacer and the fusion overhangs its own cut leaves for
+Golden Gate. `overhangs=AATG/GCTT` sets them by hand, `method=` forces the
+choice. A site for that enzyme inside the region to amplify is flagged, and
+the pair you choose is amplified and assembled to confirm that it closes.
+
+Limits ~
+The search enumerates orderings; `cloning.max_solutions` (default 50) bounds
+it. With many interchangeable ends -- a one-enzyme digest of several fragments
+-- the orderings reported are the first 50 found, and exhaustive enumeration
+is only practical up to about 8 such fragments. A defined design prunes to one
+path: a 12-part Golden Gate searches in under a millisecond. Cutting is the
+cost on large records: budget roughly 60 ms per fragment when a few hundred kb
+is cut into many pieces. docs/cloning_report.md has the measurements and the
+comparison with pydna.
+
+==============================================================================
+14. MAPPINGS                                                *plasmid-mappings*
 
   <Tab>     Toggle linear/circular, keeping the base-pair position.
   <CR>      Linear: feature details. Circular: open that position in linear.
@@ -541,11 +623,23 @@ passed to curl on standard input, never on its command line.
   gz  gZ    Restriction sites / enzyme picker (|plasmid-enzymes|).
   gp        Visual: primer from the selection (|plasmid-primers|).
   gF        Open the record a feature links to (|plasmid-fetch|).
+  gA        Stage the selection, record or fragment as a part
+            (|plasmid-cloning|).
+
+Mouse ~                                                        *plasmid-mouse*
+'mouse' must be enabled (Neovim's default covers normal mode).
+
+  drag           Select a region, in either view.
+  double click   Select the feature under the pointer.
+  Ctrl-click     Pick a primer; Ctrl-click its partner to select the
+                 product the pair makes, with its size and Ta.
+
+Switch pieces off with the `mouse` table in |plasmid-config|.
 
 Change or disable (set to "") via the `keymaps` table in |plasmid-config|.
 
 ==============================================================================
-14. COMMANDS                                                *plasmid-commands*
+15. COMMANDS                                                *plasmid-commands*
 
 Viewing ~
 :DnaOpen {file}                 Open a sequence file.               *:DnaOpen*
@@ -620,8 +714,13 @@ Detection ~
 :DnaDetectAccept[!] [fragments] Accept proposals.           *:DnaDetectAccept*
 :DnaDetectReview                Pick proposals from a list. *:DnaDetectReview*
 
+Cloning ~
+:DnaCloneAdd [name] · :DnaCloneList · :DnaCloneClear   Stage parts.
+:DnaClone · :DnaLigate · :DnaGoldenGate [enzyme] · :DnaGibson  [parts ...]
+                                Assemble them (|plasmid-cloning|).
+
 ==============================================================================
-15. CONFIGURATION                                             *plasmid-config*
+16. CONFIGURATION                                             *plasmid-config*
 
 Defaults, abridged (see lua/plasmid/config.lua for every key):
 >lua
@@ -660,6 +759,11 @@ Defaults, abridged (see lua/plasmid/config.lua for every key):
       design = { len = { 18, 30 }, tm = { 57, 68 }, max_dtm = 3,
                  gc = { 0.35, 0.65 }, max_run = 4, slack = 8, pairs = 8 },
     },
+    cloning = { min_homology = 20, max_homology = 200,   -- |plasmid-cloning|
+                enzyme = "BsaI", annotate_parts = true,
+                annotate_junctions = true, max_solutions = 50 },
+    mouse = { enabled = true, drag_select = true,        -- |plasmid-mouse|
+              double_click_feature = true, primer_pair = true },
     ncbi = { api_key = nil, email = nil,     -- |plasmid-fetch|
              max_length = 5000000, cache = true, cache_days = 30 },
     fetch = { dir = nil,              -- nil: current directory
@@ -672,7 +776,7 @@ Defaults, abridged (see lua/plasmid/config.lua for every key):
 Without setup(), defaults are used, or `vim.g.plasmid` if set before loading.
 
 ==============================================================================
-16. HIGHLIGHTS                                            *plasmid-highlights*
+17. HIGHLIGHTS                                            *plasmid-highlights*
 
 PlasmidTitle PlasmidHeader PlasmidRuler PlasmidComplement PlasmidBackbone
 PlasmidTick PlasmidLeader PlasmidCenter PlasmidBaseA PlasmidBaseC
@@ -691,7 +795,7 @@ PlasmidPrimer PlasmidPrimerTail (5' tails) PlasmidPrimerMismatch
 PlasmidPrimerArrow PlasmidPrimerLabel
 
 ==============================================================================
-17. FILES AND FIDELITY                                         *plasmid-files*
+18. FILES AND FIDELITY                                         *plasmid-files*
 
 Formats: GenBank/GenPept, FASTA (DNA, RNA, protein), and SnapGene .dna,
 .rna and .prot (read; written back only for files opened from SnapGene).
@@ -708,7 +812,7 @@ encodes them on write. Edited primers cannot yet be written to SnapGene files
 (the write is refused rather than losing them).
 
 ==============================================================================
-18. KNOWN ISSUES                                              *plasmid-issues*
+19. KNOWN ISSUES                                              *plasmid-issues*
 
 Neovim 0.12.2 headless (`nvim --headless`, `nvim -l`) can crash in
 `:redraw!` after a message wider than 'columns'; this happens without the

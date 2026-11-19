@@ -7,9 +7,10 @@ plain text (`:DnaEdit`) while features follow their bases, select features as
 text objects, add your own, find open reading frames, detect known elements
 against an imported feature database, search IUPAC motifs, show restriction
 sites, simulate digests with a text gel, and work with primers: annotate them,
-calculate NEB-style Tm and Ta, design pairs and simulate PCR. Fetch records
-from NCBI by accession, search query or gene symbol. Protein sequences open
-too. Pure Lua; `curl` is needed only for NCBI fetch.
+calculate NEB-style Tm and Ta, design pairs and simulate PCR, and assemble
+constructs by Gibson, Golden Gate or restriction–ligation. Fetch records from
+NCBI by accession, search query or gene symbol. Protein sequences open too.
+Pure Lua; `curl` is needed only for NCBI fetch.
 
 ```
 nvim pBR322.gb
@@ -43,10 +44,12 @@ nvim pBR322.gb
 | The chosen pair amplified: a new 1212 bp record starting with the EcoRI tail, tet carried across and both primers re-annotated | `:DnaFetch NM_000518.5`: the human β-globin mRNA from NCBI, 628 nt and 47 features, opened as an unsaved buffer |
 | ![Links from a feature](docs/screenshots/fetch_links.png) | ![Gene region](docs/screenshots/gene_region.png) |
 | `K` on the HBB CDS: the `links` line lists the protein (NP_000509.1) and NCBI Gene 3043; `gF` opens them | `:DnaGene thrA Escherichia coli str. K-12 substr. MG1655 flank=60`: only the gene region (337..2799 + 60 bp each side) is downloaded |
-| ![Search picker](docs/screenshots/search_picker.png) | |
-| `:DnaSearch pBR322[title] AND complete sequence[title]`: hits with size, topology and title; pick one to open it | |
+| ![Search picker](docs/screenshots/search_picker.png) | ![Golden Gate report](docs/screenshots/clone_report.png) |
+| `:DnaSearch pBR322[title] AND complete sequence[title]`: hits with size, topology and title; pick one to open it | `:DnaGoldenGate BsmBI` on two staged parts: the product above, and the report with parts, ends, junctions and carried features below |
+| ![Assembled plasmid](docs/screenshots/clone_product.png) | ![Nothing assembles](docs/screenshots/clone_failure.png) |
+| The 3,361 bp product on the circular map: both parts and both junction overhangs annotated beside the carried tet and bla | Parts whose ends cannot anneal: every ordered pair of ends with the reason, and what to change |
 
-## Status (v0.6)
+## Status (v0.7)
 
 | | |
 |---|---|
@@ -73,6 +76,9 @@ nvim pBR322.gb
 | Tm / Ta | the NEB Tm Calculator model for 22 polymerase products, verified against NEB's own API; `:DnaTm`, `:DnaPolymerase`, DMSO, custom salt and primer concentration |
 | Primer design | `:DnaPrimerDesign` ranks pairs for the selection (Tm window, ΔTm, GC, 3' clamp, unique binding), optional restriction-site tails |
 | PCR | `:DnaPCR` builds the product as a new record, with tails, mismatches and the template's features |
+| Cloning | `:DnaClone` (method inferred), `:DnaLigate`, `:DnaGoldenGate`, `:DnaGibson`: parts staged from records, selections, digest fragments or PCR products; sticky, blunt and homology joins in both orientations; features carried and re-joined, parts and junctions annotated; a report that says why nothing assembled |
+| Assembly-aware primer design | `:DnaPrimerDesign into={part}` adds the homology or Type IIS tails the assembly needs, then amplifies and assembles the chosen pair to check it closes |
+| Mouse | drag to select a region, double click to select a feature, Ctrl-click two primers to select the product they make |
 | NCBI fetch | `:DnaFetch` by accession (nucleotide or protein, optional sub-range and strand), `:DnaSearch` with a picker, `:DnaGene` for a gene region by symbol, `gF` follows a feature's protein/gene links; local cache, size guard, NCBI rate limits honoured |
 
 ### Formats in detail
@@ -180,6 +186,9 @@ and network access to `eutils.ncbi.nlm.nih.gov`.
 | `:DnaFetch[!] {acc}[:{from}-{to}][:-]` · `:DnaFetch cancel` | open an NCBI record (`!` re-downloads and lifts the size limit) |
 | `:DnaSearch[!] {query}` · `:DnaGene {symbol} [organism] [flank=N] [plus]` | search nuccore (`!`: protein) · fetch a gene region |
 | `:DnaFetchCache [clear]` | list or clear cached NCBI records |
+| `:DnaCloneAdd [name]` · `:DnaCloneList` · `:DnaCloneClear` | stage the record, the selection or a digest fragment as a part (`gA`) |
+| `:DnaClone [parts…]` · `:DnaLigate [parts…]` | assemble, method inferred · join by ends |
+| `:DnaGoldenGate [enzyme] [parts…]` · `:DnaGibson [parts…]` | one-pot Type IIS assembly · join by terminal homology |
 
 The winbar shows the record, view, base pair under the cursor, the selection,
 the codon under the cursor, and the feature under the cursor. Full reference:
@@ -414,6 +423,48 @@ Products were checked against [pydna](https://github.com/pydna-group/pydna):
 232 products identical, and the 8 primer pairs pydna says cannot amplify give
 no product here either.
 
+### Cloning
+
+Stage the parts, then assemble them. A part can be a whole record, the current
+selection, a fragment of a digest table (`:DnaCloneAdd 2`), a PCR product, an
+open buffer or a file:
+
+```vim
+:DnaCloneAdd insert      " in a sequence buffer: the selection, or the record
+:DnaCloneAdd             " in a digest table: the fragment under the cursor
+:DnaGoldenGate BsmBI     " or :DnaGibson, :DnaLigate, :DnaClone
+```
+
+`:DnaClone` infers the method: Golden Gate when every part carries a site for
+one Type IIS enzyme, Gibson when parts share terminal homology of at least
+`cloning.min_homology` (20 bp), otherwise ligation. Sticky and blunt ends join
+in either orientation, so a blunt pair reports both products and offers a
+picker; a set with distinct overhangs or distinct homology arms has one answer.
+
+The product opens as a new unsaved record named after its parts. Features come
+across from every part — a feature a cut had split is re-joined when the
+assembly puts it back together — and each part and junction is annotated. A
+report split lists the parts in order with their ends, every junction with its
+overhang or overlap, the features carried, and warnings: Golden Gate parts
+without a site, overhangs that are palindromic, unpaired or used more than
+twice, a product that stayed linear, parts left over. **When nothing assembles
+the same report lists every ordered pair of ends and why each was refused** —
+a 5′ overhang meeting a 3′ overhang, overhangs that are not complementary, a
+blunt end meeting a 4-base end — with what to change.
+
+To design primers for an assembly, select the region and name the destination:
+
+```vim
+:DnaPrimerDesign name=tet into=pBR_dest enzyme=BsmBI     " Golden Gate tails
+:DnaPrimerDesign name=tet into=pVec_linear homology=25   " Gibson tails
+```
+
+The tails are taken from the destination: its terminal sequence for Gibson, or
+the enzyme site, spacer and the fusion overhangs its own cut leaves for Golden
+Gate (`overhangs=AATG/GCTT` to set them yourself). A site for that enzyme
+inside the region to amplify is flagged, and the pair you choose is amplified
+and assembled to confirm it closes.
+
 ### Fetching from NCBI
 
 `:DnaFetch L09137.2` downloads a record from NCBI and opens it in a new,
@@ -481,6 +532,9 @@ require("plasmid").setup({
     design = { len = { 18, 30 }, tm = { 57, 68 }, max_dtm = 3, gc = { 0.35, 0.65 },
                max_run = 4, slack = 8, pairs = 8 },
   },
+  cloning = { min_homology = 20, max_homology = 200, enzyme = "BsaI",
+              annotate_parts = true, annotate_junctions = true, max_solutions = 50 },
+  mouse = { enabled = true, drag_select = true, double_click_feature = true, primer_pair = true },
   ncbi = { api_key = nil, email = nil, max_length = 5000000, cache = true, cache_days = 30 },
   fetch = { dir = nil, search_results = 20, gene_flank = 0, organism = nil },  -- dir nil: cwd
   featuredb_dir = nil,            -- stdpath("data")/plasmid/featuredb
@@ -489,7 +543,7 @@ require("plasmid").setup({
               toggle_orfs = "go", add_feature = "ga", edit_feature = "gE",
               search_forward = "/", search_backward = "?", search_next = "n", search_prev = "N",
               select_hit = "gn", toggle_enzymes = "gz", pick_enzymes = "gZ",
-              add_primer = "gp", follow_link = "gF", --[[ ... ]] },
+              add_primer = "gp", follow_link = "gF", clone_add = "gA", --[[ ... ]] },
   colors = { CDS = "#f2b134", promoter = "#4fbf75", --[[ ... ]] },
 })
 ```
@@ -523,6 +577,7 @@ lua/plasmid/
   buffer.lua  ui.lua  select.lua  author.lua  seqedit.lua  scratch.lua  codon.lua
   orfs.lua  detectui.lua  featuredb.lua  search.lua  enzymes.lua  digest.lua
   primers.lua  primerdesign.lua  pcr.lua  ncbi.lua (E-utilities client)  fetch.lua
+  bio/assembly.lua (fragment ends, ligation, Golden Gate, Gibson)  clone.lua  mouse.lua
   init.lua  config.lua  health.lua
 ```
 
@@ -534,7 +589,7 @@ from a decoration provider that touches only on-screen rows.
 ## Tests
 
 ```
-nvim -l tests/run.lua                        # all 283 specs, headless, no dependencies
+nvim -l tests/run.lua                        # all 332 specs, headless, no dependencies
 nvim -l tests/run.lua detect                 # filter by spec name
 PLASMID_TEST_GROUP=0 nvim -l tests/run.lua   # the whole suite in the continuous layout
 ```
@@ -638,6 +693,17 @@ PLASMID_TEST_GROUP=0 nvim -l tests/run.lua   # the whole suite in the continuous
   feature lookups, circular angle mapping, text objects, yanks, authoring with
   undo, ORF and detection overlays, writes, conversion, multi-record files, and
   timing on a 230 kb chromosome and a 5 Mb genome.
+- **Cloning:** the assembly engine is compared with
+  [pydna](https://github.com/pydna-group/pydna) 5.5.16 over a generated corpus
+  of 468 cases — 262 restriction–ligation, 125 Gibson, 81 Golden Gate,
+  including 48 designed to fail. Products are compared in a canonical form
+  (least rotation of the sequence or its reverse complement), along with
+  fragment lengths and order, the number of assemblies and the no-product
+  cases: **468 of 468 agree**. The comparison found two engine bugs, both
+  fixed: an overhang census that miscounted when a part was supplied on the
+  other strand, and a solution cap that bounded what was reported but not what
+  was searched. `docs/cloning_report.md` has the corpus, the conventions where
+  pydna differs, and the performance measurements.
 - **NCBI client:** 30 cases (accession parsing, GI numbers, sub-ranges on
   both strands, UniProt ids, CON records, the size guard, searches, gene
   coordinates, NCBI's error formats, retries with backoff, rate-limit
@@ -686,6 +752,15 @@ synthetic record covering the rest of the grammar.
   Biopython's enzyme data, not yet on a downloaded REBASE release.
 - The gel is a schematic: sizes are placed on a log scale with ~15 % size steps
   per row, and band intensity and topology effects are not modelled.
+- Assembly enumerates orderings. With many interchangeable ends (a one-enzyme
+  digest of several fragments) only the first `cloning.max_solutions` (50)
+  orderings are reported, and exhaustive enumeration is practical to about 8
+  such fragments; a design with distinct overhangs or homology arms prunes to
+  one answer. Cutting dominates on large records: roughly 60 ms per fragment
+  when a few hundred kb is cut into many pieces.
+- Gibson joins are exact terminal matches; mismatched or partially annealing
+  arms, chew-back and fill-in are not modelled, and ends of different lengths
+  never anneal.
 - Whole bacterial genomes open but are heavy: E. coli K-12 (NC_000913.3,
   4.6 Mb, 9,285 features) parses in 0.85 s but takes ~6 s and ~950 MB to lay
   out in the linear view. Fetch a sub-range or a gene region instead; layout
@@ -699,10 +774,11 @@ synthetic record covering the rest of the grammar.
 
 ## Roadmap
 
-- **Next: cloning.** Gibson / Golden Gate / restriction-ligation simulation on
-  top of the digest, primer and PCR machinery.
-- **Large records:** lay out only the visible part of the linear view, so
-  whole bacterial genomes open quickly with modest memory.
+- **Next: large records.** Lay out only the visible part of the linear view,
+  so whole bacterial genomes open quickly with modest memory, and add a
+  zoomed-out genome overview.
+- **Cloning, further:** partial digests, chew-back/fill-in, and writing an
+  assembly plan (which parts, which reaction, which checks) to a file.
 - **Later:** writing edited primers back to SnapGene files, and a piece-table
   store for editing records larger than ~100 kb.
 
