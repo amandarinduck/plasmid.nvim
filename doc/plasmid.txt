@@ -827,7 +827,7 @@ converter reads it; it is tested on fixtures and on files generated from
 Biopython's enzyme data, not yet on a downloaded REBASE release.
 
 Whole bacterial genomes open but are heavy: E. coli K-12 (4.6 Mb, 9,285
-features) takes about 6 s and 950 MB to lay out in the linear view. Fetch a
+features) takes about 6 s and 945 MB to lay out in the linear view. Fetch a
 sub-range or a gene region instead.
 
 NCBI occasionally answers with HTTP 429 or a transient "Search Backend

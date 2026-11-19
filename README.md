@@ -762,7 +762,7 @@ synthetic record covering the rest of the grammar.
   arms, chew-back and fill-in are not modelled, and ends of different lengths
   never anneal.
 - Whole bacterial genomes open but are heavy: E. coli K-12 (NC_000913.3,
-  4.6 Mb, 9,285 features) parses in 0.85 s but takes ~6 s and ~950 MB to lay
+  4.6 Mb, 9,285 features) parses in 0.85 s but takes ~6 s and ~945 MB to lay
   out in the linear view. Fetch a sub-range or a gene region instead; layout
   of only the visible part is planned.
 - NCBI occasionally answers with HTTP 429 or a transient "Search Backend
