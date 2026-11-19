@@ -572,6 +572,7 @@ local function register_commands()
     vim.bo[raw].modifiable = false
     vim.bo[raw].filetype = ({ genbank = "genbank", fasta = "fasta", snapgene = "xml" })[st.format]
     vim.api.nvim_buf_set_name(raw, "plasmid-raw://" .. st.path)
+    require("plasmid.util").case_insensitive_search(raw)
     vim.api.nvim_win_set_buf(0, raw)
   end, { desc = "Show the file's raw text (read-only)" })
 

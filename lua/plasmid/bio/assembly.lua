@@ -305,6 +305,15 @@ end
 --- makes the order ambiguous, a single one has nothing to join. Palindromic
 --- overhangs anneal to themselves, and ends of different lengths cannot be
 --- part of one one-pot reaction.
+---
+--- A part may be handed in on either strand, and the assembler is free to
+--- flip it. Flipping rewrites an end's top-strand text as its reverse
+--- complement and moves it to the other side, so an overhang and its reverse
+--- complement are one overhang here, counted under whichever of the two reads
+--- first. What flipping cannot change is whether two ends are the two halves
+--- of one join: the side an end would take once its text is written in that
+--- canonical direction is fixed, and two ends that would both be the left
+--- half do not anneal however they are turned.
 function M.overhang_problems(frags)
   local problems, where, order, lens = {}, {}, {}, {}
   for _, f in ipairs(frags) do
@@ -313,20 +322,29 @@ function M.overhang_problems(frags)
       lens[n] = true
       if n > 0 then
         local top = M.end_seq(f, side)
-        if top == alphabet.revcomp(top) then
+        local rc = alphabet.revcomp(top)
+        if top == rc then
           problems[#problems + 1] = ("%s: %s overhang %s is palindromic"):format(f.name, side, top)
         end
-        if not where[top] then where[top] = {}; order[#order + 1] = top end
-        table.insert(where[top], ("%s %s"):format(f.name, side))
+        local key = top <= rc and top or rc
+        local role = ((top <= rc) == (side == "left")) and "left" or "right"
+        if not where[key] then where[key] = { text = top }; order[#order + 1] = key end
+        table.insert(where[key], { at = ("%s %s"):format(f.name, side), role = role })
       end
     end
   end
-  for _, top in ipairs(order) do
-    local w = where[top]
+  for _, key in ipairs(order) do
+    local w = where[key]
+    local at = {}
+    for i, e in ipairs(w) do at[i] = e.at end
     if #w > 2 then
-      problems[#problems + 1] = ("overhang %s is used %d times (%s)"):format(top, #w, table.concat(w, ", "))
+      problems[#problems + 1] = ("overhang %s is used %d times (%s)")
+        :format(w.text, #w, table.concat(at, ", "))
     elseif #w == 1 then
-      problems[#problems + 1] = ("overhang %s (%s) has no partner"):format(top, w[1])
+      problems[#problems + 1] = ("overhang %s (%s) has no partner"):format(w.text, at[1])
+    elseif w[1].role == w[2].role and w.text ~= alphabet.revcomp(w.text) then
+      problems[#problems + 1] = ("overhang %s is on two ends of the same kind (%s), which do not anneal")
+        :format(w.text, table.concat(at, ", "))
     end
   end
   local n = 0
@@ -406,9 +424,16 @@ function M.assemble(frags, opts)
   local circular, linear = {}, {}
   local seen_c, seen_l = {}, {}
   local used, chain = {}, {}
+  -- The search walks every ordering of the fragments, so the work is
+  -- factorial in their number whenever many ends are interchangeable (a
+  -- one-enzyme digest, or blunt fragments, where every end joins every
+  -- other). `max_solutions` ends the walk as well as the list: without that
+  -- the cap bounds what is reported but not what is computed, and a dozen
+  -- same-overhang fragments take hours.
+  local full = false
 
   local function finish()
-    if #circular + #linear >= max_solutions then return end
+    if #circular + #linear >= max_solutions then full = true; return end
     local last, first = chain[#chain].frag, chain[1].frag
     local close = join(last, first)
     if close and opts.circular ~= false then
@@ -435,9 +460,10 @@ function M.assemble(frags, opts)
   end
 
   local function dfs()
+    if full then return end
     if #chain == n then return finish() end
     for i = 1, n do
-      if not used[i] then
+      if not used[i] and not full then
         for fl = 1, (allow_flip and 2 or 1) do
           local f = oriented[i][fl]
           local j = join(chain[#chain].frag, f)
@@ -468,6 +494,7 @@ function M.assemble(frags, opts)
     starts[1] = { 1, 1 }
   end
   for _, st in ipairs(starts) do
+    if full then break end
     used = {}
     used[st[1]] = true
     chain = { { frag = oriented[st[1]][st[2]], index = st[1], flipped = st[2] == 2 } }

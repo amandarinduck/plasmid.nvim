@@ -33,6 +33,15 @@ function M.check()
       { "Install xclip/xsel (X11) or wl-clipboard (Wayland), or see :help clipboard" })
   end
   local cfg = require("plasmid.config").options
+  local mcfg = (require("plasmid.config").options or {}).mouse or {}
+  if mcfg.enabled == false then
+    h.info("mouse integration off (config mouse.enabled = false)")
+  elseif vim.o.mouse == "" then
+    h.warn("'mouse' is empty: drag-select, double-click and Ctrl-click primer pairs need :set mouse=a")
+  else
+    h.ok(("mouse '%s': drag selects, double click selects a feature, Ctrl-click pairs primers")
+      :format(vim.o.mouse))
+  end
   if vim.fn.executable("curl") == 1 then
     h.ok("curl found (NCBI fetch: :DnaFetch, :DnaSearch, :DnaGene)")
   else

@@ -133,6 +133,7 @@ local function digest_buffer(src)
   vim.bo[b].bufhidden = "wipe"
   vim.bo[b].filetype = "plasmid_digest"
   pcall(vim.api.nvim_buf_set_name, b, "plasmid://digest/" .. src)
+  require("plasmid.util").case_insensitive_search(b)
   vim.api.nvim_create_autocmd("BufWipeout", { buffer = b, once = true, callback = function() M.state[b] = nil end })
   return b
 end
@@ -323,6 +324,7 @@ function M.gel(src, spec)
   local b = vim.api.nvim_create_buf(false, true)
   vim.bo[b].bufhidden = "wipe"
   vim.bo[b].filetype = "plasmid_gel"
+  require("plasmid.util").case_insensitive_search(b)
   local lines = { (" Gel: %s (%d bp, %s)"):format(rec.name, rec:len(), rec.topology), "" }
   for _, l in ipairs(glines) do lines[#lines + 1] = l end
   vim.api.nvim_buf_set_lines(b, 0, -1, false, lines)

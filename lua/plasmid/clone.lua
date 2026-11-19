@@ -481,6 +481,7 @@ local function report_buffer(src)
   vim.bo[b].bufhidden = "wipe"
   vim.bo[b].filetype = "plasmid_clone"
   pcall(vim.api.nvim_buf_set_name, b, "plasmid://clone/" .. tostring(src or 0))
+  require("plasmid.util").case_insensitive_search(b)
   vim.api.nvim_create_autocmd("BufWipeout", { buffer = b, once = true, callback = function() M.state[b] = nil end })
   return b
 end

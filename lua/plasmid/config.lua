@@ -137,6 +137,13 @@ M.defaults = {
     -- additional types hidden on the map only (annotation history, not biology)
     hidden_types = { old_sequence = true, misc_difference = true, conflict = true, variation = true, unsure = true },
   },
+  -- Mouse in a sequence buffer ('mouse' must be enabled in Neovim).
+  mouse = {
+    enabled = true,
+    drag_select = true,          -- press and drag to select a region
+    double_click_feature = true, -- double click selects the feature under the pointer
+    primer_pair = true,          -- Ctrl-click two primers to select the product they make
+  },
   keymaps = {
     toggle_view = "<Tab>",
     activate = "<CR>",
