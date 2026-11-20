@@ -16,8 +16,41 @@ Pure Lua; `curl` is needed only for NCBI fetch.
 nvim pBR322.gb
 ```
 
-## Screenshots
+## Install
 
+lazy.nvim:
+
+```lua
+{ "amandarinduck/plasmid.nvim", lazy = false, opts = {} }
+```
+
+Keep `lazy = false`: the plugin reads and writes sequence files itself
+(`BufReadCmd`), so it has to be loaded before one is opened, including
+`nvim pBR322.gb` from the shell. Filetype-based lazy loading does not work,
+because these buffers get no filetype until the plugin has read them. Loading
+takes about 15 ms. Add `version = "*"` to follow tagged releases only.
+
+vim-plug: `Plug 'amandarinduck/plasmid.nvim'`. Built-in packages:
+`git clone https://github.com/amandarinduck/plasmid.nvim
+~/.local/share/nvim/site/pack/plasmid/start/plasmid.nvim`, then
+`:helptags ALL`.
+
+Without `setup()`, the plugin auto-configures with defaults (or from
+`vim.g.plasmid = { ... }` set before load). It opens `.fa`/`.fasta` and other
+FASTA files too; set `patterns` (see `lua/plasmid/config.lua`) to limit which
+extensions it takes over.
+
+Requirements: Neovim ≥ 0.10, `ambiwidth=single`, a font with box-drawing and
+braille glyphs (nearly all coding fonts), and `termguicolors` recommended.
+Run `:checkhealth plasmid`. Feature detection needs an imported database (see
+below); importing pLannotate's BLAST database additionally needs NCBI BLAST+
+(`blastdbcmd`) on PATH once, at import time. NCBI fetch needs `curl` on PATH
+and network access to `eutils.ncbi.nlm.nih.gov`.
+
+## Screenshots
+<details> 
+<summary> click to expand </summary>
+  
 | | |
 |---|---|
 | ![Detection proposals on pUC19](docs/screenshots/detect_proposals.png) | ![Track limit in a crowded region](docs/screenshots/priority_track_limit.png) |
@@ -48,6 +81,8 @@ nvim pBR322.gb
 | `:DnaSearch pBR322[title] AND complete sequence[title]`: hits with size, topology and title; pick one to open it | `:DnaGoldenGate BsmBI` on two staged parts: the product above, and the report with parts, ends, junctions and carried features below |
 | ![Assembled plasmid](docs/screenshots/clone_product.png) | ![Nothing assembles](docs/screenshots/clone_failure.png) |
 | The 3,361 bp product on the circular map: both parts and both junction overhangs annotated beside the carried tet and bla | Parts whose ends cannot anneal: every ordered pair of ends with the reason, and what to change |
+
+</details>
 
 ## Status (v0.7)
 
@@ -105,36 +140,6 @@ nvim pBR322.gb
   `/ApEinfo_fwdcolor` / `/ApEinfo_revcolor` are used when legible on light and
   dark backgrounds (`use_file_colors = false` to colour by type only).
 
-## Install
-
-lazy.nvim:
-
-```lua
-{ "amandarinduck/plasmid.nvim", lazy = false, opts = {} }
-```
-
-Keep `lazy = false`: the plugin reads and writes sequence files itself
-(`BufReadCmd`), so it has to be loaded before one is opened, including
-`nvim pBR322.gb` from the shell. Filetype-based lazy loading does not work,
-because these buffers get no filetype until the plugin has read them. Loading
-takes about 15 ms. Add `version = "*"` to follow tagged releases only.
-
-vim-plug: `Plug 'amandarinduck/plasmid.nvim'`. Built-in packages:
-`git clone https://github.com/amandarinduck/plasmid.nvim
-~/.local/share/nvim/site/pack/plasmid/start/plasmid.nvim`, then
-`:helptags ALL`.
-
-Without `setup()`, the plugin auto-configures with defaults (or from
-`vim.g.plasmid = { ... }` set before load). It opens `.fa`/`.fasta` and other
-FASTA files too; set `patterns` (see `lua/plasmid/config.lua`) to limit which
-extensions it takes over.
-
-Requirements: Neovim ≥ 0.10, `ambiwidth=single`, a font with box-drawing and
-braille glyphs (nearly all coding fonts), and `termguicolors` recommended.
-Run `:checkhealth plasmid`. Feature detection needs an imported database (see
-below); importing pLannotate's BLAST database additionally needs NCBI BLAST+
-(`blastdbcmd`) on PATH once, at import time. NCBI fetch needs `curl` on PATH
-and network access to `eutils.ncbi.nlm.nih.gov`.
 
 ## Use
 
