@@ -49,7 +49,7 @@ and network access to `eutils.ncbi.nlm.nih.gov`.
 
 ## Screenshots
 <details> 
-<summary> click to expand </summary>
+<summary> Click to expand </summary>
   
 | | |
 |---|---|
@@ -85,6 +85,8 @@ and network access to `eutils.ncbi.nlm.nih.gov`.
 </details>
 
 ## Status (v0.7)
+<details> 
+<summary> Click to expand </summary>
 
 | | |
 |---|---|
@@ -139,9 +141,12 @@ and network access to `eutils.ncbi.nlm.nih.gov`.
 - **File colours**: SnapGene segment colours and ApE/Benchling
   `/ApEinfo_fwdcolor` / `/ApEinfo_revcolor` are used when legible on light and
   dark backgrounds (`use_file_colors = false` to colour by type only).
-
+</details>
 
 ## Use
+<details> 
+<summary> Click to expand </summary>
+
 
 | Key (buffer-local) | Action |
 |---|---|
@@ -198,6 +203,14 @@ and network access to `eutils.ncbi.nlm.nih.gov`.
 The winbar shows the record, view, base pair under the cursor, the selection,
 the codon under the cursor, and the feature under the cursor. Full reference:
 `:help plasmid`.
+
+</details>
+
+
+## Features 
+
+<details> 
+<summary> Click to expand </summary>
 
 ### Strands and codons
 
@@ -506,7 +519,12 @@ identifying is sent unless you configure `ncbi.email` / `ncbi.api_key`;
 NCBI asks heavy users to do both (see its E-utilities usage guidelines). The
 API key is passed to curl on standard input, not on the command line.
 
+</details>
+
 ## Configuration
+
+<details> 
+<summary> Click to expand </summary>
 
 Defaults, abridged (see `lua/plasmid/config.lua` and `:help plasmid-config`):
 
@@ -591,7 +609,11 @@ Lua string: comfortable for editing plasmid-sized records (≤ ~100 kb) and for
 viewing records up to a few Mb (a 5 Mb genome opens in < 1 s). Highlights come
 from a decoration provider that touches only on-screen rows.
 
+</details>
+
 ## Tests
+<details> 
+<summary> Click to expand </summary>
 
 ```
 nvim -l tests/run.lua                        # all 332 specs, headless, no dependencies
@@ -743,6 +765,8 @@ NCBI fixtures (besides the fetch corpus above): pUC19 (L09137), pBR322 (J01749),
 (NC_001422, origin-spanning genes), pPCP1 (NC_005816), human β-globin region
 (U01317), yeast chr I (NC_001133), three mRNA records, a multi-FASTA, and a
 synthetic record covering the rest of the grammar.
+
+</details>
 
 ## Known issues
 
