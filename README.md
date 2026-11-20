@@ -811,7 +811,7 @@ synthetic record covering the rest of the grammar.
 - **Later:** writing edited primers back to SnapGene files, and a piece-table
   store for editing records larger than ~100 kb.
 
-## Licence
+## License
 
 MIT, see [LICENSE](LICENSE). Bundled third-party material keeps its own
 licence: the Tm model is ported from polymerase-tm (MIT,
