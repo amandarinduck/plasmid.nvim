@@ -21,7 +21,10 @@ local function translation(f, res, default_table)
   return translate.translate(res:sub(cs), { table = t, cds_start = true }), translate.get_table(t), res:sub(cs, cs + 2)
 end
 
-local function coding(entry, f, old_res, new_res, default_table)
+--- Classify how a coding feature changed, comparing its old and new residues:
+--- fills entry.frameshift, lost_start, lost_stop, premature_stop, aa_changes,
+--- old_aa and new_aa. Shared with alignment differences (bio/variant.lua).
+function M.coding(entry, f, old_res, new_res, default_table)
   local oldp, t, old_start = translation(f, old_res, default_table)
   local newp, _, new_start = translation(f, new_res, default_table)
   local dlen = #new_res - #old_res
@@ -63,7 +66,7 @@ function M.build(rec, op)
     else e.kind = "modified" end
     if e.kind == "destroyed" or e.kind == "truncated" then report.cut = true end
     if CODING[f.type] and c.new and (c.old_res or "") ~= "" then
-      coding(e, f, c.old_res, c.new_res, rec and (rec:is_circular() and 11 or 1) or 11)
+      M.coding(e, f, c.old_res, c.new_res, rec and (rec:is_circular() and 11 or 1) or 11)
     end
     report.entries[#report.entries + 1] = e
     ::continue::
