@@ -148,6 +148,30 @@ case("a_read_may_cross_the_origin", function()
   -- on a linear reference the same read only partly matches
   local linear = A.place(seq, read, { circular = false })
   H.ok(linear.ref_span < 701, "a linear reference cannot wrap")
+  -- differences of a wrapped placement come back in the record's coordinates
+  local t = {}
+  for i = 1, #read do t[i] = read:sub(i, i) end
+  t[50] = (t[50] == "A") and "G" or "A"       -- before the origin
+  t[600] = (t[600] == "C") and "T" or "C"     -- after it
+  local mutated = table.concat(t)
+  local placed = A.place(seq, mutated, { circular = true })
+  local diffs = A.place_differences(seq, mutated, placed)
+  H.eq(2, #diffs)
+  H.eq(L - 400 + 49, diffs[1].pos)
+  H.eq(199, diffs[2].pos, "the second lies past the origin")
+  for _, d in ipairs(diffs) do H.eq(seq:sub(d.pos, d.pos), d.ref) end
+end)
+
+case("a_strand_can_be_pinned", function()
+  local seq = load("J01749").seq:tostring():upper()
+  local rc = alphabet.revcomp(seq:sub(1000, 1600))
+  local minus = A.place(seq, rc, { strand = -1 })
+  H.eq(-1, minus.strand)
+  H.eq(1, minus.identity)
+  local plus = A.place(seq, rc, { strand = 1 })
+  H.eq(1, plus.strand)
+  H.ok(plus.identity < 0.8, "forcing the wrong strand finds only noise")
+  H.eq(-1, A.place(seq, rc, {}).strand, "with no strand given, both are tried")
 end)
 
 case("circular_comparison_ignores_the_origin", function()

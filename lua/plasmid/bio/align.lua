@@ -626,10 +626,25 @@ function M.place(ref, query, opts)
   local mode = opts and opts.mode or "semi"
   local o = opts_for(opts)
   o.mode = mode
+  -- opts.strand pins the search to one strand; by default both are tried
+  local function best_of(reference, q)
+    if o.strand == 1 then
+      local aln, why = M.align(reference, q, o)
+      if aln then aln.strand = 1 end
+      return aln, why
+    elseif o.strand == -1 then
+      local rc = alphabet.revcomp(q)
+      local aln, why = M.align(reference, rc, o)
+      if aln then aln.strand, aln.query_rc = -1, rc end
+      return aln, why
+    end
+    return M.align_strands(reference, q, o)
+  end
   if not o.circular then
-    local aln, why = M.align_strands(ref, query, o)
+    local aln, why = best_of(ref, query)
     if not aln then return nil, why end
     aln.wraps = false
+    aln.ref_length = #ref
     return aln
   end
   local L = #ref
@@ -637,7 +652,7 @@ function M.place(ref, query, opts)
   -- much as the query can reach is added.
   local extra = math.min(L, #query + o.band)
   local doubled = ref .. ref:sub(1, extra)
-  local aln, why = M.align_strands(doubled, query, o)
+  local aln, why = best_of(doubled, query)
   if not aln then return nil, why end
   if aln.ref_span > L then return nil, "the query is longer than the circular reference" end
   aln.wraps = aln.ref_stop > L
@@ -726,6 +741,21 @@ function M.compare_differences(a, b, opts)
     table.sort(diffs, function(x, y) return x.pos < y.pos end)
   end
   return aln, diffs
+end
+
+--- Differences of a placed query (M.place), wrapped alignments included:
+--- the reference is walked from the unwrapped start and the positions are
+--- folded back into 1..#ref.
+function M.place_differences(ref, query, aln)
+  local q = aln.query_rc or query
+  if not aln.wraps then return M.differences(ref, q, aln) end
+  local L = aln.ref_length or #ref
+  local extra = math.min(L, #q + M.defaults.band)
+  local doubled = ref .. ref:sub(1, extra)
+  local diffs = M.differences(doubled, q,
+    { ref_start = aln.ref_start_abs or aln.ref_start, query_start = aln.query_start, ops = aln.ops })
+  for _, d in ipairs(diffs) do d.pos = (d.pos - 1) % L + 1 end
+  return diffs
 end
 
 --- Differences of an aligned query from the reference, in reference
