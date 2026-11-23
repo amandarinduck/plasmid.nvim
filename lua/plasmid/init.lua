@@ -440,6 +440,43 @@ local function register_commands()
       end
       return out
     end })
+  -- Sequence alignment ----------------------------------------------------
+  local function align_complete(lead)
+    local out = { "selection", "mode=semi", "mode=global", "mode=local",
+      "strand=auto", "strand=plus", "strand=minus" }
+    local C = require("plasmid.clone")
+    for _, p in ipairs(C.staged) do out[#out + 1] = p.name end
+    for b, st in pairs(require("plasmid.buffer").state) do
+      if vim.api.nvim_buf_is_valid(b) then out[#out + 1] = require("plasmid.buffer").record(st).name end
+    end
+    out = vim.tbl_filter(function(w) return w:lower():find(lead:lower(), 1, true) == 1 end, out)
+    vim.list_extend(out, vim.fn.getcompletion(lead, "file"))
+    return out
+  end
+  cmd("DnaAlign", function(a)
+    local buf = cur()
+    if buf then require("plasmid.alignment").align(buf, a.fargs) end
+  end, { nargs = "*", complete = align_complete,
+    desc = "Align a query against this record: {sequence|file|buffer|part|selection} [mode=semi|global|local] [strand=auto|plus|minus] [name=]" })
+  cmd("DnaAlignReads", function(a)
+    local buf = cur()
+    if buf then require("plasmid.alignment").align_reads(buf, a.fargs) end
+  end, { nargs = "*", complete = "file",
+    desc = "Place every read of a multi-FASTA (or several files/globs) on this record: [min_identity=] [mode=] [strand=]" })
+  cmd("DnaCompare", function(a)
+    local buf = cur()
+    if buf then require("plasmid.alignment").compare(buf, a.fargs) end
+  end, { nargs = "*", complete = align_complete,
+    desc = "Compare this record with another end to end (origin- and strand-independent when circular)" })
+  cmd("DnaAlignAnnotate", function()
+    -- runs from the alignment view as well as from the record's own buffer
+    local AL = require("plasmid.alignment")
+    local b = vim.api.nvim_get_current_buf()
+    if AL.state[b] then return AL.annotate(b) end
+    local buf = cur()
+    if buf then AL.annotate(buf) end
+  end, { desc = "Write the last alignment's differences onto the record as features (one undo step)" })
+
   cmd("DnaFind", function(a)
     local buf = cur()
     if not buf then return end

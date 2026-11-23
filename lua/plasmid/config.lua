@@ -70,6 +70,27 @@ M.defaults = {
     annotate_junctions = true,-- mark each junction (overhang or overlap) in the product
     max_solutions = 50,       -- stop the search after this many assemblies (the rest are not offered)
   },
+  -- sequence alignment (:DnaAlign, :DnaAlignReads, :DnaCompare)
+  align = {
+    match = 2,                -- blastn's scores; more is better, so the rest are negative
+    mismatch = -3,
+    gap_open = -5,            -- charged once per gap, in addition to gap_extend
+    gap_extend = -2,          -- ... per base in it
+    mode = "semi",            -- "semi" (the query placed inside the record) | "global" | "local"
+    min_identity = 0.9,       -- a read below this is reported as unplaced (:DnaAlignReads)
+    min_coverage = 0.5,       -- ... and so is one that places less of itself than this
+    width = 0,                -- residues per alignment block; 0 = fit the window
+    full_limit = 20000,       -- longer alignments show only the regions around differences...
+    context = 30,             -- ... with this many residues of context on each side
+    annotate_type = "variation",  -- feature type :DnaAlignAnnotate writes (misc_difference, variation, ...)
+    keymaps = {
+      next_diff = "]d",       -- in the alignment view
+      prev_diff = "[d",
+      goto_base = "<CR>",     -- go to this difference in the record's buffer
+      annotate = "ga",        -- write the differences onto the record (:DnaAlignAnnotate)
+      close = "q",
+    },
+  },
   edit = {
     -- features cut by a deletion: "truncate" (just report), "flag" (also add
     -- a /note to the feature), "refuse" (cancel the edit; ! forces it)
