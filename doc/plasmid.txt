@@ -17,12 +17,13 @@ CONTENTS                                                    *plasmid-contents*
  12. NCBI fetch ........................... |plasmid-fetch|
  13. Cloning .............................. |plasmid-cloning|
  14. Alignment ............................ |plasmid-align|
- 15. Mappings ............................. |plasmid-mappings|
- 16. Commands ............................. |plasmid-commands|
- 17. Configuration ........................ |plasmid-config|
- 18. Highlights ........................... |plasmid-highlights|
- 19. Files and fidelity ................... |plasmid-files|
- 20. Known issues ......................... |plasmid-issues|
+ 15. Large records ........................ |plasmid-large|
+ 16. Mappings ............................. |plasmid-mappings|
+ 17. Commands ............................. |plasmid-commands|
+ 18. Configuration ........................ |plasmid-config|
+ 19. Highlights ........................... |plasmid-highlights|
+ 20. Files and fidelity ................... |plasmid-files|
+ 21. Known issues ......................... |plasmid-issues|
 
 ==============================================================================
 1. INTRODUCTION                                                *plasmid-intro*
@@ -664,7 +665,76 @@ The engine agrees with Biopython's PairwiseAligner on all 1,097 cases of the
 committed corpus; see docs/alignment_report.md.
 
 ==============================================================================
-15. MAPPINGS                                                *plasmid-mappings*
+15. LARGE RECORDS                                              *plasmid-large*
+
+A bacterial genome is a quarter of a million rows of sequence. Above
+`linear.window.threshold` residues the linear view works out how long the
+buffer is, then lays out only the rows a window is showing, building them as
+you scroll and dropping them again behind you.
+
+Nothing about the view changes: coordinates, feature tracks, translations,
+selection, search, restriction sites, primers, alignment and editing behave
+as they do on a plasmid. A spec compares the two layouts row by row across
+the fixture corpus and a corpus of real genomes; see
+docs/large_records_report.md.
+
+Measured on E. coli K-12 (NC_000913.3, 4,641,652 bp, 9,285 features) at 120
+columns: opening takes 1.1 s and holds 128 MB, against 5.1 s and 724 MB
+laying the whole record out; a page of scrolling 0.9 ms, a jump 7.6 ms.
+Resizing the window re-plans the record (0.6 s on that genome), which is the
+one operation that still costs something.
+
+                                                        *plasmid-large-config*
+    linear = {
+      window = {
+        enabled = "auto",     -- "auto" | true | false
+        threshold = 300000,   -- residues above which "auto" windows
+        margin = 2,           -- screens built either side of the window
+        cache_blocks = 512,   -- lines kept laid out behind you
+      },
+    }
+
+:DnaInfo says whether the record you are looking at is windowed, and
+:checkhealth plasmid reports the threshold.
+
+THE OVERVIEW                                                *plasmid-overview*
+
+:DnaOverview [bases-per-row]                                    *:DnaOverview*
+                                The whole record on one screen: one row per
+                                span, with a strip of cells showing which
+                                strands carry features where, the per-strand
+                                counts, and as many feature names as fit.
+                                Again to close. `gm` does the same.
+:DnaRegion {start}..{stop}                                        *:DnaRegion*
+                                Go to a region of the record and select it.
+
+Cells are coloured by the most important feature in them, with the colours
+the other views use. A cell is an upper half block where only the forward
+strand has features, a lower half block where only the reverse does, a full
+block where both do, and a dot where neither does. `▶` in the gutter marks
+the row the sequence view's cursor is on, `┃` the rest of what it shows.
+
+With `overview.span = "auto"` the span is the smallest round number -- 1, 2
+or 5 times a power of ten -- that fits the record in the window, and the
+header says what it is: 10 kb a row for a 230 kb chromosome, 200 kb a row for
+a bacterial genome. `:DnaOverview 110000` forces a span, and the view then
+scrolls if the record needs more rows than the window has.
+
+  <CR>        go to this region in the sequence view
+  <LeftMouse> go to the region under the pointer
+  q           back, exactly where the sequence view was
+
+    overview = {
+      span = "auto",          -- bases per row, or "auto"
+      min_span = 10,          -- the finest span "auto" will pick
+      strip = "auto",         -- columns of picture per row
+      labels = true,          -- name features in a row when there is room
+      counts = true,          -- per-strand feature counts
+      keymaps = { jump = "<CR>", close = "q", click = "<LeftMouse>" },
+    }
+
+==============================================================================
+16. MAPPINGS                                                *plasmid-mappings*
 
   <Tab>     Toggle linear/circular, keeping the base-pair position.
   <CR>      Linear: feature details. Circular: open that position in linear.
@@ -692,6 +762,7 @@ committed corpus; see docs/alignment_report.md.
             (|plasmid-cloning|).
   ]d  [d    In the alignment view: next / previous difference
             (|plasmid-align|).
+  gm        Whole-record overview (|plasmid-overview|).
 
 Mouse ~                                                        *plasmid-mouse*
 'mouse' must be enabled (Neovim's default covers normal mode).
@@ -706,7 +777,7 @@ Switch pieces off with the `mouse` table in |plasmid-config|.
 Change or disable (set to "") via the `keymaps` table in |plasmid-config|.
 
 ==============================================================================
-16. COMMANDS                                                *plasmid-commands*
+17. COMMANDS                                                *plasmid-commands*
 
 Viewing ~
 :DnaOpen {file}                 Open a sequence file.               *:DnaOpen*
@@ -781,6 +852,10 @@ Detection ~
 :DnaDetectAccept[!] [fragments] Accept proposals.           *:DnaDetectAccept*
 :DnaDetectReview                Pick proposals from a list. *:DnaDetectReview*
 
+Large records ~
+:DnaOverview [n] · :DnaRegion {start}..{stop}   The whole record on one
+                                screen; go to a region (|plasmid-large|).
+
 Alignment ~
 :DnaAlign {query} · :DnaAlignReads {file|glob} ... · :DnaCompare {record}
 :DnaAlignAnnotate               Align, place reads, compare, annotate
@@ -792,7 +867,7 @@ Cloning ~
                                 Assemble them (|plasmid-cloning|).
 
 ==============================================================================
-17. CONFIGURATION                                             *plasmid-config*
+18. CONFIGURATION                                             *plasmid-config*
 
 Defaults, abridged (see lua/plasmid/config.lua for every key):
 >lua
@@ -831,6 +906,11 @@ Defaults, abridged (see lua/plasmid/config.lua for every key):
       design = { len = { 18, 30 }, tm = { 57, 68 }, max_dtm = 3,
                  gc = { 0.35, 0.65 }, max_run = 4, slack = 8, pairs = 8 },
     },
+    linear = { window = {                               -- |plasmid-large|
+                 enabled = "auto", threshold = 300000,
+                 margin = 2, cache_blocks = 512 } },
+    overview = { span = "auto", min_span = 10,           -- |plasmid-overview|
+                 labels = true, counts = true },
     align = { match = 2, mismatch = -3,                  -- |plasmid-align|
               gap_open = -5, gap_extend = -2, mode = "semi",
               min_identity = 0.9, min_coverage = 0.5,
@@ -852,7 +932,7 @@ Defaults, abridged (see lua/plasmid/config.lua for every key):
 Without setup(), defaults are used, or `vim.g.plasmid` if set before loading.
 
 ==============================================================================
-18. HIGHLIGHTS                                            *plasmid-highlights*
+19. HIGHLIGHTS                                            *plasmid-highlights*
 
 PlasmidTitle PlasmidHeader PlasmidRuler PlasmidComplement PlasmidBackbone
 PlasmidTick PlasmidLeader PlasmidCenter PlasmidBaseA PlasmidBaseC
@@ -871,7 +951,7 @@ PlasmidPrimer PlasmidPrimerTail (5' tails) PlasmidPrimerMismatch
 PlasmidPrimerArrow PlasmidPrimerLabel
 
 ==============================================================================
-19. FILES AND FIDELITY                                         *plasmid-files*
+20. FILES AND FIDELITY                                         *plasmid-files*
 
 Formats: GenBank/GenPept, FASTA (DNA, RNA, protein), and SnapGene .dna,
 .rna and .prot (read; written back only for files opened from SnapGene).
@@ -888,7 +968,7 @@ encodes them on write. Edited primers cannot yet be written to SnapGene files
 (the write is refused rather than losing them).
 
 ==============================================================================
-20. KNOWN ISSUES                                              *plasmid-issues*
+21. KNOWN ISSUES                                              *plasmid-issues*
 
 Neovim 0.12.2 headless (`nvim --headless`, `nvim -l`) can crash in
 `:redraw!` after a message wider than 'columns'; this happens without the
@@ -902,9 +982,10 @@ cases (|plasmid-oligo|). Tm and Ta match NEB's calculator exactly.
 converter reads it; it is tested on fixtures and on files generated from
 Biopython's enzyme data, not yet on a downloaded REBASE release.
 
-Whole bacterial genomes open but are heavy: E. coli K-12 (4.6 Mb, 9,285
-features) takes about 6 s and 945 MB to lay out in the linear view. Fetch a
-sub-range or a gene region instead.
+Opening a large record still plans every block of it to learn how long the
+buffer is: 0.26 s of the 1.1 s E. coli K-12 takes, growing with the record,
+and paid again when the window is resized (|plasmid-large|). The circular
+view is built whole whatever the record's size.
 
 NCBI occasionally answers with HTTP 429 or a transient "Search Backend
 failed"; requests are retried with backoff, but a busy period can still

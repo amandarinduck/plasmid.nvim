@@ -688,7 +688,7 @@ from a decoration provider that touches only on-screen rows.
 <summary> Click to expand </summary>
 
 ```
-nvim -l tests/run.lua                        # all 376 specs, headless, no dependencies
+nvim -l tests/run.lua                        # all 403 specs, headless, no dependencies
 nvim -l tests/run.lua detect                 # filter by spec name
 PLASMID_TEST_GROUP=0 nvim -l tests/run.lua   # the whole suite in the continuous layout
 ```
@@ -792,6 +792,16 @@ PLASMID_TEST_GROUP=0 nvim -l tests/run.lua   # the whole suite in the continuous
   feature lookups, circular angle mapping, text objects, yanks, authoring with
   undo, ORF and detection overlays, writes, conversion, multi-record files, and
   timing on a 230 kb chromosome and a 5 Mb genome.
+- **Large records:** the windowed layout is compared with the ordinary one
+  row by row — text, row kinds, spans and position queries — across the whole
+  fixture corpus (71 files, 78 records, 172,227 rows), and on a fetched corpus
+  of real genomes (*E. coli* K-12, yeast chromosome IV, human cytomegalovirus,
+  a multi-record phage file, an 8.7 Mb *Streptomyces* FASTA) at five window
+  positions each, in both sequence layouts, at three widths, with the enzyme,
+  primer, ORF, search and selection overlays: **109 cases, 71,858 rows, no
+  differences**. `budget_spec` generates a 400 kb record and fails if opening
+  it starts costing what laying out every row used to.
+  `docs/large_records_report.md` has the corpus and the measurements.
 - **Alignment:** the engine is compared with Biopython 1.88's
   `PairwiseAligner` over 1,097 generated cases — five mode variants, eight
   scoring schemes, nucleotide and protein — and **all 1,097 agree on score**,
@@ -861,6 +871,14 @@ synthetic record covering the rest of the grammar.
   Biopython's enzyme data, not yet on a downloaded REBASE release.
 - The gel is a schematic: sizes are placed on a log scale with ~15 % size steps
   per row, and band intensity and topology effects are not modelled.
+- The windowed layout knows how long the buffer is, so it plans every block
+  when the record opens: that is 264 ms of the 1.1 s *E. coli* takes, and it
+  grows with the record. Resizing the window re-plans (615 ms on that genome),
+  which is the one operation that still feels like work. The circular view
+  builds in full whatever the record's size.
+- The overview's picture saturates on a dense genome: at 200 kb a row nearly
+  every cell has features on both strands, so what you read is where the
+  coding stops. The per-strand counts and the names carry the detail.
 - Alignment is pairwise: there is no multiple alignment, no consensus from a
   set of reads, and no trace (`.ab1`) reading. Above `align.max_cells` (4e6)
   the engine aligns inside a seeded band, which needs the two sequences to
@@ -876,10 +894,6 @@ synthetic record covering the rest of the grammar.
 - Gibson joins are exact terminal matches; mismatched or partially annealing
   arms, chew-back and fill-in are not modelled, and ends of different lengths
   never anneal.
-- Whole bacterial genomes open but are heavy: E. coli K-12 (NC_000913.3,
-  4.6 Mb, 9,285 features) parses in 0.85 s but takes ~6 s and ~945 MB to lay
-  out in the linear view. Fetch a sub-range or a gene region instead; layout
-  of only the visible part is planned.
 - NCBI occasionally answers with HTTP 429 or a transient "Search Backend
   failed"; requests are retried with backoff, but a busy period can still
   surface an error. Try again, or set an API key.
@@ -889,11 +903,11 @@ synthetic record covering the rest of the grammar.
 
 ## Roadmap
 
-- **Next: large records.** Lay out only the visible part of the linear view,
-  so whole bacterial genomes open quickly with modest memory, and add a
-  zoomed-out genome overview.
 - **Alignment, further:** reading Sanger traces, and a consensus across a set
   of reads.
+- **Large records, further:** a circular view that scales to a genome, and
+  laying out the blocks lazily enough that opening does not have to plan them
+  all.
 - **Cloning, further:** partial digests, chew-back/fill-in, and writing an
   assembly plan (which parts, which reaction, which checks) to a file.
 - **Later:** writing edited primers back to SnapGene files, and a piece-table
