@@ -1,0 +1,17 @@
+name: test
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        nvim: [v0.10.4, v0.11.4, stable]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: rhysd/action-setup-vim@v1
+        with:
+          neovim: true
+          version: ${{ matrix.nvim }}
+      - run: nvim -l tests/run.lua
+      - name: continuous sequence layout
+        run: PLASMID_TEST_GROUP=0 nvim -l tests/run.lua
