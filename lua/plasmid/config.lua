@@ -146,6 +146,10 @@ M.defaults = {
     case = "auto",            -- "auto" (upper for GenBank, preserve for FASTA) | "upper" | "preserve"
     max_tracks = 4,           -- feature rows per line; the rest are summarised as "+N more"
     group = 10,               -- residues per group; 0 = continuous with a ruler row (codons never split by gaps)
+    -- Above `threshold` residues the view lays out only the part of the record
+    -- a window is showing, so a bacterial genome opens in about a second
+    -- instead of minutes. `enabled = true`/`false` forces it either way.
+    window = { enabled = "auto", threshold = 300000, margin = 2, cache_blocks = 512 },
   },
   circular = {
     -- Physical width/height of one braille dot. Braille cells are 2x4 dots and

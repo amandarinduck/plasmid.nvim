@@ -56,6 +56,7 @@ function M.cursor_info(win)
   if not st or not st.layout then return nil end
   local pos = vim.api.nvim_win_get_cursor(win)
   local row0 = pos[1] - 1
+  if st.layout.windowed and (st.layout.lines[row0 + 1] or "") == "" then M.fill(buf, win, row0) end
   local line = st.layout.lines[row0 + 1] or ""
   local vcol = cursor_vcol(win, line, pos[2])
   local bp = st.layout:bp_at(row0, vcol)
@@ -71,11 +72,60 @@ function M.goto_bp(win, bp)
   bp = math.max(1, math.min(math.floor(bp), math.max(rec:len(), 1)))
   local row0, vcol = st.layout:pos_of(bp)
   if not row0 then return end
+  local buf = vim.api.nvim_win_get_buf(win)
+  if st.layout.windowed then M.fill(buf, win, row0) end
   local line = st.layout.lines[row0 + 1] or ""
   local bytecol = st.layout.byte_col and st.layout:byte_col(row0, vcol) or vcol
   bytecol = math.min(bytecol, math.max(#line - 1, 0))
   vim.api.nvim_win_set_cursor(win, { row0 + 1, bytecol })
   st.last_bp = bp
+end
+
+---------------------------------------------------------------------------
+-- Windowed layouts: fill the rows a window is about to show
+---------------------------------------------------------------------------
+
+--- Write a windowed layout's newly built (or dropped) rows into the buffer.
+--- The buffer stays nomodifiable to the user and keeps its modified flag;
+--- these edits are the view catching up with itself, not a change to the
+--- record, so they are kept out of the undo history.
+local function apply_edits(buf, edits)
+  if #edits == 0 then return end
+  local bo = vim.bo[buf]
+  local modified, undo = bo.modified, bo.undolevels
+  bo.modifiable = true
+  bo.undolevels = -1
+  for _, e in ipairs(edits) do
+    pcall(vim.api.nvim_buf_set_lines, buf, e[1], e[1] + #e[2], false, e[2])
+  end
+  bo.undolevels = undo
+  bo.modifiable = false
+  bo.modified = modified
+end
+
+--- Build the rows `win` is showing (plus a margin) if the layout is windowed.
+---@param around integer|nil extra row to cover (a jump target, say)
+function M.fill(buf, win, around)
+  local st = M.state[buf]
+  local lay = st and st.layout
+  if not lay or not lay.windowed then return end
+  win = win or win_for(buf)
+  local first, last
+  if win and vim.api.nvim_win_is_valid(win) then
+    local info = vim.fn.getwininfo(win)[1]
+    first, last = (info.topline or 1) - 1, (info.botline or 1) - 1
+  else
+    first, last = 0, 40
+  end
+  if around then
+    -- a jump lands somewhere else entirely: cover where it lands, not
+    -- everything between here and there
+    if around < first or around > last then
+      local h = math.max(10, last - first + 1)
+      first, last = around - h, around + h
+    end
+  end
+  apply_edits(buf, lay:ensure(first, last))
 end
 
 ---------------------------------------------------------------------------
@@ -125,7 +175,9 @@ function M.render(buf, opts)
   set_lines(buf, st.layout.lines)
   st.modified = st.modified or false
   vim.bo[buf].modified = st.modified
+  M.fill(buf, win)
   if win and keep then M.goto_bp(win, keep) end
+  M.fill(buf, win)
   if win then require("plasmid.codon").update(buf, win) end
 end
 

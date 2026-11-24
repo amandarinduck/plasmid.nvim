@@ -55,6 +55,15 @@ function M.check()
   end
   h.info(("default view: %s, circular.aspect = %.2f (check with :DnaCalibrate)"):format(
     cfg.default_view, cfg.circular.aspect))
+  local wcfg = cfg.linear.window or {}
+  if wcfg.enabled == false then
+    h.info("large records: windowing off, every record is laid out whole")
+  else
+    h.info(("large records: records over %s are laid out a window at a time (linear.window)")
+      :format(wcfg.enabled == true and "any size" or (("%d %s"):format(
+        (tonumber(wcfg.threshold) or 300000) >= 1000 and math.floor((tonumber(wcfg.threshold) or 300000) / 1000) or wcfg.threshold,
+        (tonumber(wcfg.threshold) or 300000) >= 1000 and "kb" or "bp"))))
+  end
   h.info("Glyphs used: ━ ╌ ▶ ◀ ┃ and braille U+2800–U+28FF; any font with box-drawing + braille works")
   local n = vim.tbl_count(require("plasmid.buffer").state)
   h.info(("%d sequence buffer%s open"):format(n, n == 1 and "" or "s"))

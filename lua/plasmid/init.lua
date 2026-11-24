@@ -591,6 +591,10 @@ local function register_commands()
       ("file: %s  (%s, record %d/%d)"):format(vim.fn.fnamemodify(st.path, ":~:."), st.format, st.current, #st.records),
       "",
     }
+    if st.layout and st.layout.windowed then
+      table.insert(lines, #lines, ("view: windowed (%d lines, %d blocks, laid out as you scroll)")
+        :format(#st.layout.lines, st.layout.nblocks))
+    end
     for _, t in ipairs(types) do lines[#lines + 1] = ("  %-18s %d"):format(t, counts[t]) end
     vim.lsp.util.open_floating_preview(lines, "", { border = "rounded", focus_id = "plasmid_info" })
   end, { desc = "Record summary" })
@@ -693,7 +697,18 @@ local function register_autocmds()
   vim.api.nvim_create_autocmd("CursorMoved", {
     group = group,
     callback = function(ev)
-      if buffer.get(ev.buf) then require("plasmid.codon").update(ev.buf) end
+      if buffer.get(ev.buf) then
+        buffer.fill(ev.buf)
+        require("plasmid.codon").update(ev.buf)
+      end
+    end,
+  })
+  -- a windowed view lays out the rows it is about to show
+  vim.api.nvim_create_autocmd({ "WinScrolled", "BufWinEnter" }, {
+    group = group,
+    callback = function(ev)
+      local st = buffer.get(ev.buf)
+      if st and st.layout and st.layout.windowed then buffer.fill(ev.buf) end
     end,
   })
   vim.api.nvim_create_autocmd("ColorScheme", {
