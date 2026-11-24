@@ -790,6 +790,7 @@ function M.plan_of(self, b)
   if not p then
     p = self._plan(b)
     self._plans[b] = p
+    self._nplans = (self._nplans or 0) + 1
   end
   return p
 end
@@ -825,6 +826,7 @@ function M.drop_block(self, b)
     self.rows[base + i - 1] = nil
   end
   self._built[b], self._plans[b] = nil, nil
+  self._nplans = (self._nplans or 1) - 1
   return base, blanks
 end
 
@@ -870,6 +872,20 @@ function M.ensure(self, row0, row1)
       for i = #self._maps - 255, #self._maps do rest[#rest + 1] = self._maps[i] end
       self._maps = rest
     end
+  end
+  -- A position query plans a block without building it -- jumping to a base
+  -- pair, or asking what is under the cursor -- and the eviction above only
+  -- forgets blocks that were built, so without this a session that visits
+  -- enough of a genome ends up holding a plan for every block of it (on E.
+  -- coli K-12 that is 51,574 plans and 28 MB). Plans are cheap to make again,
+  -- so the ones outside the live window go when there are far more of them
+  -- than the window could account for.
+  if (self._nplans or 0) > math.max(keep * 4, 1024) then
+    local n = 0
+    for b in pairs(self._plans) do
+      if not self._built[b] and (b < lo or b > hi) then self._plans[b] = nil else n = n + 1 end
+    end
+    self._nplans = n
   end
   return edits
 end

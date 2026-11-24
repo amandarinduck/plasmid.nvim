@@ -85,7 +85,7 @@ and network access to `eutils.ncbi.nlm.nih.gov`.
 
 </details>
 
-## Status (v0.8)
+## Status (v0.9)
 <details> 
 <summary> Click to expand </summary>
 
@@ -116,6 +116,7 @@ and network access to `eutils.ncbi.nlm.nih.gov`.
 | PCR | `:DnaPCR` builds the product as a new record, with tails, mismatches and the template's features |
 | Cloning | `:DnaClone` (method inferred), `:DnaLigate`, `:DnaGoldenGate`, `:DnaGibson`: parts staged from records, selections, digest fragments or PCR products; sticky, blunt and homology joins in both orientations; features carried and re-joined, parts and junctions annotated; a report that says why nothing assembled |
 | Assembly-aware primer design | `:DnaPrimerDesign into={part}` adds the homology or Type IIS tails the assembly needs, then amplifies and assembles the chosen pair to check it closes |
+| Large records | a bacterial genome opens in about a second: above `linear.window.threshold` the view lays out only the rows a window is showing, and `:DnaOverview` draws the whole record one row per span, with a jump into the sequence |
 | Alignment | `:DnaAlign` places a query on the record (either strand, across the origin), `:DnaAlignReads` places a whole run of reads, `:DnaCompare` compares two molecules and ignores a different origin; differences are listed with the feature, codon and effect, and can be written on as `variation` features |
 | Mouse | drag to select a region, double click to select a feature, Ctrl-click two primers to select the product they make |
 | NCBI fetch | `:DnaFetch` by accession (nucleotide or protein, optional sub-range and strand), `:DnaSearch` with a picker, `:DnaGene` for a gene region by symbol, `gF` follows a feature's protein/gene links; local cache, size guard, NCBI rate limits honoured |
@@ -202,6 +203,7 @@ and network access to `eutils.ncbi.nlm.nih.gov`.
 | `:DnaClone [parts…]` · `:DnaLigate [parts…]` | assemble, method inferred · join by ends |
 | `:DnaGoldenGate [enzyme] [parts…]` · `:DnaGibson [parts…]` | one-pot Type IIS assembly · join by terminal homology |
 | `:DnaAlign {query} [mode=] [strand=]` · `:DnaAlignReads {file\|glob}…` | align a query · place a run of reads |
+| `:DnaOverview [bases-per-row]` · `:DnaRegion {start}..{stop}` | the whole record on one screen · go to a region and select it |
 | `:DnaCompare {record}` · `:DnaAlignAnnotate` | compare two molecules · write the differences on as features |
 
 The winbar shows the record, view, base pair under the cursor, the selection,
@@ -487,6 +489,34 @@ Gate (`overhangs=AATG/GCTT` to set them yourself). A site for that enzyme
 inside the region to amplify is flagged, and the pair you choose is amplified
 and assembled to confirm it closes.
 
+### Large records
+
+A bacterial genome is a quarter of a million rows of sequence. Above
+`linear.window.threshold` (300 kb) the linear view works out how long it is
+and then lays out only the rows a window is showing, building them as you
+scroll and dropping them again behind you. Nothing else changes: the
+coordinates, the feature tracks, selection, search, enzymes, primers,
+alignment and editing all behave as they do on a plasmid, and
+`window_spec` checks row for row that the windowed layout is the ordinary
+one built a piece at a time.
+
+```vim
+:DnaOverview        " the whole record on one screen, one row per span
+:DnaRegion 150000..151000
+```
+
+`:DnaOverview` (`gm`) trades the residues for the shape of the record: one
+row per span — 10 kb a row for a 230 kb chromosome, 200 kb a row for *E.
+coli* — with a strip of cells showing which strands carry features where,
+coloured by the most important feature in each cell, the per-strand counts,
+and as many feature names as fit. The span is a round number picked so the
+record fits the window, and the header says what it is. `<CR>` or a click
+jumps to the region under the cursor and `q` puts the window back.
+
+![The whole genome at 200 kb per row](docs/screenshots/overview_genome.png)
+
+![Yeast chromosome I at 10 kb per row](docs/screenshots/overview_chromosome.png)
+
 ### Alignment
 
 `:DnaAlign {query}` places a query on the open record and opens an alignment
@@ -592,6 +622,9 @@ require("plasmid").setup({
   },
   cloning = { min_homology = 20, max_homology = 200, enzyme = "BsaI",
               annotate_parts = true, annotate_junctions = true, max_solutions = 50 },
+  -- above `threshold` residues the linear view lays out only what a window shows
+  linear = { window = { enabled = "auto", threshold = 300000, margin = 2, cache_blocks = 512 } },
+  overview = { span = "auto", min_span = 10, labels = true, counts = true },
   align = { match = 2, mismatch = -3, gap_open = -5, gap_extend = -2, mode = "semi",
             min_identity = 0.9, min_coverage = 0.5, width = 0, annotate_type = "variation" },
   mouse = { enabled = true, drag_select = true, double_click_feature = true, primer_pair = true },
@@ -639,6 +672,7 @@ lua/plasmid/
   primers.lua  primerdesign.lua  pcr.lua  ncbi.lua (E-utilities client)  fetch.lua
   bio/assembly.lua (fragment ends, ligation, Golden Gate, Gibson)  clone.lua  mouse.lua
   bio/align.lua (affine-gap pairwise, seeded band)  bio/variant.lua  alignment.lua
+  view/overview.lua (whole-record map)  overview.lua
   init.lua  config.lua  health.lua
 ```
 
