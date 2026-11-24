@@ -8,7 +8,8 @@ text objects, add your own, find open reading frames, detect known elements
 against an imported feature database, search IUPAC motifs, show restriction
 sites, simulate digests with a text gel, and work with primers: annotate them,
 calculate NEB-style Tm and Ta, design pairs and simulate PCR, and assemble
-constructs by Gibson, Golden Gate or restriction–ligation. Fetch records from
+constructs by Gibson, Golden Gate or restriction–ligation, and align
+sequencing reads or whole plasmids against a record. Fetch records from
 NCBI by accession, search query or gene symbol. Protein sequences open too.
 Pure Lua; `curl` is needed only for NCBI fetch.
 
@@ -84,7 +85,7 @@ and network access to `eutils.ncbi.nlm.nih.gov`.
 
 </details>
 
-## Status (v0.7)
+## Status (v0.8)
 <details> 
 <summary> Click to expand </summary>
 
@@ -115,6 +116,7 @@ and network access to `eutils.ncbi.nlm.nih.gov`.
 | PCR | `:DnaPCR` builds the product as a new record, with tails, mismatches and the template's features |
 | Cloning | `:DnaClone` (method inferred), `:DnaLigate`, `:DnaGoldenGate`, `:DnaGibson`: parts staged from records, selections, digest fragments or PCR products; sticky, blunt and homology joins in both orientations; features carried and re-joined, parts and junctions annotated; a report that says why nothing assembled |
 | Assembly-aware primer design | `:DnaPrimerDesign into={part}` adds the homology or Type IIS tails the assembly needs, then amplifies and assembles the chosen pair to check it closes |
+| Alignment | `:DnaAlign` places a query on the record (either strand, across the origin), `:DnaAlignReads` places a whole run of reads, `:DnaCompare` compares two molecules and ignores a different origin; differences are listed with the feature, codon and effect, and can be written on as `variation` features |
 | Mouse | drag to select a region, double click to select a feature, Ctrl-click two primers to select the product they make |
 | NCBI fetch | `:DnaFetch` by accession (nucleotide or protein, optional sub-range and strand), `:DnaSearch` with a picker, `:DnaGene` for a gene region by symbol, `gF` follows a feature's protein/gene links; local cache, size guard, NCBI rate limits honoured |
 
@@ -199,6 +201,8 @@ and network access to `eutils.ncbi.nlm.nih.gov`.
 | `:DnaCloneAdd [name]` · `:DnaCloneList` · `:DnaCloneClear` | stage the record, the selection or a digest fragment as a part (`gA`) |
 | `:DnaClone [parts…]` · `:DnaLigate [parts…]` | assemble, method inferred · join by ends |
 | `:DnaGoldenGate [enzyme] [parts…]` · `:DnaGibson [parts…]` | one-pot Type IIS assembly · join by terminal homology |
+| `:DnaAlign {query} [mode=] [strand=]` · `:DnaAlignReads {file\|glob}…` | align a query · place a run of reads |
+| `:DnaCompare {record}` · `:DnaAlignAnnotate` | compare two molecules · write the differences on as features |
 
 The winbar shows the record, view, base pair under the cursor, the selection,
 the codon under the cursor, and the feature under the cursor. Full reference:
@@ -483,6 +487,37 @@ Gate (`overhangs=AATG/GCTT` to set them yourself). A site for that enzyme
 inside the region to amplify is flagged, and the pair you choose is amplified
 and assembled to confirm it closes.
 
+### Alignment
+
+`:DnaAlign {query}` places a query on the open record and opens an alignment
+view. The query can be residues typed inline, a file, an open buffer, a staged
+cloning part, a digest fragment or `selection`. Both strands are tried, and on
+a circular record the alignment may run through the origin; `mode=` picks
+between `semi` (the query placed inside the record, the default), `global` and
+`local`, and `strand=plus|minus` pins one strand.
+
+```vim
+:DnaAlign sanger/well_A.fa          " one read
+:DnaAlignReads sanger/*.fa          " a whole run, as a table
+:DnaCompare designed.gb             " two molecules, end to end
+```
+
+The view shows the alignment in blocks — reference row, match row, query row,
+with mismatches and gaps highlighted — above a difference list that names the
+feature, the codon and the effect (`1255 G>A  tet codon 390 TGG>TGA W390*
+nonsense`), a table of the features hit with their verdicts (silent, missense,
+nonsense, frameshift with the premature stop, in-frame indel), and a summary
+line. `]d` and `[d` walk the differences, `<CR>` jumps to one in the record,
+and `:DnaAlignAnnotate` writes them onto the record as `variation` features in
+one undo step.
+
+`:DnaAlignReads` places every record of every file (globs welcome) and lists
+them by position with strand, span, identity, difference count and coverage;
+reads that do not place are listed with the reason. `:DnaCompare` rotates a
+circular molecule into phase before comparing, so a different origin is not
+reported as a difference — the header says what rotation and strand it had to
+apply.
+
 ### Fetching from NCBI
 
 `:DnaFetch L09137.2` downloads a record from NCBI and opens it in a new,
@@ -557,6 +592,8 @@ require("plasmid").setup({
   },
   cloning = { min_homology = 20, max_homology = 200, enzyme = "BsaI",
               annotate_parts = true, annotate_junctions = true, max_solutions = 50 },
+  align = { match = 2, mismatch = -3, gap_open = -5, gap_extend = -2, mode = "semi",
+            min_identity = 0.9, min_coverage = 0.5, width = 0, annotate_type = "variation" },
   mouse = { enabled = true, drag_select = true, double_click_feature = true, primer_pair = true },
   ncbi = { api_key = nil, email = nil, max_length = 5000000, cache = true, cache_days = 30 },
   fetch = { dir = nil, search_results = 20, gene_flank = 0, organism = nil },  -- dir nil: cwd
@@ -601,6 +638,7 @@ lua/plasmid/
   orfs.lua  detectui.lua  featuredb.lua  search.lua  enzymes.lua  digest.lua
   primers.lua  primerdesign.lua  pcr.lua  ncbi.lua (E-utilities client)  fetch.lua
   bio/assembly.lua (fragment ends, ligation, Golden Gate, Gibson)  clone.lua  mouse.lua
+  bio/align.lua (affine-gap pairwise, seeded band)  bio/variant.lua  alignment.lua
   init.lua  config.lua  health.lua
 ```
 
@@ -616,7 +654,7 @@ from a decoration provider that touches only on-screen rows.
 <summary> Click to expand </summary>
 
 ```
-nvim -l tests/run.lua                        # all 332 specs, headless, no dependencies
+nvim -l tests/run.lua                        # all 376 specs, headless, no dependencies
 nvim -l tests/run.lua detect                 # filter by spec name
 PLASMID_TEST_GROUP=0 nvim -l tests/run.lua   # the whole suite in the continuous layout
 ```
@@ -720,6 +758,14 @@ PLASMID_TEST_GROUP=0 nvim -l tests/run.lua   # the whole suite in the continuous
   feature lookups, circular angle mapping, text objects, yanks, authoring with
   undo, ORF and detection overlays, writes, conversion, multi-record files, and
   timing on a 230 kb chromosome and a 5 Mb genome.
+- **Alignment:** the engine is compared with Biopython 1.88's
+  `PairwiseAligner` over 1,097 generated cases — five mode variants, eight
+  scoring schemes, nucleotide and protein — and **all 1,097 agree on score**,
+  with every case that has a unique optimum reproduced column for column. 288
+  simulated reads (119 of them across the origin) are placed within 2 bp on the
+  right strand at every error rate tested. The comparison found three engine
+  defects, all fixed. `docs/alignment_report.md` has the corpus, the
+  read-recovery table and the timings.
 - **Cloning:** the assembly engine is compared with
   [pydna](https://github.com/pydna-group/pydna) 5.5.16 over a generated corpus
   of 468 cases — 262 restriction–ligation, 125 Gibson, 81 Golden Gate,
@@ -781,6 +827,12 @@ synthetic record covering the rest of the grammar.
   Biopython's enzyme data, not yet on a downloaded REBASE release.
 - The gel is a schematic: sizes are placed on a log scale with ~15 % size steps
   per row, and band intensity and topology effects are not modelled.
+- Alignment is pairwise: there is no multiple alignment, no consensus from a
+  set of reads, and no trace (`.ab1`) reading. Above `align.max_cells` (4e6)
+  the engine aligns inside a seeded band, which needs the two sequences to
+  share 11-mers; unrelated long sequences are declined rather than aligned
+  badly. Where differences cluster, the list is one description among several
+  of equal score.
 - Assembly enumerates orderings. With many interchangeable ends (a one-enzyme
   digest of several fragments) only the first `cloning.max_solutions` (50)
   orderings are reported, and exhaustive enumeration is practical to about 8
@@ -806,6 +858,8 @@ synthetic record covering the rest of the grammar.
 - **Next: large records.** Lay out only the visible part of the linear view,
   so whole bacterial genomes open quickly with modest memory, and add a
   zoomed-out genome overview.
+- **Alignment, further:** reading Sanger traces, and a consensus across a set
+  of reads.
 - **Cloning, further:** partial digests, chew-back/fill-in, and writing an
   assembly plan (which parts, which reaction, which checks) to a file.
 - **Later:** writing edited primers back to SnapGene files, and a piece-table

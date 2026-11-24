@@ -16,12 +16,13 @@ CONTENTS                                                    *plasmid-contents*
  11. Primers .............................. |plasmid-primers|
  12. NCBI fetch ........................... |plasmid-fetch|
  13. Cloning .............................. |plasmid-cloning|
- 14. Mappings ............................. |plasmid-mappings|
- 15. Commands ............................. |plasmid-commands|
- 16. Configuration ........................ |plasmid-config|
- 17. Highlights ........................... |plasmid-highlights|
- 18. Files and fidelity ................... |plasmid-files|
- 19. Known issues ......................... |plasmid-issues|
+ 14. Alignment ............................ |plasmid-align|
+ 15. Mappings ............................. |plasmid-mappings|
+ 16. Commands ............................. |plasmid-commands|
+ 17. Configuration ........................ |plasmid-config|
+ 18. Highlights ........................... |plasmid-highlights|
+ 19. Files and fidelity ................... |plasmid-files|
+ 20. Known issues ......................... |plasmid-issues|
 
 ==============================================================================
 1. INTRODUCTION                                                *plasmid-intro*
@@ -599,7 +600,71 @@ is cut into many pieces. docs/cloning_report.md has the measurements and the
 comparison with pydna.
 
 ==============================================================================
-14. MAPPINGS                                                *plasmid-mappings*
+14. ALIGNMENT                                                  *plasmid-align*
+
+Pairwise alignment with affine gaps: place a sequencing read on the record,
+place a whole run of reads, or compare two molecules end to end. Differences
+are reported in the record's coordinates, with the feature and codon they hit.
+
+:DnaAlign {query} [mode=] [strand=] [name=]                        *:DnaAlign*
+                                Align a query against the record and open the
+                                alignment view. {query} may be residues typed
+                                inline, a file, an open buffer, a staged
+                                cloning part, a digest fragment number, or
+                                `selection`.
+:DnaAlignReads {file|glob} ...                                *:DnaAlignReads*
+                                Place every record of every file and list them
+                                by position: strand, span, identity,
+                                differences, coverage. <CR> opens one. Reads
+                                that do not place are listed with the reason.
+:DnaCompare {record} [mode=] [name=]                             *:DnaCompare*
+                                Compare two molecules end to end. A circular
+                                record is rotated into phase first (and
+                                reverse-complemented if that scores better),
+                                so a different origin is not a difference;
+                                the header says what was applied.
+:DnaAlignAnnotate                                          *:DnaAlignAnnotate*
+                                Write the last alignment's differences onto
+                                the record as features (`align.annotate_type`,
+                                `variation` by default) in one undo step.
+
+Modes ~
+  semi    the query is placed inside the record: the record's end gaps are
+          free. The default, and what a read wants.
+  global  both sequences are aligned end to end, every end gap charged.
+  local   the best-scoring segment of each sequence.
+Both strands are tried unless `strand=plus` or `strand=minus` is given. On a
+circular record a `semi` or `local` placement may run through the origin; the
+header then says so and the coordinates wrap.
+
+The view ~
+Reference row with coordinates, match row, query row, in blocks of
+`align.width` residues (0 = fit the window), mismatches and gaps highlighted.
+Above it: the differences, each naming the feature, codon and effect
+(`1255 G>A  tet codon 390 TGG>TGA W390* nonsense`); the features hit, with
+silent / missense / nonsense / frameshift and any premature stop; and a
+summary. An alignment longer than `align.full_limit` columns shows only
+`align.context` residues around each difference.
+
+  ]d  [d    next / previous difference
+  <CR>      go to that difference in the record
+  ga        write the differences onto the record
+  q         close
+
+What is modelled ~
+Scores are `align.match` / `align.mismatch` for nucleotides and BLOSUM62 for
+proteins, with `align.gap_open` charged once per gap plus `align.gap_extend`
+per base. Pairs within `align.max_cells` are aligned over the full matrix;
+larger ones inside a band around the diagonals that shared 11-mers vote for,
+which needs the two sequences to be versions of each other — unrelated long
+sequences are declined rather than aligned badly. There is no multiple
+alignment, no consensus, and no trace (.ab1) reading.
+
+The engine agrees with Biopython's PairwiseAligner on all 1,097 cases of the
+committed corpus; see docs/alignment_report.md.
+
+==============================================================================
+15. MAPPINGS                                                *plasmid-mappings*
 
   <Tab>     Toggle linear/circular, keeping the base-pair position.
   <CR>      Linear: feature details. Circular: open that position in linear.
@@ -625,6 +690,8 @@ comparison with pydna.
   gF        Open the record a feature links to (|plasmid-fetch|).
   gA        Stage the selection, record or fragment as a part
             (|plasmid-cloning|).
+  ]d  [d    In the alignment view: next / previous difference
+            (|plasmid-align|).
 
 Mouse ~                                                        *plasmid-mouse*
 'mouse' must be enabled (Neovim's default covers normal mode).
@@ -639,7 +706,7 @@ Switch pieces off with the `mouse` table in |plasmid-config|.
 Change or disable (set to "") via the `keymaps` table in |plasmid-config|.
 
 ==============================================================================
-15. COMMANDS                                                *plasmid-commands*
+16. COMMANDS                                                *plasmid-commands*
 
 Viewing ~
 :DnaOpen {file}                 Open a sequence file.               *:DnaOpen*
@@ -714,13 +781,18 @@ Detection ~
 :DnaDetectAccept[!] [fragments] Accept proposals.           *:DnaDetectAccept*
 :DnaDetectReview                Pick proposals from a list. *:DnaDetectReview*
 
+Alignment ~
+:DnaAlign {query} · :DnaAlignReads {file|glob} ... · :DnaCompare {record}
+:DnaAlignAnnotate               Align, place reads, compare, annotate
+                                (|plasmid-align|).
+
 Cloning ~
 :DnaCloneAdd [name] · :DnaCloneList · :DnaCloneClear   Stage parts.
 :DnaClone · :DnaLigate · :DnaGoldenGate [enzyme] · :DnaGibson  [parts ...]
                                 Assemble them (|plasmid-cloning|).
 
 ==============================================================================
-16. CONFIGURATION                                             *plasmid-config*
+17. CONFIGURATION                                             *plasmid-config*
 
 Defaults, abridged (see lua/plasmid/config.lua for every key):
 >lua
@@ -759,6 +831,10 @@ Defaults, abridged (see lua/plasmid/config.lua for every key):
       design = { len = { 18, 30 }, tm = { 57, 68 }, max_dtm = 3,
                  gc = { 0.35, 0.65 }, max_run = 4, slack = 8, pairs = 8 },
     },
+    align = { match = 2, mismatch = -3,                  -- |plasmid-align|
+              gap_open = -5, gap_extend = -2, mode = "semi",
+              min_identity = 0.9, min_coverage = 0.5,
+              width = 0, annotate_type = "variation" },
     cloning = { min_homology = 20, max_homology = 200,   -- |plasmid-cloning|
                 enzyme = "BsaI", annotate_parts = true,
                 annotate_junctions = true, max_solutions = 50 },
@@ -776,7 +852,7 @@ Defaults, abridged (see lua/plasmid/config.lua for every key):
 Without setup(), defaults are used, or `vim.g.plasmid` if set before loading.
 
 ==============================================================================
-17. HIGHLIGHTS                                            *plasmid-highlights*
+18. HIGHLIGHTS                                            *plasmid-highlights*
 
 PlasmidTitle PlasmidHeader PlasmidRuler PlasmidComplement PlasmidBackbone
 PlasmidTick PlasmidLeader PlasmidCenter PlasmidBaseA PlasmidBaseC
@@ -795,7 +871,7 @@ PlasmidPrimer PlasmidPrimerTail (5' tails) PlasmidPrimerMismatch
 PlasmidPrimerArrow PlasmidPrimerLabel
 
 ==============================================================================
-18. FILES AND FIDELITY                                         *plasmid-files*
+19. FILES AND FIDELITY                                         *plasmid-files*
 
 Formats: GenBank/GenPept, FASTA (DNA, RNA, protein), and SnapGene .dna,
 .rna and .prot (read; written back only for files opened from SnapGene).
@@ -812,7 +888,7 @@ encodes them on write. Edited primers cannot yet be written to SnapGene files
 (the write is refused rather than losing them).
 
 ==============================================================================
-19. KNOWN ISSUES                                              *plasmid-issues*
+20. KNOWN ISSUES                                              *plasmid-issues*
 
 Neovim 0.12.2 headless (`nvim --headless`, `nvim -l`) can crash in
 `:redraw!` after a message wider than 'columns'; this happens without the
