@@ -213,6 +213,7 @@ function M.attach_keymaps(buf)
   map(km.next_feature, function() M.next_feature(1) end, "next feature")
   map(km.prev_feature, function() M.next_feature(-1) end, "previous feature")
   map(km.features, M.pick_feature, "feature picker")
+  map(km.overview, function() require("plasmid.overview").toggle(buf) end, "whole-record overview")
   local sel = require("plasmid.select")
   local function xo(mode, lhs, fn, desc, expr)
     if lhs and lhs ~= "" then

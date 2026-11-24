@@ -162,6 +162,22 @@ M.defaults = {
     -- additional types hidden on the map only (annotation history, not biology)
     hidden_types = { old_sequence = true, misc_difference = true, conflict = true, variation = true, unsure = true },
   },
+  -- Whole-record overview (:DnaOverview): one row per span of the record.
+  overview = {
+    -- Bases per row. "auto" picks a round number (1, 2 or 5 times a power of
+    -- ten) large enough for the record to fit in the window; a number forces
+    -- that span, and the view scrolls if the record needs more rows.
+    span = "auto",
+    min_span = 10,            -- the finest span "auto" will pick
+    strip = "auto",           -- columns of picture per row, or a number
+    labels = true,            -- name the features in a row when there is room
+    counts = true,            -- per-strand feature counts per row
+    keymaps = {
+      jump = "<CR>",          -- go to this region in the sequence view
+      close = "q",            -- back to where the sequence view was
+      click = "<LeftMouse>",  -- go to the region under the mouse
+    },
+  },
   -- Mouse in a sequence buffer ('mouse' must be enabled in Neovim).
   mouse = {
     enabled = true,
@@ -211,6 +227,7 @@ M.defaults = {
     clone_add = "gA",         -- stage this record (or the selection) as a cloning part (:DnaCloneAdd)
     toggle_enzymes = "gz",    -- show/hide restriction sites (enzymes.default_set)
     pick_enzymes = "gZ",      -- choose enzymes from a list with site counts
+    overview = "gm",          -- whole-record overview (a map of the record, zoomed out)
     expand_tracks = "+",      -- show every feature track
     collapse_tracks = "-",    -- back to the configured track limit
   },

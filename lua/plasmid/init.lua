@@ -520,6 +520,35 @@ local function register_commands()
   end, { nargs = "?", complete = function() return { "all", "2", "4", "8" } end,
     desc = "Feature rows per line (linear) / rings (map)" })
 
+  cmd("DnaOverview", function(a)
+    local ov = require("plasmid.overview")
+    local here = vim.api.nvim_get_current_buf()
+    -- from inside the overview the command closes it again
+    if ov.state[here] then return ov.close(here) end
+    local buf = cur()
+    if not buf then return end
+    local span = a.args ~= "" and tonumber(a.args) or nil
+    if a.args ~= "" and not span then
+      return require("plasmid.util").notify("plasmid: :DnaOverview [bases per row]", vim.log.levels.ERROR)
+    end
+    ov.toggle(buf, { span = span })
+  end, { nargs = "?", desc = "Whole-record overview, one row per span (:DnaOverview 10000 forces 10 kb rows)",
+    complete = function() return { "1000", "10000", "100000" } end })
+
+  cmd("DnaRegion", function(a)
+    local buf, _, rec = cur()
+    if not buf then return end
+    local s, e = a.args:match("^%s*(%d+)%s*[%.%s,%-]+%s*(%d+)%s*$")
+    if not s then
+      s = a.args:match("^%s*(%d+)%s*$")
+      e = s and tostring(math.min(tonumber(s) + 999, rec:len()))
+    end
+    if not s then
+      return require("plasmid.util").notify("plasmid: :DnaRegion {start}..{stop}", vim.log.levels.ERROR)
+    end
+    require("plasmid.overview").region(buf, tonumber(s), tonumber(e))
+  end, { nargs = "+", desc = "Go to a region and select it (a window of a large record, without laying out the rest)" })
+
   cmd("DnaFeatures", function() if cur() then ui.pick_feature() end end, { desc = "Feature picker" })
   cmd("DnaFeatureInfo", function() if cur() then ui.info_under_cursor() end end, { desc = "Feature under cursor" })
 

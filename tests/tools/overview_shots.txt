@@ -1,0 +1,5 @@
+# Screens for the overview: a genome's shape, and the jump back into it.
+# nvim must be on PATH; run from the repo root.
+_open|<wait>:DnaGoto 2000000\r
+overview_genome|:DnaOverview\r<wait>8j
+overview_jump|\r<wait>

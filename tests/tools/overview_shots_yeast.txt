@@ -1,0 +1,3 @@
+# A 230 kb chromosome: short enough that most rows can name their genes.
+_open|<wait>:DnaGoto 90000\r
+overview_chromosome|:DnaOverview\r<wait>5j
