@@ -1,12 +1,18 @@
--- Circular plasmid map on a braille canvas.
+-- Circular map on a braille canvas, at two scales.
 --
 -- Geometry: angle 0 at 12 o'clock, increasing clockwise; base `bp` starts at
 -- theta = 2*pi*(bp-1)/L. Dot space is ~square (2x4 dots per ~1:2 cell); the
 -- configurable `aspect` (dot width / dot height) corrects other fonts.
--- Feature arcs are packed into rings inside the backbone; labels are stacked
--- in left/right columns with leader lines; tick numbers sit outside.
+--
+-- At plasmid scale (the default below `circular.atlas.threshold` residues)
+-- feature arcs are packed into rings inside the backbone, labels are stacked
+-- in left/right columns with leader lines, and tick numbers sit outside.
+-- Above it an arc is thinner than a braille dot and there are more features
+-- than the rings can hold, so the map draws a density atlas instead;
+-- `plasmid.view.ring` is that scale, and says why.
 local Canvas = require("plasmid.view.canvas")
 local vf = require("plasmid.view.features")
+local ring = require("plasmid.view.ring")
 
 local M = {}
 
@@ -18,20 +24,7 @@ local PRIORITY = {
   primer_bind = 5, protein_bind = 5, RBS = 6, mRNA = 2, misc_feature = 7,
 }
 
-local function nice_step(L, target)
-  local raw = L / target
-  local mag = 10 ^ math.floor(math.log10(math.max(raw, 1)))
-  for _, m in ipairs({ 1, 2, 2.5, 5, 10 }) do
-    if raw <= m * mag then return math.max(1, math.floor(m * mag)) end
-  end
-  return math.floor(10 * mag)
-end
-
-local function fmt_bp(n)
-  if n >= 1e6 then return (("%.2f"):format(n / 1e6):gsub("%.?0+$", "")) .. "M" end
-  if n >= 1e4 then return (("%.1f"):format(n / 1e3):gsub("%.0$", "")) .. "k" end
-  return tostring(n)
-end
+local nice_step, fmt_bp = ring.nice_step, ring.fmt_bp
 
 local function utf8_len(s)
   local _, n = s:gsub("[%z\1-\127\194-\244][\128-\191]*", "")
@@ -47,6 +40,181 @@ local function utf8_trunc(s, n)
     out[#out + 1] = ch
   end
   return table.concat(out) .. "…"
+end
+
+---------------------------------------------------------------------------
+-- Label columns
+---------------------------------------------------------------------------
+
+-- Labels hug the circle just outside the ring, stacked into the free rows of
+-- a left and a right column and tied back to their own angle by a leader
+-- line. A label that finds no free row near its angle is dropped rather than
+-- routed across the map, and the caller counts what it lost. Both scales
+-- label this way: at plasmid scale the names are features and restriction
+-- sites, at genome scale they are landmarks.
+local Labels = {}
+Labels.__index = Labels
+
+function Labels.new(cv, geom, label_w)
+  return setmetatable({
+    cv = cv, cx = geom.cx, cy = geom.cy, ax = geom.ax, pt = geom.pt,
+    W = geom.W, H = geom.H, label_r = geom.R + 8, label_w = label_w,
+    used = { right = {}, left = {} }, placed = {},
+  }, Labels)
+end
+
+--- First column, leader-end dot column and dot row of a label on a row of a
+--- side: the text starts where the circle leaves that row.
+function Labels:placement(side, row, text)
+  local y = row * 4 + 2
+  local dy = y - self.cy
+  local xoff = math.abs(dy) < self.label_r
+    and math.sqrt(self.label_r * self.label_r - dy * dy) / self.ax or 0
+  local len = utf8_len(text)
+  if side == "right" then
+    local col = math.ceil((self.cx + xoff) / 2) + 1
+    return col, col * 2 - 1, y
+  end
+  local col = math.floor((self.cx - xoff) / 2) - len
+  return col, (col + len) * 2, y
+end
+
+--- Place `text` for the angle `th`, searching out from the row that angle
+--- points at. `o.from` is the radius its leader starts at (an inner ring; nil
+--- starts it at the hinge), `o.hinge` the radius the leader bends at, and
+--- `o.tolerance` how many rows away it may settle for. Returns the placed
+--- entry, or nil when no row was free in reach.
+function Labels:place(th, text, group, owner, o)
+  local side = math.sin(th) >= 0 and "right" or "left"
+  local _, wy = self.pt(th, self.label_r)
+  local want = math.max(0, math.min(self.H - 1, math.floor(wy / 4)))
+  for d = 0, o.tolerance do
+    for _, row in ipairs(d == 0 and { want } or { want - d, want + d }) do
+      if row >= 0 and row < self.H and not self.used[side][row] then
+        local avail = side == "right" and (self.W - self:placement(side, row, ""))
+          or (self:placement(side, row, "") - 1)
+        if avail >= 4 then
+          local t = utf8_trunc(text, math.min(self.label_w, avail))
+          local col, edge_x, ey = self:placement(side, row, t)
+          if self.cv:text_free(col, row, utf8_len(t)) then
+            self.used[side][row] = true
+            local x1, y1 = self.pt(th, o.hinge)
+            if o.from then
+              local x0, y0 = self.pt(th, o.from)
+              self.cv:line(x0, y0, x1, y1, "PlasmidLeader")
+            end
+            self.cv:line(x1, y1, edge_x, ey, "PlasmidLeader")
+            local entry = { col = col, row = row, text = t, group = group, owner = owner }
+            self.placed[#self.placed + 1] = entry
+            self.cv:put(col, row, t, group, owner) -- reserve the cells now
+            return entry
+          end
+        end
+      end
+    end
+  end
+  return nil
+end
+
+--- Write every label again, over whatever was drawn across it since.
+function Labels:repaint()
+  for _, l in ipairs(self.placed) do self.cv:put(l.col, l.row, l.text, l.group, l.owner) end
+end
+
+---------------------------------------------------------------------------
+-- Genome scale
+---------------------------------------------------------------------------
+
+--- The map above `circular.atlas.threshold`: density and base composition
+--- rings instead of one arc per feature. `g` is the geometry and the shared
+--- drawing M.build has already set up; plasmid.view.ring is the rest.
+local function build_atlas(rec, opts, g)
+  local o = opts.circular
+  local a = o.atlas or {}
+  local cv, ang, L = g.cv, g.ang, g.L
+  local geom = g.geom
+  local pt, R = geom.pt, geom.R
+
+  g.draw_backbone()
+  if o.show_ticks then g.draw_ticks(ring.tick_step(L, "atlas")) end
+
+  -- `steps` samples the ring twice per braille dot and a cell is two dots
+  -- wide, so a quarter of them is one bin per character cell
+  local bin = ring.bin_bp(L, math.ceil(g.steps / 4))
+  local comp = ring.composition(rec, bin)
+  local dens = ring.density(g.items, L, bin)
+  -- a protein record has no bases to take a composition from
+  local kinds = rec:is_protein() and { "fwd", "rev" } or nil
+  local bands, depth = ring.bands(math.max(0, R - 15), kinds)
+
+  -- What gets named: the two turning points of the cumulative skew first,
+  -- then the landmarks. Every one of them is marked on the ring whether or
+  -- not its name found a row, so the reader can see that something is there.
+  local marks = {}
+  if comp.turning then
+    marks[#marks + 1] = { pos = comp.origin_bp, label = "origin (skew)", hl = "PlasmidRingOri" }
+    marks[#marks + 1] = { pos = comp.terminus_bp, label = "terminus (skew)", hl = "PlasmidRingOri" }
+  end
+  for _, lm in ipairs(ring.landmarks(g.items, L, bin, a.landmarks or 12)) do
+    marks[#marks + 1] = { pos = lm.pos, label = lm.label, hl = "PlasmidLandmark", id = lm.id }
+  end
+
+  local labels, named = nil, 0
+  if g.with_labels then
+    labels = Labels.new(cv, geom, g.label_w)
+    local tolerance = math.max(2, math.floor(geom.H / 8))
+    for _, m in ipairs(marks) do
+      if labels:place(ang(m.pos), m.label, m.hl, m.id, { tolerance = tolerance, hinge = R + 3 }) then
+        named = named + 1
+      end
+    end
+  end
+  for _, m in ipairs(marks) do
+    local th = ang(m.pos)
+    local x0, y0 = pt(th, R - 3)
+    local x1, y1 = pt(th, R + 4)
+    cv:line(x0, y0, x1, y1, m.hl)
+  end
+
+  ring.draw(cv, { pt = pt, R = R, L = L, steps = g.steps },
+    { bands = bands, comp = comp, density = dens, bin = bin })
+
+  g.draw_extras()
+  if labels then labels:repaint() end
+
+  local inner = R - 4 - depth
+  local centre = {}
+  if comp.turning then
+    centre[1] = ("ori ~%s"):format(ring.fmt_bp(comp.origin_bp))
+    centre[2] = ("ter ~%s"):format(ring.fmt_bp(comp.terminus_bp))
+  end
+  g.centre_text(inner, centre)
+
+  local clines, cruns, cbytes, cowners = cv:render()
+  local legend, legend_runs = ring.legend({
+    nbins = dens.n, bin = bin, unit = rec:unit(), rings = bands, summarised = #g.items,
+    all_rings = kinds and #kinds or ring.RING_COUNT,
+    named = named, unnamed = #marks - named, history = g.history, off_seq = g.off_seq,
+    unstranded = dens.unstranded,
+  }, geom.W)
+  local lines = {
+    (" %s  ·  %d %s  ·  %s  ·  %s  ·  %s"):format(
+      rec.name, rec:len(), rec:unit(), rec.molecule_type or "DNA", rec.topology,
+      vf.count_text(g.items, g.history + g.off_seq)),
+    legend,
+  }
+  for _, l in ipairs(clines) do lines[#lines + 1] = l end
+
+  local layout = {
+    view = "circular", atlas = true, lines = lines, header_rows = HEADER_ROWS,
+    runs = cruns, cell_bytes = cbytes, owners = cowners, legend_runs = legend_runs,
+    cx = geom.cx, cy = geom.cy, R = R, ax = geom.ax, L = L, inner = inner,
+    width = g.win_w, height = g.win_h, items = g.items, ntracks = 0, hidden = 0,
+    history = g.history, off_seq = g.off_seq, named = named,
+    canvas_w = geom.W, enz_labels = {},
+    bin = bin, bands = bands, composition = comp, density = dens, landmarks = marks,
+  }
+  return setmetatable(layout, { __index = M })
 end
 
 ---@param rec table Record
@@ -79,12 +247,17 @@ function M.build(rec, opts, win_w, win_h, extra)
   end
   local function ang(pos) return TAU * (pos - 1) / L end
 
-  -- feature rings
+  -- the features the map has to account for, at either scale
   local items = vf.visible(rec, vim.tbl_extend("force", opts, {
     hidden_types = vim.tbl_extend("force", opts.hidden_types or {}, o.hidden_types or {}),
   }))
+  -- features the linear view shows but the map omits (annotation history)
+  local history = #vf.visible(rec, opts) - #items
   -- a feature that lies beyond the sequence cannot be placed on it (records
-  -- without residues, truncated files): leave it off the map
+  -- without residues, truncated files): leave it off the map, and count it,
+  -- because a feature the map does not draw is a feature the header owes the
+  -- reader an account of
+  local off_seq = 0
   do
     local n = rec:len()
     local keep = {}
@@ -93,31 +266,24 @@ function M.build(rec, opts, win_w, win_h, extra)
       for _, e in ipairs(it.extents or {}) do
         if e[1] < 1 or e[2] > n then inside = false end
       end
-      if inside then keep[#keep + 1] = it end
+      if inside then keep[#keep + 1] = it else off_seq = off_seq + 1 end
     end
     items = keep
   end
-  local ntracks = vf.pack(items, L, math.ceil(L * 0.004), opts)
-  -- features the linear view shows but the map omits (annotation history)
-  local map_omitted = #vf.visible(rec, opts) - #items
-  local ring_gap = 4.5
-  local want_rings = o.max_tracks == "all" and math.huge or o.max_tracks
-  local max_tracks = math.max(1, math.min(want_rings, math.floor((R * 0.6 - 5) / ring_gap) + 1))
-  local function ring_r(t) return R - 5 - ring_gap * (t - 1) end
-
-  -- backbone
+  -- The backbone, the ticks and the overlays drawn on top of them are the
+  -- frame at both scales; only what sits inside the backbone differs.
   local steps = math.ceil(TAU * R * 2)
-  for k = 0, steps - 1 do
-    local th = TAU * k / steps
-    local x, y = pt(th, R)
-    cv:dot(x, y, "PlasmidBackbone")
-    x, y = pt(th, R - 1)
-    cv:dot(x, y, "PlasmidBackbone")
+  local function draw_backbone()
+    for k = 0, steps - 1 do
+      local th = TAU * k / steps
+      local x, y = pt(th, R)
+      cv:dot(x, y, "PlasmidBackbone")
+      x, y = pt(th, R - 1)
+      cv:dot(x, y, "PlasmidBackbone")
+    end
   end
 
-  -- ticks
-  if o.show_ticks then
-    local step = nice_step(L, 8)
+  local function draw_ticks(step)
     local pos = 0
     while pos < L do
       local th = ang(pos + 1)
@@ -139,6 +305,90 @@ function M.build(rec, opts, win_w, win_h, extra)
       pos = pos + step
     end
   end
+
+  -- what the caller asked to see on top of the map, in the band just outside
+  -- the backbone where neither scale draws anything of its own
+  local function draw_extras()
+    -- selection arc just outside the backbone, painted over everything but text
+    if extra.selection then
+      local sel = extra.selection
+      local a0 = ang(sel.start)
+      local a1 = sel.start > sel.stop and (ang(sel.stop + 1) + TAU) or ang(sel.stop + 1)
+      local n = math.max(2, math.ceil((a1 - a0) * (R + 2) * 2))
+      for k = 0, n do
+        local th = a0 + (a1 - a0) * k / n
+        for _, r in ipairs({ R + 1, R + 1.5, R + 2 }) do
+          local x, y = pt(th, r)
+          cv:dot(x, y, "PlasmidSelectionArc")
+        end
+      end
+    end
+
+    -- search hits: short radial marks outside the backbone
+    if extra.search and #extra.search.hits > 0 then
+      for i, h in ipairs(extra.search.hits) do
+        local group = i == extra.search.idx and "PlasmidSearchCurrent" or "PlasmidSearch"
+        local a0 = ang(h.start)
+        local a1 = h.stop >= h.start and ang(h.stop + 1) or (ang(h.stop + 1) + TAU)
+        local n = math.max(1, math.ceil((a1 - a0) * (R + 3) * 2))
+        for kk = 0, n do
+          local th = a0 + (a1 - a0) * kk / n
+          for _, r in ipairs({ R + 1, R + 2, R + 3 }) do
+            local x, y = pt(th, r)
+            cv:dot(x, y, group)
+          end
+        end
+      end
+    end
+
+    -- restriction cuts: radial ticks across the backbone
+    for _, g in ipairs(extra.enzymes or {}) do
+      local th = ang(g.cut)
+      local x0, y0 = pt(th, R - 2)
+      local x1, y1 = pt(th, R + 4)
+      cv:line(x0, y0, x1, y1, "PlasmidEnzymeCut")
+    end
+  end
+
+  --- Name, size and a line or two more in the hole in the middle, as much as
+  --- a circle of radius `inner` has room for.
+  local function centre_text(inner, more)
+    local inner_cols = math.floor(2 * inner / ax / 2) - 2
+    local crow, ccol = math.floor(cy / 4), math.floor(cx / 2)
+    if inner_cols < 6 then return end
+    local name = utf8_trunc(rec.name, inner_cols)
+    local size = ("%d %s"):format(rec:len(), rec:unit())
+    cv:put(ccol - math.floor(utf8_len(name) / 2), crow - 1, name, "PlasmidCenter")
+    cv:put(ccol - math.floor(#size / 2), crow, size, "PlasmidHeader")
+    -- A further line needs a hole of its own to sit in, but may overhang it
+    -- by a column or two: `inner_cols` is the width of a circle, and these
+    -- rows are near its middle, where it is widest.
+    for i, text in ipairs(more or {}) do
+      if inner_cols >= 10 and #text <= inner_cols + 2 then
+        cv:put(ccol - math.floor(#text / 2), crow + i, text, "PlasmidHeader")
+      end
+    end
+  end
+
+  local geom = { cx = cx, cy = cy, ax = ax, R = R, W = W, H = H, pt = pt }
+
+  if ring.wanted(rec, opts) then
+    return build_atlas(rec, opts, {
+      cv = cv, geom = geom, ang = ang, L = L, steps = steps, label_w = label_w,
+      with_labels = with_labels, items = items, history = history, off_seq = off_seq,
+      win_w = win_w, win_h = win_h, draw_backbone = draw_backbone,
+      draw_ticks = draw_ticks, draw_extras = draw_extras, centre_text = centre_text,
+    })
+  end
+
+  local ring_gap = 4.5
+  local ntracks = vf.pack(items, L, math.ceil(L * 0.004), opts)
+  local want_rings = o.max_tracks == "all" and math.huge or o.max_tracks
+  local max_tracks = math.max(1, math.min(want_rings, math.floor((R * 0.6 - 5) / ring_gap) + 1))
+  local function ring_r(t) return R - 5 - ring_gap * (t - 1) end
+
+  draw_backbone()
+  if o.show_ticks then draw_ticks(ring.tick_step(L, "arcs")) end
 
   -- feature arcs (drawn after leaders would hide them, so collect first)
   local drawn, hidden = {}, 0
@@ -182,9 +432,10 @@ function M.build(rec, opts, win_w, win_h, extra)
   -- labels: hug the circle just outside the ring; placed in priority order
   -- into the nearest free row, and dropped (not routed far away) if none is
   -- close. Leaders are drawn now so feature arcs paint over their inner ends.
-  local labels = {}
+  local labels
   local enz_labels = {}
   if with_labels then
+    labels = Labels.new(cv, { cx = cx, cy = cy, ax = ax, R = R, W = W, H = H, pt = pt }, label_w)
     local cand = {}
     for _, it in ipairs(drawn) do
       if it.label ~= it.f.type then cand[#cand + 1] = it end
@@ -196,54 +447,14 @@ function M.build(rec, opts, win_w, win_h, extra)
       if la ~= lb then return la > lb end
       return a.f.id < b.f.id
     end)
-    local label_r = R + 8
     local tolerance = math.max(2, math.floor(H / 8))
-    local used = { right = {}, left = {} }
-    local function placement(side, row, text)
-      local y = row * 4 + 2
-      local dy = y - cy
-      local xoff = math.abs(dy) < label_r and math.sqrt(label_r * label_r - dy * dy) / ax or 0
-      local len = utf8_len(text)
-      if side == "right" then
-        local col = math.ceil((cx + xoff) / 2) + 1
-        return col, col * 2 - 1, y
-      end
-      local col = math.floor((cx - xoff) / 2) - len
-      return col, (col + len) * 2, y
-    end
     local labelled = {}
     for _, it in ipairs(cand) do
-      if labelled[it.label] then goto continue end
-      local th = arc_mid(it)
-      local side = math.sin(th) >= 0 and "right" or "left"
-      local _, wy = pt(th, label_r)
-      local want = math.max(0, math.min(H - 1, math.floor(wy / 4)))
-      for d = 0, tolerance do
-        local done = false
-        for _, row in ipairs(d == 0 and { want } or { want - d, want + d }) do
-          if row >= 0 and row < H and not used[side][row] then
-            local avail = side == "right" and (W - placement(side, row, "")) or (placement(side, row, "") - 1)
-            if avail >= 4 then
-              local text = utf8_trunc(it.label, math.min(label_w, avail))
-              local col, edge_x, ey = placement(side, row, text)
-              if cv:text_free(col, row, utf8_len(text)) then
-                used[side][row] = true
-                local x0, y0 = pt(th, ring_r(it.track) + 2)
-                local x1, y1 = pt(th, R + 3)
-                cv:line(x0, y0, x1, y1, "PlasmidLeader")
-                cv:line(x1, y1, edge_x, ey, "PlasmidLeader")
-                labels[#labels + 1] = { col = col, row = row, text = text, it = it }
-                cv:put(col, row, text, it.hl, it.f.id) -- reserve cells now
-                labelled[it.label] = true
-                done = true
-                break
-              end
-            end
-          end
-        end
-        if done then break end
+      if not labelled[it.label] then
+        local placed = labels:place(arc_mid(it), it.label, it.hl, it.f.id,
+          { tolerance = tolerance, from = ring_r(it.track) + 2, hinge = R + 3 })
+        if placed then labelled[it.label] = true end
       end
-      ::continue::
     end
 
     -- restriction-site labels, after the features: unique cutters first, fanned
@@ -257,32 +468,11 @@ function M.build(rec, opts, win_w, win_h, extra)
       end)
       local etol = math.max(3, math.floor(H / 3))
       for _, g in ipairs(ecand) do
-        local th = ang(g.cut)
-        local side = math.sin(th) >= 0 and "right" or "left"
-        local _, wy = pt(th, label_r)
-        local want = math.max(0, math.min(H - 1, math.floor(wy / 4)))
-        local done = false
-        for d = 0, etol do
-          for _, row in ipairs(d == 0 and { want } or { want - d, want + d }) do
-            if not done and row >= 0 and row < H and not used[side][row] then
-              local avail = side == "right" and (W - placement(side, row, "")) or (placement(side, row, "") - 1)
-              if avail >= 4 then
-                local text = utf8_trunc(g.label, math.min(label_w, avail))
-                local col, edge_x, ey = placement(side, row, text)
-                if cv:text_free(col, row, utf8_len(text)) then
-                  used[side][row] = true
-                  local x1, y1 = pt(th, R + 4)
-                  cv:line(x1, y1, edge_x, ey, "PlasmidLeader")
-                  local grp = g.count == 1 and "PlasmidEnzymeUnique" or "PlasmidEnzyme"
-                  labels[#labels + 1] = { col = col, row = row, text = text, it = { hl = grp, f = {} } }
-                  cv:put(col, row, text, grp)
-                  enz_labels[#enz_labels + 1] = { col = col, row = row, len = utf8_len(text), entry = g }
-                  done = true
-                end
-              end
-            end
-          end
-          if done then break end
+        local grp = g.count == 1 and "PlasmidEnzymeUnique" or "PlasmidEnzyme"
+        local placed = labels:place(ang(g.cut), g.label, grp, nil, { tolerance = etol, hinge = R + 4 })
+        if placed then
+          enz_labels[#enz_labels + 1] =
+            { col = placed.col, row = placed.row, len = utf8_len(placed.text), entry = g }
         end
       end
     end
@@ -332,69 +522,22 @@ function M.build(rec, opts, win_w, win_h, extra)
     end
   end
 
-  -- selection arc just outside the backbone, painted over everything but text
-  if extra.selection then
-    local sel = extra.selection
-    local a0 = ang(sel.start)
-    local a1 = sel.start > sel.stop and (ang(sel.stop + 1) + TAU) or ang(sel.stop + 1)
-    local n = math.max(2, math.ceil((a1 - a0) * (R + 2) * 2))
-    for k = 0, n do
-      local th = a0 + (a1 - a0) * k / n
-      for _, r in ipairs({ R + 1, R + 1.5, R + 2 }) do
-        local x, y = pt(th, r)
-        cv:dot(x, y, "PlasmidSelectionArc")
-      end
-    end
-  end
+  draw_extras()
 
-  -- search hits: short radial marks outside the backbone
-  if extra.search and #extra.search.hits > 0 then
-    for i, h in ipairs(extra.search.hits) do
-      local group = i == extra.search.idx and "PlasmidSearchCurrent" or "PlasmidSearch"
-      local a0 = ang(h.start)
-      local a1 = h.stop >= h.start and ang(h.stop + 1) or (ang(h.stop + 1) + TAU)
-      local n = math.max(1, math.ceil((a1 - a0) * (R + 3) * 2))
-      for kk = 0, n do
-        local th = a0 + (a1 - a0) * kk / n
-        for _, r in ipairs({ R + 1, R + 2, R + 3 }) do
-          local x, y = pt(th, r)
-          cv:dot(x, y, group)
-        end
-      end
-    end
-  end
-
-  -- restriction cuts: radial ticks across the backbone
-  for _, g in ipairs(extra.enzymes or {}) do
-    local th = ang(g.cut)
-    local x0, y0 = pt(th, R - 2)
-    local x1, y1 = pt(th, R + 4)
-    cv:line(x0, y0, x1, y1, "PlasmidEnzymeCut")
-  end
-
-  for _, l in ipairs(labels) do cv:put(l.col, l.row, l.text, l.it.hl, l.it.f.id) end
+  if labels then labels:repaint() end
 
   -- centre text
   local inner = ring_r(math.min(ntracks, max_tracks)) - 3
-  local inner_cols = math.floor(2 * inner / ax / 2) - 2
-  local crow, ccol = math.floor(cy / 4), math.floor(cx / 2)
-  if inner_cols >= 6 then
-    local name = utf8_trunc(rec.name, inner_cols)
-    local size = ("%d %s"):format(rec:len(), rec:unit())
-    cv:put(ccol - math.floor(utf8_len(name) / 2), crow - 1, name, "PlasmidCenter")
-    cv:put(ccol - math.floor(#size / 2), crow, size, "PlasmidHeader")
-    if inner_cols >= 10 and rec.topology ~= "circular" then
-      cv:put(ccol - 6, crow + 1, "(linear DNA)", "PlasmidHeader")
-    end
-  end
+  centre_text(inner, rec.topology ~= "circular" and { "(linear DNA)" } or nil)
 
   local clines, cruns, cbytes, cowners = cv:render()
   local lines = {
     (" %s  ·  %d %s  ·  %s  ·  %s  ·  %s%s"):format(
       rec.name, rec:len(), rec:unit(), rec.molecule_type or "DNA", rec.topology,
-      vf.count_text(items, map_omitted),
-      (map_omitted + hidden) > 0 and ("  (%s not on map)"):format(table.concat(vim.tbl_filter(function(x) return x end, {
-        map_omitted > 0 and ("%d annotation-history"):format(map_omitted) or false,
+      vf.count_text(items, history + off_seq),
+      (history + off_seq + hidden) > 0 and ("  (%s not on map)"):format(table.concat(vim.tbl_filter(function(x) return x end, {
+        history > 0 and ("%d annotation-history"):format(history) or false,
+        off_seq > 0 and ("%d past the sequence end"):format(off_seq) or false,
         hidden > 0 and ("%d over ring limit"):format(hidden) or false,
       }), ", ")) or ""),
     "",
@@ -406,6 +549,7 @@ function M.build(rec, opts, win_w, win_h, extra)
     runs = cruns, cell_bytes = cbytes, owners = cowners,
     cx = cx, cy = cy, R = R, ax = ax, L = L, inner = inner,
     width = win_w, height = win_h, items = items, ntracks = ntracks, hidden = hidden,
+    history = history, off_seq = off_seq,
     canvas_w = W, enz_labels = enz_labels,
   }
   return setmetatable(layout, { __index = M })
@@ -452,6 +596,7 @@ end
 
 function M.row_highlights(self, row0)
   if row0 == 0 then return { { 0, -1, "PlasmidTitle" } } end
+  if row0 == 1 and self.legend_runs then return self.legend_runs end
   local r = row0 - self.header_rows
   return self.runs[r + 1] or {}
 end

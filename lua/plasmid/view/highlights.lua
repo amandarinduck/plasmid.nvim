@@ -72,6 +72,18 @@ function M.setup()
   set("PlasmidOverviewLabel", { link = "Comment" })
   set("PlasmidOverviewViewport", { fg = "#ffcc00", ctermfg = 220, bold = true })
   set("PlasmidOverviewCursor", { fg = "#14161b", bg = "#ffcc00", ctermfg = 16, ctermbg = 220, bold = true })
+  -- genome atlas (the circular map above circular.atlas.threshold). The two
+  -- density rings borrow the gene and mRNA colours so a reader coming from a
+  -- plasmid map recognises the strands; GC and skew are a warm/cool pair each.
+  set("PlasmidRingBase", { link = "NonText" })
+  set("PlasmidRingForward", { fg = "#86c06c", ctermfg = 107 })
+  set("PlasmidRingReverse", { fg = "#7fa7d9", ctermfg = 110 })
+  set("PlasmidRingGCHigh", { fg = "#e3d24a", ctermfg = 184 })
+  set("PlasmidRingGCLow", { fg = "#8a7f3a", ctermfg = 100 })
+  set("PlasmidRingSkewPos", { fg = "#4fb3d9", ctermfg = 74 })
+  set("PlasmidRingSkewNeg", { fg = "#d87c7c", ctermfg = 174 })
+  set("PlasmidRingOri", { fg = "#ff875f", ctermfg = 209, bold = true })
+  set("PlasmidLandmark", { fg = "#ffcc00", ctermfg = 220, bold = true })
   set("PlasmidProposed", { fg = "#c8a2e8", ctermfg = 183, italic = true })
   set("PlasmidSelectionArc", { fg = "#ffcc00", ctermfg = 220, bold = true })
   set("PlasmidCenter", { link = "Title" })

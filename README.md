@@ -85,7 +85,7 @@ and network access to `eutils.ncbi.nlm.nih.gov`.
 
 </details>
 
-## Status (v0.9)
+## Status (v0.10)
 <details> 
 <summary> Click to expand </summary>
 
@@ -517,6 +517,21 @@ jumps to the region under the cursor and `q` puts the window back.
 
 ![Yeast chromosome I at 10 kb per row](docs/screenshots/overview_chromosome.png)
 
+The circular map changes with the record too. A plasmid is drawn feature by
+feature, as it always was. Above `circular.atlas.threshold` (500 kb) an arc
+would be thinner than a braille dot and there would be more features than the
+rings could hold, so the map draws a genome atlas instead: coordinate ticks at
+a round interval, feature density per strand, GC content against the record's
+mean, and GC skew, whose sign changes sit at the replication origin and the
+terminus — on *E. coli* K-12 the skew minimum lands 744 bp from the annotated
+`oriC`. The header says what the bin is, what the rings are, and what became
+of every feature; nothing is dropped without being counted. Only features
+worth naming at that scale are named: the origin, the rRNA operons, the
+largest regions. `docs/ring_report.md` has the rule, the measurements and the
+proof that plasmids render byte for byte as they did.
+
+![E. coli K-12 in the circular view](docs/screenshots/ring_genome.png)
+
 ### Alignment
 
 `:DnaAlign {query}` places a query on the open record and opens an alignment
@@ -605,7 +620,9 @@ require("plasmid").setup({
   },
   linear = { line_width = "auto", show_complement = true, show_translation = true,
              color_bases = false, max_tracks = 4, group = 10 },   -- group = 0: continuous + ruler
-  circular = { aspect = 1.0, max_tracks = 6, label_width = 22 },
+  circular = { aspect = 1.0, max_tracks = 6, label_width = 22,
+               -- above `threshold` residues the map is a density atlas, not one arc per feature
+               atlas = { enabled = "auto", threshold = 500000, landmarks = 12 } },
   orfs = { min_aa = 75, starts = "atg", table = nil, hide_annotated = true },
   detect = { min_identity = 0.95, min_coverage = 0.95, fragments = true,
              min_fragment_coverage = 0.5, min_fragment_length = 50, nested_same_type = false },
@@ -648,6 +665,8 @@ All highlight groups are `default` links and can be overridden: `PlasmidTitle`,
 `PlasmidEnzymeCut`, `PlasmidEnzymeSite`, `PlasmidGel{Ladder,Band,BandStrong,Label,Well}`,
 `PlasmidPrimer`, `PlasmidPrimerTail`, `PlasmidPrimerMismatch`,
 `PlasmidPrimerArrow`, `PlasmidPrimerLabel`,
+`PlasmidRing{Base,Forward,Reverse,GCHigh,GCLow,SkewPos,SkewNeg,Ori}` and
+`PlasmidLandmark` (the genome atlas),
 and `PlasmidFeature<type>` (e.g. `PlasmidFeatureCDS`).
 
 ## Design
@@ -688,7 +707,7 @@ from a decoration provider that touches only on-screen rows.
 <summary> Click to expand </summary>
 
 ```
-nvim -l tests/run.lua                        # all 403 specs, headless, no dependencies
+nvim -l tests/run.lua                        # all 430 specs, headless, no dependencies
 nvim -l tests/run.lua detect                 # filter by spec name
 PLASMID_TEST_GROUP=0 nvim -l tests/run.lua   # the whole suite in the continuous layout
 ```
@@ -871,11 +890,12 @@ synthetic record covering the rest of the grammar.
   Biopython's enzyme data, not yet on a downloaded REBASE release.
 - The gel is a schematic: sizes are placed on a log scale with ~15 % size steps
   per row, and band intensity and topology effects are not modelled.
-- The windowed layout knows how long the buffer is, so it plans every block
-  when the record opens: that is 264 ms of the 1.1 s *E. coli* takes, and it
-  grows with the record. Resizing the window re-plans (615 ms on that genome),
-  which is the one operation that still feels like work. The circular view
-  builds in full whatever the record's size.
+- The windowed layout has to know how long the buffer is, so it counts every
+  block's rows when the record opens: that is 14 ms of the 1.0 s *E. coli*
+  takes, and it grows with the record. Most of the rest is parsing the file.
+  Resizing the window costs nothing unless it changes the residues per line,
+  which is quantised; when it does, the record is laid out again (0.25 s on
+  that genome). The circular view builds in full whatever the record's size.
 - The overview's picture saturates on a dense genome: at 200 kb a row nearly
   every cell has features on both strands, so what you read is where the
   coding stops. The per-strand counts and the names carry the detail.
@@ -905,9 +925,6 @@ synthetic record covering the rest of the grammar.
 
 - **Alignment, further:** reading Sanger traces, and a consensus across a set
   of reads.
-- **Large records, further:** a circular view that scales to a genome, and
-  laying out the blocks lazily enough that opening does not have to plan them
-  all.
 - **Cloning, further:** partial digests, chew-back/fill-in, and writing an
   assembly plan (which parts, which reaction, which checks) to a file.
 - **Later:** writing edited primers back to SnapGene files, and a piece-table

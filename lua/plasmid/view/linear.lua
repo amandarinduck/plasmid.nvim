@@ -51,6 +51,31 @@ local function finalize(prefix_w, cells, hls, fids)
   return (table.concat(parts):gsub("%s+$", "")), runs, segs
 end
 
+--- Residues per line for a record of `L` residues in a window `win_width`
+--- columns wide, under the linear options `o`.
+---
+--- Line widths stay a multiple of ten (and of the group size) so the ruler and
+--- the end-of-line numbers stay round, which means the width is quantised: a
+--- range of window widths all give the same number of residues per line, and
+--- across that range the layout is the same row for row. Resizing asks this
+--- before it rebuilds anything.
+---@param L integer residues in the record
+---@param o table opts.linear
+---@param win_width integer
+function M.line_width(L, o, win_width)
+  local numw = #tostring(math.max(L, 1))
+  -- residues per group (a space between groups); 0 = continuous with a ruler
+  local G = math.max(0, math.floor(tonumber(o.group) or 10))
+  local step = G > 0 and (G * 10 / M.gcd(G, 10)) or 10   -- lcm(G, 10)
+  local W = o.line_width
+  if W == "auto" or type(W) ~= "number" then
+    local avail = win_width - (numw + 1) - (numw + 2) - 1
+    local per = G > 0 and (G + 1) / G or 1   -- columns per residue incl. gaps
+    W = math.max(1, math.floor((avail + 1) / (per * step))) * step
+  end
+  return math.max(step, W)
+end
+
 ---@param rec table Record
 ---@param opts table plasmid config options
 ---@param win_width integer
@@ -60,18 +85,8 @@ function M.build(rec, opts, win_width, extra)
   local L = rec:len()
   local numw = #tostring(math.max(L, 1))
   local prefix_w = numw + 1
-  -- residues per group (a space between groups); 0 = continuous with a ruler
   local G = math.max(0, math.floor(tonumber(o.group) or 10))
-  -- line widths stay a multiple of 10 (and of the group size) so the ruler and
-  -- the end-of-line numbers stay round
-  local step = G > 0 and (G * 10 / M.gcd(G, 10)) or 10   -- lcm(G, 10)
-  local W = o.line_width
-  if W == "auto" or type(W) ~= "number" then
-    local avail = win_width - prefix_w - (numw + 2) - 1
-    local per = G > 0 and (G + 1) / G or 1   -- columns per residue incl. gaps
-    W = math.max(1, math.floor((avail + 1) / (per * step))) * step
-  end
-  W = math.max(step, W)
+  local W = M.line_width(L, o, win_width)
   local content_w = W + (G > 0 and math.ceil(W / G) - 1 or 0)
   local function col0(o0) return o0 + (G > 0 and math.floor(o0 / G) or 0) end
 
@@ -128,6 +143,10 @@ function M.build(rec, opts, win_width, extra)
     primer_cells[#primer_cells + 1] = { p = p, cells = cells }
   end
   local primer_lanes_max = math.max(1, tonumber((opts.primers or {}).lanes) or 3)
+  -- asked once rather than twice per block: a record with no primers is the
+  -- usual case, and on a genome the two calls that return nothing immediately
+  -- are themselves a measurable part of the pass
+  local has_primers = #primer_cells > 0 and nuc
 
 
   local lines, rows = {}, {}
@@ -353,36 +372,57 @@ function M.build(rec, opts, win_width, extra)
     return false
   end
 
-  --- The row plan for a block: kinds, counts, and the assignments the text is
-  --- drawn from. Costs time proportional to what the block contains.
-  local function plan(b)
-    local bs = b * W + 1
-    local be = math.min(bs + W - 1, L)
-    local p = { b = b, bs = bs, be = be }
-    local n = 0
-    if G == 0 then p.ruler = true; n = n + 1 end
-    if enz and nuc then
-      p.enz = enzyme_lanes(bs, be)
-      if p.enz then n = n + #p.enz.lanes end
-    end
-    p.pf = primer_lanes(1, bs, be)
-    if p.pf then n = n + #p.pf.lanes end
-    p.seq_i = n
-    n = n + 1
-    if show_comp then
-      n = n + 1
-      if enz and nuc and has_bottom_cut(bs, be) then p.enzcut = true; n = n + 1 end
-    end
-    p.pr = primer_lanes(-1, bs, be)
-    if p.pr then n = n + #p.pr.lanes end
+  -- The interval sets the track assignment decides against, one per feature
+  -- row of the block being worked on, as parallel arrays with a length rather
+  -- than vf's array of {start, stop} tables. They are reused between blocks:
+  -- an interval table per extent per block is what a pass over a whole genome
+  -- would otherwise spend its memory on, and a block's rows can be counted
+  -- without allocating anything at all. `row_used` and `row_cds` are the same
+  -- idea for the two facts the row count is made of; `touched` lists the rows
+  -- to reset when the block is done.
+  local set_s, set_e, set_n = {}, {}, {}
+  local row_used, row_cds, touched = {}, {}, {}
 
-    -- feature rows for this block, filled in priority order. A feature keeps
-    -- its global track when that row is free here (visual continuity across
-    -- lines); otherwise it takes the first free row; if all `cap` rows are
-    -- taken by more important overlapping features it is summarised below.
+  --- Does anything already on row `r` reach into [s, e]? Intervals on a row
+  --- never overlap each other, so the last one starting at or before e is the
+  --- only candidate that can reach into the query from the left.
+  local function row_overlaps(r, s, e)
+    local S, lo, hi, pos = set_s[r], 1, set_n[r], set_n[r] + 1
+    while lo <= hi do
+      local mid = math.floor((lo + hi) / 2)
+      if S[mid] > e then pos = mid; hi = mid - 1 else lo = mid + 1 end
+    end
+    return pos > 1 and set_e[r][pos - 1] >= s
+  end
+
+  local function row_insert(r, s, e)
+    local S, E, n = set_s[r], set_e[r], set_n[r]
+    local i = n + 1
+    for k = 1, n do
+      if S[k] > s then i = k break end
+    end
+    for k = n, i, -1 do S[k + 1], E[k + 1] = S[k], E[k] end
+    S[i], E[i] = s, e
+    set_n[r] = n + 1
+  end
+
+  --- Feature rows for a block, filled in priority order. A feature keeps its
+  --- global track when that row is free here (visual continuity across lines);
+  --- otherwise it takes the first free row; if all `cap` rows are taken by
+  --- more important overlapping features it is summarised below.
+  ---
+  --- `p` is the plan to record the assignment in, or nil when only the number
+  --- of rows is wanted. Both ways take the same decisions in the same order
+  --- against the same interval sets, so the row count does not depend on which
+  --- was asked for; what differs is that the recording path keeps tables of
+  --- the answer and the counting path keeps nothing.
+  --- Returns the feature rows, how many of them carry a CDS, and how many
+  --- features were displaced.
+  local function assign(b, bs, be, p)
     local block_items = items_in(b, bs, be)
     local nitems = #block_items
-    local by_track, tlist, row_sets, overflow, has_cds
+    local nrows, ncds, nover = 0, 0, 0
+    local by_track, tlist, overflow, has_cds
     for i = 1, nitems do
       local it = block_items[i]
       local ns = 0
@@ -394,50 +434,126 @@ function M.build(rec, opts, win_width, extra)
       for attempt = 0, math.min(cap, nitems) do
         local r = attempt == 0 and it.track or attempt
         if r <= cap and (attempt > 0 or it.track <= cap) then
-          local set = row_sets and row_sets[r]
           local ok = true
-          if set then
+          if row_used[r] then
             for k = 1, ns do
               -- 1 bp of air between neighbours so their arrowheads stay distinct
-              if vf._overlaps(set, span_a[k] - 1, span_b[k] + 1) then ok = false break end
+              if row_overlaps(r, span_a[k] - 1, span_b[k] + 1) then ok = false break end
             end
           end
           if ok then row = r break end
         end
       end
       if row then
-        row_sets = row_sets or {}
-        row_sets[row] = row_sets[row] or {}
-        for k = 1, ns do vf._insert(row_sets[row], span_a[k], span_b[k]) end
-        by_track = by_track or {}
-        if not by_track[row] then
-          by_track[row] = {}
-          tlist = tlist or {}
-          tlist[#tlist + 1] = row
+        if not row_used[row] then
+          row_used[row] = true
+          set_s[row], set_e[row], set_n[row] = set_s[row] or {}, set_e[row] or {}, 0
+          nrows = nrows + 1
+          touched[nrows] = row
+          if p then
+            by_track = by_track or {}
+            by_track[row] = {}
+            tlist = tlist or {}
+            tlist[#tlist + 1] = row
+          end
         end
-        table.insert(by_track[row], it)
+        for k = 1, ns do row_insert(row, span_a[k], span_b[k]) end
+        if p then table.insert(by_track[row], it) end
         if it.f.type == "CDS" or it.f.type == "ORF" then
-          has_cds = has_cds or {}
-          has_cds[row] = true
+          if not row_cds[row] then
+            row_cds[row] = true
+            ncds = ncds + 1
+          end
+          if p then
+            has_cds = has_cds or {}
+            has_cds[row] = true
+          end
         end
       else
-        overflow = overflow or {}
-        overflow[#overflow + 1] = it
+        nover = nover + 1
+        if p then
+          overflow = overflow or {}
+          overflow[#overflow + 1] = it
+        end
       end
     end
-    if tlist then
-      table.sort(tlist)
-      for _, t in ipairs(tlist) do
+    for k = 1, nrows do
+      local r = touched[k]
+      row_used[r], row_cds[r], set_n[r] = nil, nil, 0
+    end
+    if p then
+      if tlist then table.sort(tlist) end
+      p.tlist, p.by_track, p.has_cds = tlist or EMPTY, by_track or EMPTY, has_cds or EMPTY
+      if overflow then p.overflow = overflow end
+    end
+    return nrows, ncds, nover
+  end
+
+  --- The rows a block has. With a plan table it fills it in -- the row kinds,
+  --- the lane and track assignments the text is drawn from; without one it
+  --- records nothing and keeps nothing, which is all an open needs in order to
+  --- learn how long the buffer is. Costs time proportional to what the block
+  --- contains. Returns the row count and whether any feature was displaced.
+  local function rowcount(b, p)
+    local bs = b * W + 1
+    local be = math.min(bs + W - 1, L)
+    if p then p.b, p.bs, p.be = b, bs, be end
+    local n = 0
+    if G == 0 then
+      if p then p.ruler = true end
+      n = n + 1
+    end
+    if enz and nuc then
+      local lanes = enzyme_lanes(bs, be)
+      if lanes then
+        n = n + #lanes.lanes
+        if p then p.enz = lanes end
+      end
+    end
+    if has_primers then
+      local pf = primer_lanes(1, bs, be)
+      if pf then
+        n = n + #pf.lanes
+        if p then p.pf = pf end
+      end
+    end
+    if p then p.seq_i = n end
+    n = n + 1
+    if show_comp then
+      n = n + 1
+      if enz and nuc and has_bottom_cut(bs, be) then
+        if p then p.enzcut = true end
         n = n + 1
-        if show_aa and has_cds and has_cds[t] then n = n + 1 end
       end
     end
-    p.tlist, p.by_track, p.has_cds = tlist or EMPTY, by_track or EMPTY, has_cds or EMPTY
-    if overflow then p.overflow = overflow; n = n + 1 end
+    if has_primers then
+      local pr = primer_lanes(-1, bs, be)
+      if pr then
+        n = n + #pr.lanes
+        if p then p.pr = pr end
+      end
+    end
+
+    local nrows, ncds, nover = assign(b, bs, be, p)
+    n = n + nrows
+    if show_aa then n = n + ncds end
+    if nover > 0 then n = n + 1 end
     n = n + 1   -- trailing blank
-    p.n = n
+    if p then p.n = n end
+    return n, nover > 0
+  end
+
+  --- The row plan for a block: kinds, counts, and the assignments the text is
+  --- drawn from.
+  local function plan(b)
+    local p = {}
+    rowcount(b, p)
     return p
   end
+
+  --- How many rows a block has, and nothing else. This is the whole of what
+  --- opening a windowed record needs from every block it is not about to show.
+  local function count(b) return rowcount(b, nil) end
 
   ---------------------------------------------------------------------------
   -- Rendering a planned block into text and row metadata.
@@ -705,13 +821,16 @@ function M.build(rec, opts, win_width, extra)
   local offsets, total
 
   if windowed then
+    -- the only thing an open needs from a block it is not about to show is how
+    -- many rows it has, so it is counted rather than planned: no plan table,
+    -- no track-assignment tables, nothing kept afterwards
     offsets = {}
     total = header_rows
     for b = 0, nblocks - 1 do
-      local p = plan(b)
+      local n, over = count(b)
       offsets[b + 1] = total
-      total = total + p.n
-      if p.overflow then any_overflow = true end
+      total = total + n
+      if over then any_overflow = true end
     end
     for i = header_rows + 1, total do lines[i] = "" end
   else
@@ -751,7 +870,7 @@ function M.build(rec, opts, win_width, extra)
     layout.offsets = offsets
     layout.margin = math.max(0, tonumber(wcfg.margin) or 2)
     layout.cache_blocks = math.max(64, tonumber(wcfg.cache_blocks) or 0)
-    layout._plan, layout._render = plan, render
+    layout._plan, layout._count, layout._render = plan, count, render
     layout._built, layout._order, layout._plans, layout._maps = {}, {}, {}, {}
     on_codon_map = function(f) layout._maps[#layout._maps + 1] = f end
   end

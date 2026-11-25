@@ -668,9 +668,10 @@ committed corpus; see docs/alignment_report.md.
 15. LARGE RECORDS                                              *plasmid-large*
 
 A bacterial genome is a quarter of a million rows of sequence. Above
-`linear.window.threshold` residues the linear view works out how long the
-buffer is, then lays out only the rows a window is showing, building them as
-you scroll and dropping them again behind you.
+`linear.window.threshold` residues the linear view counts how many rows the
+buffer has without laying any of them out, then lays out only the rows a
+window is showing, building them as you scroll and dropping them again behind
+you.
 
 Nothing about the view changes: coordinates, feature tracks, translations,
 selection, search, restriction sites, primers, alignment and editing behave
@@ -679,10 +680,16 @@ the fixture corpus and a corpus of real genomes; see
 docs/large_records_report.md.
 
 Measured on E. coli K-12 (NC_000913.3, 4,641,652 bp, 9,285 features) at 120
-columns: opening takes 1.1 s and holds 128 MB, against 5.1 s and 724 MB
-laying the whole record out; a page of scrolling 0.9 ms, a jump 7.6 ms.
-Resizing the window re-plans the record (0.6 s on that genome), which is the
-one operation that still costs something.
+columns: opening takes 1.0 s and holds 112 MB, against 5.3 s and 710 MB
+laying the whole record out; a page of scrolling 0.9 ms, a jump 6.8 ms.
+
+Resizing the window costs nothing at all unless it changes the number of
+residues per line, which stays a multiple of ten so that the ruler and the
+end-of-line numbers stay round: at 120 columns that genome has the same
+layout anywhere from 115 to 125, and dragging a border inside that range is
+0.04 ms. A resize that does change it lays the record out again (0.25 s on
+that genome), and waits `resize_debounce` milliseconds first so that a drag
+pays for one layout rather than one per column.
 
                                                         *plasmid-large-config*
     linear = {
@@ -692,10 +699,56 @@ one operation that still costs something.
         margin = 2,           -- screens built either side of the window
         cache_blocks = 512,   -- lines kept laid out behind you
       },
-    }
+    },
+    resize_debounce = 80,     -- ms to wait before laying out at a new
+                              -- window width; 0 lays out at once
 
 :DnaInfo says whether the record you are looking at is windowed, and
 :checkhealth plasmid reports the threshold.
+
+THE GENOME RING                                                 *plasmid-ring*
+
+The circular map draws one arc per feature while an arc is still wider than a
+braille dot. Above `circular.atlas.threshold` residues it is not, and there
+are more features than the rings can hold, so the map draws a genome atlas
+instead. From the backbone inwards: feature density on the forward strand,
+feature density on the reverse strand, GC content against the record's mean
+(outwards above it, inwards below), and GC skew (G-C)/(G+C), outwards
+positive and inwards negative. Coordinate ticks sit outside the backbone at a
+round interval -- every 500 kb on a bacterial genome, every kilobase on a
+plasmid.
+
+A bin is a round number of bases, the finest that fits one bin per character
+cell around the ring, and the same bin is the window GC and skew are measured
+over. The second header row states it, names the rings, and accounts for every
+feature: in the rings, hidden as annotation history, or past the end of the
+sequence. Nothing is dropped silently at either scale.
+
+On a circular DNA record whose cumulative (G-C) swings by at least 0.4% of its
+length, the two places it turns are marked and named `origin (skew)` and
+`terminus (skew)`: the forward strand is the leading strand from the origin
+round to the terminus, so the running sum falls to its minimum at one and
+rises to its maximum at the other. On E. coli K-12 the minimum lands 744 bp
+from the annotated oriC at 25 kb bins. A record with no replication signal is
+not given one.
+
+Labels at this scale are landmarks only -- a replication origin, the rRNA
+operons (one label per operon, not one per gene), then the largest features --
+at most `circular.atlas.landmarks` of them.
+
+                                                         *plasmid-ring-config*
+    circular = {
+      atlas = {
+        enabled = "auto",     -- "auto" | true | false
+        threshold = 500000,   -- residues above which "auto" draws the atlas
+        landmarks = 12,       -- most features named on the ring
+      },
+    }
+
+"auto" decides on the record's length alone, so resizing a window never
+changes which map you are looking at. docs/ring_report.md has the measured
+build times, what the specs check, and the evidence that plasmid-scale maps
+render exactly as they did before the atlas existed.
 
 THE OVERVIEW                                                *plasmid-overview*
 
@@ -885,7 +938,9 @@ Defaults, abridged (see lua/plasmid/config.lua for every key):
                show_translation = true, color_bases = false,
                case = "auto", max_tracks = 4,
                group = 10 },          -- 0 = continuous with a ruler
-    circular = { aspect = 1.0, max_tracks = 6, label_width = 22 },
+    circular = { aspect = 1.0, max_tracks = 6, label_width = 22,
+                 atlas = { enabled = "auto",            -- |plasmid-ring|
+                           threshold = 500000, landmarks = 12 } },
     orfs = { min_aa = 75, starts = "atg",   -- or "alternative"
              table = nil, hide_annotated = true },
     detect = { min_identity = 0.95, min_coverage = 0.95,
@@ -909,6 +964,7 @@ Defaults, abridged (see lua/plasmid/config.lua for every key):
     linear = { window = {                               -- |plasmid-large|
                  enabled = "auto", threshold = 300000,
                  margin = 2, cache_blocks = 512 } },
+    resize_debounce = 80,                               -- |plasmid-large|
     overview = { span = "auto", min_span = 10,           -- |plasmid-overview|
                  labels = true, counts = true },
     align = { match = 2, mismatch = -3,                  -- |plasmid-align|
@@ -982,10 +1038,14 @@ cases (|plasmid-oligo|). Tm and Ta match NEB's calculator exactly.
 converter reads it; it is tested on fixtures and on files generated from
 Biopython's enzyme data, not yet on a downloaded REBASE release.
 
-Opening a large record still plans every block of it to learn how long the
-buffer is: 0.26 s of the 1.1 s E. coli K-12 takes, growing with the record,
-and paid again when the window is resized (|plasmid-large|). The circular
-view is built whole whatever the record's size.
+Opening a large record still counts every block of it to learn how long the
+buffer is: 0.01 s of the 1.0 s E. coli K-12 takes, growing with the record.
+Most of the rest is parsing the file. A resize that changes the residues per
+line lays the record out again (|plasmid-large|). The circular view is built
+whole whatever the record's size; at genome scale the base composition behind
+its rings is read once per record and bin width and then cached, so a resize
+that lands on the same round bin width does not pay for it again
+(|plasmid-ring|).
 
 NCBI occasionally answers with HTTP 429 or a transient "Search Backend
 failed"; requests are retried with backoff, but a busy period can still

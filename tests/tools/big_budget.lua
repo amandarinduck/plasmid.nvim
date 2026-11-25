@@ -147,15 +147,41 @@ end
 out.jump_ms, out.jump_max_ms = stats(jms)
 out.jumps = jumps
 
--- a resize re-lays out the record at the new width
-out.resize_ms = ms(function()
-  vim.o.columns = vim.o.columns - 20
-  buffer.render(buf)
+-- Resizing, through the plugin's own handling of it rather than by calling
+-- the renderer: whether a resize lays the record out again, and when, is the
+-- thing being measured. The wait is what makes a deferred layout count
+-- against the resize that caused it.
+--
+-- A linear view is measured in residues per line and that is quantised, so
+-- two kinds of resize are worth separating: one that lands on a different
+-- number of residues per line, which really does need the record laid out
+-- again, and one that does not, which needs nothing at all.
+local wide = vim.o.columns
+local function settled()
+  return not (buffer.needs_relayout and buffer.needs_relayout(buf, win))
+end
+local function resize_to(cols)
+  vim.o.columns = cols
+  vim.api.nvim_exec_autocmds("VimResized", {})
+  vim.wait(30000, settled, 1)
+end
+
+-- four columns narrower: too small a change to alter the residues per line,
+-- large enough that a layout keyed on the window width would rebuild
+local same = {}
+out.resize_same_total_ms = ms(function()
+  for _ = 1, 10 do
+    same[#same + 1] = ms(function() resize_to(wide - 4) end)
+    same[#same + 1] = ms(function() resize_to(wide) end)
+  end
 end)
-out.resize_back_ms = ms(function()
-  vim.o.columns = vim.o.columns + 20
-  buffer.render(buf)
-end)
+out.resize_same_ms, out.resize_same_max_ms = stats(same)
+out.resizes_same = #same
+out.W_after_same = st.layout.W
+
+out.resize_ms = ms(function() resize_to(wide - 20) end)
+out.W_after_resize = st.layout.W
+out.resize_back_ms = ms(function() resize_to(wide) end)
 out.rows_after_resize = #st.layout.lines
 
 -- how much of the record is laid out after all that
@@ -179,8 +205,8 @@ out.rss_delta_mb = out.rss_mb - rss0
 
 local js = vim.json.encode(out)
 if out_path then local fh = io.open(out_path, "ab"); fh:write(js, "\n"); fh:close() end
-io.stdout:write(("%-16s %-7s %9d bp  open %7.0f ms  page %5.1f/%6.1f  long %6.1f/%7.1f  jump %5.1f/%6.1f  resize %7.0f  heap %5.0f  rss %5.0f MB\n")
+io.stdout:write(("%-16s %-7s %9d bp  open %7.0f ms  page %5.1f/%6.1f  long %6.1f/%7.1f  jump %5.1f/%6.1f  resize %7.0f  same %6.2f  heap %5.0f  rss %5.0f MB\n")
   :format(out.file, out.mode, out.len, out.open_ms, out.page_ms, out.page_max_ms,
     out.long_page_ms, out.long_page_max_ms, out.jump_ms, out.jump_max_ms, out.resize_ms,
-    out.peak_heap_mb, out.peak_rss_mb))
+    out.resize_same_ms, out.peak_heap_mb, out.peak_rss_mb))
 vim.cmd("qa!")

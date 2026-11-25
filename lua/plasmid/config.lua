@@ -138,6 +138,11 @@ M.defaults = {
   dedupe_genes = true,
   -- Show the record's winbar (name, length, cursor bp, feature under cursor).
   winbar = true,
+  -- Milliseconds to wait after a window resize before laying the record out
+  -- again, so a border drag lays it out once at the size it stops at rather
+  -- than at every column on the way. A resize that would not change the
+  -- layout is dropped without waiting. 0 lays out on every resize event.
+  resize_debounce = 80,
   linear = {
     line_width = "auto",     -- bases per line, or "auto" to fit the window (multiple of 10)
     show_complement = true,
@@ -161,6 +166,12 @@ M.defaults = {
     show_ticks = true,
     -- additional types hidden on the map only (annotation history, not biology)
     hidden_types = { old_sequence = true, misc_difference = true, conflict = true, variation = true, unsure = true },
+    -- Above `threshold` residues the map stops drawing one arc per feature --
+    -- on a 120-column terminal a megabase is already several genes per
+    -- braille dot -- and draws a genome atlas instead: feature density per
+    -- strand, GC content and GC skew per angular bin, round coordinate ticks
+    -- and a few landmarks. `enabled = true`/`false` forces it either way.
+    atlas = { enabled = "auto", threshold = 500000, landmarks = 12 },
   },
   -- Whole-record overview (:DnaOverview): one row per span of the record.
   overview = {

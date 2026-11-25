@@ -1,10 +1,13 @@
 -- What the linear view is allowed to cost on a large record.
 --
 -- The point of the windowed layout is that opening a record does not lay it
--- out: it plans every block to learn the buffer's length and builds text only
--- for the rows a window is about to show. A change that quietly goes back to
--- laying everything out up front would still be correct, and every other spec
--- would still pass; these limits are what would fail.
+-- out: it counts each block's rows to learn the buffer's length and builds
+-- text only for the rows a window is about to show. Resizing the window asks
+-- whether the residues per line have changed at all before it lays anything
+-- out again. A change that quietly went back to laying everything out up
+-- front, or to laying it out on every column of a border drag, would still be
+-- correct, and every other spec would still pass; these limits are what would
+-- fail.
 --
 -- The record is generated here -- 400 kb and 4,000 features, with joins,
 -- complements and enough overlap to fill the feature tracks -- so the suite
@@ -18,36 +21,44 @@
 -- still held after a collection, not peak allocation.
 --
 --                                 group 10        group 0         limit
---   windowed build               47 ms/2.6 MB    48 ms/2.6 MB    400 ms/15 MB
---   eager build, same record    543 ms/43.9 MB  439 ms/43.7 MB   ratio only
+--   windowed build               32 ms/2.6 MB    34 ms/2.6 MB    400 ms/15 MB
+--   counting every block        2.3 ms/0.00 MB  2.4 ms/0.00 MB   200 ms/0.5 MB
+--   planning every block        7.3 ms/3.4 MB   8.3 ms/3.8 MB    ratio only
+--   eager build, same record    574 ms/43.7 MB  486 ms/43.7 MB   ratio only
 --   body rows laid out at build    0               0               0
---   one screen                     2.2 ms          1.8 ms        150 ms
---   200 pages of scrolling       111 ms           83 ms         3000 ms
+--   one screen                     2.5 ms          2.3 ms        150 ms
+--   200 pages of scrolling       121 ms           91 ms         3000 ms
 --   rows still laid out after   2985 of 30668   3388 of 31998    a quarter
---   400 jumps (pos_of only)        3.1 ms          2.7 ms        300 ms
---   200 cold rows through info()  21 ms           19 ms         1500 ms
+--   400 jumps (pos_of only)        2.4 ms          2.2 ms        300 ms
+--   200 cold rows through info()  22 ms           19 ms         1500 ms
 --   a query in every block      4445 plans/3.4  4000 plans/3.8  one per block
 --   ...then one screen           19 plans/0.1    16 plans/0.0   an eighth, half
---   open a 400 kb file, :edit    124 ms/10.8 MB  121 ms/10.4 MB 3000 ms/60 MB
---   200 pages through buffer.fill 62 ms           64 ms         3000 ms
---   40 jumps through goto_bp      87 ms           93 ms         2000 ms
---   re-render after two resizes  113 ms          115 ms         4000 ms
---   process growth over the case   7 MB            7 MB          250 MB
+--   20 resizes, same line width   0.9 ms          0.6 ms         200 ms
+--   one resize that changes it    49 ms           52 ms         4000 ms
+--   open a 400 kb file, :edit    108 ms/10.3 MB  110 ms/10.3 MB 3000 ms/60 MB
+--   200 pages through buffer.fill 65 ms           67 ms         3000 ms
+--   40 jumps through goto_bp      90 ms           95 ms         2000 ms
+--   re-render after two resizes  101 ms           95 ms         4000 ms
+--   process growth over the case   4 MB            4 MB          250 MB
 --
 -- The wall-clock limits are several times the measured values because a loaded
 -- CI runner is several times slower; they are still well below what the eager
 -- layout costs here. The ratios asserted below -- the eager layout takes at
--- least 3x the time and 5x the heap -- do not depend on machine speed at all,
--- and are what would catch a return to laying out every row up front. The
--- lowest ratios seen over those six runs were 9.5x on time and 17.2x on heap.
+-- least 3x the time and 5x the heap, and planning every block at least 1.5x
+-- the time and 20x the allocation of counting them -- do not depend on machine
+-- speed at all, and are what would catch a return to laying out every row up
+-- front. The lowest ratios seen over those six runs were 12.6x on eager time,
+-- 17.0x on eager heap, 3.0x on planning time and 341x on planning allocation.
 -- The process-growth limit is loose on purpose: resident memory depends on the
 -- allocator and on whatever ran before this spec.
 --
 -- Those are the numbers when this spec is run on its own. Inside the whole
--- suite the buffer cases are two to four times slower -- 351 ms for the 40
--- jumps in the run this comment was last checked against, against 87 ms alone
+-- suite the buffer cases are two to four times slower -- 367 ms for the 40
+-- jumps in the run this comment was last checked against, against 90 ms alone
 -- -- because 40 other spec files have been through the editor first. The
--- limits have room for that; a limit set from a solo run would not.
+-- limits have room for that; a limit set from a solo run would not. The ratios
+-- compress there too: counting against planning was 3.0x alone and 2.2x inside
+-- the suite, which is why that one is asserted at 1.5x and not at 3x.
 local H = require("helpers")
 
 require("plasmid").setup({})
@@ -118,6 +129,20 @@ local function cost(fn)
   return v, ms, (collectgarbage("count") - h0) / 1024
 end
 
+--- What a step allocates, whether or not it keeps any of it: the collector is
+--- stopped while it runs, so nothing it makes is reclaimed under it. This is
+--- the figure that does not depend on the machine at all.
+local function churn(fn)
+  collectgarbage("collect")
+  collectgarbage("stop")
+  local k0 = collectgarbage("count")
+  fn()
+  local kb = collectgarbage("count") - k0
+  collectgarbage("restart")
+  collectgarbage("collect")
+  return kb / 1024
+end
+
 local function body_rows_laid_out(lay)
   local n = 0
   for i = lay.header_rows + 1, #lay.lines do
@@ -135,6 +160,39 @@ case("opening_a_large_record_lays_out_none_of_it", function()
   H.ok(mb < 15, ("windowed build kept %.1f MB of heap"):format(mb))
   H.log(("    [budget] %d kb, %d features: windowed layout %.0f ms, %.1f MB, %d rows in %d blocks, none built")
     :format(L / 1000, NFEAT, ms, mb, #lay.lines, lay.nblocks))
+end)
+
+-- What an open actually asks of a block it is not about to show is one number:
+-- how many rows it has. Counting that must not allocate -- a plan table and a
+-- set of track-assignment tables per block is the garbage a pass over a whole
+-- genome would otherwise make -- and it must agree with the plan the block is
+-- later built from, which is what tests/spec/rowcount_spec.lua is about.
+case("counting_a_blocks_rows_costs_no_garbage", function()
+  local rec = synthetic()
+  local lay = linear.build(rec, opts(true), WIDTH, {})
+  local function count_all()
+    local n = 0
+    for b = 0, lay.nblocks - 1 do n = n + lay._count(b) end
+    return n
+  end
+  local function plan_all()
+    local n = 0
+    for b = 0, lay.nblocks - 1 do n = n + lay._plan(b).n end
+    return n
+  end
+  H.eq(plan_all(), count_all(), "the record counts to a different length than it plans")
+
+  local count_kb, plan_kb = churn(count_all), churn(plan_all)
+  H.ok(count_kb < 0.5, ("counting every block allocated %.2f MB"):format(count_kb))
+  H.ok(plan_kb / math.max(count_kb, 0.01) > 20,
+    ("planning %.1f MB vs counting %.2f MB: only %.1fx"):format(plan_kb, count_kb, plan_kb / math.max(count_kb, 0.01)))
+
+  local _, count_ms = cost(count_all)
+  local _, plan_ms = cost(plan_all)
+  H.ok(count_ms < 200, ("counting every block took %.0f ms"):format(count_ms))
+  H.ok(plan_ms / count_ms > 1.5, ("planning %.0f ms vs counting %.0f ms: only %.1fx"):format(plan_ms, count_ms, plan_ms / count_ms))
+  H.log(("    [budget] %d blocks: counting %.1f ms / %.2f MB, planning %.1f ms (%.1fx) / %.1f MB (%.0fx)")
+    :format(lay.nblocks, count_ms, count_kb, plan_ms, plan_ms / count_ms, plan_kb, plan_kb / math.max(count_kb, 0.01)))
 end)
 
 -- The ratios are the part that does not care how fast the machine is: whatever
@@ -217,6 +275,60 @@ case("jumping_across_the_record_does_not_accumulate_plans", function()
   H.ok(left < grew / 2, ("%.1f MB of the %.1f MB the jumps cost is still held"):format(left, grew))
   H.log(("    [budget] a position query in every one of %d blocks: %d plans, +%.1f MB; after one screen %d plans, %+.1f MB")
     :format(lay.nblocks, plans, grew, after, left))
+end)
+
+-- Dragging a window border fires a resize on every column it passes through,
+-- and laying a 400 kb record out again is the most expensive thing in this
+-- file. Residues per line are quantised, so most of those columns ask for the
+-- layout the view already has; it has to answer without building one. The
+-- window is resized for real -- `nvim -l` never attaches a UI, so 'columns'
+-- does not reach a window, but the two sides of a vertical split do.
+case("a_resize_that_keeps_the_line_width_lays_out_nothing", function()
+  local rec = synthetic()
+  local dir = vim.fn.tempname()
+  vim.fn.mkdir(dir, "p")
+  local path = dir .. "/synth.gb"
+  H.ok(require("plasmid.io").write(path, { rec }, "genbank", {}, "genbank"), "could not write the record")
+  rec = nil
+
+  local prev = config.options.linear.window
+  config.options.linear.window = { enabled = "auto", threshold = 300000, margin = 2, cache_blocks = 512 }
+  vim.cmd("silent edit " .. vim.fn.fnameescape(path))
+  local buf = vim.api.nvim_get_current_buf()
+  vim.cmd("vsplit")
+  local win = vim.api.nvim_get_current_win()
+  local st = buffer.get(buf)
+  H.ok(st and st.layout.windowed, "a 400 kb file should open windowed")
+
+  --- Resize the window and let the plugin handle it as it would a drag,
+  --- waiting out whatever it defers.
+  local function resize_to(cols)
+    vim.api.nvim_win_set_width(win, cols)
+    vim.api.nvim_exec_autocmds("WinResized", {})
+    vim.wait(5000, function() return not buffer.needs_relayout(buf, win) end, 1)
+  end
+
+  -- three widths: 49 and 52 columns are the same number of residues per line
+  -- for this record, 60 is not
+  resize_to(49)
+  local settled, W = st.layout, st.layout.W
+  local _, same_ms = cost(function()
+    for _ = 1, 10 do resize_to(52); resize_to(49) end
+  end)
+  H.ok(st.layout == settled, "a resize that keeps the line width laid the record out again")
+  H.ok(same_ms < 200, ("20 resizes that change nothing took %.0f ms"):format(same_ms))
+
+  local _, wider_ms = cost(function() resize_to(60) end)
+  H.ok(st.layout ~= settled, "a resize that changes the line width was ignored")
+  H.ok(st.layout.W ~= W, ("the line width stayed %d across a 49 to 60 column resize"):format(W))
+  H.ok(wider_ms < 4000, ("a resize that does change the line width took %.0f ms"):format(wider_ms))
+  H.log(("    [budget] 20 resizes at the same %d residues per line %.1f ms; one to %d residues %.0f ms")
+    :format(W, same_ms, st.layout.W, wider_ms))
+
+  config.options.linear.window = prev
+  vim.cmd("silent only")
+  vim.cmd("silent bwipeout!")
+  os.remove(path)
 end)
 
 -- The same record through the buffer: this is what a user's keypress costs,

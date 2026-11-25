@@ -1,0 +1,7 @@
+# The genome ring: a bacterial chromosome in the circular view, which above
+# circular.atlas.threshold is a density atlas rather than feature arcs.
+# nvim must be on PATH; run from the repo root with a large record, e.g.
+#   tests/tools/fetch_big.sh && python tests/tools/tui_capture.py \
+#     big/NC_000913.gbk docs/screenshots/ring --script tests/tools/ring_shots.txt \
+#     --cols 130 --rows 46 --pre "set laststatus=0"
+genome|<wait>:DnaView circular\r<wait>

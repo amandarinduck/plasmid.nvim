@@ -691,23 +691,34 @@ local function register_autocmds()
     group = group,
     callback = function(ev) buffer.detach(ev.buf) end,
   })
+  -- Resizing: dragging a window border fires this on every column it passes
+  -- through, and laying out a bacterial genome again is the most expensive
+  -- thing the plugin does. Two things keep that off the drag: the view is
+  -- asked whether the new size would change it at all -- for a linear view
+  -- that is a comparison of two residues-per-line numbers, so most small
+  -- resizes end here -- and when it would, the work waits until the drag has
+  -- stopped, and is done once for the size it stops at.
+  local resize_timer
   vim.api.nvim_create_autocmd({ "WinResized", "VimResized" }, {
     group = group,
     callback = function()
-      local seen = {}
+      local pending = false
       for _, win in ipairs(vim.api.nvim_list_wins()) do
-        local b = vim.api.nvim_win_get_buf(win)
-        local st = buffer.get(b)
-        if st and st.layout and not seen[b] then
-          seen[b] = true
-          local w = vim.api.nvim_win_get_width(win)
-          local h = vim.fn.winheight(win)
-          local lay = st.layout
-          if math.abs((lay.width or 0) - w) > 2 or (lay.view == "circular" and lay.height ~= h) then
+        if buffer.needs_relayout(vim.api.nvim_win_get_buf(win), win) then pending = true break end
+      end
+      if not pending then return end
+      if resize_timer then resize_timer:stop() end
+      resize_timer = vim.defer_fn(function()
+        resize_timer = nil
+        local seen = {}
+        for _, win in ipairs(vim.api.nvim_list_wins()) do
+          local b = vim.api.nvim_win_get_buf(win)
+          if not seen[b] and buffer.needs_relayout(b, win) then
+            seen[b] = true
             vim.api.nvim_win_call(win, function() buffer.render(b) end)
           end
         end
-      end
+      end, math.max(0, tonumber(config.options.resize_debounce) or 80))
     end,
   })
   vim.api.nvim_create_autocmd("BufWinEnter", {

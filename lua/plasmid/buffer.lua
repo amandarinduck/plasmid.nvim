@@ -139,6 +139,39 @@ local function set_lines(buf, lines)
   vim.bo[buf].modified = false
 end
 
+--- The configuration a buffer is rendered under: the plugin's options with
+--- whatever this buffer has been told on top of them.
+local function effective_opts(st)
+  local o = config.options
+  if st.track_limit then
+    o = vim.tbl_deep_extend("force", o, {
+      linear = { max_tracks = st.track_limit }, circular = { max_tracks = st.track_limit },
+    })
+  end
+  if st.group then o = vim.tbl_deep_extend("force", o, { linear = { group = st.group } }) end
+  return o
+end
+
+--- Would this buffer look different if it were laid out for `win` as it is
+--- now? A linear layout is measured in residues per line, and that is
+--- quantised so the ruler and the end-of-line numbers stay round: a range of
+--- window widths all give the same residues per line, and over that range the
+--- layout is the same row for row. Dragging a split by a few columns is the
+--- common case, and re-laying out a genome to arrive at the rows it already
+--- has is the most expensive thing the plugin can be asked to do for nothing.
+--- The circular view has no such quantum -- it fills whatever it is given --
+--- so it keeps the tolerance it had.
+function M.needs_relayout(buf, win)
+  local st = M.state[buf]
+  local lay = st and st.layout
+  if not lay or not vim.api.nvim_win_is_valid(win) then return false end
+  local width = text_width(win)
+  if lay.view == "circular" then
+    return math.abs((lay.width or 0) - width) > 2 or lay.height ~= vim.fn.winheight(win)
+  end
+  return linear.line_width(lay.L, effective_opts(st).linear, width) ~= lay.W
+end
+
 --- (Re)build the layout for the buffer's current view and window size.
 ---@param opts { keep_bp?: integer }|nil
 function M.render(buf, opts)
@@ -151,13 +184,7 @@ function M.render(buf, opts)
   local keep = opts.keep_bp
   if not keep and win and st.layout then keep = (M.cursor_info(win)) end
   local rec = M.record(st)
-  local o = config.options
-  if st.track_limit then
-    o = vim.tbl_deep_extend("force", o, {
-      linear = { max_tracks = st.track_limit }, circular = { max_tracks = st.track_limit },
-    })
-  end
-  if st.group then o = vim.tbl_deep_extend("force", o, { linear = { group = st.group } }) end
+  local o = effective_opts(st)
   if st.view == "circular" then
     st.layout = circular.build(rec, o, width, height, { selection = st.selection, search = st.search,
       enzymes = st.enzymes and st.enzymes.entries })
