@@ -275,4 +275,62 @@ case("snapgene_primers_with_tails_draw_every_base", function()
   H.log(("    [tails] %d tailed primers from %d SnapGene records drawn in full"):format(n, files))
 end)
 
+-- A primer that binds in more than one place. The view draws every site it
+-- was given, so when one of them is weak the drawing is right and the choice
+-- is what matters: which site a reader is offered first, and which one the
+-- message describes.
+case("a_primer_with_two_sites_offers_the_stronger_one_first", function()
+  local rec = load("ncbi/J01749.gb")
+  local tmpl = rec.seq:tostring():upper()
+  -- pBR322 carries AGCAAAAGGCCA twice, 11 bp apart; a primer ending there
+  -- anneals 12 nt at both
+  local weak = P.bind(tmpl, true, "GGCCCTTTCGTCTTCAAGAAAGCAAAAGGCCA", {})
+  H.eq(2, #weak, "the repeated anchor should give two sites")
+  for _, s in ipairs(weak) do H.eq(12, s.anneal) end
+
+  -- a primer whose strong site is later in the record than its weak one
+  local strong_at = 3000
+  local core = tmpl:sub(strong_at, strong_at + 24)
+  local sites = P.bind(tmpl, true, core, {})
+  H.eq(1, #sites, "the 25-mer should bind once")
+  -- plant the weak site: the same 3' anchor earlier in the record, with the
+  -- rest diverging, by searching for the anchor elsewhere
+  local anchor = core:sub(-10)
+  local first = tmpl:find(anchor, 1, true)
+  H.ok(first, "the anchor should occur somewhere")
+
+  -- ranking: strongest first, whatever the order in the record
+  local mixed = {
+    { start = 100, stop = 111, strand = 1, anneal = 12, exact3 = 12, tail = "", mismatches = {} },
+    { start = 3000, stop = 3024, strand = 1, anneal = 25, exact3 = 25, tail = "", mismatches = {} },
+    { start = 500, stop = 524, strand = 1, anneal = 25, exact3 = 18, tail = "", mismatches = { 8 } },
+  }
+  local ranked = primers.rank_sites(mixed)
+  H.eq(3000, ranked[1].start, "the fully exact site should come first")
+  H.eq(500, ranked[2].start, "then the longer site with a mismatch")
+  H.eq(100, ranked[3].start, "then the short one")
+  -- ranking must not disturb what it was given
+  H.eq(100, mixed[1].start, "rank_sites edited its argument")
+end)
+
+case("every_site_of_a_multi_site_primer_is_drawn", function()
+  local rec = load("ncbi/J01749.gb")
+  local tmpl = rec.seq:tostring():upper()
+  local seq = "GGCCCTTTCGTCTTCAAGAAAGCAAAAGGCCA"
+  local sites = P.bind(tmpl, true, seq, {})
+  H.eq(2, #sites)
+  for i, s in ipairs(sites) do
+    rec:add_feature(primers.make_feature(rec, s, seq, "REP_" .. i))
+  end
+  rec.revision = (rec.revision or 0) + 1
+  local list = primers.list(rec)
+  H.eq(2, #list, "both sites should be listed")
+  -- 11 bp apart, so they overlap on the same line and need two lanes
+  H.ok(math.abs(list[1].start - list[2].start) < 20, "the two sites should be close together")
+  for _, G in ipairs({ 10, 0 }) do
+    check_drawing(rec, G, 100, ("two sites G=%d"):format(G))
+  end
+  H.log("    [tails] a primer binding twice 11 bp apart: both sites drawn, in both layouts")
+end)
+
 return T

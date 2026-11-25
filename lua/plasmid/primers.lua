@@ -37,17 +37,41 @@ local function commit_sites(buf, rec, sites, seq, name)
   end
   local op = #ops == 1 and ops[1] or { op = "batch", ops = ops, label = "add primer " .. name }
   require("plasmid.author").commit(buf, op, "add primer " .. name)
-  local s = sites[1]
-  notify(("primer %s: %d nt, anneals %d nt at %d..%d (%s)%s%s"):format(name, #P.clean(seq), s.anneal, s.start, s.stop,
+  -- with several sites annotated, report the one that primes best: the others
+  -- are drawn too, and the strongest is not always the first in the record
+  local s = #sites > 1 and M.rank_sites(sites)[1] or sites[1]
+  notify(("primer %s: %d nt, anneals %d nt at %d..%d (%s)%s%s%s"):format(name, #P.clean(seq), s.anneal, s.start, s.stop,
     s.strand == 1 and "forward" or "reverse",
     #s.tail > 0 and (", 5' tail " .. #s.tail .. " nt") or "",
-    #s.mismatches > 0 and (", " .. #s.mismatches .. " mismatch" .. (#s.mismatches > 1 and "es" or "")) or ""))
+    #s.mismatches > 0 and (", " .. #s.mismatches .. " mismatch" .. (#s.mismatches > 1 and "es" or "")) or "",
+    #sites > 1 and ("; %d sites annotated, this is the strongest"):format(#sites) or ""))
   return ops
 end
 
 local function site_text(s)
-  return ("%d..%d %s  anneals %d nt%s%s"):format(s.start, s.stop, s.strand == 1 and "forward" or "reverse", s.anneal,
-    #s.tail > 0 and (", tail " .. #s.tail) or "", #s.mismatches > 0 and (", " .. #s.mismatches .. " mm") or "")
+  return ("%d..%d %s  anneals %d nt%s%s  (%d exact from the 3' end)"):format(s.start, s.stop,
+    s.strand == 1 and "forward" or "reverse", s.anneal,
+    #s.tail > 0 and (", tail " .. #s.tail) or "", #s.mismatches > 0 and (", " .. #s.mismatches .. " mm") or "",
+    s.exact3 or s.anneal)
+end
+
+--- Binding sites strongest first. What decides whether a site primes is the
+--- run of bases that match exactly from the 3' end, so a site that matches 25
+--- of 25 outranks one that matches 12 even where the weaker one comes first in
+--- the record -- which is the order bind() returns them in, and the order a
+--- picker would otherwise offer them in.
+---@return table[] a sorted copy
+function M.rank_sites(sites)
+  local out = vim.deepcopy(sites)
+  table.sort(out, function(a, b)
+    local ea, eb = a.exact3 or a.anneal, b.exact3 or b.anneal
+    if ea ~= eb then return ea > eb end
+    if a.anneal ~= b.anneal then return a.anneal > b.anneal end
+    if #a.mismatches ~= #b.mismatches then return #a.mismatches < #b.mismatches end
+    if a.start ~= b.start then return a.start < b.start end
+    return a.strand > b.strand
+  end)
+  return out
 end
 
 --- :DnaPrimerAdd {seq} [name]: annotate where a primer binds.
@@ -64,11 +88,15 @@ function M.add_sequence(buf, seq, name)
       (cfg().binding or P.defaults).anchor or P.defaults.anchor), vim.log.levels.WARN)
   end
   if #sites == 1 then return commit_sites(buf, rec, sites, seq, name) end
-  local items = vim.deepcopy(sites)
+  local items = M.rank_sites(sites)
+  local best = items[1]
   table.insert(items, 1, { all = true })
   vim.ui.select(items, {
-    prompt = ("%s binds at %d sites"):format(name, #sites),
-    format_item = function(s) return s.all and ("all %d sites"):format(#sites) or site_text(s) end,
+    prompt = ("%s binds at %d sites, strongest first"):format(name, #sites),
+    format_item = function(s)
+      if s.all then return ("all %d sites"):format(#sites) end
+      return site_text(s) .. (s == best and "   <- strongest" or "")
+    end,
   }, function(choice)
     if not choice then return end
     commit_sites(buf, rec, choice.all and sites or { choice }, seq, name)
