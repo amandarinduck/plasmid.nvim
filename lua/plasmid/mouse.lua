@@ -135,6 +135,25 @@ function M.ctrl_click()
   end
   local first, second = s.primer, hit
   s.primer = nil
+  local chosen, ta = M.amplicon(rec, first, second)
+  if not chosen then
+    return notify(("%s and %s make no product (they face away from each other, or do not both bind)")
+      :format(first.name, second.name), vim.log.levels.WARN)
+  end
+  local S = require("plasmid.select")
+  S.set(p.buf, S.make(rec, chosen.start, chosen.stop))
+  local tails = #chosen.fwd.tail + #chosen.rev.tail
+  notify(("%s / %s: %d %s%s (%d..%d)%s"):format(first.name, second.name, chosen.region, rec:unit(),
+    tails > 0 and (" of template, %d bp product with the tails"):format(chosen.length) or " product",
+    chosen.start, chosen.stop, ta and (", Ta %d °C"):format(ta) or ""))
+end
+
+--- The product two primers make on this record, and the annealing temperature
+--- for the first cycle. Only the annealed part of a primer binds the template,
+--- so a 5' tail is left out of the Ta: a 20 nt Gibson overhang would otherwise
+--- raise it by ten degrees and send the reaction in too hot.
+---@return table|nil product, integer|nil ta
+function M.amplicon(rec, first, second)
   local PCR = require("plasmid.pcr")
   local prods = PCR.products(rec.seq:tostring(), rec:is_circular(), first.seq, second.seq)
   local fwd = first.strand == 1 and first or second
@@ -144,17 +163,13 @@ function M.ctrl_click()
     if pr.start == fwd.start and pr.stop == rev.stop then chosen = pr break end
   end
   chosen = chosen or prods[1]
-  if not chosen then
-    return notify(("%s and %s make no product (they face away from each other, or do not both bind)")
-      :format(first.name, second.name), vim.log.levels.WARN)
-  end
-  local S = require("plasmid.select")
-  S.set(p.buf, S.make(rec, chosen.start, chosen.stop))
+  if not chosen then return nil end
   local tm = require("plasmid.bio.tm")
   local cond = require("plasmid.primerinfo").conditions()
-  local ta = select(1, tm.ta(first.seq, second.seq, cond))
-  notify(("%s / %s: %d %s product (%d..%d)%s"):format(first.name, second.name, chosen.length,
-    rec:unit(), chosen.start, chosen.stop, ta and (", Ta %d °C"):format(ta) or ""))
+  local fa = chosen.fwd_primer:sub(#chosen.fwd.tail + 1)
+  local ra = chosen.rev_primer:sub(#chosen.rev.tail + 1)
+  local ok, ta = pcall(function() return (select(1, tm.ta(fa, ra, cond))) end)
+  return chosen, ok and ta or nil
 end
 
 --- Buffer-local mouse mappings, following config.mouse.
