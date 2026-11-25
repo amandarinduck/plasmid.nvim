@@ -29,6 +29,30 @@ site at all, or with mixed overhang lengths: pydna simply finds no join and
 says nothing, where the plugin is expected to explain why). Those carry
 "oracle": "hand" and a reason, and their expectation is derived from the
 model, not from pydna.
+
+Two further families describe single fragments rather than assemblies, and
+are written under their own top-level keys ("partial" and "ends") so that the
+assembly corpus in "cases" is unchanged:
+
+  partial     every fragment an incomplete digestion can leave. pydna's
+              Dseq.apply_cut(left, right) extracts the fragment between any
+              two cutsites, so feeding it every pair of cutsites — rather
+              than only the adjacent pairs Dseq.cut uses — is pydna's own
+              answer for the partial digest.
+  ends        fill-in, T4 blunting and mung bean nuclease on digest
+              fragments. Oracle: Dseq.fill_in, Dseq.t4 and Dseq.mung.
+
+What pydna cannot model, and what the specs therefore do not claim agreement
+on:
+
+  * the 5' phosphate. Dseq has no phosphorylation state at all, so
+    dephosphorylation, the kinase and the ligation rule that depends on them
+    have no counterpart here. They are checked by construction instead
+    (tests/spec/endchem_spec.lua).
+  * T4 polymerase without dNTPs. Dseq.t4(nucleotides) falls back to all four
+    bases when the argument is empty, so the chew-back-only reaction cannot
+    be asked for. Where a fragment has no 5' overhang the two reactions
+    coincide, and only those fragments are compared.
 """
 
 import hashlib
@@ -39,6 +63,7 @@ import warnings
 
 from Bio import SeqIO
 from Bio import Restriction
+from pydna.dseq import Dseq
 from pydna.dseqrecord import Dseqrecord
 from pydna.assembly2 import ligation_assembly, gibson_assembly, golden_gate_assembly
 
@@ -645,11 +670,115 @@ def build_goldengate_cases():
 
 
 # ---------------------------------------------------------------------------
+# 4. Partial digests and end chemistry: single fragments, not assemblies
+# ---------------------------------------------------------------------------
+
+FRAG_FIXTURES = {
+    "J01749": "ncbi/J01749.gb",
+    "L09137": "ncbi/L09137.gb",
+    "NC_001422": "ncbi/NC_001422.gb",
+    "NC_005816": "ncbi/NC_005816.gb",
+    "gg_insert": "synthetic/gg_insert.gb",
+    "gg_vector": "synthetic/gg_vector.gb",
+}
+
+# sets chosen to span site counts and end chemistry; sets with more sites than
+# PARTIAL_MAX_SITES on a given record are skipped, with the count recorded
+FRAG_SETS = [
+    ["EcoRI"], ["HindIII"], ["PstI"], ["EcoRV"], ["ScaI"], ["BsaI"], ["BsmBI"], ["BbsI"],
+    ["EcoRI", "HindIII"], ["PstI", "SalI"], ["EcoRV", "ScaI"], ["BamHI", "EcoRI"],
+    ["KpnI", "SacI"], ["BamHI", "EcoRI", "HindIII"], ["AatII", "NarI", "PvuII"],
+    ["BbsI", "PstI", "EcoRV"], ["NdeI", "XhoI"], ["SphI", "SmaI"],
+]
+
+PARTIAL_MAX_SITES = 6
+
+
+def frag_key(d):
+    """A fragment as four numbers a Lua spec can rebuild: the length of
+    everything present on either strand, the two overhangs in pydna's sign
+    convention (negative = 5' protruding), and a hash of the full sequence."""
+    full = str(d).upper()
+    return [len(full), d.left_ovhg, d.right_ovhg,
+            hashlib.sha256(full.encode()).hexdigest()[:16]]
+
+
+def build_partial_cases():
+    out = []
+    for stem, path in sorted(FRAG_FIXTURES.items()):
+        seq = str(SeqIO.read(FIX / path, "genbank").seq).upper()
+        for circular in (True, False):
+            dseq = Dseq(seq, circular=circular)
+            for names in FRAG_SETS:
+                try:
+                    sites = dseq.get_cutsites(*enz(names))
+                except Exception as e:          # an enzyme Biopython does not know
+                    skipped.append(("partial %s %s" % (stem, "+".join(names)), str(e)))
+                    continue
+                n = len(sites)
+                if n == 0:
+                    continue
+                if n > PARTIAL_MAX_SITES:
+                    skipped.append(("partial %s %s %s" % (stem, "circular" if circular else "linear",
+                                                          "+".join(names)),
+                                    "%d sites: %d fragments is more than the oracle commits" % (n, n * n)))
+                    continue
+                frags = []
+                if circular:
+                    # every ordered pair, the same cutsite twice meaning "cut
+                    # here only", which is what opening a circle once gives
+                    for a in sites:
+                        for b in sites:
+                            frags.append(frag_key(dseq.apply_cut(a, b)))
+                else:
+                    bounds = [None] + sites + [None]
+                    for i in range(len(bounds) - 1):
+                        for j in range(i + 1, len(bounds)):
+                            frags.append(frag_key(dseq.apply_cut(bounds[i], bounds[j])))
+                frags.sort()
+                out.append({"stem": stem, "topology": "circular" if circular else "linear",
+                            "enzymes": names, "sites": n, "fragments": frags})
+    return out
+
+
+def build_end_cases():
+    out = []
+    for stem, path in sorted(FRAG_FIXTURES.items()):
+        seq = str(SeqIO.read(FIX / path, "genbank").seq).upper()
+        for circular in (True, False):
+            dseq = Dseq(seq, circular=circular)
+            for names in FRAG_SETS:
+                try:
+                    sites = dseq.get_cutsites(*enz(names))
+                except Exception:
+                    continue
+                if not sites or len(sites) > PARTIAL_MAX_SITES:
+                    continue
+                pieces = []
+                for d in dseq.cut(*enz(names)):
+                    # t4 fills 5' overhangs as well as chewing 3' ones, so it
+                    # is the chew-back answer only when there is no 5' overhang
+                    no_five = d.left_ovhg >= 0 and d.right_ovhg >= 0
+                    pieces.append({
+                        "cut": frag_key(d),
+                        "fillin": frag_key(d.fill_in()),
+                        "blunt": frag_key(d.t4()),
+                        "nuclease": frag_key(d.mung()),
+                        "chewback": frag_key(d.t4()) if no_five else None,
+                    })
+                out.append({"stem": stem, "topology": "circular" if circular else "linear",
+                            "enzymes": names, "pieces": pieces})
+    return out
+
+
+# ---------------------------------------------------------------------------
 
 def main():
     build_ligation_cases()
     build_gibson_cases()
     build_goldengate_cases()
+    partial = build_partial_cases()
+    ends = build_end_cases()
     counts = {}
     for c in cases:
         counts[c["method"]] = counts.get(c["method"], 0) + 1
@@ -665,11 +794,29 @@ def main():
         "hand_built": hand,
         "skipped": [{"label": a, "reason": b} for a, b in skipped],
         "cases": cases,
+        "partial": partial,
+        "ends": ends,
+        "unmodelled": [
+            {"what": "5' phosphate",
+             "reason": ("pydna's Dseq carries no phosphorylation state, so neither "
+                        "dephosphorylation, the kinase, nor the ligation rule that "
+                        "depends on them has an answer here; they are checked by "
+                        "construction in tests/spec/endchem_spec.lua")},
+            {"what": "T4 polymerase without dNTPs",
+             "reason": ("Dseq.t4(nucleotides) falls back to all four bases when the "
+                        "argument is empty, so the chew-back-only reaction cannot be "
+                        "requested; only fragments with no 5' overhang, where the two "
+                        "reactions coincide, carry a chewback expectation")},
+        ],
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(doc, separators=(",", ":"), sort_keys=False))
-    print("%d cases (%s), %d hand-built -> %s (%.1f kB)"
-          % (len(cases), counts, hand, OUT, OUT.stat().st_size / 1024))
+    nfrag = sum(len(p["fragments"]) for p in partial)
+    npieces = sum(len(e["pieces"]) for e in ends)
+    print("%d cases (%s), %d hand-built; %d partial-digest sets (%d fragments), "
+          "%d end-chemistry sets (%d fragments) -> %s (%.1f kB)"
+          % (len(cases), counts, hand, len(partial), nfrag, len(ends), npieces,
+             OUT, OUT.stat().st_size / 1024))
 
 
 if __name__ == "__main__":

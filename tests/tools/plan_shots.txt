@@ -1,0 +1,20 @@
+# The bench plan for a vector + insert ligation. pUC19 and the cassette are
+# both cut with EcoRI, so the insert goes in either way round and the vector
+# can close on itself: the plan has by-products to tell apart. The picker that
+# follows :DnaLigate is answered with 1 (the first of the two arrangements),
+# and :only! leaves the plan report alone on the screen. Each shot ends by opening
+# and aborting a command line, which clears it in the capture.
+# Run from the repo root:
+#   python tests/tools/tui_capture.py tests/fixtures/ncbi/L09137.gb \
+#     docs/screenshots/clone --script tests/tools/plan_shots.txt \
+#     --rows 60 --cols 150 --pre "set laststatus=0"
+_vector|:DnaDigest EcoRI\r<wait>
+_stage_vector|:DnaCloneAdd vector\r
+_insert|:DnaOpen tests/tools/ecori_cassette.gb\r<wait>
+_cut_insert|:DnaDigest EcoRI\r<wait>
+_stage_insert|:DnaCloneAdd 2\r
+_ligate|:DnaLigate\r<wait>1\r<wait>\e\e\r\e<wait>
+_plan|:DnaClonePlan\r<wait>\e\e\r\e<wait>
+_alone|:only!\r<wait>
+plan|20ggzt:\e<wait>
+plan_checks|85ggzt:\e<wait>

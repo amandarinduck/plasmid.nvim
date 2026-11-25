@@ -22,6 +22,11 @@ M.staged = {}
 
 M.state = {}    -- report buffer -> { src, method, parts, product }
 
+--- The last assembly that produced a product: the whole context, including
+--- the fragments and the arrangement that was built. plasmid.cloneplan reads
+--- it; nothing here depends on it.
+M.last_assembly = nil
+
 M.METHODS = { ligation = "Ligation", goldengate = "Golden Gate", gibson = "Gibson/HiFi" }
 
 local ns = vim.api.nvim_create_namespace("plasmid_clone")
@@ -30,9 +35,12 @@ local ns = vim.api.nvim_create_namespace("plasmid_clone")
 -- Parts
 ---------------------------------------------------------------------------
 
+-- What the engine needs to decide whether two ends join: the homology window
+-- for Gibson, and whether a ligation insists on a 5' phosphate.
 local function homology_opts()
   local c = cfg()
-  return { min_homology = c.min_homology or 20, max_homology = c.max_homology or 200 }
+  return { min_homology = c.min_homology or 20, max_homology = c.max_homology or 200,
+    require_phosphate = c.require_phosphate ~= false }
 end
 
 --- Make the blunt fragment of a linear part; an intact circle keeps frag = nil
@@ -45,9 +53,36 @@ local function ensure_frag(p)
 end
 
 --- "5′ AATT … blunt", or "circular" for a part that still has to be cut.
+--- An end whose 5' phosphate is gone says so.
 function M.ends_text(p)
-  if p.frag then return ("%s … %s"):format(A.end_text(p.frag, "left"), A.end_text(p.frag, "right")) end
+  if p.frag then return ("%s … %s"):format(A.end_report(p.frag, "left"), A.end_report(p.frag, "right")) end
   return "circular (no ends)"
+end
+
+--- The treatment a part has had, for the part list and the report ("—" when
+--- nobody treated it).
+function M.treatment_text(p)
+  local t = p.frag and A.treatment_text(p.frag) or ""
+  return t ~= "" and t or "—"
+end
+
+--- Do any of these parts carry a treatment? The part list and the report grow
+--- a treatment column only then, so an untreated assembly reads as it always has.
+local function any_treated(parts)
+  for _, p in ipairs(parts) do
+    local f = p.frag or p
+    if f and f.treatments and #f.treatments > 0 then return true end
+  end
+  return false
+end
+
+--- Where a digest fragment came from, for the part list: a complete digest or
+--- a partial one, and how many sites a partial fragment read through.
+function M.digest_source(D, f)
+  if not (D and D.partial) then return ("digest of %s"):format(D and D.rec.name or "?") end
+  local skipped = f and f.digest and f.digest.skipped or 0
+  if skipped == 0 then return ("partial digest of %s (all sites cut)"):format(D.rec.name) end
+  return ("partial digest of %s (%d site%s uncut)"):format(D.rec.name, skipped, skipped == 1 and "" or "s")
 end
 
 --- The assembly fragment of a digest buffer's fragment `n` (default: the row
@@ -75,7 +110,7 @@ function M.add(buf, name)
     local f, err, D = M.digest_fragment(buf, n)
     if not f then return notify(err .. " (put the cursor on a fragment row, or :DnaCloneAdd {n})", vim.log.levels.WARN) end
     if name and not n then f.name = name end
-    return M.stage({ name = f.name, rec = f.rec, frag = f, from = ("digest of %s"):format(D.rec.name) })
+    return M.stage({ name = f.name, rec = f.rec, frag = f, from = M.digest_source(D, f) })
   end
   local st = buffer().get(buf)
   if not st then
@@ -115,6 +150,60 @@ function M.clear()
   return n
 end
 
+--- :DnaCloneTreat {treatment} [part...] [left|right] — end chemistry on the
+--- staged parts. Without a part name every staged part is treated; without a
+--- side both ends are. The treatment is recorded on the part, so the part
+--- list and the assembly report can name it.
+function M.treat(args)
+  local name = (args[1] or ""):lower()
+  if not A.TREATMENTS[name] then
+    return notify(("name a treatment: %s"):format(table.concat(A.TREATMENT_ORDER, ", ")), vim.log.levels.WARN)
+  end
+  local sides, picks = nil, {}
+  for i = 2, #args do
+    local a = args[i]:lower()
+    if a == "left" or a == "right" then sides = { a }
+    elseif a == "both" then sides = nil
+    else picks[#picks + 1] = args[i] end
+  end
+  if #M.staged == 0 then
+    return notify("no parts staged (:DnaCloneAdd stages the record, the selection or a digest fragment)",
+      vim.log.levels.WARN)
+  end
+  local targets = {}
+  if #picks == 0 then
+    for _, p in ipairs(M.staged) do targets[#targets + 1] = p end
+  else
+    for _, want in ipairs(picks) do
+      local found = M.staged[tonumber(want) or 0]
+      if not found then
+        for _, p in ipairs(M.staged) do if p.name:lower() == want:lower() then found = p end end
+      end
+      if not found then return notify(("%s is not a staged part"):format(want), vim.log.levels.ERROR) end
+      targets[#targets + 1] = found
+    end
+  end
+  local t = A.TREATMENTS[name]
+  local done, notes = 0, {}
+  for _, p in ipairs(targets) do
+    if not p.frag then
+      notes[#notes + 1] = ("%s: circular, no ends to treat"):format(p.name)
+    else
+      local f, lines, err = A.treat(p.frag, name, { sides = sides })
+      if not f then
+        notes[#notes + 1] = ("%s: %s"):format(p.name, err)
+      else
+        p.frag, p.rec = f, f.rec
+        done = done + 1
+        for _, l in ipairs(lines) do notes[#notes + 1] = ("%s %s"):format(p.name, l) end
+      end
+    end
+  end
+  notify(("%s (%s) on %d part%s — %s"):format(t.label, t.agent, done, done == 1 and "" or "s",
+    table.concat(notes, "; ")))
+  return done, notes
+end
+
 --- A part argument: a staged part, "selection", a digest fragment number (in
 --- a digest table), an open buffer, or a file path.
 function M.resolve(buf, arg)
@@ -134,9 +223,10 @@ function M.resolve(buf, arg)
   end
   local n = tonumber(arg)
   if n and digest().state[buf] then
-    local f, err = M.digest_fragment(buf, n)
+    local f, err, D = M.digest_fragment(buf, n)
     if not f then return nil, err end
-    return { name = f.name, rec = f.rec, frag = f, from = ("fragment %d of the digest"):format(n) }
+    return { name = f.name, rec = f.rec, frag = f,
+      from = ("fragment %d of the %sdigest"):format(n, D.partial and "partial " or "") }
   end
   local want = arg:lower()
   for b, st in pairs(buffer().state) do
@@ -178,7 +268,7 @@ function M.parts(buf, args)
   local D = digest().state[buf]
   if D then
     for i, f in ipairs(A.from_digest(D.rec, D.frags, D.rec.name)) do
-      out[i] = { name = f.name, rec = f.rec, frag = f, from = ("digest of %s"):format(D.rec.name) }
+      out[i] = { name = f.name, rec = f.rec, frag = f, from = M.digest_source(D, f) }
     end
     return out, problems
   end
@@ -337,6 +427,10 @@ function M.why_text(a, b, method, why)
   if A.end_seq(a, "right") ~= A.end_seq(b, "left") then
     return ("%s / %s — the overhangs are not complementary"):format(ta, tb)
   end
+  if not (A.phosphate(a, "right") or A.phosphate(b, "left")) then
+    return ("%s / %s — the ends anneal, but neither carries a 5′ phosphate, so ligase has nothing "
+      .. "to seal (:DnaCloneTreat kinase puts one back)"):format(A.end_report(a, "right"), A.end_report(b, "left"))
+  end
   return tostring(why)
 end
 
@@ -345,7 +439,8 @@ end
 --- pairs of different parts do join.
 function M.join_rows(frags, method)
   local o = homology_opts()
-  local join = method == "gibson" and function(a, b) return A.homology(a, b, o) end or A.compatible
+  local join = method == "gibson" and function(a, b) return A.homology(a, b, o) end
+    or function(a, b) return A.compatible(a, b, o) end
   local flip = {}
   for i, f in ipairs(frags) do flip[i] = A.flip_ends(f) end
   local rows, joining = {}, 0
@@ -390,24 +485,31 @@ function M.report_lines(ctx)
 
   head("parts")
   local rows, right
+  local treated = any_treated(ctx.asm and ctx.asm.parts or ctx.parts)
   if ctx.asm then
-    right = { true, false, true, false, false, false }
+    right = { true, false, true, false, false, false, false }
     local body = {}
     for i, p in ipairs(ctx.asm.parts) do
       body[i] = { tostring(i), p.frag.name, ("%d bp"):format(p.frag.rec:len()),
         p.flipped and "reverse" or "forward",
-        A.end_text(p.frag, "left"), A.end_text(p.frag, "right") }
+        A.end_report(p.frag, "left"), A.end_report(p.frag, "right") }
+      if treated then body[i][7] = A.treatment_text(p.frag) ~= "" and A.treatment_text(p.frag) or "—" end
     end
-    rows = table_rows({ "#", "part", "length", "strand", "left end", "right end" }, body, right)
+    local header = { "#", "part", "length", "strand", "left end", "right end" }
+    if treated then header[7] = "treatment" end
+    rows = table_rows(header, body, right)
   else
-    right = { true, false, true, false, false, false }
+    right = { true, false, true, false, false, false, false }
     local body = {}
     for i, p in ipairs(ctx.parts) do
       local f = p.frag
       body[i] = { tostring(i), p.name, ("%d bp"):format(p.rec:len()), p.from or "",
-        f and A.end_text(f, "left") or "—", f and A.end_text(f, "right") or "—" }
+        f and A.end_report(f, "left") or "—", f and A.end_report(f, "right") or "—" }
+      if treated then body[i][7] = M.treatment_text(p) end
     end
-    rows = table_rows({ "#", "part", "length", "from", "left end", "right end" }, body, right)
+    local header = { "#", "part", "length", "from", "left end", "right end" }
+    if treated then header[7] = "treatment" end
+    rows = table_rows(header, body, right)
   end
   hl[#hl + 1] = { #lines, 0, #rows[1], "PlasmidHeader" }
   for _, l in ipairs(rows) do lines[#lines + 1] = l end
@@ -518,16 +620,19 @@ function M.list(src)
     notify("no parts staged (:DnaCloneAdd stages the record, the selection or a digest fragment)")
     return nil
   end
+  local treated = any_treated(M.staged)
   local body = {}
   for i, p in ipairs(M.staged) do
     body[i] = { tostring(i), p.name, ("%d bp"):format(p.rec:len()),
-      p.frag and A.end_text(p.frag, "left") or "—", p.frag and A.end_text(p.frag, "right") or "—",
+      p.frag and A.end_report(p.frag, "left") or "—", p.frag and A.end_report(p.frag, "right") or "—",
       p.from or "" }
+    if treated then body[i][7] = M.treatment_text(p) end
   end
   local lines = { (" Staged parts (%d) — :DnaClone assembles them, :DnaCloneClear empties the list"):format(#M.staged), "" }
   local hl = { { 0, 0, #lines[1], "PlasmidTitle" } }
-  local rows = table_rows({ "#", "part", "length", "left end", "right end", "source" }, body,
-    { true, false, true, false, false, false })
+  local header = { "#", "part", "length", "left end", "right end", "source" }
+  if treated then header[7] = "treatment" end
+  local rows = table_rows(header, body, { true, false, true, false, false, false, false })
   hl[#hl + 1] = { #lines, 0, #rows[1], "PlasmidHeader" }
   for _, l in ipairs(rows) do lines[#lines + 1] = l end
   lines[#lines + 1] = ""
@@ -590,12 +695,34 @@ function M.finish(src, ctx, asm)
   rec.description = describe(asm, ctx.method, ctx.enzyme, rec)
   ctx.product = rec
   if not asm.circular then
-    table.insert(ctx.warnings, 1, "the parts do not close into a circle; the product is linear")
+    -- say why it stayed open: a dephosphorylated vector is the usual reason,
+    -- and leaving the user to compare the two ends themselves is no answer
+    local o = homology_opts()
+    local first, last = asm.parts[1].frag, asm.parts[#asm.parts].frag
+    local reason
+    if ctx.method == "gibson" then
+      local _, why = A.homology(last, first, o)
+      reason = why
+    elseif not (A.phosphate(last, "right") or A.phosphate(first, "left")) then
+      -- the two ends are already in the parts table above; naming them again
+      -- here would push the reason off the side of the report
+      reason = "neither end has a 5′ phosphate for ligase to seal (:DnaCloneTreat kinase)"
+    else
+      local _, why = A.compatible(last, first, o)
+      reason = why and M.why_text(last, first, ctx.method, why)
+    end
+    table.insert(ctx.warnings, 1, ("the parts do not close into a circle; the product is linear%s")
+      :format(reason and (" — " .. reason) or ""))
   end
   if ctx.nsolutions and ctx.nsolutions > 1 then
     table.insert(ctx.warnings, 1, ("%d assemblies are possible with these parts; this is the one you picked")
       :format(ctx.nsolutions))
   end
+  -- Keep the finished context: :DnaClonePlan turns it into a bench plan, and
+  -- the plan needs the fragments and the chosen arrangement, not just the
+  -- product record.
+  ctx.src = src
+  M.last_assembly = ctx
   local nb = digest().open_record(src, rec, ("%s — %d bp %s"):format(M.METHODS[ctx.method] or ctx.method,
     rec:len(), rec.topology))
   local lines, hl = M.report_lines(ctx)

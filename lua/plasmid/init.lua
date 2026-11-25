@@ -390,6 +390,18 @@ local function register_commands()
       end
       return out
     end })
+  cmd("DnaDigestPartial", function(a)
+    local buf = cur()
+    if not buf then return end
+    require("plasmid.digest").run(buf, a.fargs, { partial = true })
+  end, { nargs = "*", desc = "Partial digest: every fragment an incomplete digestion can give, with its ladder",
+    complete = function(lead)
+      local out = {}
+      for _, e in ipairs(require("plasmid.bio.restriction").enzymes()) do
+        if e.name:lower():find(lead:lower(), 1, true) == 1 then out[#out + 1] = e.name end
+      end
+      return out
+    end })
   cmd("DnaGel", function(a)
     local buf = cur()
     if not buf then return end
@@ -414,6 +426,23 @@ local function register_commands()
     require("plasmid.clone").list(vim.api.nvim_get_current_buf())
   end, { desc = "Show the staged cloning parts (name, length, ends)" })
   cmd("DnaCloneClear", function() require("plasmid.clone").clear() end, { desc = "Empty the staged part list" })
+  cmd("DnaCloneTreat", function(a)
+    require("plasmid.clone").treat(a.fargs)
+  end, { nargs = "+",
+    desc = "End chemistry on staged parts: :DnaCloneTreat {fillin|chewback|blunt|nuclease|dephos|kinase} [part] [left|right]",
+    complete = function(lead, line)
+      local A = require("plasmid.bio.assembly")
+      -- the first argument is the treatment, the rest are parts and sides
+      local words = vim.split(vim.trim(line), "%s+", { trimempty = true })
+      local out = {}
+      if #words <= 1 or (#words == 2 and lead ~= "") then
+        for _, n in ipairs(A.TREATMENT_ORDER) do out[#out + 1] = n end
+      else
+        out = { "left", "right", "both" }
+        for _, p in ipairs(require("plasmid.clone").staged) do out[#out + 1] = p.name end
+      end
+      return vim.tbl_filter(function(w) return w:lower():find(lead:lower(), 1, true) == 1 end, out)
+    end })
   cmd("DnaClone", function(a)
     require("plasmid.clone").run(vim.api.nvim_get_current_buf(), nil, a.fargs)
   end, { nargs = "*", complete = clone_parts_complete,
@@ -440,6 +469,10 @@ local function register_commands()
       end
       return out
     end })
+  cmd("DnaClonePlan", function(a)
+    require("plasmid.cloneplan").run(vim.api.nvim_get_current_buf(), a.args ~= "" and a.args or nil, a.bang)
+  end, { nargs = "?", bang = true, complete = "file",
+    desc = "Bench plan for the last assembly: parts, product, by-products, diagnostic digest, primers (! writes a file)" })
   -- Sequence alignment ----------------------------------------------------
   local function align_complete(lead)
     local out = { "selection", "mode=semi", "mode=global", "mode=local",

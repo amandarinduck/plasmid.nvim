@@ -82,10 +82,14 @@ and network access to `eutils.ncbi.nlm.nih.gov`.
 | `:DnaSearch pBR322[title] AND complete sequence[title]`: hits with size, topology and title; pick one to open it | `:DnaGoldenGate BsmBI` on two staged parts: the product above, and the report with parts, ends, junctions and carried features below |
 | ![Assembled plasmid](docs/screenshots/clone_product.png) | ![Nothing assembles](docs/screenshots/clone_failure.png) |
 | The 3,361 bp product on the circular map: both parts and both junction overhangs annotated beside the carried tet and bla | Parts whose ends cannot anneal: every ordered pair of ends with the reason, and what to change |
+| ![Partial digest table](docs/screenshots/partial_digest.png) | ![Partial ladder](docs/screenshots/partial_gel.png) |
+| `:DnaDigestPartial BbsI` on pBR322: the three sites bound ten fragments — the complete digest first, then the read-throughs, with `missed` counting the sites each one skipped | The same set as a ladder: four bands at 4,361 bp (the intact plasmid and the three single-cut linears), then every span two sites can bound |
+| ![A dephosphorylated part](docs/screenshots/staged_part.png) | ![It will not close](docs/screenshots/dephos_ligation.png) |
+| `:DnaCloneTreat dephos` on a staged pUC19 EcoRI vector: the part list names the treatment and both ends read "no 5′ P" | `:DnaLigate` on it: the overhangs still anneal, but with no phosphate on either side the product is linear, and the report says so |
 
 </details>
 
-## Status (v0.10)
+## Status (v0.11)
 <details> 
 <summary> Click to expand </summary>
 
@@ -109,12 +113,14 @@ and network access to `eutils.ncbi.nlm.nih.gov`.
 | Sequence editing | insert, delete, replace, reverse-complement, rotate the origin; Vim-style keys, commands, `:DnaEdit` plain-text editing; features follow their bases; impact report with frameshift/stop detection; `/translation` kept current; one undo step per edit |
 | Search | IUPAC motifs on both strands and across the origin, with mismatches (`/`, `?`, `n`, `N`, `gn`, `:DnaFind`); amino-acid motifs in six-frame translations or protein records |
 | Restriction enzymes | 222 common commercial enzymes bundled (Type IIS included); unique / 1–2 / all / named sets in both views, cuts on both strands, overhangs, Dam/Dcm warnings where known; import the full REBASE set with `:DnaEnzymeImport` |
-| Digests | `:DnaDigest`: fragment table with ends, overhangs and features; select or extract a fragment as a new record; text gel with ladders and several lanes (`:DnaGel`) |
+| Digests | `:DnaDigest`: fragment table with ends, overhangs and features; select or extract a fragment as a new record; text gel with ladders and several lanes (`:DnaGel`); `:DnaDigestPartial` for every fragment an incomplete digestion can give, with its ladder |
 | Primers | annotate where a primer binds (3'-anchored, mismatches, 5' tails), drawn base-by-base over the template; primer details with `K` |
 | Tm / Ta | the NEB Tm Calculator model for 22 polymerase products, verified against NEB's own API; `:DnaTm`, `:DnaPolymerase`, DMSO, custom salt and primer concentration |
 | Primer design | `:DnaPrimerDesign` ranks pairs for the selection (Tm window, ΔTm, GC, 3' clamp, unique binding), optional restriction-site tails |
 | PCR | `:DnaPCR` builds the product as a new record, with tails, mismatches and the template's features |
 | Cloning | `:DnaClone` (method inferred), `:DnaLigate`, `:DnaGoldenGate`, `:DnaGibson`: parts staged from records, selections, digest fragments or PCR products; sticky, blunt and homology joins in both orientations; features carried and re-joined, parts and junctions annotated; a report that says why nothing assembled |
+| End chemistry | `:DnaCloneTreat`: fill-in, chew-back, T4 blunting, single-strand nuclease, phosphatase and kinase as operations on a part's ends, features following where an end moves; ligation needs a 5′ phosphate on one side of each junction, so a dephosphorylated vector stops self-ligating and the report says why |
+| Bench plan | `:DnaClonePlan`: the parts and where each came from, the reaction, the expected product and its junctions, the by-products the same parts can give, a diagnostic digest chosen so its band pattern tells the product from each of them (or the statement that none does), and colony-PCR and sequencing primers across every junction, sized on the product and on each by-product |
 | Assembly-aware primer design | `:DnaPrimerDesign into={part}` adds the homology or Type IIS tails the assembly needs, then amplifies and assembles the chosen pair to check it closes |
 | Large records | a bacterial genome opens in about a second: above `linear.window.threshold` the view lays out only the rows a window is showing, and `:DnaOverview` draws the whole record one row per span, with a jump into the sequence |
 | Alignment | `:DnaAlign` places a query on the record (either strand, across the origin), `:DnaAlignReads` places a whole run of reads, `:DnaCompare` compares two molecules and ignores a different origin; differences are listed with the feature, codon and effect, and can be written on as `variation` features |
@@ -200,8 +206,10 @@ and network access to `eutils.ncbi.nlm.nih.gov`.
 | `:DnaSearch[!] {query}` · `:DnaGene {symbol} [organism] [flank=N] [plus]` | search nuccore (`!`: protein) · fetch a gene region |
 | `:DnaFetchCache [clear]` | list or clear cached NCBI records |
 | `:DnaCloneAdd [name]` · `:DnaCloneList` · `:DnaCloneClear` | stage the record, the selection or a digest fragment as a part (`gA`) |
+| `:DnaCloneTreat {fillin\|chewback\|blunt\|nuclease\|dephos\|kinase} [part…] [left\|right]` | end chemistry on the staged parts |
 | `:DnaClone [parts…]` · `:DnaLigate [parts…]` | assemble, method inferred · join by ends |
 | `:DnaGoldenGate [enzyme] [parts…]` · `:DnaGibson [parts…]` | one-pot Type IIS assembly · join by terminal homology |
+| `:DnaClonePlan[!] [path]` | the bench plan for the last assembly: parts, product, by-products, diagnostic digest, primers (`!` writes a file) |
 | `:DnaAlign {query} [mode=] [strand=]` · `:DnaAlignReads {file\|glob}…` | align a query · place a run of reads |
 | `:DnaOverview [bases-per-row]` · `:DnaRegion {start}..{stop}` | the whole record on one screen · go to a region and select it |
 | `:DnaCompare {record}` · `:DnaAlignAnnotate` | compare two molecules · write the differences on as features |
@@ -388,6 +396,18 @@ draws one lane per digest. The ladder is chosen automatically (1 kb or
 100 bp), or set with `ladder=100bp`. Migration is drawn on a log scale; uncut
 circular DNA is drawn at its linear size.
 
+A digestion that stops short leaves more than that. `:DnaDigestPartial BbsI`
+lists every span two cut sites can bound — on a circle that is n² of them plus
+the intact plasmid, on a linear molecule (n+2)(n+1)/2 over its n+2 boundaries
+— with a `missed` column counting the sites inside each fragment that were not
+cut, so the complete digest is the block of rows that missed none. The title
+and the gel lane both say the ladder is every band an incomplete digestion can
+give, not what one reaction yields. Because the count grows as the square,
+above `digest.partial.max_sites` (12, which is 145 fragments) the command
+reports how many there would be rather than listing them. `:DnaGel BbsI |
+partial BbsI | uncut` puts the two ladders side by side, and a partial fragment
+stages as a cloning part like any other.
+
 ### Primers
 
 `:DnaPrimerAdd GTAAAACGACGGCCAGT M13fwd` finds where a primer binds and
@@ -476,6 +496,37 @@ the same report lists every ordered pair of ends and why each was refused** —
 a 5′ overhang meeting a 3′ overhang, overhangs that are not complementary, a
 blunt end meeting a 4-base end — with what to change.
 
+#### End chemistry
+
+A staged part's ends carry more than their overhang. `:DnaCloneTreat` changes
+them, and records what it did on the part, so the part list and the report name
+the treatment:
+
+```vim
+:DnaCloneTreat fillin          " Klenow / T4 + dNTPs: a 5′ overhang becomes blunt
+:DnaCloneTreat chewback        " T4 without dNTPs: a 3′ overhang loses its bases
+:DnaCloneTreat blunt           " T4 with dNTPs: fill a 5′ end, chew a 3′ one
+:DnaCloneTreat nuclease        " mung bean / S1: either overhang is removed
+:DnaCloneTreat dephos vector   " CIP / rSAP: clear the 5′ phosphate
+:DnaCloneTreat kinase insert left
+```
+
+Fill-in keeps the overhang bases — the recessed strand is extended to meet them
+— while chew-back and the nuclease remove them, and the record follows: a
+feature that reached into the removed bases is truncated by the same rules as
+editing. A blunt end is changed by none of them, and a treatment that would
+leave nothing double-stranded is refused.
+
+Sealing a junction makes two nicks, one per strand, and ligase needs a 5′
+phosphate beside each 3′ hydroxyl. The two come from the two ends, one each, so
+**one phosphorylated end per junction is enough** — the product carries a nick
+the cell repairs. With neither there is nothing to seal. That is the whole
+point of dephosphorylating a vector: it stops self-ligating but still takes an
+insert, and when it does stay linear the report says *the ends anneal, but
+neither carries a 5′ phosphate* instead of leaving you to guess. A restriction
+digest leaves both ends phosphorylated, so nothing changes until you ask for it
+(`cloning.require_phosphate = false` turns the rule off entirely).
+
 To design primers for an assembly, select the region and name the destination:
 
 ```vim
@@ -488,6 +539,67 @@ the enzyme site, spacer and the fusion overhangs its own cut leaves for Golden
 Gate (`overhangs=AATG/GCTT` to set them yourself). A site for that enzyme
 inside the region to amplify is flagged, and the pair you choose is amplified
 and assembled to confirm it closes.
+
+### The bench plan
+
+`:DnaClonePlan` turns the last assembly into the thing a cloner writes down
+before touching a pipette. `:DnaClonePlan path` (or `:DnaClonePlan!`, which
+names the file after the product) writes the same text to a file.
+
+```vim
+:DnaLigate               " or :DnaClone, :DnaGibson, :DnaGoldenGate
+:DnaClonePlan!           " the plan, in a split and in a file
+```
+
+The plan names the parts and where each came from, how each was prepared and
+what ends it has; the reaction and its enzyme; the expected product with every
+junction and the base it sits at; the **by-products** the same parts can also
+give; a **diagnostic digest** whose band pattern tells the product from each
+of them; and **colony-PCR and sequencing primers** across every junction.
+
+By-products are molecules the assembler really builds — the same engine, run
+over sub- and multisets of the same fragments — so none of them is a guess:
+one part closing on itself, a part left out, the same parts in another order
+or orientation, a part taken twice, and, for a part that went in as a circle,
+that circle carried through uncut. Duplicates are removed by molecule, so a
+rotation or the reverse complement of the product is never listed as
+background.
+
+The diagnostic search asks the **gel model** what "tells apart" means. Two
+lanes differ only when one has a band in a row the other has not; two sizes
+that land in the same row are one band on a gel, however different the numbers
+look in a table, and a band off the end of the gel shows nothing. Single
+enzymes are searched first, then pairs, preferring a set whose distinguishing
+bands clear at least `cloning.plan.min_gap` (2) rows. **Where nothing
+discriminates, the plan says so**, names the by-products it cannot tell apart,
+and offers the best partial check as a partial check — a digest that cannot
+tell two outcomes apart is worse than no digest, because it will be run and
+believed.
+
+A worked example, all numbers measured: pUC19 (`L09137`, 2,686 bp) cut with
+EcoRI gives one 2,690 bp fragment; a 919 bp cassette carrying 901 bp of pBR322
+between two EcoRI sites gives a 913 bp insert. Every end is the same `AATT`
+overhang, so the ligation has 2 arrangements and the plan finds **11
+by-products** of the 3,595 bp product: the vector closing on itself (2,686 bp),
+the insert closing on itself (909 bp), the insert in the reverse orientation
+(3,595 bp, the same size as the product) and 8 tandems (6,281 and 4,504 bp).
+**XmnI alone tells the product from all eleven**, found after 72 enzyme sets
+built from 136 candidates; it cuts the product into 1,971 and 1,624 bp, and
+each by-product either loses one of those bands or gains one 2 to 6 gel rows
+clear of its neighbours. The colony-PCR pair across the first junction gives
+409 bp on the product and tells 9 of the 11 apart — the two it cannot are the
+tandems that still contain that junction, which the digest does distinguish.
+The whole plan takes about 1.1 s, most of it primer design.
+
+| | |
+|---|---|
+| ![Bench plan](docs/screenshots/clone_plan.png) | ![Plan checks](docs/screenshots/clone_plan_checks.png) |
+| The by-products of that ligation, the diagnostic digest and the gel XmnI would give: lane `product` has 1,971 and 1,624 bp, and every other lane differs from it by at least one band | The colony PCR sized on the product and on each by-product, with the two pairings that are *not* a check named as such, and the sequencing primers that read across each junction |
+
+Not modelled: band intensity (so a doubled band is never read as evidence),
+partial digestion, star activity, supercoiling, and how well each molecule
+transforms. The by-products are what the parts can give, not what they will
+give.
 
 ### Large records
 
@@ -638,7 +750,14 @@ require("plasmid").setup({
                max_run = 4, slack = 8, pairs = 8 },
   },
   cloning = { min_homology = 20, max_homology = 200, enzyme = "BsaI",
-              annotate_parts = true, annotate_junctions = true, max_solutions = 50 },
+              annotate_parts = true, annotate_junctions = true, max_solutions = 50,
+              require_phosphate = true },
+  digest = { partial = { max_sites = 12, max_fragments = 500 } },
+              -- the bench plan (:DnaClonePlan)
+              plan = { max_enzymes = 2, min_site = 6, candidates = nil, max_parts = 6,
+                       tandem = true, flank = 200, read_offset = 150, slack = 8,
+                       slack_max = 60, min_gap = 2, gel_lanes = 6,
+                       max_sets = 2000, top_singles = 24 } },
   -- above `threshold` residues the linear view lays out only what a window shows
   linear = { window = { enabled = "auto", threshold = 300000, margin = 2, cache_blocks = 512 } },
   overview = { span = "auto", min_span = 10, labels = true, counts = true },
@@ -690,6 +809,7 @@ lua/plasmid/
   orfs.lua  detectui.lua  featuredb.lua  search.lua  enzymes.lua  digest.lua
   primers.lua  primerdesign.lua  pcr.lua  ncbi.lua (E-utilities client)  fetch.lua
   bio/assembly.lua (fragment ends, ligation, Golden Gate, Gibson)  clone.lua  mouse.lua
+  cloneplan.lua (by-products, diagnostic digest, check primers)
   bio/align.lua (affine-gap pairwise, seeded band)  bio/variant.lua  alignment.lua
   view/overview.lua (whole-record map)  overview.lua
   init.lua  config.lua  health.lua
@@ -707,7 +827,7 @@ from a decoration provider that touches only on-screen rows.
 <summary> Click to expand </summary>
 
 ```
-nvim -l tests/run.lua                        # all 430 specs, headless, no dependencies
+nvim -l tests/run.lua                        # all 460 specs, headless, no dependencies
 nvim -l tests/run.lua detect                 # filter by spec name
 PLASMID_TEST_GROUP=0 nvim -l tests/run.lua   # the whole suite in the continuous layout
 ```
@@ -914,6 +1034,13 @@ synthetic record covering the rest of the grammar.
 - Gibson joins are exact terminal matches; mismatched or partially annealing
   arms, chew-back and fill-in are not modelled, and ends of different lengths
   never anneal.
+- A bench plan enumerates a fixed family of by-products (a part alone, a part
+  left out, another order or orientation, a part twice, an input circle carried
+  through uncut). Above `cloning.plan.max_parts` (6) parts only the largest
+  proper subsets are tried and the plan says what it skipped. The diagnostic
+  search offers at most `cloning.plan.max_enzymes` (2) enzymes and reads
+  presence or absence of a band, never its intensity: a lane with a doubled
+  band is not treated as different from one with a single band at that size.
 - NCBI occasionally answers with HTTP 429 or a transient "Search Backend
   failed"; requests are retried with backoff, but a busy period can still
   surface an error. Try again, or set an API key.
@@ -925,8 +1052,6 @@ synthetic record covering the rest of the grammar.
 
 - **Alignment, further:** reading Sanger traces, and a consensus across a set
   of reads.
-- **Cloning, further:** partial digests, chew-back/fill-in, and writing an
-  assembly plan (which parts, which reaction, which checks) to a file.
 - **Later:** writing edited primers back to SnapGene files, and a piece-table
   store for editing records larger than ~100 kb.
 

@@ -1,0 +1,7 @@
+# End chemistry: a dephosphorylated vector in the part list, and what the
+# ligation report says when it will not close on itself.
+# python tests/tools/tui_capture.py tests/fixtures/ncbi/L09137.gb docs/screenshots/e \
+#   --script tests/tools/endchem_shots.txt --cols 132 --rows 44 --pre "set laststatus=0"
+_open|<wait>:DnaDigest EcoRI\r<wait>
+staged_part|:DnaCloneAdd vector\r:DnaCloneTreat dephos\r:DnaCloneList\r<wait>
+dephos_ligation|:DnaLigate\r<wait>

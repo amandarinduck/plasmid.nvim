@@ -9,7 +9,8 @@ has first-class routines for all three methods this milestone implements —
 re-statement of the same model.
 
 Python is a development tool only. `tests/oracle/dump_cloning.py` writes
-`tests/oracle/expected/cloning.json` (468 cases, 329 kB); the suite reads only
+`tests/oracle/expected/cloning.json` (468 cases plus the v0.11 fragment
+families, 440 kB); the suite reads only
 that file. `tests/spec/cloning_oracle_spec.lua` runs every case through the
 engine offline and compares. Nothing in the loop touches the network.
 
@@ -18,6 +19,11 @@ of assemblies, on the topology, on the fragment lengths and order coming out
 of each digest, and on the cases where nothing should assemble. Two engine
 defects were found on the way and fixed (below); neither changed a product
 sequence.
+
+v0.11 added two further families, about single fragments rather than
+assemblies: **972 of 972 partial-digest fragments** and **1,230 of 1,230
+treated ends** agree as well (see *v0.11* below, which also says what pydna
+has no way to model).
 
 ## How a product is compared
 
@@ -341,8 +347,60 @@ dozen tests however many fragments are on the bench.)
 * **Gibson joins are exact terminal matches**, longest first, with a floor of
   `min_homology` (default 20) and a ceiling of `max_homology` (default 200).
   Mismatched or partially annealing arms are not modelled.
-* **Ends must be the same length to anneal.** Partial sticky-end overlaps and
-  fill-in/chew-back are not modelled.
+* **Ends must be the same length to anneal.** Partial sticky-end overlaps are
+  not modelled. Fill-in and chew-back are, as treatments a user asks for
+  (below), not as something a ligation does by itself.
+
+## v0.11: partial digests and end chemistry
+
+Two families were added to the corpus. They describe single fragments rather
+than assemblies, so they live under their own keys in the same JSON
+(`partial`, `ends`) and the 468 assembly cases above are unchanged.
+
+### Partial digests — 147 sets, 972 fragments, all agreeing
+
+`Dseq.cut` only pairs *adjacent* cutsites. `Dseq.apply_cut(left, right)` takes
+any two, so feeding it every pair is pydna's own answer for an incomplete
+digestion, built by pydna's fragment extraction rather than by our coordinate
+arithmetic. Six fixtures (pBR322, pUC19, phiX174, pPCP1 and the two Golden
+Gate parts) × both topologies × 18 enzyme sets, keeping the sets with at most
+six sites; three sets were skipped for having more (recorded in `skipped`).
+
+Each fragment is compared on the length of everything present on either
+strand, both overhangs in pydna's signed convention, and the sha256 of the
+full sequence — so the sequence, the two ends and their chemistry all have to
+match. **972 of 972 agree.** The one entry pydna has no way to express is the
+circle nobody cut: it enumerates pairs of cutsites, and an intact plasmid is
+not bounded by any. The spec checks that this is the only extra entry, and
+only on circular records.
+
+A second, independent check does not use pydna at all
+(`tests/spec/partial_spec.lua`): for every subset of the committed Biopython
+cut list, the complete-digest code is run and its products collected, and the
+union over all 2ⁿ subsets must be exactly the partial set. 271 digests over
+three fixtures × two topologies × 69 enzyme sets (up to 8 sites), 2,381
+fragments, none missing and none unreachable.
+
+### End chemistry — 1,230 treated ends, all agreeing
+
+pydna models three of the six treatments: `Dseq.fill_in` (Klenow), `Dseq.t4`
+(T4 polymerase with dNTPs) and `Dseq.mung` (mung bean nuclease). Every
+fragment of every digest in the same corpus was treated and compared on the
+same four numbers. **1,230 of 1,230 agree.**
+
+What pydna cannot model, stated rather than papered over:
+
+* **The 5′ phosphate.** `Dseq` carries no phosphorylation state at all, so
+  dephosphorylation, the kinase, and the ligation rule that depends on them
+  have no counterpart to compare against. They are checked by construction in
+  `tests/spec/endchem_spec.lua`, which reads each fragment back as its two
+  strands and defines each reaction as what it does to them.
+* **T4 polymerase without dNTPs.** `Dseq.t4(nucleotides)` falls back to all
+  four bases when the argument is empty, so the chew-back-only reaction cannot
+  be requested. Where a fragment carries no 5′ overhang the two reactions
+  coincide and `t4` is the chew-back answer: 123 of the 369 fragments
+  qualified and were compared; the other 246 carry a 5′ overhang and have no
+  pydna expectation.
 
 ## Reproducing
 

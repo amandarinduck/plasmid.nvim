@@ -71,9 +71,17 @@ function M.fragment_features(rec, fr)
   return out
 end
 
+--- The partial-digest limits from the configuration.
+function M.partial_opts()
+  local c = (require("plasmid.config").options.digest or {}).partial or {}
+  return { max_sites = c.max_sites, max_fragments = c.max_fragments }
+end
+
 --- Digest a record with enzymes (names). Returns fragments (position order),
---- the cuts and the enzymes with no site.
-function M.compute(rec, names)
+--- the cuts and the enzymes with no site. With opts.partial the fragments are
+--- every product an incomplete digestion can give (see R.partial) and a fifth
+--- return value says how many there were.
+function M.compute(rec, names, opts)
   local P = R.prepare(rec)
   local cuts, none, unknown = {}, {}, {}
   for _, n in ipairs(names) do
@@ -85,30 +93,38 @@ function M.compute(rec, names)
       for _, x in ipairs(s) do cuts[#cuts + 1] = x end
     end
   end
+  if opts and opts.partial then
+    local frags, info = R.partial(rec, cuts, vim.tbl_extend("force", M.partial_opts(), opts))
+    return frags, cuts, none, unknown, info
+  end
   return R.digest(rec, cuts), cuts, none, unknown
 end
 
 local HEADER = { "#", "from", "to", "length", "left end", "right end", "features" }
+-- a partial digest adds the sites the fragment read through: a complete-digest
+-- fragment missed none of them
+local PARTIAL_HEADER = { "#", "from", "to", "length", "missed", "left end", "right end", "features" }
 
-local function table_lines(rec, frags)
+local function table_lines(rec, frags, partial)
+  local header = partial and PARTIAL_HEADER or HEADER
+  local nright = partial and 5 or 4
   local rows = {}
   for i, fr in ipairs(frags) do
-    rows[i] = {
-      tostring(i), tostring(fr.start), tostring(fr.stop), tostring(fr.length) .. " bp",
-      fr.uncut and "—" or end_label(rec, fr.left), fr.uncut and "—" or end_label(rec, fr.right),
-      (function()
-        local list = M.fragment_features(rec, fr)
-        local shown = {}
-        for k = 1, math.min(5, #list) do shown[k] = list[k] end
-        local t = table.concat(shown, ", ")
-        if #list > 5 then t = t .. (", +%d more"):format(#list - 5) end
-        return t
-      end)(),
-    }
+    local row = { tostring(i), tostring(fr.start), tostring(fr.stop), tostring(fr.length) .. " bp" }
+    if partial then row[#row + 1] = tostring(fr.skipped or 0) end
+    row[#row + 1] = fr.uncut and "—" or end_label(rec, fr.left)
+    row[#row + 1] = fr.uncut and "—" or end_label(rec, fr.right)
+    local list = M.fragment_features(rec, fr)
+    local shown = {}
+    for k = 1, math.min(5, #list) do shown[k] = list[k] end
+    local t = table.concat(shown, ", ")
+    if #list > 5 then t = t .. (", +%d more"):format(#list - 5) end
+    row[#row + 1] = t
+    rows[i] = row
   end
   local w = {}
-  for c = 1, #HEADER do
-    w[c] = vim.fn.strdisplaywidth(HEADER[c])
+  for c = 1, #header do
+    w[c] = vim.fn.strdisplaywidth(header[c])
     for _, r in ipairs(rows) do w[c] = math.max(w[c], vim.fn.strdisplaywidth(r[c])) end
   end
   local function fmt(r)
@@ -116,11 +132,11 @@ local function table_lines(rec, frags)
     for c = 1, #r do
       local cell = r[c]
       local pad = w[c] - vim.fn.strdisplaywidth(cell)
-      if c <= 4 then parts[c] = (" "):rep(pad) .. cell else parts[c] = cell .. (c < #r and (" "):rep(pad) or "") end
+      if c <= nright then parts[c] = (" "):rep(pad) .. cell else parts[c] = cell .. (c < #r and (" "):rep(pad) or "") end
     end
     return " " .. table.concat(parts, "  ")
   end
-  local out = { fmt(HEADER) }
+  local out = { fmt(header) }
   for _, r in ipairs(rows) do out[#out + 1] = fmt(r) end
   return out
 end
@@ -140,8 +156,10 @@ end
 
 local ns = vim.api.nvim_create_namespace("plasmid_digest")
 
---- :DnaDigest — names default to the shown named set.
-function M.run(src, names)
+--- :DnaDigest — names default to the shown named set. opts.partial lists
+--- every product an incomplete digestion can give instead.
+function M.run(src, names, opts)
+  opts = opts or {}
   local st = buffer().get(src)
   if not st then return end
   local rec = buffer().record(st)
@@ -150,23 +168,47 @@ function M.run(src, names)
     if st.enzymes and st.enzymes.spec.mode == "names" then names = st.enzymes.spec.names
     else return notify("name the enzymes, e.g. :DnaDigest EcoRI HindIII (or pick them with gZ first)", vim.log.levels.WARN) end
   end
-  local frags, cuts, none, unknown = M.compute(rec, names)
+  local frags, cuts, none, unknown, info = M.compute(rec, names, opts)
   if #unknown > 0 then return notify("unknown enzyme: " .. table.concat(unknown, ", "), vim.log.levels.ERROR) end
+  if info and info.too_many then
+    return notify(("a partial digest with %d sites has %d possible fragments; "
+      .. "name fewer enzymes, or raise digest.partial.max_sites above %d")
+      :format(info.sites, info.total, info.max_sites), vim.log.levels.WARN)
+  end
   local b = digest_buffer(src)
-  local title = (" Digest of %s (%d bp, %s) with %s — %d cut%s, %d fragment%s"):format(
-    rec.name, rec:len(), rec.topology, table.concat(names, " + "), #cuts, #cuts == 1 and "" or "s",
-    #frags, #frags == 1 and "" or "s")
+  local title
+  if opts.partial then
+    title = (" Partial digest of %s (%d bp, %s) with %s — %d site%s, %d fragment%s an incomplete digestion can give"):format(
+      rec.name, rec:len(), rec.topology, table.concat(names, " + "), info.sites, info.sites == 1 and "" or "s",
+      info.total, info.total == 1 and "" or "s")
+  else
+    title = (" Digest of %s (%d bp, %s) with %s — %d cut%s, %d fragment%s"):format(
+      rec.name, rec:len(), rec.topology, table.concat(names, " + "), #cuts, #cuts == 1 and "" or "s",
+      #frags, #frags == 1 and "" or "s")
+  end
   local lines = { title }
+  if opts.partial then
+    lines[#lines + 1] = (" every span bounded by two cuts%s; \"missed\" is how many of the %d sites the fragment read through")
+      :format(rec:is_circular() and ", plus the intact circle" or " or by a molecule end", info.sites)
+    if info.capped then
+      lines[#lines + 1] = (" showing the first %d of %d (digest.partial.max_fragments)"):format(info.shown, info.total)
+    end
+  end
   if #none > 0 then lines[#lines + 1] = " no site: " .. table.concat(none, ", ") end
   lines[#lines + 1] = ""
   local first_row = #lines + 1   -- the column header row
-  for _, l in ipairs(table_lines(rec, frags)) do lines[#lines + 1] = l end
+  for _, l in ipairs(table_lines(rec, frags, opts.partial)) do lines[#lines + 1] = l end
   lines[#lines + 1] = ""
   lines[#lines + 1] = " <CR> select fragment   e extract as new record   q close"
   local gel_at = #lines
   local gel = require("plasmid.gel")
-  local glines, ghl = gel.render({ { label = table.concat(names, "+"), sizes = vim.tbl_map(function(f) return f.length end, frags) } },
-    require("plasmid.config").options.gel or {})
+  local lane = { label = table.concat(names, "+") .. (opts.partial and " partial" or ""),
+    sizes = vim.tbl_map(function(f) return f.length end, frags) }
+  if opts.partial then
+    lane.note = ("a partial ladder: every band an incomplete digestion can give, "
+      .. "not what one reaction yields")
+  end
+  local glines, ghl = gel.render({ lane }, require("plasmid.config").options.gel or {})
   lines[#lines + 1] = ""
   for _, l in ipairs(glines) do lines[#lines + 1] = l end
 
@@ -180,7 +222,8 @@ function M.run(src, names)
   for _, h in ipairs(ghl) do
     vim.api.nvim_buf_set_extmark(b, ns, gel_at + 1 + h[1], h[2], { end_col = h[3], hl_group = h[4] })
   end
-  M.state[b] = { src = src, names = names, frags = frags, first = first_row + 1, revision = rec.seq_revision or 0, rec = rec }
+  M.state[b] = { src = src, names = names, frags = frags, first = first_row + 1,
+    revision = rec.seq_revision or 0, rec = rec, partial = opts.partial or nil, info = info }
 
   local win = vim.fn.bufwinid(b)
   if win == -1 then
@@ -248,8 +291,11 @@ function M.extract(rec, fr)
   copy.history = nil
   local function ends(sites) return sites and sites[1].enzyme.name or "end" end
   copy.name = (rec.name .. "_" .. fr.start .. "-" .. fr.stop):sub(1, 40)
-  copy.description = ("%s–%s fragment (%d..%d, %d bp) of %s"):format(ends(fr.left), ends(fr.right),
-    fr.start, fr.stop, fr.length, rec.name)
+  copy.description = ("%s%s–%s fragment (%d..%d, %d bp) of %s%s"):format(
+    fr.partial and "partial-digest " or "", ends(fr.left), ends(fr.right),
+    fr.start, fr.stop, fr.length, rec.name,
+    (fr.partial and (fr.skipped or 0) > 0)
+      and (", reading through %d uncut site%s"):format(fr.skipped, fr.skipped == 1 and "" or "s") or "")
   return copy, L
 end
 
@@ -298,7 +344,8 @@ function M.extract_under_cursor(b)
   return nb, frag
 end
 
---- :DnaGel "EcoRI | EcoRI HindIII | uncut [ladder=100bp]": one lane per digest.
+--- :DnaGel "EcoRI | partial EcoRI | uncut [ladder=100bp]": one lane per digest.
+--- A lane reading "partial" before its enzymes is the partial ladder.
 function M.gel(src, spec)
   local st = buffer().get(src)
   if not st then return end
@@ -309,13 +356,25 @@ function M.gel(src, spec)
   for part in (spec .. "|"):gmatch("([^|]*)|") do
     local names = vim.split(vim.trim(part), "%s+", { trimempty = true })
     if #names > 0 then
+      local partial = names[1]:lower() == "partial"
+      if partial then table.remove(names, 1) end
       if #names == 1 and names[1]:lower() == "uncut" then
         lanes[#lanes + 1] = { label = "uncut", sizes = { rec:len() },
           note = rec:is_circular() and "drawn at its linear size; supercoiled and nicked forms run differently" or nil }
+      elseif #names == 0 then
+        return notify("a partial lane needs enzymes, e.g. :DnaGel partial EcoRI", vim.log.levels.WARN)
       else
-        local frags, _, _, unknown = M.compute(rec, names)
+        local frags, _, _, unknown, info = M.compute(rec, names, { partial = partial })
         if #unknown > 0 then return notify("unknown enzyme: " .. table.concat(unknown, ", "), vim.log.levels.ERROR) end
-        lanes[#lanes + 1] = { label = table.concat(names, "+"), sizes = vim.tbl_map(function(f) return f.length end, frags) }
+        if info and info.too_many then
+          return notify(("a partial digest with %d sites has %d possible fragments; "
+            .. "name fewer enzymes, or raise digest.partial.max_sites above %d")
+            :format(info.sites, info.total, info.max_sites), vim.log.levels.WARN)
+        end
+        lanes[#lanes + 1] = { label = table.concat(names, "+") .. (partial and " partial" or ""),
+          sizes = vim.tbl_map(function(f) return f.length end, frags),
+          note = partial and ("partial digest of %d sites: %d bands, every one an incomplete "
+            .. "digestion can give, not what one reaction yields"):format(info.sites, info.shown) or nil }
       end
     end
   end

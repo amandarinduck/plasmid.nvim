@@ -21,6 +21,12 @@
 --
 -- Gibson/HiFi joins use the same arithmetic with n = the length of the
 -- terminal homology, so one assembler serves all three methods.
+--
+-- An end also carries its 5' phosphate: `phos = false` for an end a
+-- phosphatase has cleared, and absent (or true) for one that still has it. A
+-- restriction enzyme leaves both ends phosphorylated, which is why absent
+-- means present — an untreated fragment behaves exactly as it did before the
+-- phosphate was modelled at all.
 local alphabet = require("plasmid.model.alphabet")
 local E = require("plasmid.model.edit")
 local T = require("plasmid.model.transaction")
@@ -77,22 +83,41 @@ function M.overhang_strand(frag, side)
   return frag[side].strand == 1 and top or alphabet.revcomp(top)
 end
 
+--- Does this end still carry its 5' phosphate? The 5' terminus of the left
+--- end is the top strand's, of the right end the bottom strand's; an end
+--- nobody treated counts as phosphorylated.
+function M.phosphate(frag, side) return frag[side].phos ~= false end
+
 --- Can fragment `a` be followed by fragment `b`? Returns a junction
 --- { kind = "blunt"|"sticky", len, seq } or nil plus the reason.
-function M.compatible(a, b)
+---
+--- Sealing a junction makes two nicks, one per strand, and T4 ligase needs a
+--- 5' phosphate next to each 3' hydroxyl. The two phosphates come from the
+--- two ends, one each, so one phosphorylated end is enough: the product then
+--- carries a nick on the other strand, which a cell repairs. With neither
+--- there is nothing to seal, which is what a dephosphorylated vector is for.
+--- opts.require_phosphate = false ignores that.
+function M.compatible(a, b, opts)
   local ar, bl = a.right, b.left
   if ar.len ~= bl.len then
     return nil, ("%s / %s (lengths differ)"):format(M.end_text(a, "right"), M.end_text(b, "left"))
   end
+  if ar.len > 0 then
+    if ar.strand == bl.strand then
+      return nil, ("%s / %s (same strand)"):format(M.end_text(a, "right"), M.end_text(b, "left"))
+    end
+    if M.end_seq(a, "right") ~= M.end_seq(b, "left") then
+      return nil, ("%s / %s"):format(M.end_text(a, "right"), M.end_text(b, "left"))
+    end
+  end
+  if not (opts and opts.require_phosphate == false)
+    and not (M.phosphate(a, "right") or M.phosphate(b, "left")) then
+    return nil, ("%s / %s (neither end carries a 5′ phosphate)")
+      :format(M.end_text(a, "right"), M.end_text(b, "left"))
+  end
   if ar.len == 0 then return { kind = "blunt", len = 0, seq = "" } end
-  if ar.strand == bl.strand then
-    return nil, ("%s / %s (same strand)"):format(M.end_text(a, "right"), M.end_text(b, "left"))
-  end
-  local x, y = M.end_seq(a, "right"), M.end_seq(b, "left")
-  if x ~= y then
-    return nil, ("%s / %s"):format(M.end_text(a, "right"), M.end_text(b, "left"))
-  end
-  return { kind = "sticky", len = ar.len, seq = x, five = M.end_kind(a, "right") == "5'" }
+  return { kind = "sticky", len = ar.len, seq = M.end_seq(a, "right"),
+    five = M.end_kind(a, "right") == "5'" }
 end
 
 --- Terminal homology between the end of `a` and the start of `b`: the longest
@@ -204,6 +229,7 @@ function M.from_digest(rec, frags, name)
         ("%s_%d"):format(name or rec.name, i), pl, pr)
       f.source = rec.name
       f.digest = fr
+      f.partial = fr.partial
       out[#out + 1] = f
     end
   end
@@ -224,8 +250,9 @@ function M.flip_ends(frag)
   local seq = alphabet.revcomp(seqof(frag))
   return { name = frag.name, source = frag.source, ends_only = true,
     rec = { seq = { tostring = function() return seq end } },
-    left = { len = frag.right.len, strand = -frag.right.strand },
-    right = { len = frag.left.len, strand = -frag.left.strand },
+    left = { len = frag.right.len, strand = -frag.right.strand, phos = frag.right.phos },
+    right = { len = frag.left.len, strand = -frag.left.strand, phos = frag.left.phos },
+    treatments = frag.treatments,
     flipped = not frag.flipped }
 end
 
@@ -235,9 +262,140 @@ function M.flip(frag)
   T.apply(copy, { op = "revcomp", start = 1, stop = copy:len() })
   copy.history = nil
   return { name = frag.name, source = frag.source, rec = copy, digest = frag.digest,
-    left = { len = frag.right.len, strand = -frag.right.strand },
-    right = { len = frag.left.len, strand = -frag.left.strand },
+    left = { len = frag.right.len, strand = -frag.right.strand, phos = frag.right.phos },
+    right = { len = frag.left.len, strand = -frag.left.strand, phos = frag.left.phos },
+    treatments = frag.treatments,
     flipped = not frag.flipped }
+end
+
+---------------------------------------------------------------------------
+-- End chemistry
+---------------------------------------------------------------------------
+
+-- What each treatment does to one end. `five` / `three` say what becomes of a
+-- 5' or a 3' overhang: "fill" keeps the bases and makes the recessed strand
+-- reach the end of them, "remove" takes the protruding bases away, "keep"
+-- leaves the end as it was. A blunt end is never changed by any of them.
+-- `phos` sets the 5' phosphate instead, on every end it is applied to.
+--
+-- Fill-in and the nucleases leave a 5' phosphate where they finish, and
+-- chewing a 3' overhang back does not touch the other strand's 5' terminus,
+-- so none of the blunting treatments changes the phosphate state.
+M.TREATMENTS = {
+  fillin = { label = "fill-in", agent = "Klenow or T4 polymerase with dNTPs",
+    five = "fill", three = "keep" },
+  chewback = { label = "chew-back", agent = "T4 polymerase without dNTPs",
+    five = "keep", three = "remove" },
+  blunt = { label = "blunting", agent = "T4 polymerase with dNTPs",
+    five = "fill", three = "remove" },
+  nuclease = { label = "single-strand nuclease", agent = "mung bean or S1",
+    five = "remove", three = "remove" },
+  dephos = { label = "dephosphorylation", agent = "CIP, rSAP or Antarctic phosphatase",
+    phos = false },
+  kinase = { label = "kinase", agent = "T4 polynucleotide kinase", phos = true },
+}
+
+M.TREATMENT_ORDER = { "fillin", "chewback", "blunt", "nuclease", "dephos", "kinase" }
+
+local SIDES = { "left", "right" }
+
+--- Treat a fragment's ends. `name` is a key of M.TREATMENTS; opts.sides is
+--- the list of ends to treat (default both). Returns a new fragment, a list
+--- of one line per end saying what happened, and — on a bad treatment name —
+--- nil and the reason.
+---
+--- Where an end moves the record moves with it: chewing back or digesting a
+--- protruding strand deletes those bases, and the editing machinery carries
+--- the features through, truncating the ones that reached into them.
+function M.treat(frag, name, opts)
+  opts = opts or {}
+  local t = M.TREATMENTS[name]
+  if not t then
+    return nil, nil, ("unknown treatment %s (%s)"):format(tostring(name),
+      table.concat(M.TREATMENT_ORDER, ", "))
+  end
+  local sides = opts.sides or SIDES
+  -- how many bases each end would lose, so that a fragment with nothing
+  -- double-stranded left is refused rather than spliced out of existence
+  local lose = 0
+  for _, side in ipairs(sides) do
+    local kind = M.end_kind(frag, side)
+    local act = kind == "blunt" and "keep" or (kind == "5'" and t.five or t.three)
+    if act == "remove" then lose = lose + frag[side].len end
+  end
+  if lose > 0 and lose >= frag.rec:len() then
+    return nil, nil, ("%s would remove all %d bases of %s"):format(t.label, lose, frag.name)
+  end
+  local out = { name = frag.name, source = frag.source, rec = M.copy(frag.rec),
+    digest = frag.digest, partial = frag.partial, flipped = frag.flipped,
+    left = vim.deepcopy(frag.left), right = vim.deepcopy(frag.right) }
+  out.treatments = vim.deepcopy(frag.treatments or {})
+  local note, changed = {}, false
+  -- the right end first: deleting bases there leaves the left coordinates
+  -- alone. The notes are collected per side and written out left to right, so
+  -- that the order of the work does not show up in the report.
+  local order = {}
+  for _, side in ipairs(SIDES) do
+    if vim.tbl_contains(sides, side) then table.insert(order, side == "right" and 1 or #order + 1, side) end
+  end
+  local function say(side, fmt, ...) note[side] = ("%s %s"):format(side, fmt:format(...)) end
+  for _, side in ipairs(order) do
+    local kind, text = M.end_kind(frag, side), M.end_text(frag, side)
+    local n = frag[side].len
+    if t.phos ~= nil then
+      local had = M.phosphate(frag, side)
+      out[side].phos = t.phos
+      if had == t.phos then
+        say(side, "%s: already %s", text, t.phos and "phosphorylated" or "dephosphorylated")
+      else
+        changed = true
+        say(side, "%s: 5′ phosphate %s", text, t.phos and "added" or "removed")
+      end
+    else
+      local act = kind == "blunt" and "keep" or (kind == "5'" and t.five or t.three)
+      if act == "keep" then
+        say(side, "%s: unchanged (%s does not act on %s)", text, t.label,
+          kind == "blunt" and "a blunt end" or ("a " .. (kind == "5'" and "5′" or "3′") .. " overhang"))
+      elseif act == "fill" then
+        changed = true
+        out[side] = { len = 0, strand = 1, phos = frag[side].phos }
+        say(side, "%s: filled in → blunt (%d base%s kept)", text, n, n == 1 and "" or "s")
+      else
+        changed = true
+        local len = out.rec:len()
+        if side == "left" then T.apply(out.rec, { op = "splice", start = 1, stop = n, ins = "" })
+        else T.apply(out.rec, { op = "splice", start = len - n + 1, stop = len, ins = "" }) end
+        out[side] = { len = 0, strand = 1, phos = frag[side].phos }
+        say(side, "%s: %d base%s removed → blunt", text, n, n == 1 and "" or "s")
+      end
+    end
+  end
+  local notes = {}
+  for _, side in ipairs(SIDES) do if note[side] then notes[#notes + 1] = note[side] end end
+  out.rec.history = nil
+  out.treatments[#out.treatments + 1] = { name = name, label = t.label, agent = t.agent,
+    sides = vim.deepcopy(sides), notes = notes, changed = changed }
+  return out, notes
+end
+
+--- The treatments a fragment has had, as one line: "dephosphorylation (both
+--- ends), fill-in (left)". Empty when nobody treated it.
+function M.treatment_text(frag)
+  local out = {}
+  for _, t in ipairs(frag.treatments or {}) do
+    local where = #t.sides == 2 and "both ends" or table.concat(t.sides, ", ")
+    out[#out + 1] = ("%s (%s)"):format(t.label, where)
+  end
+  return table.concat(out, ", ")
+end
+
+--- An end as a cloner reads it off the bench: "5′ AATT, 5′ P" or "blunt, no
+--- 5′ P". The phosphate is only named when it is gone, so an untreated
+--- fragment reads exactly as it did before.
+function M.end_report(frag, side)
+  local text = M.end_text(frag, side)
+  if M.phosphate(frag, side) then return text end
+  return text .. ", no 5′ P"
 end
 
 ---------------------------------------------------------------------------
@@ -382,7 +540,7 @@ local function joiner(opts)
   if opts.join == "homology" then
     return function(a, b) return M.homology(a, b, opts) end
   end
-  return M.compatible
+  return function(a, b) return M.compatible(a, b, opts) end
 end
 
 local function chain_key(chain)

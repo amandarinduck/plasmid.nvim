@@ -1,0 +1,6 @@
+# Partial digests: the fragment table and the partial ladder.
+# python tests/tools/tui_capture.py tests/fixtures/ncbi/J01749.gb docs/screenshots/p \
+#   --script tests/tools/partial_shots.txt --cols 132 --rows 50 --pre "set laststatus=0"
+_open|<wait>
+partial_digest|:DnaDigestPartial BbsI\r<wait>
+partial_gel|G<wait>

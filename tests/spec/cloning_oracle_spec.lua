@@ -129,6 +129,136 @@ case("golden_gate_matches_pydna", function()
 end)
 
 ---------------------------------------------------------------------------
+-- Single fragments: partial digests and end chemistry
+---------------------------------------------------------------------------
+
+-- The oracle writes a fragment as pydna does: the length of everything
+-- present on either strand, the two overhangs in pydna's sign convention
+-- (negative = 5' protruding, positive = 3'), and a hash of the full
+-- sequence.
+local A = require("plasmid.bio.assembly")
+local DG = require("plasmid.digest")
+local pio = require("plasmid.io")
+
+local function frag_key(f)
+  local seq = A.sequence(f):upper()
+  local l = f.left.len == 0 and 0 or (f.left.strand == 1 and -f.left.len or f.left.len)
+  local r = f.right.len == 0 and 0 or (f.right.strand == -1 and -f.right.len or f.right.len)
+  return { #seq, l, r, vim.fn.sha256(seq):sub(1, 16) }
+end
+
+local function key_text(k) return ("%d/%d/%d/%s"):format(k[1], k[2], k[3], k[4]) end
+
+local function sort_keys(list)
+  table.sort(list, function(a, b)
+    for i = 1, 3 do if a[i] ~= b[i] then return a[i] < b[i] end end
+    return a[4] < b[4]
+  end)
+  return list
+end
+
+local fixture_of = {
+  J01749 = "ncbi/J01749.gb", L09137 = "ncbi/L09137.gb",
+  NC_001422 = "ncbi/NC_001422.gb", NC_005816 = "ncbi/NC_005816.gb",
+  gg_insert = "synthetic/gg_insert.gb", gg_vector = "synthetic/gg_vector.gb",
+}
+local loaded = {}
+--- The fixture as a real record of the asked-for topology. A metatable that
+--- only overrides `topology` is not enough here: the fragment machinery
+--- writes the record out and reads it back, and the written LOCUS line would
+--- carry the fixture's own topology.
+local function record(stem, topology)
+  local k = stem .. "/" .. topology
+  if not loaded[k] then
+    local copy = A.copy(assert(pio.read(H.fixture(fixture_of[stem]))).records[1])
+    if copy.topology ~= topology then
+      require("plasmid.model.transaction").apply(copy, { op = "topology", value = topology })
+    end
+    copy.history = nil
+    loaded[k] = copy
+  end
+  return loaded[k]
+end
+
+local function known(names)
+  local R = require("plasmid.bio.restriction")
+  for _, n in ipairs(names) do if not R.get(n) then return false, n end end
+  return true
+end
+
+case("partial_digests_match_pydnas_own_fragment_extraction", function()
+  local d = oracle()
+  H.ok(d.partial and #d.partial > 0, "the oracle carries a partial-digest corpus")
+  local sets, frags, unknown = 0, 0, {}
+  for _, c in ipairs(d.partial) do
+    local ok, which = known(c.enzymes)
+    if not ok then
+      unknown[which] = true
+    else
+      local rec = record(c.stem, c.topology)
+      local parts = DG.compute(rec, c.enzymes, { partial = true, max_sites = 20, max_fragments = 100000 })
+      local got, extra = {}, 0
+      for _, f in ipairs(A.from_digest(rec, parts, c.stem)) do
+        -- pydna enumerates pairs of cutsites, so it has no entry for the
+        -- circle nobody cut; on a linear molecule that span is the pair of
+        -- molecule ends and pydna does list it
+        if f.circular then extra = extra + 1 else got[#got + 1] = frag_key(f) end
+      end
+      H.eq(c.topology == "circular" and 1 or 0, extra,
+        ("%s %s %s: intact molecules"):format(c.stem, c.topology, table.concat(c.enzymes, "+")))
+      sort_keys(got)
+      local want, mine = {}, {}
+      for i, k in ipairs(c.fragments) do want[i] = key_text(k) end
+      for i, k in ipairs(got) do mine[i] = key_text(k) end
+      H.eq(want, mine, ("%s %s %s (%d sites)"):format(c.stem, c.topology,
+        table.concat(c.enzymes, "+"), c.sites))
+      sets = sets + 1
+      frags = frags + #got
+    end
+  end
+  H.eq({}, vim.tbl_keys(unknown), "every enzyme the oracle used is in the bundled set")
+  H.log(("    [oracle] %d partial digests (%d fragments) match pydna's apply_cut over every "
+    .. "pair of cutsites, sequence and both overhangs"):format(sets, frags))
+end)
+
+case("end_chemistry_matches_pydna_where_it_can_model_it", function()
+  local d = oracle()
+  H.ok(d.ends and #d.ends > 0, "the oracle carries an end-chemistry corpus")
+  local checked, chewback, skipped_chewback = 0, 0, 0
+  for _, c in ipairs(d.ends) do
+    if known(c.enzymes) then
+      local rec = record(c.stem, c.topology)
+      local by_cut = {}
+      for _, p in ipairs(c.pieces) do by_cut[key_text(p.cut)] = p end
+      for _, f in ipairs(A.cut(rec, c.enzymes, c.stem)) do
+        if f.digest then
+          local p = by_cut[key_text(frag_key(f))]
+          H.ok(p, ("%s %s %s: pydna has no fragment %s"):format(c.stem, c.topology,
+            table.concat(c.enzymes, "+"), key_text(frag_key(f))))
+          for _, name in ipairs({ "fillin", "blunt", "nuclease", "chewback" }) do
+            if p[name] then
+              local g = assert(A.treat(f, name))
+              H.eq(key_text(p[name]), key_text(frag_key(g)),
+                ("%s %s %s %s"):format(c.stem, c.topology, table.concat(c.enzymes, "+"), name))
+              checked = checked + 1
+              if name == "chewback" then chewback = chewback + 1 end
+            elseif name == "chewback" then
+              skipped_chewback = skipped_chewback + 1
+            end
+          end
+        end
+      end
+    end
+  end
+  local why = {}
+  for _, u in ipairs(d.unmodelled or {}) do why[#why + 1] = u.what end
+  H.log(("    [oracle] %d treated ends match pydna (fill_in, t4, mung; %d chew-backs compared, "
+    .. "%d fragments carry a 5′ overhang so pydna's t4 is not the chew-back answer). "
+    .. "Not modelled by pydna: %s"):format(checked, chewback, skipped_chewback,
+    table.concat(why, "; ")))
+end)
+
+---------------------------------------------------------------------------
 -- What the corpus is made of: a case that always passes is no test
 ---------------------------------------------------------------------------
 

@@ -56,6 +56,17 @@ M.defaults = {
     gene_flank = 0,           -- bases added on each side by :DnaGene (flank=N overrides)
     organism = nil,           -- default organism for :DnaGene, e.g. "human"
   },
+  -- restriction digests (:DnaDigest, :DnaDigestPartial)
+  digest = {
+    -- An incomplete digestion can leave any span bounded by two cut sites, so
+    -- the answer grows as the square of the site count: n sites on a circle
+    -- give n² spans plus the intact circle. Above max_sites :DnaDigestPartial
+    -- says how many there would be instead of listing them.
+    partial = {
+      max_sites = 12,         -- 12 sites on a circle = 145 fragments
+      max_fragments = 500,    -- list at most this many (the rest are counted, not shown)
+    },
+  },
   -- simulated gels (:DnaDigest, :DnaGel)
   gel = {
     ladder = "auto",          -- "auto" | "1kb" | "100bp"
@@ -69,6 +80,26 @@ M.defaults = {
     annotate_parts = true,    -- mark each part in the product as a misc_feature
     annotate_junctions = true,-- mark each junction (overhang or overlap) in the product
     max_solutions = 50,       -- stop the search after this many assemblies (the rest are not offered)
+    -- A ligation needs a 5' phosphate on at least one of a junction's two
+    -- ends. Restriction digests leave both phosphorylated, so this only bites
+    -- after :DnaCloneTreat dephos; false ligates regardless.
+    require_phosphate = true,
+    -- the bench plan (:DnaClonePlan)
+    plan = {
+      max_enzymes = 2,        -- largest enzyme set the diagnostic digest search will offer
+      min_site = 6,           -- shortest recognition site considered (fewer bands on the gel)
+      candidates = nil,       -- enzyme names to search; nil = every enzyme in the active set
+      max_parts = 6,          -- above this many parts only the cheap by-product families are enumerated
+      tandem = true,          -- also enumerate a part taken twice
+      flank = 200,            -- colony-PCR primers this far either side of a junction
+      read_offset = 150,      -- sequencing primer this far back from the junction
+      slack = 8,              -- bases a plan primer may move from its nominal position
+      slack_max = 60,         -- ... and how far when nothing was usable at `slack`
+      min_gap = 2,            -- gel rows a distinguishing band must clear to count as resolved
+      gel_lanes = 6,          -- by-product lanes drawn on the plan's gel
+      max_sets = 2000,        -- cap on enzyme sets evaluated
+      top_singles = 24,       -- single enzymes carried forward into the pair search
+    },
   },
   -- sequence alignment (:DnaAlign, :DnaAlignReads, :DnaCompare)
   align = {

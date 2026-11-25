@@ -364,7 +364,28 @@ The table refuses to act once the sequence has changed; digest again.
 from the sizes, or `ladder=1kb` / `ladder=100bp`). Bands are placed on a log
 scale; fragments that migrate together are marked ×n; sizes outside the
 ladder are listed below. Uncut circular DNA is drawn at its linear size;
-supercoiled and nicked forms are not modelled.
+supercoiled and nicked forms are not modelled. A lane whose enzymes are
+preceded by `partial` is the partial ladder below.
+
+Partial digests ~                                    *plasmid-partial-digest*
+A digestion that did not go to completion leaves any span bounded by two cut
+sites, or by a cut and the end of a linear molecule. :DnaDigestPartial lists
+all of them, with a "missed" column counting the sites inside each fragment
+that were not cut: the complete-digest fragments are the ones that missed
+none. The table and its gel lane say that the ladder is the whole set of
+possible bands, not what one reaction yields.
+
+The answer grows as the square of the site count — n sites on a circle bound
+n² spans (n of them the whole molecule, linearised at one site) and leave the
+intact circle, and n sites on a linear molecule bound (n+2)(n+1)/2 spans over
+its n+2 boundaries. Above `digest.partial.max_sites` (12, which is 145
+fragments) the command reports how many there would be instead of listing
+them; `digest.partial.max_fragments` (500) caps the table, which is then
+filled with the fragments that read through fewest sites.
+
+A partial fragment behaves like any other: <CR> selects it, `e` extracts it,
+and gA stages it as a cloning part whose source reads "partial digest of X
+(2 sites uncut)".
 
 :DnaEnzymes [set]                                               *:DnaEnzymes*
                                 unique | dual | all | off | pick |
@@ -374,8 +395,12 @@ supercoiled and nicked forms are not modelled.
 :DnaEnzymeImport                Show which table is in use.
 :DnaDigest [Enzyme ...]                                          *:DnaDigest*
                                 Digest; default: the named set shown.
+:DnaDigestPartial [Enzyme ...]                            *:DnaDigestPartial*
+                                Every fragment an incomplete digestion can
+                                give, with its ladder.
 :DnaGel {digest} | {digest} ... [ladder=1kb|100bp]                  *:DnaGel*
-                                A digest is a list of enzymes, or "uncut".
+                                A digest is a list of enzymes, "uncut", or
+                                "partial" followed by enzymes.
 
 ==============================================================================
 11. PRIMERS                                                  *plasmid-primers*
@@ -536,6 +561,44 @@ Staging ~
 :DnaCloneList                   The staged parts with their      *:DnaCloneList*
                                 lengths and ends.
 :DnaCloneClear                  Empty the list.                 *:DnaCloneClear*
+:DnaCloneTreat {treatment} [part ...] [left|right]            *:DnaCloneTreat*
+                                End chemistry on staged parts
+                                (|plasmid-end-chemistry|). Without a part
+                                every staged part is treated, without a side
+                                both ends are.
+
+End chemistry ~                                       *plasmid-end-chemistry*
+A fragment's ends carry more than their overhang, and :DnaCloneTreat changes
+it. The treatment is recorded on the part, so the part list and the assembly
+report name it.
+
+  fillin    Klenow or T4 polymerase with dNTPs. Extends the recessed strand
+            of a 5′ overhang until the end is blunt; the overhang bases stay,
+            so the fragment keeps its length. A 3′ overhang is not touched.
+  chewback  T4 polymerase without dNTPs. Removes the protruding bases of a
+            3′ overhang; the fragment loses them. A 5′ overhang is not
+            touched.
+  blunt     T4 polymerase with dNTPs: fillin on a 5′ overhang, chewback on a
+            3′ one. This is how blunting is usually done at the bench.
+  nuclease  Mung bean or S1. Removes whichever single strand protrudes, 5′ or
+            3′; the fragment loses those bases.
+  dephos    CIP, rSAP or Antarctic phosphatase: clears the 5′ phosphate.
+  kinase    T4 polynucleotide kinase: puts it back.
+
+A blunt end is changed by none of them. Where an end moves the record moves
+with it: features that reached into the removed bases are truncated by the
+editing rules (|plasmid-editing|), and a treatment that would leave nothing
+double-stranded is refused.
+
+Sealing a junction makes two nicks, one per strand, and ligase needs a 5′
+phosphate beside each 3′ hydroxyl. The two phosphates come from the two ends,
+one each, so one phosphorylated end per junction is enough — the product then
+carries a nick the cell repairs. With neither there is nothing to seal, which
+is why a dephosphorylated vector stops self-ligating but still takes an
+insert. A restriction digest leaves both ends phosphorylated, so nothing
+changes until you dephosphorylate; `cloning.require_phosphate = false` turns
+the rule off. An end with no phosphate reads "5′ AATT, no 5′ P" in the part
+list, and a junction that fails for that reason says so in the report.
 
 Assembling ~
 :DnaClone [parts ...]           Assemble; the method is inferred.   *:DnaClone*
@@ -578,6 +641,59 @@ When nothing assembles the report lists every ordered pair of ends and the
 reason it was refused (a 5' overhang cannot anneal to a 3' overhang, the
 overhangs are not complementary, a blunt end and a 4 base end), with a hint
 for the method in use.
+
+The bench plan ~                                           *plasmid-clone-plan*
+:DnaClonePlan[!] [path]                                        *:DnaClonePlan*
+                                The plan for the last assembly, in a split;
+                                with a path (or !) also written to a file.
+                                ! writes beside the source record, named after
+                                the product.
+
+The report split and the file hold the same text: the parts and where each
+came from, how each was prepared and its ends; the reaction and its enzyme;
+the expected product with every junction and the base it sits at; the
+by-products; a diagnostic digest with the gel it gives; a colony-PCR pair for
+each junction sized on the product and on every by-product; and a sequencing
+primer each way across each junction.
+
+By-products are molecules the assembler really builds, from the same
+fragments: one part closing on itself, a part left out, the same parts in
+another order or orientation, a part taken twice, and -- for a part that went
+in as a circle -- that circle carried through uncut. `cloning.plan.max_parts`
+(6) bounds the enumeration; above it only the largest proper subsets are tried
+and the plan says what was skipped. Duplicates are removed by molecule, so a
+rotation or the reverse complement of the product is never listed as
+background.
+
+The diagnostic digest searches single enzymes, then pairs, stopping at the
+first size that answers cleanly. `cloning.plan.max_enzymes` (2) is the largest
+set offered; raise it to 3 to search triples as well. The candidates are every
+enzyme in the active set whose site has at least `cloning.plan.min_site` (6)
+specific bases, less those that need methylated DNA. Two lanes are told apart
+only when one has a band in a gel row the other has not, as
+the gel model places them (|plasmid-digest|): two sizes in one row are one
+band, and a band off the end of the gel shows nothing. `cloning.plan.min_gap`
+(2) is how many rows a distinguishing band must clear; a set that
+discriminates only by a band next to its neighbour is reported with that
+caveat and a pair is searched for instead. A set that leaves a molecule uncut
+is reported too, since an uncut circle does not run at its linear size; a set
+that cuts the product is preferred over one that leaves it whole.
+
+When no set discriminates, the plan says so, names the by-products nothing
+distinguished, and offers the best partial check as a partial check. A digest
+that cannot tell two outcomes apart is worse than none, because it will be run
+and believed.
+
+Colony-PCR pairs and sequencing primers come from |:DnaPrimerDesign|'s own
+search over a window around each junction, so the pair spans the junction and
+the read starts `cloning.plan.read_offset` (150) bases before it. Sizes on
+each by-product come from |:DnaPCR|; a pair that gives the same size on the
+product and on a by-product is reported as not a check.
+
+What the plan does not model: band intensity (so a doubled band is not
+evidence), partial digestion, star activity, supercoiling, and how well each
+molecule transforms. The by-products are what the parts can give, not what
+they will give.
 
 Primers for an assembly ~                                *plasmid-clone-design*
 >vim
@@ -916,8 +1032,12 @@ Alignment ~
 
 Cloning ~
 :DnaCloneAdd [name] · :DnaCloneList · :DnaCloneClear   Stage parts.
+:DnaCloneTreat {fillin|chewback|blunt|nuclease|dephos|kinase} [part] [side]
+                                End chemistry (|plasmid-end-chemistry|).
 :DnaClone · :DnaLigate · :DnaGoldenGate [enzyme] · :DnaGibson  [parts ...]
                                 Assemble them (|plasmid-cloning|).
+:DnaClonePlan[!] [path]         The bench plan for the last assembly
+                                (|plasmid-clone-plan|).
 
 ==============================================================================
 18. CONFIGURATION                                             *plasmid-config*
@@ -973,7 +1093,15 @@ Defaults, abridged (see lua/plasmid/config.lua for every key):
               width = 0, annotate_type = "variation" },
     cloning = { min_homology = 20, max_homology = 200,   -- |plasmid-cloning|
                 enzyme = "BsaI", annotate_parts = true,
-                annotate_junctions = true, max_solutions = 50 },
+                annotate_junctions = true, max_solutions = 50,
+                require_phosphate = true },
+    digest = { partial = { max_sites = 12,        -- |plasmid-partial-digest|
+                           max_fragments = 500 } },
+                plan = { max_enzymes = 2, min_site = 6,  -- |plasmid-clone-plan|
+                         candidates = nil, max_parts = 6, tandem = true,
+                         flank = 200, read_offset = 150, slack = 8,
+                         slack_max = 60, min_gap = 2, gel_lanes = 6,
+                         max_sets = 2000, top_singles = 24 } },
     mouse = { enabled = true, drag_select = true,        -- |plasmid-mouse|
               double_click_feature = true, primer_pair = true },
     ncbi = { api_key = nil, email = nil,     -- |plasmid-fetch|
